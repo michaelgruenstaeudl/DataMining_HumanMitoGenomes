@@ -161,3 +161,57 @@ esearch \
   <Elapsed>1</Elapsed>
 </ENTREZ_DIRECT>
 ```
+
+## Total Number of records in BioProject Database linked with Nucleotide database related Complete Human Mitochondrial Genomes
+
+**Execution Date**: February 30, 2025
+
+**Script**:
+
+```
+esearch \
+    -db nucleotide \
+    -query "\"Homo sapiens\"[ORGN] AND \"complete genome\"[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] \
+    NOT (unverified OR \"Homo sp. Altai\" OR \"Denisova hominin\" OR neanderthalensis OR heidelbergensis OR consensus)" |
+    elink -target bioproject
+```
+
+**Result**:
+
+```
+<ENTREZ_DIRECT>
+  <Db>bioproject</Db>
+  <WebEnv>MCID_67a289d20959ac373907af17</WebEnv>
+  <QueryKey>102</QueryKey>
+  <Count>5</Count>
+  <Step>2</Step>
+  <Elapsed>125</Elapsed>
+</ENTREZ_DIRECT>
+```
+
+## Total Number of records in BioSample Database linked with Nucleotide database related Complete Human Mitochondrial Genomes
+
+**Execution Date**: February 30, 2025
+
+**Script**:
+
+```
+esearch \
+    -db nucleotide \
+    -query "\"Homo sapiens\"[ORGN] AND \"complete genome\"[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] \
+    NOT (unverified OR \"Homo sp. Altai\" OR \"Denisova hominin\" OR neanderthalensis OR heidelbergensis OR consensus)" |
+    elink -target BioSample
+```
+
+**Result**:
+
+```
+<ENTREZ_DIRECT>
+  <Db>BioSample</Db>
+  <WebEnv>MCID_67a282004a648e9a3306a676</WebEnv>
+  <QueryKey>102</QueryKey>
+  <Count>15</Count>
+  <Step>2</Step>
+  <Elapsed>87</Elapsed>
+</ENTREZ_DIRECT>
+```
