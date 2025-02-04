@@ -108,3 +108,56 @@ esearch \
   <Elapsed>1</Elapsed>
 </ENTREZ_DIRECT>
 ```
+
+## Total Number of records in SRA Database related to Human Mitochondrial Genomes and having biomol DNA and platform illumina properties.
+
+**Execution Date**: February 29, 2025
+
+**Script**:
+
+```
+esearch \
+    -db SRA \
+    -query "(\"Homo sapiens\"[ORGN] OR human[TITLE]) \
+    AND (mitochondrion[ALL] OR mitochondrial[ALL]) \
+    AND \"biomol dna\"[PROP] AND \"platform illumina\"[PROP]"
+```
+
+**Result**:
+
+```
+<ENTREZ_DIRECT>
+  <Db>sra</Db>
+  <WebEnv>MCID_67a274e6e1c24557800a865b</WebEnv>
+  <QueryKey>1</QueryKey>
+  <Count>14361</Count>
+  <Step>1</Step>
+  <Elapsed>1</Elapsed>
+</ENTREZ_DIRECT>
+```
+
+## Total Number of records in Nucleotide Database related to Human Mitochondrial Genomes and having sequence length range from 15400 to 16700
+
+**Execution Date**: February 29, 2025
+
+**Script**:
+
+```
+esearch \
+    -db nucleotide \
+    -query "\"Homo sapiens\"[ORGN] AND \"complete genome\"[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] \
+    NOT (unverified OR \"Homo sp. Altai\" OR \"Denisova hominin\" OR neanderthalensis OR heidelbergensis OR consensus)"
+```
+
+**Result**:
+
+```
+<ENTREZ_DIRECT>
+  <Db>nuccore</Db>
+  <WebEnv>MCID_67a276bb2fb23d4667016b90</WebEnv>
+  <QueryKey>1</QueryKey>
+  <Count>62173</Count>
+  <Step>1</Step>
+  <Elapsed>1</Elapsed>
+</ENTREZ_DIRECT>
+```
