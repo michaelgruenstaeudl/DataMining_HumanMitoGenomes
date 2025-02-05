@@ -162,7 +162,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in BioProject Database linked with Nucleotide database related Complete Human Mitochondrial Genomes
+## Total Number of records in BioProject Database linked with Nucleotide database related to Complete Human Mitochondrial Genomes
 
 **Execution Date**: January 30, 2025
 
@@ -189,7 +189,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in BioSample Database linked with Nucleotide database related Complete Human Mitochondrial Genomes
+## Total Number of records in BioSample Database linked with Nucleotide database related to Complete Human Mitochondrial Genomes
 
 **Execution Date**: January 30, 2025
 
@@ -216,7 +216,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in SRA Database linked with Nucleotide database related Complete Human Mitochondrial Genomes
+## Total Number of records in SRA Database linked with Nucleotide database related to Complete Human Mitochondrial Genomes
 
 **Execution Date**: January 31, 2025
 
@@ -240,5 +240,111 @@ esearch \
   <Count>0</Count>
   <Step>2</Step>
   <Elapsed>482</Elapsed>
+</ENTREZ_DIRECT>
+```
+
+## Total Number of records in SRA Database linked with Nucleotide database through BioProject database related to Complete Human Mitochondrial Genomes (Nucleotide -> BioProject -> SRA)
+
+**Execution Date**: January 31, 2025
+
+**Script**:
+
+```
+esearch \
+    -db nucleotide \
+    -query "\"Homo sapiens\"[ORGN] AND \"complete genome\"[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] \
+    NOT (unverified OR \"Homo sp. Altai\" OR \"Denisova hominin\" OR neanderthalensis OR heidelbergensis OR consensus)" |
+    elink -target bioproject |
+    elink -target SRA
+```
+
+**Result**:
+
+```
+<ENTREZ_DIRECT>
+  <Db>SRA</Db>
+  <WebEnv>MCID_67a2bfa78d5f644c7503631e</WebEnv>
+  <QueryKey>104</QueryKey>
+  <Count>259</Count>
+  <Step>3</Step>
+  <Elapsed>122</Elapsed>
+</ENTREZ_DIRECT>
+```
+
+With different search condition: \
+
+**Script**:
+
+```
+esearch -db nucleotide -query "(human[organism] OR \"homo sapiens\"[organism]) \
+    AND (\"mitochondrial\"[title] or mitochondrion[TITLE]) \
+    AND complete genome[TITLE]" |
+    elink -target bioproject |
+    elink -target SRA
+```
+
+**Result**:
+
+```
+<ENTREZ_DIRECT>
+  <Db>SRA</Db>
+  <WebEnv>MCID_67a2dbe000592acfb406c179</WebEnv>
+  <QueryKey>104</QueryKey>
+  <Count>277</Count>
+  <Step>3</Step>
+  <Elapsed>261</Elapsed>
+</ENTREZ_DIRECT>
+```
+
+## Total Number of records in SRA Database linked with Nucleotide database through BioSample database related to Complete Human Mitochondrial Genomes (Nucleotide -> BioSample -> SRA)
+
+**Execution Date**: January 31, 2025
+
+**Script**:
+
+```
+esearch \
+    -db nucleotide \
+    -query "\"Homo sapiens\"[ORGN] AND \"complete genome\"[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] \
+    NOT (unverified OR \"Homo sp. Altai\" OR \"Denisova hominin\" OR neanderthalensis OR heidelbergensis OR consensus)" |
+    elink -target biosample |
+    elink -target SRA
+```
+
+**Result**:
+
+```
+<ENTREZ_DIRECT>
+  <Db>SRA</Db>
+  <WebEnv>MCID_67a2c0a17ec82cf03b058e81</WebEnv>
+  <QueryKey>104</QueryKey>
+  <Count>744</Count>
+  <Step>3</Step>
+  <Elapsed>127</Elapsed>
+</ENTREZ_DIRECT>
+```
+
+With different search condition: \
+
+**Script**:
+
+```
+esearch -db nucleotide -query "(human[organism] OR \"homo sapiens\"[organism]) \
+    AND (\"mitochondrial\"[title] or mitochondrion[TITLE]) \
+    AND complete genome[TITLE]" |
+    elink -target biosample |
+    elink -target SRA
+```
+
+**Result**:
+
+```
+<ENTREZ_DIRECT>
+  <Db>SRA</Db>
+  <WebEnv>MCID_67a2c60ffb3ac7f23d0f7b85</WebEnv>
+  <QueryKey>104</QueryKey>
+  <Count>746</Count>
+  <Step>3</Step>
+  <Elapsed>260</Elapsed>
 </ENTREZ_DIRECT>
 ```
