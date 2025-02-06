@@ -12,8 +12,11 @@ Scripts to identify associated entries across NCBI GenBank, NCBI SRA, and other 
 - **genbank_ids.txt**:
   This file includes accession IDs for full-length GenBank sequences (nucleotide records) that are currently listed in the Mitobank database. It was downloaded from the Mitobank website.
 
-- **homosapian_nucleotide_accession_list**:
+- **homosapian_nucleotide_accession_list.txt**:
   This file includes accession IDs for human mitochondrial sequences with complete genome sequences from the nucleotide database. The records were extracted using an Entrez Direct query. For the shell script used to download this file, please refer to entrez_scripts_andresults.md, specifically the section titled **Downloaded accession IDs from nucleotide database.**
+
+- **mitochondrial_genome_analysis.ipynb**:
+  This file contains an analysis of the **genbank_ids.txt** and **homosapian_nucleotide_accession_list.txt** files, comparing the common records between them and identifying the unique records in each file that are not present in the other.
 
 ## RESOURCES
 

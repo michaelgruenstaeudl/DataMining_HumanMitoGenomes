@@ -435,3 +435,22 @@ esearch -db nucleotide -query "\"Homo sapiens\"[ORGN] \
   <Elapsed>1</Elapsed>
 </ENTREZ_DIRECT>
 ```
+
+## Analysis of **genbank_ids.txt** and **homosapian_nucleotide_accession_list.txt**
+
+**Execution Date**: February 4, 2025
+
+**Source code**:
+Please refer to the file **mitochondrial_genome_analysis.ipynb**
+
+**Result**:
+
+- Total count of accssions ids that present in both **genbank_ids.txt** file and in **homosapian_nucleotide_accession_list.txt** file: 60676
+- Total count present in **genbank_ids.txt** but not in **homosapian_nucleotide_accession_list.txt**: 1168
+
+  - unique records:
+    Please refer to the file **mitochondrial_genome_analysis.ipynb**
+
+- Total count present in **homosapian_nucleotide_accession_list.tx** but not in **genbank_ids.txt**: 1491
+  - Unique records:
+    Please refer to the file **mitochondrial_genome_analysis.ipynb**
