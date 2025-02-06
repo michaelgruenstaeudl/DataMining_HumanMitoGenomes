@@ -2,7 +2,7 @@
 
 This document contains shell scripts and their outputs for analysis purposes, including the date and time of execution. It serves as a comprehensive history of the scripts executed and tracks their outputs.
 
-## Total Number of Complete Human Mitochondrial Genomes in Nucleotide Database
+## Number of complete human mitogenomes in NCBI Nucleotide
 
 **Execution Date**: January 28, 2025
 
@@ -29,7 +29,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in BioProject Database related to Complete Human Mitochondrial Genomes
+## Number of complete human mitogenome entries in NCBI BioProject
 
 **Execution Date**: January 28, 2025
 
@@ -56,7 +56,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in BioSample Database related to Complete Human Mitochondrial Genomes
+## Number of complete human mitogenome categories in NCBI BioSample
 
 **Execution Date**: January 28, 2025
 
@@ -83,7 +83,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in SRA Database related to Human Mitochondrial Genomes
+## Number of records related to human mitogenomes in NCBI SRA
 
 **Execution Date**: January 29, 2025
 
@@ -109,7 +109,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in SRA Database related to Human Mitochondrial Genomes and having biomol DNA and platform illumina properties.
+## Number of records related to human mitogenomes in NCBI SRA that represent DNA and were produced via Illumina
 
 **Execution Date**: January 29, 2025
 
@@ -136,7 +136,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in Nucleotide Database related to Human Mitochondrial Genomes and having sequence length range from 15400 to 16700
+## Number of complete human mitogenomes in NCBI Nucleotide with sequence length between 15400 and 16700
 
 **Execution Date**: January 29, 2025
 
@@ -162,7 +162,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in BioProject Database linked with Nucleotide database related to Complete Human Mitochondrial Genomes
+## Number of complete human mitogenome entries in NCBI BioProject that link to NCBI Nucleotide
 
 **Execution Date**: January 30, 2025
 
@@ -189,7 +189,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in BioSample Database linked with Nucleotide database related to Complete Human Mitochondrial Genomes
+## Number of complete human mitogenome categories in NCBI BioSample that link to NCBI Nucleotide
 
 **Execution Date**: January 30, 2025
 
@@ -216,7 +216,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in SRA Database linked with Nucleotide database related to Complete Human Mitochondrial Genomes
+## Number of complete human mitogenome records in NCBI SRA that link to NCBI Nucleotide
 
 **Execution Date**: January 31, 2025
 
@@ -243,7 +243,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in SRA Database linked with Nucleotide database through BioProject database related to Complete Human Mitochondrial Genomes (Nucleotide -> BioProject -> SRA)
+## Number of complete human mitogenome records in NCBI SRA that link to NCBI Nucleotide via NCBI BioProject (Nucleotide -> BioProject -> SRA)
 
 **Execution Date**: January 31, 2025
 
@@ -296,7 +296,7 @@ esearch -db nucleotide -query "(human[organism] OR \"homo sapiens\"[organism]) \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in SRA Database linked with Nucleotide database through BioSample database related to Complete Human Mitochondrial Genomes (Nucleotide -> BioSample -> SRA)
+## Number of complete human mitogenome records in NCBI SRA that link to NCBI Nucleotide via NCBI BioSample (Nucleotide -> BioSample -> SRA)
 
 **Execution Date**: January 31, 2025
 
@@ -349,7 +349,7 @@ esearch -db nucleotide -query "(human[organism] OR \"homo sapiens\"[organism]) \
 </ENTREZ_DIRECT>
 ```
 
-## Total Number of records in SRA Database linked with Nucleotide database through BioSample and BioProject database related to Complete Human Mitochondrial Genomes (Nucleotide -> BioSample -> BioProject -> SRA)
+## Number of complete human mitogenome records in NCBI SRA that link to NCBI Nucleotide via NCBI BioSample and NCBI BioProject (Nucleotide -> BioSample -> BioProject -> SRA)
 
 **Execution Date**: February 3, 2025
 
@@ -406,7 +406,7 @@ esearch \
 </ENTREZ_DIRECT>
 ```
 
-## Downloaded accession ids from nucleotide database
+## Downloaded accession ids from NCBI Nucleotide
 
 **Execution Date**: February 4, 2025
 
