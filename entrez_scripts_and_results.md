@@ -405,3 +405,33 @@ esearch \
   <Elapsed>89</Elapsed>
 </ENTREZ_DIRECT>
 ```
+
+## Downloaded accession ids from nucleotide database
+
+**Execution Date**: February 4, 2025
+
+**Script**:
+
+```
+esearch -db nucleotide -query "\"Homo sapiens\"[ORGN] \
+    AND \"complete genome\"[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] \
+    NOT (unverified OR \"Homo sp. Altai\" OR \"Denisova hominin\" OR neanderthalensis OR heidelbergensis OR consensus)" |
+    efetch -format acc -mode text >homosapian_nucleotide_accession_list.txt
+```
+
+**Result**:
+
+- 62173 accession ids are downloaded and stored in text file _homosapian_nucleotide_accession_list.txt_.
+- We also downloaded full length mitochondrial accession id lists from mitobank. Filename: _genbank_ids.txt_
+- Link to mitobank: https://www.mitomap.org/foswiki/bin/view/MITOMAP/Mitobank
+
+```
+<ENTREZ_DIRECT>
+  <Db>nuccore</Db>
+  <WebEnv>MCID_67a41b51643a9255a30f8ad7</WebEnv>
+  <QueryKey>1</QueryKey>
+  <Count>62173</Count>
+  <Step>1</Step>
+  <Elapsed>1</Elapsed>
+</ENTREZ_DIRECT>
+```
