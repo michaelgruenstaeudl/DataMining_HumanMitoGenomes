@@ -21,15 +21,18 @@ Files and scripts to identify associated entries across NCBI GenBank, NCBI SRA, 
 - `DATA_GenBank_accessions_EntrezQuery_2025_01_31.txt`: A text file listing the GenBank accession numbers of all complete human mitochondrial genome sequences received when running an Entrez Direct query as of 31-Jan-2024. Section _Downloaded accession IDs from nucleotide database_ of file `entrez_scripts_and_results.md` specifies the Entrez Direct query used. The file contains a total of 62167 accession numbers.
 
 - `DATA_Nucleotide_Metadata.csv`: A comma-separated list of all nucleotide metadata records extracted using script `extract_nucleotide_metadata.ipynb`. Accession Id, BioProject Id, BioSample Id, Publication Title, Publication Reference.
-For instance, the Bash command `awk -F',' '{print $8, $9, $10}' DATA_Nucleotide_Metadata.csv | sort -u | grep -v "Submitted"` extracts all the publications that describe these GenBank records; in these publications, the SRA numbers may be located.
 
 - `DATA_Nucleotide_Summary_records.csv`: A comma-separated list of all nucleotide summary records extracted using the following query: `"Homo sapiens[ORGN] AND complete genome[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] NOT (unverified OR Homo sp. Altai OR Denisova hominin OR neanderthalensis OR heidelbergensis OR consensus)"`
 
 ## RESOURCES
 
-Up-to-date list of **all GenBank accession numbers** of all **complete mitochondrial genomes of humans** (total: 61,845) stored on GenBank: https://www.mitomap.org/cgi-bin/genbank_ids.cgi
+### Obtaining publications of NCBI Nucleotide records
+Bash code to extract the publications that the 62,173 complete human mitogenomes stored on NCBI Nucleotide were published in:
+`cat DATA_Nucleotide_Metadata.csv | xsv select 9-11 | grep -v "Unpublished\|Submitted" | sort -u`
+
 
 ### Promising Entrez search strategies
+Up-to-date list of **all GenBank accession numbers** of all **complete mitochondrial genomes of humans** (total: 61,845) stored on GenBank: https://www.mitomap.org/cgi-bin/genbank_ids.cgi
 
 #### On NCBI GenBank
 
