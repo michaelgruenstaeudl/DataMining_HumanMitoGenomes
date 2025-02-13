@@ -14,6 +14,8 @@ Files and scripts to identify associated entries across NCBI GenBank, NCBI SRA, 
 
 - `CODE_nucleotide_sra_data_extraction.ipynb`: An IPython Notebook that contains scripts for extracting nucleotide metadata in tabular format.
 
+- `CODE_SRA_metadata_extractor.sh`: A shell script to extract SRA metadata records related to human mitochondrial nucleotide records through biosample and bioproject database.
+
 ### Data Files
 
 - `DATA_GenBank_accessions_Mitobank_2025_01_31.txt`: A text file listing the GenBank accession numbers of all full-length human mitochondrial genome sequences listed on Mitobank as of 31-Jan-2024; it was downloaded directly from [Mitobank](https://www.mitomap.org/foswiki/bin/view/MITOMAP/Mitobank). The file contains a total of 61845 accession numbers.
@@ -24,14 +26,19 @@ Files and scripts to identify associated entries across NCBI GenBank, NCBI SRA, 
 
 - `DATA_Nucleotide_Summary_records.csv`: A comma-separated list of all nucleotide summary records extracted using the following query: `"Homo sapiens[ORGN] AND complete genome[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] NOT (unverified OR Homo sp. Altai OR Denisova hominin OR neanderthalensis OR heidelbergensis OR consensus)"`
 
+- `DATA_SRA_Metadata_linked_through_BioSample.csv`: A comma-separated list of all SRA metadata records linked to human mitochondrial nucleotide records through BioSample database.
+
+- `DATA_SRA_Metadata_linked_through_BioProject.csv`:A comma-separated list of all SRA metadata records linked to human mitochondrial nucleotide records through BioProject database.
+
 ## RESOURCES
 
 ### Obtaining publications of NCBI Nucleotide records
+
 Bash code to extract the publications that the 62,173 complete human mitogenomes stored on NCBI Nucleotide were published in:
 `cat DATA_Nucleotide_Metadata.csv | xsv select 9-11 | grep -v "Unpublished\|Submitted" | sort -u`
 
-
 ### Promising Entrez search strategies
+
 Up-to-date list of **all GenBank accession numbers** of all **complete mitochondrial genomes of humans** (total: 61,845) stored on GenBank: https://www.mitomap.org/cgi-bin/genbank_ids.cgi
 
 #### On NCBI GenBank
