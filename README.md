@@ -16,6 +16,8 @@ Files and scripts to identify associated entries across NCBI GenBank, NCBI SRA, 
 
 - `CODE_SRA_metadata_extractor.sh`: A shell script to extract SRA metadata records related to human mitochondrial nucleotide records through biosample and bioproject database.
 
+- `CODE_Nucleotide_SRA_data_analysis.ipynb`: An IPython Notebook that contains analysis of nucleotide metadata with SRA metadata based on BioProject Id and BioSampleId.
+
 ### Data Files
 
 - `DATA_GenBank_accessions_Mitobank_2025_01_31.txt`: A text file listing the GenBank accession numbers of all full-length human mitochondrial genome sequences listed on Mitobank as of 31-Jan-2024; it was downloaded directly from [Mitobank](https://www.mitomap.org/foswiki/bin/view/MITOMAP/Mitobank). The file contains a total of 61845 accession numbers.
