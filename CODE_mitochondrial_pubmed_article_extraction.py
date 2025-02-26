@@ -2,6 +2,7 @@
 __version__ = 'b_thapamagar@mail.fhsu.edu|2025-02-18'
 
 import argparse
+from collections import namedtuple
 import Bio
 import logging
 import Bio.Entrez
@@ -20,7 +21,18 @@ substrings: list = [
         "www.ncbi.nlm.gov/sra",
         "NCBI Sequence Read Archive",
         "European Nucleotide Archive",
+        "ENA"
     ]
+
+data_availability_list: list = [
+    "Electronic-Database Information",
+    "Associated Data",
+    "Accession Numbers",
+    "Data access",
+    "Data accessibility",
+    "Data availability"
+    "Availability of data"
+]
 
 class LXMLops:
 
@@ -110,6 +122,22 @@ class PubmedInteract:
                     complete_article_link_list.append(tag["href"])
         return complete_article_link_list
 
+    def get_pmc_id_by_pubmed_id(self, pubmed_id):
+        '''Look up PubMedCentral ID from a PubMed ID'''
+        handle = Bio.Entrez.elink(dbfrom='pubmed',
+                                db='pmc',
+                                linkname='pubmed_pmc',
+                                id=pubmed_id,
+                                retmode='text')
+        
+        result = Bio.Entrez.read(handle)
+        try:
+            pmcid = f"PMC{result[0]['LinkSetDb'][0]['Link'][0]['Id']}"
+        except:
+            pmcid = None
+            
+        return pmcid
+        
 def main(args):
     email = args.mail
     verbose = args.verbose
@@ -133,7 +161,6 @@ def main(args):
         return 
     
     
-    # Bio.Entrez.email = email
     pubmed_interact = PubmedInteract(email= email)
     
     data_frame = pd.read_csv(file_path)
@@ -191,86 +218,119 @@ def main(args):
         pubmed_metadata.loc[len(pubmed_metadata)] = item
     
     pubmed_metadata.to_csv("pubmed_metadata.csv", header=True, index=False)
-        
-        
-    #     try:
-    #         record = {
-    #             "title": title
-    #         }
+    
+    data: list = []
+    # for i in [1, 2, 3]:
+    for row in pubmed_metadata.itertuples():
+        try:
+            record = {
+                "title": row.Title,
+                "Pubmed_ID": row.Pubmed_ID,
+                "DataBankList" : json.loads(row.DataBankList) if row.DataBankList != "" else "",
+                "URL":  row.url
+            }
             
+            pmc_id = pubmed_interact.get_pmc_id_by_pubmed_id(row.Pubmed_ID)
             
-    #         record["publed_id"] = pubmed_id
+            if(pmc_id != None):
+                log.info(f"pmd_id: {row.Pubmed_ID} and pmc_id: PCC{pmc_id} \nretrieving complete article from PubMedCentral")  
+                
+                record["pmc_id"] = pmc_id
             
-    #         elink_handle = Bio.Entrez.elink(dbfrom= "pubmed", id= pubmed_id, db="pmc")
-    #         elink_result = Bio.Entrez.read(elink_handle)
-            
-    #         if(elink_result[0]["LinkSetDb"] == []):
-    #             record["Error"] = "No Pubmed central record available"
-    #             log.info(f"No pmc record for {title}")
-    #             continue
-            
-    #         pmc_id = elink_result[0]["LinkSetDb"][0]["Link"][0]["Id"]
-            
-    #         log.info(f"pmd_id: {pubmed_id} and pmc_id: PCC{pmc_id} \nretrieving complete article from PubMedCentral")    
-            
-    #         record["pmc_id"] = pmc_id
-            
-    #         bioc_url = f"https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC{pmc_id}/unicode"
-        
-    #         bioc_handle = urllib.request.urlopen(bioc_url)
-    #         article_complete = bioc_handle.read()
-            
-    #         if(article_complete):
-    #             try:
-    #                 if '<?xml version="1.0"' in str(article_complete):
-    #                     # Parse the XML of the full text
-    #                     fulltext_etree = lxml.etree.fromstring(article_complete)
-    #                     date = fulltext_etree.find(".//infon[@key='year']").text
-    #                     record["Year"] = date
-    #                     if((not date) or (int(date) < 2009)):
-    #                         log.info("Article published before 2009 and it doesnot contain SRA records.")
-    #                         continue
+                article_url = f"https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/{pmc_id}/unicode"
+                url_handle = urllib.request.urlopen(article_url)
+                article_complete = url_handle.read() 
+                
+                if( "[Error] : No result can be found" in article_complete.decode('utf-8')):
+                    article_url = f"https://pmc.ncbi.nlm.nih.gov/articles/{pmc_id}/?report=reader"
+                    try:
+                        url_handle = urllib.request.Request(article_url, headers={'User-Agent': 'Mozilla/5.0'})
+                        article_complete = urllib.request.urlopen(url_handle).read()
+                    except:
+                        log.warning("\t {pmc_id}: Retrieval unsuccessful")
+                        article_complete = None
                         
-    #                     # Remove unnecessary sections from full text
-    #                     LXMLops(fulltext_etree).remove_expendable()
-    #                     # Extract all text of the full text by paragraph
-    #                     all_paragraphs = LXMLops(fulltext_etree).extract_all_text()
-    #                     record["FullTextParagraph"] = all_paragraphs
-    #                     results = []  # Store matching results
+            else:
+                log.info(f"No PMC Id available for pubmed id {row.Pubmed_ID}")
+                article_complete = None
+            
+            if(article_complete):
+                try:
+                    if '<?xml version="1.0"' in str(article_complete):
+                        # Parse the XML of the full text
+                        fulltext_etree = lxml.etree.fromstring(article_complete)
+                        date = fulltext_etree.find(".//infon[@key='year']").text
+                        record["Year"] = date
+                        if((not date) or (int(date) < 2009)):
+                            log.info("Article published before 2009 and it doesnot contain SRA records.")
+                            continue
+                        
+                        # Remove unnecessary sections from full text
+                        LXMLops(fulltext_etree).remove_expendable()
+                        # Extract all text of the full text by paragraph
+                        all_paragraphs = LXMLops(fulltext_etree).extract_all_text()
+                        record["FullTextParagraph"] = all_paragraphs
+                        results = []  # Store matching results
 
-    #                     for i, paragraph in enumerate(all_paragraphs):  
-    #                         for sub in substrings:
-    #                             lower_para = paragraph.lower()
-    #                             lower_sub = sub.lower()
-    #                             start_idx = lower_para.find(lower_sub)
+                        for i, paragraph in enumerate(all_paragraphs):  
+                            for sub in substrings:
+                                lower_para = paragraph.lower()
+                                lower_sub = sub.lower()
+                                start_idx = lower_para.find(lower_sub)
 
-    #                             if start_idx != -1:  # If the substring is found
-    #                                 # Extract 100 chars before and after, ensuring we don't go out of bounds
-    #                                 start = max(0, start_idx - 100)
-    #                                 end = min(len(paragraph), start_idx + len(sub) + 100)
-    #                                 content = paragraph[start:end]
+                                if start_idx != -1:  # If the substring is found
+                                    # Extract 100 chars before and after, ensuring we don't go out of bounds
+                                    start = max(0, start_idx - 100)
+                                    end = min(len(paragraph), start_idx + len(sub) + 100)
+                                    content = paragraph[start:end]
 
-    #                                 results.append({"paragraph":i+1,
-    #                                                 "substring": sub, 
-    #                                                 "content": content})
+                                    results.append({"paragraph":i+1,
+                                                    "substring": sub, 
+                                                    "content": content})
                         
-    #                     record["MatchedParagraphs"] = results           
+                        record["MatchedParagraphs"] = results           
                         
-    #                     print("Fetched")
-                        
-    #             except Exception as ex:
-    #                 record["Error"] = f"Error encountered for {pmc_id} \n {ex}"
-    #                 log.critical(f"Error encountered for {pmc_id} \n {ex}")
-    #         else:
-    #             record["Error"] = f"No content available"
+                        print("Fetched")
+                    
+                    if '<!DOCTYPE html>' in str(article_complete):
+                        # Parse the HTML of the full text
+                        fulltext_soup = bs4.BeautifulSoup(article_complete, 'html.parser') 
+                        cleaned_title = ''.join(char if char.isalnum() or char.isspace() else '' for char in row.Title)
+                        cleaned_title_from_html = ""
+                        if(fulltext_soup.head.title.text):
+                            cleaned_title_from_html = ''.join(char if char.isalnum() or char.isspace() else '' for char in fulltext_soup.head.title.text)
+                        if(cleaned_title.lower() in cleaned_title_from_html.lower()):
+                            # fulltext_soup.head.decompose()
+                            # for script_tag in fulltext_soup.find_all("script"):
+                            #     script_tag.decompose()
+                            # for style_tag in fulltext_soup.find_all("style"):
+                            #     style_tag.decompose()
+                            # for usabanner_tag in fulltext_soup.find_all('a', "usa-skipnav"):
+                            #     usabanner_tag.decompose()
+                            # article_container = fulltext_soup.find("div", id="article-container")
+                            article_content= fulltext_soup.find("section", {"aria-label": "Article content"})
+                            for reflist_tag in article_content.find_all('section', class_ ="ref-list"):
+                                reflist_tag.decompose()
+                            all_paragraphs =[]
+                            for paragraph in article_content.find_all("p"):
+                                text = ''.join(paragraph.stripped_strings)
+                                all_paragraphs.append(text)
+                                print(text)
+                        else:
+                            log.info("Different document pulled")
+                except Exception as ex:
+                    record["Error"] = f"Error encountered for {pmc_id} \n {ex}"
+                    log.critical(f"Error encountered for {pmc_id} \n {ex}")
+            else:
+                record["Error"] = f"No content available"
             
-    #         data.append(record)        
-    #     except Exception as e:
-    #         log.critical(f"Exception occured: {e}")
+            data.append(record)        
+        except Exception as e:
+            log.critical(f"Exception occured: {e}")
             
-    # output_file_name = "output.json"
-    # with open(output_file_name, "w") as file:
-    #     json.dump(data, file, indent=4)
+    output_file_name = "output.json"
+    with open(output_file_name, "w") as file:
+        json.dump(data, file, indent=4)
         
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Author|Version: '+__version__)
