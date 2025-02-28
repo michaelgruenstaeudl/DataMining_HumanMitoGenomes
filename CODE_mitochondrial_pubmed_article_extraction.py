@@ -67,9 +67,10 @@ class LXMLops:
         return paragraphs
 
 class PubmedInteract:
-    def __init__(self, email):
+    def __init__(self, email, logger: logging.Logger):
         self.email = email
         Bio.Entrez.email = email
+        self.logger = logger
         
     def search_pubmed_by_title(self, title):
         '''Search PubMed via a title'''
@@ -181,6 +182,29 @@ class PubmedInteract:
             
         return pmcid
         
+    def get_complete_article_by_pmc_id(self, pmc_id):  
+        '''
+        Extract complete article from pubmed central based on PMC ID passed
+        '''
+        article_complete = None
+        if(pmc_id != None):
+            article_url = f"https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/{pmc_id}/unicode"
+            url_handle = urllib.request.urlopen(article_url)
+            article_complete = url_handle.read() 
+            
+            if( "[Error] : No result can be found" in article_complete.decode('utf-8')):
+                article_url = f"https://pmc.ncbi.nlm.nih.gov/articles/{pmc_id}/?report=reader"
+                try:
+                    url_handle = urllib.request.Request(article_url, headers={'User-Agent': 'Mozilla/5.0'})
+                    article_complete = urllib.request.urlopen(url_handle).read()
+                except:
+                    self.logger.warning(f"\t {pmc_id}: Retrieval unsuccessful")
+                    article_complete = None
+                    
+        else:
+            self.logger.warning(f"No PMC Id available")
+            article_complete = None
+			
 def main(args):
     email = args.mail
     verbose = args.verbose
@@ -204,7 +228,7 @@ def main(args):
         return 
     
     
-    pubmed_interact = PubmedInteract(email= email)
+    pubmed_interact = PubmedInteract(email= email, logger= log)
     
     data_frame = pd.read_csv(file_path)
     title_list = data_frame["TITLE"].dropna().unique()
@@ -263,9 +287,15 @@ def main(args):
     
     pubmed_metadata.to_csv("pubmed_metadata.csv", header=True, index=False)
     
+    log.info("Pubmed ID extraction completed")
+    log.info("Pubmed article extraction begins")
+    
+    pubmed_metadata = pd.read_csv("pubmed_metadata.csv", dtype={'Pubmed_ID': 'string'})
+    # pubmed_metadata["Pubmed_ID"] = pubmed_metadata["Pubmed_ID"].astype(int)
     data: list = []
     # for i in [1, 2, 3]:
-    for row in pubmed_metadata.itertuples():
+    for row in pubmed_metadata[pubmed_metadata["Pubmed_ID"] != ""].itertuples():
+        article_complete = None
         try:
             record = {
                 "title": row.Title,
@@ -277,23 +307,9 @@ def main(args):
             pmc_id = pubmed_interact.get_pmc_id_by_pubmed_id(row.Pubmed_ID)
             
             if(pmc_id != None):
-                log.info(f"pmd_id: {row.Pubmed_ID} and pmc_id: PCC{pmc_id} \nretrieving complete article from PubMedCentral")  
-                
+                log.info(f"pmd_id: {row.Pubmed_ID} and pmc_id: PCC{pmc_id} \nretrieving complete article from PubMedCentral")
                 record["pmc_id"] = pmc_id
-            
-                article_url = f"https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/{pmc_id}/unicode"
-                url_handle = urllib.request.urlopen(article_url)
-                article_complete = url_handle.read() 
-                
-                if( "[Error] : No result can be found" in article_complete.decode('utf-8')):
-                    article_url = f"https://pmc.ncbi.nlm.nih.gov/articles/{pmc_id}/?report=reader"
-                    try:
-                        url_handle = urllib.request.Request(article_url, headers={'User-Agent': 'Mozilla/5.0'})
-                        article_complete = urllib.request.urlopen(url_handle).read()
-                    except:
-                        log.warning("\t {pmc_id}: Retrieval unsuccessful")
-                        article_complete = None
-                        
+                article_complete = pubmed_interact.get_complete_article_by_pmc_id(pmc_id)
             else:
                 log.info(f"No PMC Id available for pubmed id {row.Pubmed_ID}")
                 article_complete = None
