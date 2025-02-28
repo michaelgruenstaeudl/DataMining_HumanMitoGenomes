@@ -72,18 +72,25 @@ class PubmedInteract:
         Bio.Entrez.email = email
         
     def search_pubmed_by_title(self, title):
-        '''Search PubMed via a query'''
-        Bio.Entrez.email = self.email
+        '''Search PubMed via a title'''
+        
+        pubmed_id: str = ""
     
-        search_query = Bio.Entrez.esearch(db= "pubmed", term= f"{title}[TITLE]")
+        search_query = Bio.Entrez.esearch(db= "pubmed", 
+                                        term= f"{title}[TITLE]",  
+                                        sort='relevance')
         result = Bio.Entrez.read(search_query)
         
         if(int(result["Count"]) == 0):
-            search_query = Bio.Entrez.esearch(db= "pubmed", term= f"{title}")
+            search_query = Bio.Entrez.esearch(db= "pubmed", 
+                                            term= f"{title}", 
+                                            sort='relevance')
             result = Bio.Entrez.read(search_query)
         
         if(int(result["Count"]) == 0):
-            search_query = Bio.Entrez.esearch(db= "pubmed", term= f"{title[: int(len(title)/2)]}")
+            search_query = Bio.Entrez.esearch(db= "pubmed", 
+                                            term= f"{title[: int(len(title)/2)]}",
+                                            sort='relevance')
             result = Bio.Entrez.read(search_query)
         
         return result
@@ -92,13 +99,49 @@ class PubmedInteract:
         pubmed_id: str = ""
         search_result = self.search_pubmed_by_title(title)
         if(int(search_result["Count"]) > 0):
-                for id in search_result["IdList"]:
-                    fetch_handle = Bio.Entrez.esummary(db= "pubmed", id= id)
-                    pubmed_result = Bio.Entrez.read(fetch_handle)
-                    if(title.lower() in pubmed_result[0]["Title"].lower()):
-                        pubmed_id = pubmed_result[0]["Id"]
-                        break
+            for id in search_result["IdList"]:
+                fetch_handle = Bio.Entrez.esummary(db= "pubmed", id= id)
+                pubmed_result = Bio.Entrez.read(fetch_handle)
+                if(title.lower() in pubmed_result[0]["Title"].lower()):
+                    pubmed_id = pubmed_result[0]["Id"]
+                    break
+        
+        if(pubmed_id == ""): 
+            encoded_string = urllib.parse.quote(title)
+            url = f"https://pubmed.ncbi.nlm.nih.gov/?term={encoded_string}"
+            bioc_handle = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+            pubmed_response = urllib.request.urlopen(bioc_handle).read()
             
+            pubmed_soup = bs4.BeautifulSoup(pubmed_response, 'html.parser') 
+            
+            pubmed_citation_tag = (pubmed_soup.find("meta",attrs= {"name": "citation_pmid"}))
+            
+            if(pubmed_citation_tag):
+                pubmed_id = pubmed_citation_tag["content"]
+            
+            if(pubmed_id == ""): 
+                matching_citation_tag_list = pubmed_soup.find_all(name="section", attrs={"class" : "matching-citations search-results-list"})
+                for docsum_tag in matching_citation_tag_list:
+                    a_tag = docsum_tag.find(name="a", attrs={"class": "docsum-title"})
+                    docsum_title = ''.join(a_tag.stripped_strings)
+                    if(title in docsum_title):
+                        try:
+                            pubmed_id = a_tag["data-ga-label"]
+                            break
+                        except Exception as ex:
+                            pubmed_id = ""
+            
+            if(pubmed_id == ""):
+                displayed_uids_tag = (pubmed_soup.find("meta",attrs= {"name": "log_displayeduids"}))
+                if(displayed_uids_tag):
+                    pubmed_id_list = displayed_uids_tag["content"].split(",")
+                    for id in pubmed_id_list:
+                        fetch_handle = Bio.Entrez.esummary(db= "pubmed", id= id)
+                        pubmed_result = Bio.Entrez.read(fetch_handle)
+                        if(title.lower() in pubmed_result[0]["Title"].lower()):
+                            pubmed_id = pubmed_result[0]["Id"]
+                            break
+                            
         return pubmed_id
     
     def fetch_pubmed_by_id(self, pubmed_id):
@@ -164,10 +207,11 @@ def main(args):
     pubmed_interact = PubmedInteract(email= email)
     
     data_frame = pd.read_csv(file_path)
-    title_list = data_frame["TITLE"].dropna()
+    title_list = data_frame["TITLE"].dropna().unique()
     
-    pubmed_metadata = pd.DataFrame(columns= ["Pubmed_ID", "Title", "Published Year", "DataBankList", "Full Article URL", "is PMC", "Error"])
+    pubmed_metadata = pd.DataFrame(columns= ["Pubmed_ID", "Title", "Published_Year", "DataBankList", "Full_Article_URL", "is_PMC", "Error"])
     
+    # for title in ["Neolithic phylogenetic continuity inferred from complete mitochondrial DNA sequences in a tribal population of Southern India"]:
     for title in title_list:
         item = {
             "Title": title
@@ -181,9 +225,9 @@ def main(args):
             
             if(pubmed_id == ""):
                 item["Error"] = "No pubmed id available."
-                item["is PMC"] = False
+                item["is_PMC"] = False
                 pubmed_metadata.loc[len(pubmed_metadata)] = item
-                log.info("No pubmed id available.")      
+                log.info("No pubmed id available.")   
                 continue  
             
             log.info(f"pubmed_id: {pubmed_id}")
@@ -193,19 +237,19 @@ def main(args):
             item["Pubmed_ID"] = pubmed_id
             
             if pubmed_result["PubmedArticle"][0]["MedlineCitation"]["Article"]["ArticleDate"] != []:
-                item["Published Year"] = pubmed_result["PubmedArticle"][0]["MedlineCitation"]["Article"]["ArticleDate"][0]["Year"]
+                item["Published_Year"] = pubmed_result["PubmedArticle"][0]["MedlineCitation"]["Article"]["ArticleDate"][0]["Year"]
                 
             if "DataBankList" in pubmed_result["PubmedArticle"][0]["MedlineCitation"]["Article"]:
                 item["DataBankList"] = json.dumps(pubmed_result["PubmedArticle"][0]["MedlineCitation"]["Article"]["DataBankList"])
             
             complete_article_link_list = pubmed_interact.extract_url_to_full_article_by_id(pubmed_id)
             
-            item["Full Article URL"] = (", ".join(complete_article_link_list))
+            item["Full_Article_URL"] = (", ".join(complete_article_link_list))
             
-            item["is PMC"] = False
+            item["is_PMC"] = False
             for url_link in complete_article_link_list:
                 if("https://pmc.ncbi.nlm.nih.gov/articles/pmid" in url_link):
-                    item["is PMC"] = True
+                    item["is_PMC"] = True
                     break
             
         except Exception as ex: 
@@ -227,7 +271,7 @@ def main(args):
                 "title": row.Title,
                 "Pubmed_ID": row.Pubmed_ID,
                 "DataBankList" : json.loads(row.DataBankList) if row.DataBankList != "" else "",
-                "URL":  row.url
+                "URL":  row.Full_Article_URL
             }
             
             pmc_id = pubmed_interact.get_pmc_id_by_pubmed_id(row.Pubmed_ID)
@@ -256,6 +300,7 @@ def main(args):
             
             if(article_complete):
                 try:
+                    all_paragraphs =[]
                     if '<?xml version="1.0"' in str(article_complete):
                         # Parse the XML of the full text
                         fulltext_etree = lxml.etree.fromstring(article_complete)
@@ -269,28 +314,6 @@ def main(args):
                         LXMLops(fulltext_etree).remove_expendable()
                         # Extract all text of the full text by paragraph
                         all_paragraphs = LXMLops(fulltext_etree).extract_all_text()
-                        record["FullTextParagraph"] = all_paragraphs
-                        results = []  # Store matching results
-
-                        for i, paragraph in enumerate(all_paragraphs):  
-                            for sub in substrings:
-                                lower_para = paragraph.lower()
-                                lower_sub = sub.lower()
-                                start_idx = lower_para.find(lower_sub)
-
-                                if start_idx != -1:  # If the substring is found
-                                    # Extract 100 chars before and after, ensuring we don't go out of bounds
-                                    start = max(0, start_idx - 100)
-                                    end = min(len(paragraph), start_idx + len(sub) + 100)
-                                    content = paragraph[start:end]
-
-                                    results.append({"paragraph":i+1,
-                                                    "substring": sub, 
-                                                    "content": content})
-                        
-                        record["MatchedParagraphs"] = results           
-                        
-                        print("Fetched")
                     
                     if '<!DOCTYPE html>' in str(article_complete):
                         # Parse the HTML of the full text
@@ -300,24 +323,41 @@ def main(args):
                         if(fulltext_soup.head.title.text):
                             cleaned_title_from_html = ''.join(char if char.isalnum() or char.isspace() else '' for char in fulltext_soup.head.title.text)
                         if(cleaned_title.lower() in cleaned_title_from_html.lower()):
-                            # fulltext_soup.head.decompose()
-                            # for script_tag in fulltext_soup.find_all("script"):
-                            #     script_tag.decompose()
-                            # for style_tag in fulltext_soup.find_all("style"):
-                            #     style_tag.decompose()
-                            # for usabanner_tag in fulltext_soup.find_all('a', "usa-skipnav"):
-                            #     usabanner_tag.decompose()
-                            # article_container = fulltext_soup.find("div", id="article-container")
-                            article_content= fulltext_soup.find("section", {"aria-label": "Article content"})
+                            article_content= fulltext_soup.find(name="section", attrs={"aria-label": "Article content"})
                             for reflist_tag in article_content.find_all('section', class_ ="ref-list"):
                                 reflist_tag.decompose()
-                            all_paragraphs =[]
+                            
                             for paragraph in article_content.find_all("p"):
                                 text = ''.join(paragraph.stripped_strings)
                                 all_paragraphs.append(text)
-                                print(text)
                         else:
                             log.info("Different document pulled")
+                    
+                    record["FullTextParagraph"] = all_paragraphs
+                    matching_paragraph_list = []  # Store matching results
+
+                    for i, paragraph in enumerate(all_paragraphs):  
+                        for sub in substrings:
+                            lower_para = paragraph.lower()
+                            lower_sub = sub.lower()
+                            start_idx = lower_para.find(lower_sub)
+
+                            if start_idx != -1:  # If the substring is found
+                                # Extract 100 chars before and after, ensuring we don't go out of bounds
+                                start = max(0, start_idx - 100)
+                                end = min(len(paragraph), start_idx + len(sub) + 100)
+                                content = paragraph[start:end]
+
+                                matching_paragraph_list.append({"paragraph":i+1,
+                                                "substring": sub, 
+                                                "content": content})
+                    
+                    record["MatchedParagraphs"] = matching_paragraph_list           
+                    
+                    print("Fetched")
+                    
+                    
+                    
                 except Exception as ex:
                     record["Error"] = f"Error encountered for {pmc_id} \n {ex}"
                     log.critical(f"Error encountered for {pmc_id} \n {ex}")
