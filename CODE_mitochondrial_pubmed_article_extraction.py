@@ -13,7 +13,7 @@ import bs4
 import json
 from pathlib import Path
 import pandas as pd
-
+import re
 
 substrings: list = [
         "NCBI SRA",
@@ -204,7 +204,9 @@ class PubmedInteract:
         else:
             self.logger.warning(f"No PMC Id available")
             article_complete = None
-			
+            
+        return article_complete	
+
 def main(args):
     email = args.mail
     verbose = args.verbose
@@ -288,10 +290,15 @@ def main(args):
     pubmed_metadata.to_csv("pubmed_metadata.csv", header=True, index=False)
     
     log.info("Pubmed ID extraction completed")
+    
     log.info("Pubmed article extraction begins")
     
-    pubmed_metadata = pd.read_csv("pubmed_metadata.csv", dtype={'Pubmed_ID': 'string'})
-    # pubmed_metadata["Pubmed_ID"] = pubmed_metadata["Pubmed_ID"].astype(int)
+    if(len(pubmed_metadata == 0)):
+        pubmed_metadata = pd.read_csv("pubmed_metadata.csv",
+                                    dtype={
+                                        'Pubmed_ID': 'string',
+                                        'DataBankList': 'string'})
+    pubmed_metadata = pubmed_metadata.fillna("")
     data: list = []
     # for i in [1, 2, 3]:
     for row in pubmed_metadata[pubmed_metadata["Pubmed_ID"] != ""].itertuples():
@@ -300,14 +307,14 @@ def main(args):
             record = {
                 "title": row.Title,
                 "Pubmed_ID": row.Pubmed_ID,
-                "DataBankList" : json.loads(row.DataBankList) if row.DataBankList != "" else "",
+                "DataBankList" : json.loads(row.DataBankList) if (row.DataBankList != "") else "",
                 "URL":  row.Full_Article_URL
             }
             
             pmc_id = pubmed_interact.get_pmc_id_by_pubmed_id(row.Pubmed_ID)
             
             if(pmc_id != None):
-                log.info(f"pmd_id: {row.Pubmed_ID} and pmc_id: PCC{pmc_id} \nretrieving complete article from PubMedCentral")
+                log.info(f"pmd_id: {row.Pubmed_ID} and pmc_id: {pmc_id} \nretrieving complete article from PubMedCentral")
                 record["pmc_id"] = pmc_id
                 article_complete = pubmed_interact.get_complete_article_by_pmc_id(pmc_id)
             else:
@@ -324,6 +331,7 @@ def main(args):
                         record["Year"] = date
                         if((not date) or (int(date) < 2009)):
                             log.info("Article published before 2009 and it doesnot contain SRA records.")
+                            data.append(record)
                             continue
                         
                         # Remove unnecessary sections from full text
@@ -356,7 +364,15 @@ def main(args):
                         for sub in substrings:
                             lower_para = paragraph.lower()
                             lower_sub = sub.lower()
-                            start_idx = lower_para.find(lower_sub)
+                            if(sub == "ENA"):
+                                # start_idx = lower_para.find(f"\b{lower_sub}")
+                                pattern = rf'\b{re.escape(lower_sub)}\b'
+                                # Find the starting index of the first match
+                                match = re.search(pattern, lower_para)
+                                start_idx = match.start() if match else -1
+
+                            else:
+                                start_idx = lower_para.find(lower_sub)
 
                             if start_idx != -1:  # If the substring is found
                                 # Extract 100 chars before and after, ensuring we don't go out of bounds
@@ -368,8 +384,10 @@ def main(args):
                                                 "substring": sub, 
                                                 "content": content})
                     
+                    if(matching_paragraph_list != []):
+                        log.info(f"matched paragraphs for {record["title"]}")
                     record["MatchedParagraphs"] = matching_paragraph_list           
-                    
+
                     print("Fetched")
                     
                     
@@ -384,6 +402,9 @@ def main(args):
         except Exception as e:
             log.critical(f"Exception occured: {e}")
             
+    matched_output_dict = [json_obj for json_obj in data if (json_obj.get('MatchedParagraphs') != None and json_obj.get('MatchedParagraphs') != [])]
+    with open("matched_output.json", "w") as file:
+        json.dump(data, file, indent=4)
     output_file_name = "output.json"
     with open(output_file_name, "w") as file:
         json.dump(data, file, indent=4)
