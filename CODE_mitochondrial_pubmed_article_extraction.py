@@ -3,6 +3,7 @@ __version__ = 'b_thapamagar@mail.fhsu.edu|2025-02-18'
 
 import argparse
 from collections import namedtuple
+import os
 import Bio
 import logging
 import Bio.Entrez
@@ -26,13 +27,14 @@ substrings: list = [
     ]
 
 data_availability_list: list = [
-    "Electronic-Database Information",
-    "Associated Data",
-    "Accession Numbers",
-    "Data access",
-    "Data accessibility",
-    "Data availability"
-    "Availability of data"
+    "electronic-database information",
+    "electronic database information",
+    "associated data",
+    "accession numbers",
+    "data access",
+    "data accessibility",
+    "data availability",
+    "availability of data"
 ]
 
 class LXMLops:
@@ -69,14 +71,30 @@ class LXMLops:
 
 class PubmedInteract:
     def __init__(self, email, logger: logging.Logger):
+        """
+        Initializes the instance with the provided email and logger.
+
+        Args:
+            email (str): The email address to be used with NCBI Entrez.
+            logger (logging.Logger): A logger instance for logging messages.
+        """
         self.email = email
         Bio.Entrez.email = email
         self.logger = logger
         
     def search_pubmed_by_title(self, title):
-        '''Search PubMed via a title'''
-        
-        pubmed_id: str = ""
+        """
+        Search PubMed for articles by title.
+        This method searches the PubMed database for articles that match the given title.
+        It performs three levels of search:
+        1. Exact match for the title.
+        2. General search for the title.
+        3. Search for the first half of the title.
+        Parameters:
+        title (str): The title of the article to search for.
+        Returns:
+        dict: A dictionary containing the search results from PubMed.
+        """
     
         search_query = Bio.Entrez.esearch(db= "pubmed", 
                                         term= f"{title}[TITLE]",  
@@ -98,6 +116,14 @@ class PubmedInteract:
         return result
     
     def lookup_pubmed_id_by_title(self, title):
+        """
+        Lookup the PubMed ID for a given article title.
+        This method attempts to find the PubMed ID associated with a given article title by first searching the PubMed database using the Entrez API. If no results are found, it then performs a web scraping operation on the PubMed website to locate the PubMed ID.
+        Args:
+            title (str): The title of the article to search for.
+        Returns:
+            str: The PubMed ID of the article if found, otherwise an empty string.
+        """
         pubmed_id: str = ""
         search_result = self.search_pubmed_by_title(title)
         if(int(search_result["Count"]) > 0):
@@ -208,8 +234,22 @@ class PubmedInteract:
             
         return article_complete	
     
-    def get_paragraph_list_from_pubmed_article(self, article_complete):
+    def get_paragraph_list_from_pubmed_article(self, article_complete, article_title):
+        """
+        Extracts paragraphs and specific data content from a PubMed article.
+        This method processes the provided PubMed article, which can be in XML or HTML format, 
+        and extracts all paragraphs and specific data content based on predefined data availability items.
+        Args:
+            article_complete (str): The complete content of the PubMed article in XML or HTML format.
+            article_title (str): The title of the PubMed article.
+        Returns:
+            tuple: A tuple containing:
+                - all_paragraphs (list): A list of all paragraphs extracted from the article.
+                - data_content_list (list): A list of dictionaries containing specific data content 
+                    extracted based on predefined data availability items.
+        """
         all_paragraphs =[]
+        data_content_list = []
         if '<?xml version="1.0"' in str(article_complete):
             # Parse the XML of the full text
             fulltext_etree = lxml.etree.fromstring(article_complete)
@@ -218,11 +258,17 @@ class PubmedInteract:
             LXMLops(fulltext_etree).remove_expendable()
             # Extract all text of the full text by paragraph
             all_paragraphs = LXMLops(fulltext_etree).extract_all_text()
-        
+            for data_availability_item in data_availability_list:
+                for i in range(len(all_paragraphs) - 1):
+                    if all_paragraphs[i].lower() == data_availability_item:
+                        item = {
+                            data_availability_item: all_paragraphs[i+1]
+                        }
+                        data_content_list.append(item)
         if '<!DOCTYPE html>' in str(article_complete):
             # Parse the HTML of the full text
             fulltext_soup = bs4.BeautifulSoup(article_complete, 'html.parser') 
-            cleaned_title = ''.join(char if char.isalnum() or char.isspace() else '' for char in row.Title)
+            cleaned_title = ''.join(char if char.isalnum() or char.isspace() else '' for char in article_title)
             cleaned_title_from_html = ""
             if(fulltext_soup.head.title.text):
                 cleaned_title_from_html = ''.join(char if char.isalnum() or char.isspace() else '' for char in fulltext_soup.head.title.text)
@@ -231,15 +277,39 @@ class PubmedInteract:
                 for reflist_tag in article_content.find_all('section', class_ ="ref-list"):
                     reflist_tag.decompose()
                 
+                target_tag_list = fulltext_soup.find_all(string= lambda text: text and text.lower() in data_availability_list)
+                for target_tag in target_tag_list:
+                    parent_tag = target_tag.find_parent()
+                    if(parent_tag):
+                        super_parent_tag = parent_tag.find_parent()
+                        if(super_parent_tag):
+                            data_content = super_parent_tag.find("p").text
+                            item = {
+                                target_tag.text: data_content
+                            }
+                            data_content_list.append(item)
+                
                 for paragraph in article_content.find_all("p"):
                     text = ''.join(paragraph.stripped_strings)
                     all_paragraphs.append(text)
             else:
-                self.logger.info("Different document pulled")
-        
+                self.logger.info("Different document pulled")        
         return all_paragraphs
     
     def get_matching_paragraphs_for_substrings(self, paragraph_list, substring_list):
+        """
+        Find and extract paragraphs containing specified substrings.
+        This method searches through a list of paragraphs and identifies those that contain any of the specified substrings.
+        For each match, it extracts a portion of the paragraph surrounding the substring and stores the result.
+        Args:
+            paragraph_list (list of str): A list of paragraphs to search through.
+            substring_list (list of str): A list of substrings to search for within the paragraphs.
+        Returns:
+            list of dict: A list of dictionaries, each containing:
+                - "paragraph" (int): The index of the paragraph (1-based).
+                - "substring" (str): The substring that was found.
+                - "content" (str): A portion of the paragraph surrounding the found substring, with up to 100 characters before and after the substring.
+        """
         matching_paragraph_list = []  # Store matching results
         for i, paragraph in enumerate(paragraph_list):  
             for sub in substring_list:
@@ -268,6 +338,17 @@ class PubmedInteract:
         return matching_paragraph_list
     
     def get_pubmed_informations_by_pubmed_id(self, pubmed_id):
+        """
+        Retrieve PubMed information for a given PubMed ID.
+        Args:
+            pubmed_id (str): The PubMed ID of the article to retrieve information for.
+        Returns:
+            dict: A dictionary containing the following keys:
+                - "Published_Year" (str): The year the article was published.
+                - "DataBankList" (str): A JSON string of the DataBankList associated with the article.
+                - "Full_Article_URL" (str): A comma-separated string of URLs to the full article.
+                - "is_PMC" (bool): A flag indicating whether the article is available in PMC (PubMed Central).
+        """
         pubmed_information = {}
         pubmed_result = self.fetch_pubmed_by_id(pubmed_id)
             
@@ -289,14 +370,33 @@ class PubmedInteract:
         return pubmed_information
 
 def main(args):
+    """
+    Main function to extract PubMed article metadata and full text based on titles from a CSV file.
+    Args:
+        args (argparse.Namespace): Command-line arguments containing:
+            - mail (str): Email address for PubMed API.
+            - verbose (bool): Verbosity flag for logging.
+            - filepath (str): Path to the input CSV file containing article titles.
+    Steps:
+        1. Set up logger for logging information and errors.
+        2. Check if the input file exists.
+        3. Extract PubMed metadata for each title in the CSV file.
+        4. Save the extracted metadata to a CSV file.
+        5. Extract full text and matching paragraphs from PubMed articles.
+        6. Save the matched paragraphs and full data to JSON files.
+    Returns:
+        None
+    """
     email = args.mail
     verbose = args.verbose
     file_path = args.filepath
     
     ### STEP 1. Set up logger
     # Configure the logging
-    formatted_datetime = datetime.now().strftime("%Y%m%d_%H%M")
-    logger_filename = f"{formatted_datetime}_mitochondrial_pubmed_article_extraction.log"
+    formatted_datetime = datetime.datetime.now().strftime("%Y%m%d_%H%M")
+    if(os.path.isdir("./log")):
+        os.mkdir("./log")
+    logger_filename = f"./log/{formatted_datetime}_mitochondrial_pubmed_article_extraction.log"
     logging.basicConfig(filename=logger_filename, level=logging.DEBUG,
                         format='%(asctime)s - %(levelname)s - %(message)s')
     log = logging.getLogger(__name__)
@@ -353,7 +453,7 @@ def main(args):
     log.info("Pubmed ID extraction completed")
     
     ### STEP 4. Extracting full text and matching paragraphs
-    if(len(pubmed_metadata == 0)):
+    if(len(pubmed_metadata)  == 0):
         pubmed_metadata = pd.read_csv("pubmed_metadata.csv",
                                     dtype={
                                         'Pubmed_ID': 'string',
@@ -362,7 +462,7 @@ def main(args):
     
     log.info("Pubmed article extraction begins")
     data: list = []
-    for row in pubmed_metadata[pubmed_metadata["Pubmed_ID"] != ""].itertuples():
+    for row in pubmed_metadata[pubmed_metadata["Pubmed_ID"] == "26434580"].itertuples():
         article_complete = None
         try:
             record = {
@@ -383,7 +483,8 @@ def main(args):
             
             if(article_complete):
                 try:
-                    all_paragraphs = pubmed_interact.get_paragraph_list_from_pubmed_article(article_complete)
+                    (all_paragraphs, data_content_list) = pubmed_interact.get_paragraph_list_from_pubmed_article(article_complete, row.Title)
+                    record["DataContent"] = data_content_list
                     record["FullTextParagraph"] = all_paragraphs
                     matching_paragraph_list = pubmed_interact.get_matching_paragraphs_for_substrings(all_paragraphs, substrings)
                     if(matching_paragraph_list != []):
@@ -394,7 +495,6 @@ def main(args):
                     log.critical(f"Error encountered for {pmc_id} \n {ex}")
             else:
                 record["Error"] = f"No content available"
-            
             data.append(record)        
         except Exception as e:
             log.critical(f"Exception occured: {e}")
@@ -413,7 +513,6 @@ if __name__ == "__main__":
     
     parser.add_argument("--verbose", "-v", action="store_true", required=False, 
                         default=True, help="(Optional) Enable verbose logging")
-    # parser.add_argument("--title", "-t", required=True, help="Paper title to query in PubMed")
     parser.add_argument("--filepath", "-f",  type=str, required=True, 
                         help="(Required) Filename which contain title")
     args = parser.parse_args()
