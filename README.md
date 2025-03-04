@@ -18,6 +18,33 @@ Files and scripts to identify associated entries across NCBI GenBank, NCBI SRA, 
 
 - `CODE_Nucleotide_SRA_data_analysis.ipynb`: An IPython Notebook that contains analysis of nucleotide metadata with SRA metadata based on BioProject Id and BioSampleId.
 
+- `CODE_mitochondrial_pubmed_article_extraction.py`: A Python Script to extract pubmed record informations from the list of title in CSV file with header `TITLE'.
+
+  ```
+  For example:
+  |   TITLE  |
+  |----------|
+  | title_a  |
+  | title_b  |
+  | title_c  |
+  ```
+
+  Command-line arguments containing:
+
+  - mail (str): Email address for PubMed API.
+  - verbose (bool): Verbosity flag for logging.
+  - filepath (str): Path to the input CSV file containing article titles.
+
+  `-m "example@email.com" -f "DATA_publications_of_human_mitogenomes_on_NCBINulceotide.csv"`
+
+  This script generates following documents:
+
+  - Extract and save PubMed metadata for each title in the CSV file in `DATA_pubmed_metadata.csv`.
+  - Extract full text from PubMed articles and store in `DATA_pubmed_records.json`.
+  - Save the pubmed records which contains data source informations in `DATA_pubmed_records_with_data_source_info.json`.
+
+- `log` directory: This directory contains log generated from `CODE_mitochondrial_pubmed_article_extraction.py` script execution.
+
 ### Data Files
 
 - `DATA_GenBank_accessions_Mitobank_2025_01_31.txt`: A text file listing the GenBank accession numbers of all full-length human mitochondrial genome sequences listed on Mitobank as of 31-Jan-2024; it was downloaded directly from [Mitobank](https://www.mitomap.org/foswiki/bin/view/MITOMAP/Mitobank). The file contains a total of 61845 accession numbers.
@@ -31,6 +58,12 @@ Files and scripts to identify associated entries across NCBI GenBank, NCBI SRA, 
 - `DATA_SRA_Metadata_linked_through_BioSample.csv`: A comma-separated list of all SRA metadata records linked to human mitochondrial nucleotide records through BioSample database.
 
 - `DATA_SRA_Metadata_linked_through_BioProject.csv`:A comma-separated list of all SRA metadata records linked to human mitochondrial nucleotide records through BioProject database.
+
+- `DATA_pubmed_metadata.csv`: A comma-separated list of all pubmed metadata records linked to human mitochondrial nucleotide records. This CSV contains following informations: "Pubmed_ID", "Title", "Published_Year", "DataBankList", "Full_Article_URL", "is_PMC", "Error".
+
+- `DATA_pubmed_records_with_data_source_info.json`: A JSON file contains all pubmed article informations which contains data source informations.
+
+- `pubmed_records.json`: A JSON file containing pubmed article informations.
 
 ## RESOURCES
 

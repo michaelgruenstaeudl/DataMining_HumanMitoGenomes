@@ -294,7 +294,7 @@ class PubmedInteract:
                     all_paragraphs.append(text)
             else:
                 self.logger.info("Different document pulled")        
-        return all_paragraphs
+        return (all_paragraphs, data_content_list)
     
     def get_matching_paragraphs_for_substrings(self, paragraph_list, substring_list):
         """
@@ -394,7 +394,7 @@ def main(args):
     ### STEP 1. Set up logger
     # Configure the logging
     formatted_datetime = datetime.datetime.now().strftime("%Y%m%d_%H%M")
-    if(os.path.isdir("./log")):
+    if(not os.path.isdir("./log")):
         os.mkdir("./log")
     logger_filename = f"./log/{formatted_datetime}_mitochondrial_pubmed_article_extraction.log"
     logging.basicConfig(filename=logger_filename, level=logging.DEBUG,
@@ -449,12 +449,12 @@ def main(args):
         
         pubmed_metadata.loc[len(pubmed_metadata)] = item
     
-    pubmed_metadata.to_csv("pubmed_metadata.csv", header=True, index=False)
+    pubmed_metadata.to_csv("DATA_pubmed_metadata.csv", header=True, index=False)
     log.info("Pubmed ID extraction completed")
     
     ### STEP 4. Extracting full text and matching paragraphs
     if(len(pubmed_metadata)  == 0):
-        pubmed_metadata = pd.read_csv("pubmed_metadata.csv",
+        pubmed_metadata = pd.read_csv("DATA_pubmed_metadata.csv",
                                     dtype={
                                         'Pubmed_ID': 'string',
                                         'DataBankList': 'string'})
@@ -462,7 +462,7 @@ def main(args):
     
     log.info("Pubmed article extraction begins")
     data: list = []
-    for row in pubmed_metadata[pubmed_metadata["Pubmed_ID"] == "26434580"].itertuples():
+    for row in pubmed_metadata[pubmed_metadata["Pubmed_ID"] != ""].itertuples():
         article_complete = None
         try:
             record = {
@@ -500,9 +500,10 @@ def main(args):
             log.critical(f"Exception occured: {e}")
             
     matched_output_dict = [json_obj for json_obj in data if (json_obj.get('MatchedParagraphs') != None and json_obj.get('MatchedParagraphs') != [])]
-    with open("matched_output.json", "w") as file:
+    matched_output_file_name = "DATA_pubmed_records_with_data_source_info.json"
+    with open(matched_output_file_name, "w") as file:
         json.dump(matched_output_dict, file, indent=4)
-    output_file_name = "output.json"
+    output_file_name = "DATA_pubmed_records.json"
     with open(output_file_name, "w") as file:
         json.dump(data, file, indent=4)
         
