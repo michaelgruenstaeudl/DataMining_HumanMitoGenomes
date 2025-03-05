@@ -34,7 +34,9 @@ data_availability_list: list = [
     "data access",
     "data accessibility",
     "data availability",
-    "availability of data"
+    "availability of data",
+    "data and code availability",
+    "data availability statement"
 ]
 
 class LXMLops:
@@ -47,7 +49,7 @@ class LXMLops:
         xml_document = self.etree.find('.//document')
         # STEP 1. Removing figures, tables and any backmatter parts
         for passage in self.etree.findall('.//passage'):
-            if passage.find('infon[@key="section_type"]').text in ['FIG', 'TABLE', 'COMP_INT', 'AUTH_CONT', 'SUPPL', 'ACK_FUND']:
+            if passage.find('infon[@key="section_type"]').text in ['FIG', 'TABLE', 'COMP_INT', 'AUTH_CONT', 'ACK_FUND']:
                 xml_document.remove(passage)  
         # STEP 2. Removing references
         for passage in self.etree.findall('.//passage'):
@@ -215,18 +217,18 @@ class PubmedInteract:
         '''
         article_complete = None
         if(pmc_id != None):
-            article_url = f"https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/{pmc_id}/unicode"
-            url_handle = urllib.request.urlopen(article_url)
-            article_complete = url_handle.read() 
+            # article_url = f"https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/{pmc_id}/unicode"
+            # url_handle = urllib.request.urlopen(article_url)
+            # article_complete = url_handle.read() 
             
-            if( "[Error] : No result can be found" in article_complete.decode('utf-8')):
-                article_url = f"https://pmc.ncbi.nlm.nih.gov/articles/{pmc_id}/?report=reader"
-                try:
-                    url_handle = urllib.request.Request(article_url, headers={'User-Agent': 'Mozilla/5.0'})
-                    article_complete = urllib.request.urlopen(url_handle).read()
-                except:
-                    self.logger.warning(f"\t {pmc_id}: Retrieval unsuccessful")
-                    article_complete = None
+            # if( "[Error] : No result can be found" in article_complete.decode('utf-8')):
+            article_url = f"https://pmc.ncbi.nlm.nih.gov/articles/{pmc_id}/?report=reader"
+            try:
+                url_handle = urllib.request.Request(article_url, headers={'User-Agent': 'Mozilla/5.0'})
+                article_complete = urllib.request.urlopen(url_handle).read()
+            except:
+                self.logger.warning(f"\t {pmc_id}: Retrieval unsuccessful")
+                article_complete = None
                     
         else:
             self.logger.warning(f"No PMC Id available")
@@ -268,32 +270,32 @@ class PubmedInteract:
         if '<!DOCTYPE html>' in str(article_complete):
             # Parse the HTML of the full text
             fulltext_soup = bs4.BeautifulSoup(article_complete, 'html.parser') 
-            cleaned_title = ''.join(char if char.isalnum() or char.isspace() else '' for char in article_title)
-            cleaned_title_from_html = ""
-            if(fulltext_soup.head.title.text):
-                cleaned_title_from_html = ''.join(char if char.isalnum() or char.isspace() else '' for char in fulltext_soup.head.title.text)
-            if(cleaned_title.lower() in cleaned_title_from_html.lower()):
-                article_content= fulltext_soup.find(name="section", attrs={"aria-label": "Article content"})
-                for reflist_tag in article_content.find_all('section', class_ ="ref-list"):
-                    reflist_tag.decompose()
-                
-                target_tag_list = fulltext_soup.find_all(string= lambda text: text and text.lower() in data_availability_list)
-                for target_tag in target_tag_list:
-                    parent_tag = target_tag.find_parent()
-                    if(parent_tag):
-                        super_parent_tag = parent_tag.find_parent()
-                        if(super_parent_tag):
-                            data_content = super_parent_tag.find("p").text
-                            item = {
-                                target_tag.text: data_content
-                            }
-                            data_content_list.append(item)
-                
-                for paragraph in article_content.find_all("p"):
-                    text = ''.join(paragraph.stripped_strings)
-                    all_paragraphs.append(text)
-            else:
-                self.logger.info("Different document pulled")        
+            # cleaned_title = ''.join(char if char.isalnum() or char.isspace() else '' for char in article_title)
+            # cleaned_title_from_html = ""
+            # if(fulltext_soup.head.title.text):
+            #     cleaned_title_from_html = ''.join(char if char.isalnum() or char.isspace() else '' for char in fulltext_soup.head.title.text)
+            # if(cleaned_title.lower() in cleaned_title_from_html.lower()):
+            article_content= fulltext_soup.find(name="section", attrs={"aria-label": "Article content"})
+            for reflist_tag in article_content.find_all('section', class_ ="ref-list"):
+                reflist_tag.decompose()
+            
+            target_tag_list = fulltext_soup.find_all(string= lambda text: text and text.lower() in data_availability_list)
+            for target_tag in target_tag_list:
+                parent_tag = target_tag.find_parent()
+                if(parent_tag):
+                    super_parent_tag = parent_tag.find_parent()
+                    if(super_parent_tag):
+                        data_content = super_parent_tag.find("p").text
+                        item = {
+                            target_tag.text: data_content
+                        }
+                        data_content_list.append(item)
+            
+            for paragraph in article_content.find_all("p"):
+                text = ''.join(paragraph.stripped_strings)
+                all_paragraphs.append(text)
+            # else:
+            #     self.logger.info("Different document pulled")        
         return (all_paragraphs, data_content_list)
     
     def get_matching_paragraphs_for_substrings(self, paragraph_list, substring_list):

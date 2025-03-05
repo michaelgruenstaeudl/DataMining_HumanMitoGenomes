@@ -1,0 +1,1576 @@
+2025-03-05 00:22:01,075 - INFO - File exists.
+2025-03-05 00:22:01,087 - INFO - querying PubMed for Mitochondrial DNA structure in the Arabian Peninsula
+2025-03-05 00:22:01,667 - INFO - pubmed_id: 18269758
+2025-03-05 00:22:02,819 - INFO - querying PubMed for Rare Primary Mitochondrial DNA Mutations and Probable Synergistic Variants in Leber's Hereditary Optic Neuropathy
+2025-03-05 00:22:03,404 - INFO - pubmed_id: 22879922
+2025-03-05 00:22:04,966 - INFO - querying PubMed for Mitochondrial DNA backgrounds might modulate diabetes complications rather than T2DM as a whole
+2025-03-05 00:22:05,539 - INFO - pubmed_id: 21695278
+2025-03-05 00:22:06,650 - INFO - querying PubMed for The phylogeny of the four pan-American MtDNA haplogroups: implications for evolutionary and disease studies
+2025-03-05 00:22:07,212 - INFO - pubmed_id: 18335039
+2025-03-05 00:22:08,291 - INFO - querying PubMed for Reconciling migration models to the Americas with the variation of North American native mitogenomes
+2025-03-05 00:22:12,039 - INFO - pubmed_id: 23940335
+2025-03-05 00:22:13,325 - INFO - querying PubMed for Saami and Berbers--an unexpected mitochondrial DNA link
+2025-03-05 00:22:13,909 - INFO - pubmed_id: 15791543
+2025-03-05 00:22:15,057 - INFO - querying PubMed for The molecular dissection of mtDNA haplogroup H confirms that the Franco-Cantabrian glacial refuge was a major source for the European gene pool
+2025-03-05 00:22:16,404 - INFO - pubmed_id: 15382008
+2025-03-05 00:22:17,735 - INFO - querying PubMed for Pleistocene-Holocene boundary in Southern Arabia from the perspective of human mtDNA variation
+2025-03-05 00:22:18,316 - INFO - pubmed_id: 22927010
+2025-03-05 00:22:19,293 - INFO - querying PubMed for New population and phylogenetic features of the internal variation within mitochondrial DNA macro-haplogroup R0
+2025-03-05 00:22:20,107 - INFO - pubmed_id: 19340307
+2025-03-05 00:22:21,075 - INFO - querying PubMed for In search of the genetic footprints of Sumerians: a survey of Y-chromosome and mtDNA variation in the Marsh Arabs of Iraq
+2025-03-05 00:22:21,918 - INFO - pubmed_id: 21970613
+2025-03-05 00:22:23,669 - INFO - querying PubMed for Complete sequence of human mitochondrial DNA obtained by combining multiple displacement amplification and next-generation sequencing on a single oocyte
+2025-03-05 00:22:24,286 - INFO - pubmed_id: 27159691
+2025-03-05 00:22:25,363 - INFO - querying PubMed for Sequence and organization of the human mitochondrial genome
+2025-03-05 00:22:25,935 - INFO - pubmed_id: 7219534
+2025-03-05 00:22:27,046 - INFO - querying PubMed for Reanalysis and revision of the Cambridge reference sequence for human mitochondrial DNA
+2025-03-05 00:22:27,709 - INFO - pubmed_id: 10508508
+2025-03-05 00:22:28,711 - INFO - querying PubMed for Ancient Human Mitogenome of the Beagle Channel (Tierra del Fuego): An Argentine Collaborative Project
+2025-03-05 00:22:30,994 - INFO - No pubmed id available.
+2025-03-05 00:22:30,994 - INFO - querying PubMed for High-resolution mitochondrial DNA analysis sheds light on human diversity, cultural interactions, and population mobility in Northwestern Amazonia
+2025-03-05 00:22:32,591 - INFO - pubmed_id: 29076529
+2025-03-05 00:22:34,135 - INFO - querying PubMed for Comparison between the complete mitochondrial DNA sequences of Homo and the common chimpanzee based on nonchimeric sequences
+2025-03-05 00:22:34,748 - INFO - pubmed_id: 8919866
+2025-03-05 00:22:35,775 - INFO - querying PubMed for Full mtDNA genome sequencing of Brazilian admixed populations: A forensic-focused evaluation of a MPS application as an alternative to Sanger sequencing methods
+2025-03-05 00:22:37,193 - INFO - pubmed_id: 31325893
+2025-03-05 00:22:38,243 - INFO - querying PubMed for Low 'penetrance' of phylogenetic knowledge in mitochondrial disease studies
+2025-03-05 00:22:39,929 - INFO - pubmed_id: 15958208
+2025-03-05 00:22:40,848 - INFO - querying PubMed for Unraveling the complex maternal history of Southern African Khoisan populations
+2025-03-05 00:22:41,446 - INFO - pubmed_id: 24323467
+2025-03-05 00:22:42,408 - INFO - querying PubMed for Migration and Interaction in a Contact Zone: mtDNA Variation among Bantu-Speakers in Southern Africa
+2025-03-05 00:22:44,685 - INFO - pubmed_id: 24901532
+2025-03-05 00:22:45,633 - INFO - querying PubMed for Ancient substructure in early mtDNA lineages of southern Africa
+2025-03-05 00:22:46,200 - INFO - pubmed_id: 23332919
+2025-03-05 00:22:48,805 - INFO - querying PubMed for Contrasting maternal and paternal histories in the linguistic context of burkina faso
+2025-03-05 00:22:49,373 - INFO - pubmed_id: 22130972
+2025-03-05 00:22:50,395 - INFO - querying PubMed for Uncovering the sources of DNA found on the Turin Shroud
+2025-03-05 00:22:51,471 - INFO - pubmed_id: 26434580
+2025-03-05 00:22:52,358 - INFO - querying PubMed for Meta-Analysis of Mitochondrial DNA Variation in the Iberian Peninsula
+2025-03-05 00:22:53,102 - INFO - pubmed_id: 27441366
+2025-03-05 00:22:54,328 - INFO - querying PubMed for The matrilineal ancestry of Nepali populations
+2025-03-05 00:22:54,908 - INFO - pubmed_id: 36242641
+2025-03-05 00:22:55,966 - INFO - querying PubMed for Insights into the demographic history of african pygmies from complete mitochondrial genomes
+2025-03-05 00:22:56,522 - INFO - pubmed_id: 21041797
+2025-03-05 00:22:57,621 - INFO - querying PubMed for Does mitochondrial DNA T2e1 reflect traces of Judaism on the down-low?
+2025-03-05 00:22:59,460 - INFO - No pubmed id available.
+2025-03-05 00:22:59,460 - INFO - querying PubMed for Sephardic signature in haplogroup T mitochondrial DNA
+2025-03-05 00:23:00,150 - INFO - pubmed_id: 22108605
+2025-03-05 00:23:01,345 - INFO - querying PubMed for Clarifying Mitochondrial DNA subclades of T2e from Mideast to Mexico
+2025-03-05 00:23:03,758 - INFO - No pubmed id available.
+2025-03-05 00:23:03,758 - INFO - querying PubMed for DNA subclades of T2e from Mideast to Mexico
+2025-03-05 00:23:05,525 - INFO - No pubmed id available.
+2025-03-05 00:23:05,525 - INFO - querying PubMed for The Basque Paradigm: Genetic Evidence of a Maternal Continuity in the Franco-Cantabrian Region since Pre-Neolithic Times
+2025-03-05 00:23:06,412 - INFO - pubmed_id: 22365151
+2025-03-05 00:23:08,467 - INFO - querying PubMed for The matrilineal ancestry of Ashkenazi Jewry: portrait of a recent founder event
+2025-03-05 00:23:09,036 - INFO - pubmed_id: 16404693
+2025-03-05 00:23:10,201 - INFO - querying PubMed for Counting the founders: the matrilineal genetic ancestry of the Jewish Diaspora
+2025-03-05 00:23:11,883 - INFO - pubmed_id: 18446216
+2025-03-05 00:23:13,378 - INFO - querying PubMed for A 'Copernican' reassessment of the human mitochondrial DNA tree from its root
+2025-03-05 00:23:15,516 - INFO - pubmed_id: 22482806
+2025-03-05 00:23:16,390 - INFO - querying PubMed for The dawn of human matrilineal diversity
+2025-03-05 00:23:16,955 - INFO - pubmed_id: 18439549
+2025-03-05 00:23:20,133 - INFO - querying PubMed for The makers of the Protoaurignacian and implications for Neandertal extinction
+2025-03-05 00:23:20,755 - INFO - pubmed_id: 25908660
+2025-03-05 00:23:21,772 - INFO - querying PubMed for Early Upper Paleolithic genomes of Crimea show migration and admixture dynamics of the first modern European ancestries in relation to climatic crisis
+2025-03-05 00:23:24,670 - INFO - No pubmed id available.
+2025-03-05 00:23:24,671 - INFO - querying PubMed for Genetic evidence of a recent Tibetan ancestry to Sherpas in the Himalayan region
+2025-03-05 00:23:25,249 - INFO - pubmed_id: 26538459
+2025-03-05 00:23:26,328 - INFO - querying PubMed for Recent common origin, reduced population size, and marked admixture have shaped European Roma genomes
+2025-03-05 00:23:26,955 - INFO - pubmed_id: 32589725
+2025-03-05 00:23:27,859 - INFO - querying PubMed for Rapid identification of mtDNA somatic mutations in gastric cancer tissues based on the mtDNA phylogeny
+2025-03-05 00:23:28,764 - INFO - pubmed_id: 21419139
+2025-03-05 00:23:29,723 - INFO - querying PubMed for Complete mitochondrial DNA genome sequence variation of Chinese families with mutation m.3635G>A and Leber hereditary optic neuropathy
+2025-03-05 00:23:30,317 - INFO - pubmed_id: 23304069
+2025-03-05 00:23:31,341 - INFO - querying PubMed for The acquisition of an inheritable 50-bp deletion in the human mtDNA control region does not affect the mtDNA copy number in peripheral blood cells
+2025-03-05 00:23:36,007 - INFO - pubmed_id: 20151402
+2025-03-05 00:23:36,935 - INFO - querying PubMed for Mitochondrial DNA haplogroup B5 confers genetic susceptibility to Alzheimer's disease in Han Chinese
+2025-03-05 00:23:37,498 - INFO - pubmed_id: 25457022
+2025-03-05 00:23:38,764 - INFO - querying PubMed for Helena's Many Daughters: More Mitogenome Diversity behind the Most Common West Eurasian mtDNA Control Region Haplotype in an Extended Italian Population Sample
+2025-03-05 00:23:40,221 - INFO - pubmed_id: 35743173
+2025-03-05 00:23:41,468 - INFO - querying PubMed for Helena, the hidden beauty: Resolving the most common West Eurasian mtDNA control region haplotype by massively parallel sequencing an Italian population sample
+2025-03-05 00:23:42,808 - INFO - pubmed_id: 25303789
+2025-03-05 00:23:43,621 - INFO - querying PubMed for Rapid coastal spread of First Americans: Novel insights from South America's Southern Cone mitochondrial genomes
+2025-03-05 00:23:44,191 - INFO - pubmed_id: 22333566
+2025-03-05 00:23:46,054 - INFO - querying PubMed for 2000 years of parallel societies in Stone Age Central Europe
+2025-03-05 00:23:46,706 - INFO - pubmed_id: 24114781
+2025-03-05 00:23:47,681 - INFO - querying PubMed for Quantifying the legacy of the Chinese Neolithic on the maternal genetic heritage of Taiwan and Island Southeast Asia
+2025-03-05 00:23:48,427 - INFO - pubmed_id: 27041535
+2025-03-05 00:23:49,607 - INFO - querying PubMed for The Paleo-Indian Entry into South America According to Mitogenomes
+2025-03-05 00:23:50,181 - INFO - pubmed_id: 29099937
+2025-03-05 00:23:51,295 - INFO - querying PubMed for The Etruscan timeline: a recent Anatolian connection
+2025-03-05 00:23:51,929 - INFO - pubmed_id: 19050723
+2025-03-05 00:23:53,012 - INFO - querying PubMed for The Genetics of Crimean Karaites
+2025-03-05 00:24:02,394 - INFO - No pubmed id available.
+2025-03-05 00:24:02,394 - INFO - querying PubMed for Neolithic mitochondrial haplogroup H genomes and the genetic origins of Europeans
+2025-03-05 00:24:03,102 - INFO - pubmed_id: 23612305
+2025-03-05 00:24:04,359 - INFO - querying PubMed for Novel mtDNA mutations and oxidative phosphorylation dysfunction in Russian LHON families
+2025-03-05 00:24:05,415 - INFO - pubmed_id: 11479733
+2025-03-05 00:24:06,552 - INFO - querying PubMed for Evidence of Austronesian genetic lineages in East Africa and South Arabia: complex dispersal from Madagascar and Southeast Asia
+2025-03-05 00:24:07,189 - INFO - pubmed_id: 30715341
+2025-03-05 00:24:08,348 - INFO - querying PubMed for The Comoros Show the Earliest Austronesian Gene Flow into the Swahili Corridor
+2025-03-05 00:24:08,923 - INFO - pubmed_id: 29304377
+2025-03-05 00:24:10,577 - INFO - querying PubMed for Carriers of mitochondrial DNA macrohaplogroup L3 basic lineages migrated back to Africa from Asia around 70,000 years ago
+2025-03-05 00:24:13,075 - INFO - pubmed_id: 29921229
+2025-03-05 00:24:14,185 - INFO - querying PubMed for Archaeogenomic distinctiveness of the Isthmo-Colombian area
+2025-03-05 00:24:14,837 - INFO - pubmed_id: 33761327
+2025-03-05 00:24:16,346 - INFO - querying PubMed for Cybrid studies establish the causal link between the mtDNA m.3890G>A/MT-ND1 mutation and optic atrophy with bilateral brainstem lesions
+2025-03-05 00:24:18,094 - INFO - pubmed_id: 23246842
+2025-03-05 00:24:19,308 - INFO - querying PubMed for Peculiar combinations of individually non-pathogenic missense mitochondrial DNA variants cause low penetrance Leber's hereditary optic neuropathy
+2025-03-05 00:24:19,874 - INFO - pubmed_id: 29444077
+2025-03-05 00:24:21,222 - INFO - querying PubMed for Mitochondrial DNA Footprints from Western Eurasia in Modern Mongolia
+2025-03-05 00:24:21,792 - INFO - pubmed_id: 35069708
+2025-03-05 00:24:23,036 - INFO - querying PubMed for Genetic uniqueness of the Waorani tribe from the Ecuadorian Amazon
+2025-03-05 00:24:23,594 - INFO - pubmed_id: 22234246
+2025-03-05 00:24:24,936 - INFO - querying PubMed for The Expanded mtDNA Phylogeny of the Franco-Cantabrian Region Upholds the Pre-Neolithic Genetic Substrate of Basques
+2025-03-05 00:24:25,504 - INFO - pubmed_id: 23844106
+2025-03-05 00:24:27,939 - INFO - querying PubMed for Haplogroup effects and recombination of mitochondrial DNA: novel clues from the analysis of Leber hereditary optic neuropathy pedigrees
+2025-03-05 00:24:28,602 - INFO - pubmed_id: 16532388
+2025-03-05 00:24:30,032 - INFO - querying PubMed for A novel in-frame 18-bp microdeletion in MT-CYB causes a multisystem disorder with prominent exercise intolerance
+2025-03-05 00:24:30,604 - INFO - pubmed_id: 24863938
+2025-03-05 00:24:31,757 - INFO - querying PubMed for The impact of modern migrations on present-day multi-ethnic Argentina as recorded on the mitochondrial DNA genome
+2025-03-05 00:24:32,351 - INFO - pubmed_id: 21878127
+2025-03-05 00:24:33,354 - INFO - querying PubMed for Reconstructing ancient mitochondrial DNA links between Africa and Europe
+2025-03-05 00:24:34,027 - INFO - pubmed_id: 22454235
+2025-03-05 00:24:35,305 - INFO - querying PubMed for Migration of Chadic speaking pastoralists within Africa based on population structure of Chad Basin and phylogeography of mitochondrial L3f haplogroup
+2025-03-05 00:24:35,960 - INFO - pubmed_id: 19309521
+2025-03-05 00:24:37,245 - INFO - querying PubMed for Internal diversification of mitochondrial haplogroup r0a reveals post-last glacial maximum demographic expansions in South arabia
+2025-03-05 00:24:37,845 - INFO - pubmed_id: 20643865
+2025-03-05 00:24:38,863 - INFO - querying PubMed for Human origins in a southern African palaeo-wetland and first migrations
+2025-03-05 00:24:41,071 - INFO - pubmed_id: 33727727
+2025-03-05 00:24:42,039 - INFO - querying PubMed for Revised timeline and distribution of the earliest diverged human maternal lineages in southern Africa
+2025-03-05 00:24:42,935 - INFO - pubmed_id: 25807545
+2025-03-05 00:24:44,283 - INFO - querying PubMed for Phylogeography of mtDNA haplogroup R7 in the Indian peninsula
+2025-03-05 00:24:44,852 - INFO - pubmed_id: 18680585
+2025-03-05 00:24:46,244 - INFO - querying PubMed for Late Danubian mitochondrial genomes shed light into the Neolithisation of Central Europe in the 5th millennium BC
+2025-03-05 00:24:50,206 - INFO - pubmed_id: 28302068
+2025-03-05 00:24:51,390 - INFO - querying PubMed for Single nucleotide polymorphisms over the entire mtDNA genome that increase the power of forensic testing in Caucasians
+2025-03-05 00:24:51,984 - INFO - pubmed_id: 14760490
+2025-03-05 00:24:53,126 - INFO - querying PubMed for Whole mitochondrial DNA sequencing in Alpine populations and the genetic history of the Neolithic Tyrolean Iceman
+2025-03-05 00:24:53,704 - INFO - pubmed_id: 26764605
+2025-03-05 00:24:54,928 - INFO - querying PubMed for Mitochondrial sequence variation in african-american primary open-angle glaucoma patients
+2025-03-05 00:24:55,622 - INFO - pubmed_id: 24146900
+2025-03-05 00:24:56,957 - INFO - querying PubMed for Data from complete mtDNA sequencing of Tunisian centenarians: testing haplogroup association and the 'golden mean' to longevity
+2025-03-05 00:24:59,063 - INFO - pubmed_id: 19133286
+2025-03-05 00:24:59,908 - INFO - querying PubMed for A substantial prehistoric European ancestry amongst Ashkenazi maternal lineages
+2025-03-05 00:25:00,571 - INFO - pubmed_id: 24104924
+2025-03-05 00:25:01,788 - INFO - querying PubMed for Ancient DNA analysis of mid-holocene individuals from the northwest coast of north america reveals different evolutionary paths for mitogenomes
+2025-03-05 00:25:02,483 - INFO - pubmed_id: 23843972
+2025-03-05 00:25:03,599 - INFO - querying PubMed for Origins of the Moken Sea Gypsies inferred from mitochondrial hypervariable region and whole genome sequences
+2025-03-05 00:25:04,208 - INFO - pubmed_id: 19158811
+2025-03-05 00:25:05,150 - INFO - querying PubMed for Mitochondrial DNA background modifies the bioenergetics of NARP/MILS ATP6 mutant cells
+2025-03-05 00:25:05,851 - INFO - pubmed_id: 19875463
+2025-03-05 00:25:07,334 - INFO - querying PubMed for Mitochondrial DNA perspective of Serbian genetic diversity
+2025-03-05 00:25:08,117 - INFO - pubmed_id: 25418795
+2025-03-05 00:25:09,225 - INFO - querying PubMed for Complete mitogenome data for the Serbian population: the contribution to high-quality forensic databases
+2025-03-05 00:25:09,842 - INFO - pubmed_id: 32504149
+2025-03-05 00:25:11,065 - INFO - querying PubMed for Fine Dissection of Human Mitochondrial DNA Haplogroup HV Lineages Reveals Paleolithic Signatures from European Glacial Refugia
+2025-03-05 00:25:11,630 - INFO - pubmed_id: 26640946
+2025-03-05 00:25:12,977 - INFO - querying PubMed for Complete mtDNA genomes of Filipino ethnolinguistic groups: a melting pot of recent and ancient lineages in the Asia-Pacific region
+2025-03-05 00:25:13,582 - INFO - pubmed_id: 23756438
+2025-03-05 00:25:14,661 - INFO - querying PubMed for A paleogenetic perspective of the Sabana de Bogota (Northern South America) population history over the Holocene (9000-550 cal BP)
+2025-03-05 00:25:17,160 - INFO - No pubmed id available.
+2025-03-05 00:25:17,160 - INFO - querying PubMed for [Mitochondrial encephalomyopathy, lactic acidosis and stroke-like episodes (MELAS) with the A3243G mutation of the tRNALeu(UUR) gene of mtDNA in native American haplogroup B2]
+2025-03-05 00:25:17,733 - INFO - pubmed_id: 17199225
+2025-03-05 00:25:18,630 - INFO - querying PubMed for [Mitochondrial DNA variation in Kets and Nganasans and the early peoples of Northern Eurasia]
+2025-03-05 00:25:19,650 - INFO - pubmed_id: 12500682
+2025-03-05 00:25:20,626 - INFO - querying PubMed for Analysis of mitochondrial DNA diversity in the aleuts of the commander islands and its implications for the genetic history of beringia
+2025-03-05 00:25:22,614 - INFO - pubmed_id: 12082644
+2025-03-05 00:25:23,494 - INFO - querying PubMed for Mitogenomics of modern Mongolic-speaking populations
+2025-03-05 00:25:24,070 - INFO - pubmed_id: 34757478
+2025-03-05 00:25:25,215 - INFO - querying PubMed for Mitogenomics of the Koryaks and Evens of the northern coast of the Sea of Okhotsk
+2025-03-05 00:25:25,779 - INFO - pubmed_id: 37316650
+2025-03-05 00:25:27,073 - INFO - querying PubMed for Mitogenomic diversity and differentiation of the Buryats
+2025-03-05 00:25:27,649 - INFO - pubmed_id: 29215085
+2025-03-05 00:25:28,716 - INFO - querying PubMed for Insights into matrilineal genetic structure, differentiation and ancestry of Armenians based on complete mitogenome data
+2025-03-05 00:25:29,282 - INFO - pubmed_id: 31372716
+2025-03-05 00:25:30,341 - INFO - querying PubMed for Complete mitochondrial DNA diversity in iranians
+2025-03-05 00:25:31,108 - INFO - pubmed_id: 24244704
+2025-03-05 00:25:32,110 - INFO - querying PubMed for Western Eurasian ancestry in modern Siberians based on mitogenomic data
+2025-03-05 00:25:32,708 - INFO - pubmed_id: 25301575
+2025-03-05 00:25:35,252 - INFO - querying PubMed for Complete mitochondrial DNA analysis of eastern eurasian haplogroups rarely found in populations of northern Asia and eastern europe
+2025-03-05 00:25:36,009 - INFO - pubmed_id: 22363811
+2025-03-05 00:25:37,238 - INFO - querying PubMed for Phylogeographic analysis of mitochondrial DNA in northern Asian populations
+2025-03-05 00:25:37,812 - INFO - pubmed_id: 17924343
+2025-03-05 00:25:39,076 - INFO - querying PubMed for Origin and post-glacial dispersal of mitochondrial DNA haplogroups C and D in northern Asia
+2025-03-05 00:25:41,518 - INFO - pubmed_id: 21203537
+2025-03-05 00:25:42,750 - INFO - querying PubMed for Arrival of paleo-indians to the southern cone of South america: new clues from mitogenomes
+2025-03-05 00:25:44,881 - INFO - pubmed_id: 23240014
+2025-03-05 00:25:45,857 - INFO - querying PubMed for Metabolically induced heteroplasmy shifting and l-arginine treatment reduce the energetic defect in a neuronal-like model of MELAS
+2025-03-05 00:25:50,197 - INFO - pubmed_id: 22306605
+2025-03-05 00:25:51,166 - INFO - querying PubMed for Circum-Saharan Prehistory through the Lens of mtDNA Diversity
+2025-03-05 00:25:51,743 - INFO - pubmed_id: 35328086
+2025-03-05 00:25:53,981 - INFO - querying PubMed for Uniparental Lineages from the Oldest Indigenous Population of Ecuador: The Tsachilas
+2025-03-05 00:25:55,017 - INFO - pubmed_id: 34440446
+2025-03-05 00:25:56,017 - INFO - querying PubMed for Direct radiocarbon dating and DNA analysis of the Darra-i-Kur (Afghanistan) human temporal bone
+2025-03-05 00:25:56,599 - INFO - pubmed_id: 28526291
+2025-03-05 00:25:58,620 - INFO - querying PubMed for Mitochondrial genome diversity at the Bering Strait area highlights prehistoric human migrations from Siberia to northern North America
+2025-03-05 00:25:59,237 - INFO - pubmed_id: 25564040
+2025-03-05 00:26:00,361 - INFO - querying PubMed for Mitochondrial Genome Diversity in the Central Siberian Plateau with Particular Reference to Prehistory of Northernmost Eurasia
+2025-03-05 00:26:02,224 - INFO - pubmed_id: 33507977
+2025-03-05 00:26:03,241 - INFO - querying PubMed for Genetic legacy of cultures indigenous to the Northeast Asian coast in mitochondrial genomes of nearly extinct maritime tribes
+2025-03-05 00:26:05,664 - INFO - pubmed_id: 32660486
+2025-03-05 00:26:06,710 - INFO - querying PubMed for Complete mitochondrial sequences for haplogroups M23 and M46: insights into the Asian ancestry of the Malagasy population
+2025-03-05 00:26:07,352 - INFO - pubmed_id: 20067372
+2025-03-05 00:26:08,368 - INFO - querying PubMed for A Highly Unstable Recent Mutation in Human mtDNA
+2025-03-05 00:26:08,948 - INFO - pubmed_id: 23313375
+2025-03-05 00:26:10,871 - INFO - querying PubMed for Maternal History of Oceania from Complete mtDNA Genomes: Contrasting Ancient Diversity with Recent Homogenization Due to the Austronesian Expansion
+2025-03-05 00:26:15,616 - INFO - pubmed_id: 24726474
+2025-03-05 00:26:17,920 - INFO - querying PubMed for Genetic Discontinuity between the Maritime Archaic and Beothuk Populations in Newfoundland, Canada
+2025-03-05 00:26:18,487 - INFO - pubmed_id: 29033326
+2025-03-05 00:26:19,586 - INFO - querying PubMed for Investigating the Prehistory of Tungusic Peoples of Siberia and the Amur-Ussuri Region with Complete mtDNA Genome Sequences and Y-chromosomal Markers
+2025-03-05 00:26:20,279 - INFO - pubmed_id: 24349531
+2025-03-05 00:26:21,523 - INFO - querying PubMed for Maternal relationships within an Iron Age burial at the High Pasture Cave, Isle of Skye, Scotland
+2025-03-05 00:26:23,872 - INFO - No pubmed id available.
+2025-03-05 00:26:23,873 - INFO - querying PubMed for Complete human mtDNA genome sequences from Vietnam and the phylogeography of Mainland Southeast Asia
+2025-03-05 00:26:25,352 - INFO - pubmed_id: 30076323
+2025-03-05 00:26:26,597 - INFO - querying PubMed for Traces of sub-Saharan and Middle Eastern Lineages in Indian Muslim Population
+2025-03-05 00:26:27,592 - INFO - pubmed_id: 19809480
+2025-03-05 00:26:28,700 - INFO - querying PubMed for Analysis of mitochondrial genome revealed a rare 50 bp deletion and substitutions in a family with hypertension
+2025-03-05 00:26:30,030 - INFO - pubmed_id: 21787884
+2025-03-05 00:26:31,165 - INFO - querying PubMed for Ancient Roman mitochondrial genomes and isotopes reveal relationships and geographic origins at the local and pan-Mediterranean scales
+2025-03-05 00:26:33,576 - INFO - No pubmed id available.
+2025-03-05 00:26:33,576 - INFO - querying PubMed for Mitochondrial DNA haplogroup H structure in North Africa
+2025-03-05 00:26:34,252 - INFO - pubmed_id: 19243582
+2025-03-05 00:26:35,251 - INFO - querying PubMed for Complete mitochondrial genome sequence of the Tyrolean Iceman
+2025-03-05 00:26:35,871 - INFO - pubmed_id: 18976917
+2025-03-05 00:26:36,895 - INFO - querying PubMed for Mitochondrial population genomics supports a single pre-Clovis origin with a coastal route for the peopling of the Americas
+2025-03-05 00:26:37,552 - INFO - pubmed_id: 18313026
+2025-03-05 00:26:38,667 - INFO - querying PubMed for Detecting the somatic mutations spectrum of Chinese lung cancer by analyzing the whole mitochondrial DNA genomes
+2025-03-05 00:26:39,415 - INFO - pubmed_id: 24006865
+2025-03-05 00:26:40,314 - INFO - querying PubMed for Differences in mtDNA haplogroup distribution among 3 Jewish populations alter susceptibility to T2DM complications
+2025-03-05 00:26:41,094 - INFO - pubmed_id: 18445251
+2025-03-05 00:26:42,205 - INFO - querying PubMed for Autosomal and uniparental portraits of the native populations of Sakha (Yakutia): implications for the peopling of Northeast Eurasia
+2025-03-05 00:26:43,034 - INFO - pubmed_id: 23782551
+2025-03-05 00:26:44,264 - INFO - querying PubMed for Genetic Ancestry of Rapanui before and after European Contact
+2025-03-05 00:26:44,833 - INFO - pubmed_id: 29033334
+2025-03-05 00:26:45,974 - INFO - querying PubMed for A Re-Appraisal of the Early Andean Human Remains from Lauricocha in Peru
+2025-03-05 00:26:46,649 - INFO - pubmed_id: 26061688
+2025-03-05 00:26:47,778 - INFO - querying PubMed for Accumulation of mutations over the entire mitochondrial genome of breast cancer cells obtained by tissue microdissection
+2025-03-05 00:26:48,438 - INFO - pubmed_id: 20697806
+2025-03-05 00:26:49,597 - INFO - querying PubMed for Sequencing strategy for the whole mitochondrial genome resulting in high quality sequences
+2025-03-05 00:26:50,166 - INFO - pubmed_id: 19331681
+2025-03-05 00:26:51,354 - INFO - querying PubMed for The Arabian cradle: mitochondrial relicts of the first steps along the southern route out of Africa
+2025-03-05 00:26:51,995 - INFO - pubmed_id: 22284828
+2025-03-05 00:26:53,349 - INFO - querying PubMed for Genetic stratigraphy of key demographic events in arabia
+2025-03-05 00:26:53,920 - INFO - pubmed_id: 25738654
+2025-03-05 00:26:55,166 - INFO - querying PubMed for The mitochondrial genomes of two Pre-historic Hunter Gatherers in Sri Lanka
+2025-03-05 00:26:55,839 - INFO - pubmed_id: 36450887
+2025-03-05 00:26:56,752 - INFO - querying PubMed for Middle eastern genetic legacy in the paternal and maternal gene pools of Chuetas
+2025-03-05 00:26:57,317 - INFO - pubmed_id: 33293675
+2025-03-05 00:26:58,492 - INFO - querying PubMed for Analisis del genoma mitocondrial de dos individuos inhumados en el sitio arqueologico CG14E01 Isla Larga (Rocha, Uruguay)
+2025-03-05 00:27:01,139 - INFO - No pubmed id available.
+2025-03-05 00:27:01,140 - INFO - querying PubMed for Filogeografia de mitogenomas indigenas de Uruguay
+2025-03-05 00:27:04,233 - INFO - No pubmed id available.
+2025-03-05 00:27:04,233 - INFO - querying PubMed for Phylogenetic network for European mtDNA
+2025-03-05 00:27:05,384 - INFO - pubmed_id: 11349229
+2025-03-05 00:27:06,413 - INFO - querying PubMed for Bioarchaeological and paleogenomic profiling of the unusual Neolithic burial from Grotta di Pietra Sant'Angelo (Calabria, Italy)
+2025-03-05 00:27:09,381 - INFO - pubmed_id: 37488251
+2025-03-05 00:27:10,395 - INFO - querying PubMed for Mitochondrial and Y-chromosome diversity of the Tharus (Nepal): a reservoir of genetic variation
+2025-03-05 00:27:17,065 - INFO - pubmed_id: 19573232
+2025-03-05 00:27:18,340 - INFO - querying PubMed for High resolution analysis and phylogenetic network construction using complete mtDNA sequences in sardinian genetic isolates
+2025-03-05 00:27:18,905 - INFO - pubmed_id: 16901986
+2025-03-05 00:27:19,912 - INFO - querying PubMed for Carriers of Mitochondrial DNA Macrohaplogroup N Lineages Reached Australia around 50,000 Years Ago following a Northern Asian Route
+2025-03-05 00:27:20,749 - INFO - pubmed_id: 26053380
+2025-03-05 00:27:21,871 - INFO - querying PubMed for Ancient genomes from North Africa evidence prehistoric migrations to the Maghreb from both the Levant and Europe
+2025-03-05 00:27:24,549 - INFO - pubmed_id: 30012588
+2025-03-05 00:27:25,359 - INFO - querying PubMed for Mitogenomes illuminate the origin and migration patterns of the indigenous people of the Canary Islands
+2025-03-05 00:27:25,945 - INFO - pubmed_id: 30893316
+2025-03-05 00:27:27,314 - INFO - querying PubMed for The maternal aborigine colonization of La Palma (Canary Islands)
+2025-03-05 00:27:29,116 - INFO - pubmed_id: 19337312
+2025-03-05 00:27:30,155 - INFO - querying PubMed for Multiple ethnic origins of mitochondrial DNA lineages for the population of mauritius
+2025-03-05 00:27:30,771 - INFO - pubmed_id: 24676463
+2025-03-05 00:27:32,166 - INFO - querying PubMed for Expanding Southwest Pacific mitochondrial haplogroups P and Q
+2025-03-05 00:27:32,739 - INFO - pubmed_id: 15814828
+2025-03-05 00:27:33,795 - INFO - querying PubMed for Melanesian mtDNA Complexity
+2025-03-05 00:27:34,861 - INFO - pubmed_id: 17327912
+2025-03-05 00:27:35,936 - INFO - querying PubMed for DNA analysis of an early modern human from Tianyuan Cave, China
+2025-03-05 00:27:37,902 - INFO - pubmed_id: 23341637
+2025-03-05 00:27:38,831 - INFO - querying PubMed for A revised timescale for human evolution based on ancient mitochondrial genomes
+2025-03-05 00:27:39,417 - INFO - pubmed_id: 23523248
+2025-03-05 00:27:40,915 - INFO - querying PubMed for Complete mitochondrial genomes reveal neolithic expansion into europe
+2025-03-05 00:27:41,736 - INFO - pubmed_id: 22427842
+2025-03-05 00:27:43,281 - INFO - querying PubMed for Ancient genomes reveal social and genetic structure of Late Neolithic Switzerland
+2025-03-05 00:27:44,283 - INFO - pubmed_id: 32938921
+2025-03-05 00:27:45,200 - INFO - querying PubMed for Ancient and modern mitogenomes from Central Argentina: new insights into population continuity, temporal depth and migration in South America
+2025-03-05 00:27:45,925 - INFO - pubmed_id: 33856032
+2025-03-05 00:27:47,361 - INFO - querying PubMed for Forensically relevant phylogeographic evaluation of mitogenome variation in the Basque Country
+2025-03-05 00:27:47,997 - INFO - pubmed_id: 32062111
+2025-03-05 00:27:48,970 - INFO - querying PubMed for Using mitochondrial DNA to test the hypothesis of a European post-glacial human recolonization from the Franco-Cantabrian refuge
+2025-03-05 00:27:49,634 - INFO - pubmed_id: 20407470
+2025-03-05 00:27:50,550 - INFO - querying PubMed for Digging into the admixture strata of current-day Canary Islanders based on mitogenomes
+2025-03-05 00:27:51,143 - INFO - pubmed_id: 36647378
+2025-03-05 00:27:52,185 - INFO - querying PubMed for Disruptive mitochondrial DNA mutations in complex I subunits are markers of oncocytic phenotype in thyroid tumors
+2025-03-05 00:27:53,369 - INFO - pubmed_id: 17517629
+2025-03-05 00:27:54,431 - INFO - querying PubMed for The background of mitochondrial DNA haplogroup J increases the sensitivity of Leber's hereditary optic neuropathy cells to 2,5-hexanedione toxicity
+2025-03-05 00:27:55,356 - INFO - pubmed_id: 19936068
+2025-03-05 00:27:56,881 - INFO - querying PubMed for Mitogenomes of polar bodies and corresponding oocytes
+2025-03-05 00:27:57,649 - INFO - pubmed_id: 25032828
+2025-03-05 00:27:58,724 - INFO - querying PubMed for Paleo-Eskimo mtDNA genome reveals matrilineal discontinuity in Greenland
+2025-03-05 00:27:59,900 - INFO - pubmed_id: 18511654
+2025-03-05 00:28:00,827 - INFO - querying PubMed for Impact of the mitochondrial genetic background in complex III deficiency
+2025-03-05 00:28:01,411 - INFO - pubmed_id: 20862300
+2025-03-05 00:28:02,516 - INFO - querying PubMed for Mitochondrial DNA analysis efficiently contributes to the identification of metastatic contralateral breast cancers
+2025-03-05 00:28:04,980 - INFO - pubmed_id: 33236215
+2025-03-05 00:28:06,117 - INFO - querying PubMed for Human settlement history between Sunda and Sahul: a focus on East Timor (Timor-Leste) and the Pleistocenic mtDNA diversity
+2025-03-05 00:28:07,506 - INFO - pubmed_id: 25757516
+2025-03-05 00:28:08,603 - INFO - querying PubMed for Mosaic maternal ancestry in the Great Lakes region of East Africa
+2025-03-05 00:28:10,368 - INFO - pubmed_id: 26188410
+2025-03-05 00:28:11,332 - INFO - querying PubMed for Evolutionary analyses of entire genomes do not support the association of mtDNA mutations with Ras/MAPK pathway syndromes
+2025-03-05 00:28:21,856 - INFO - pubmed_id: 21526175
+2025-03-05 00:28:23,519 - INFO - querying PubMed for Indian signatures in the westernmost edge of the European romani diaspora: new insight from mitogenomes
+2025-03-05 00:28:24,144 - INFO - pubmed_id: 24143169
+2025-03-05 00:28:25,294 - INFO - querying PubMed for Unmasking the causes of multifactorial disorders: OXPHOS differences between mitochondrial haplogroups
+2025-03-05 00:28:25,871 - INFO - pubmed_id: 20566709
+2025-03-05 00:28:27,430 - INFO - querying PubMed for Whole-mtDNA genome sequence analysis of ancient African lineages
+2025-03-05 00:28:28,210 - INFO - pubmed_id: 17194802
+2025-03-05 00:28:29,367 - INFO - querying PubMed for The mitochondrial lineage U8a reveals a Paleolithic settlement in the Basque country
+2025-03-05 00:28:29,932 - INFO - pubmed_id: 16719915
+2025-03-05 00:28:31,122 - INFO - querying PubMed for Mitochondrial lineage M1 traces an early human backflow to Africa
+2025-03-05 00:28:33,142 - INFO - pubmed_id: 17620140
+2025-03-05 00:28:34,275 - INFO - querying PubMed for A western route of prehistoric human migration from Africa into the Iberian Peninsula
+2025-03-05 00:28:35,035 - INFO - pubmed_id: 30963949
+2025-03-05 00:28:36,240 - INFO - querying PubMed for A Population history of Tokelau: genetic variation and change in atoll populations
+2025-03-05 00:28:45,647 - INFO - No pubmed id available.
+2025-03-05 00:28:45,647 - INFO - querying PubMed for Mitochondrial dysfunction and genetic heterogeneity in chronic periodontitis
+2025-03-05 00:28:46,225 - INFO - pubmed_id: 21296687
+2025-03-05 00:28:47,563 - INFO - querying PubMed for Genetic assessment reveals no population substructure and divergent regional and sex-specific histories in the Chachapoyas from northeast Peru
+2025-03-05 00:28:48,624 - INFO - pubmed_id: 33382772
+2025-03-05 00:28:49,855 - INFO - querying PubMed for Ethambutol-induced optic neuropathy linked to OPA1 mutation and mitochondrial toxicity
+2025-03-05 00:28:50,448 - INFO - pubmed_id: 19900585
+2025-03-05 00:28:51,567 - INFO - querying PubMed for High-throughput sequencing of complete human mtDNA genomes from the Philippines
+2025-03-05 00:28:52,383 - INFO - pubmed_id: 21147912
+2025-03-05 00:28:53,459 - INFO - querying PubMed for Larger mitochondrial DNA than Y-chromosome differences between matrilocal and patrilocal groups from Sumatra
+2025-03-05 00:28:54,079 - INFO - pubmed_id: 21407194
+2025-03-05 00:28:54,981 - INFO - querying PubMed for Co-occurrence of m.15992AG and m.15077GA is associated with a high penetrance of maternally inherited hypertension in a Chinese pedigree
+2025-03-05 00:28:57,975 - INFO - pubmed_id: 34346491
+2025-03-05 00:28:58,897 - INFO - querying PubMed for Presence of mutation m.14484T>C in a Chinese family with maternally inherited essential hypertension but no expression of LHON
+2025-03-05 00:29:01,641 - INFO - pubmed_id: 22749828
+2025-03-05 00:29:02,422 - INFO - querying PubMed for Mitochondrial genome polymorphisms associated with type-2 diabetes or obesity
+2025-03-05 00:29:11,335 - INFO - pubmed_id: 16060290
+2025-03-05 00:29:12,198 - INFO - querying PubMed for Mitochondrial DNA mutation m.5512A > G in the acceptor-stem of mitochondrial tRNA causing maternally inherited essential hypertension
+2025-03-05 00:29:13,866 - INFO - pubmed_id: 27687549
+2025-03-05 00:29:14,739 - INFO - querying PubMed for Leigh Syndrome in a Pedigree Harboring the m.1555A>G Mutation in the Mitochondrial 12S rRNA
+2025-03-05 00:29:16,790 - INFO - pubmed_id: 32867169
+2025-03-05 00:29:17,879 - INFO - querying PubMed for The trans-Saharan slave trade - clues from interpolation analyses and high-resolution characterization of mitochondrial DNA lineages
+2025-03-05 00:29:18,501 - INFO - pubmed_id: 20459715
+2025-03-05 00:29:19,605 - INFO - querying PubMed for The Genomic Legacy of the Transatlantic Slave Trade in the Yungas Valley of Bolivia
+2025-03-05 00:29:20,165 - INFO - pubmed_id: 26263179
+2025-03-05 00:29:21,209 - INFO - querying PubMed for Early Holocenic and Historic mtDNA African Signatures in the Iberian Peninsula: The Andalusian Region as a Paradigm
+2025-03-05 00:29:21,820 - INFO - pubmed_id: 26509580
+2025-03-05 00:29:22,894 - INFO - querying PubMed for Reduced-median-network analysis of complete mitochondrial DNA coding-region sequences for the major African, Asian, and European haplogroups
+2025-03-05 00:29:23,475 - INFO - pubmed_id: 11938495
+2025-03-05 00:29:24,580 - INFO - querying PubMed for Ancient mtDNA sequences from the First Australians revisited
+2025-03-05 00:29:25,167 - INFO - pubmed_id: 27274055
+2025-03-05 00:29:26,914 - INFO - querying PubMed for Phylogeography and ethnogenesis of aboriginal Southeast Asians
+2025-03-05 00:29:27,476 - INFO - pubmed_id: 16982817
+2025-03-05 00:29:28,861 - INFO - querying PubMed for Novel Pathogenic Sequence Variation m.5789TC Causes NARP Syndrome and Promotes Formation of Deletions of the Mitochondrial Genome
+2025-03-05 00:29:30,532 - INFO - pubmed_id: 35252560
+2025-03-05 00:29:31,347 - INFO - querying PubMed for An infant burial from Arma Veirana in northwestern Italy provides insights into funerary practices and female personhood in early Mesolithic Europe
+2025-03-05 00:29:32,562 - INFO - pubmed_id: 34907203
+2025-03-05 00:29:33,644 - INFO - querying PubMed for Early farmers from across Europe directly descended from Neolithic Aegeans
+2025-03-05 00:29:34,208 - INFO - pubmed_id: 27274049
+2025-03-05 00:29:35,424 - INFO - querying PubMed for Mitochondrial haplogroup C4c: a rare lineage entering America through the ice-free corridor?
+2025-03-05 00:29:35,994 - INFO - pubmed_id: 22024980
+2025-03-05 00:29:37,753 - INFO - querying PubMed for Recent African origin of modern humans revealed by complete sequences of hominoid mitochondrial DNAs
+2025-03-05 00:29:38,318 - INFO - pubmed_id: 7530363
+2025-03-05 00:29:39,672 - INFO - querying PubMed for Initial Upper Palaeolithic Homo sapiens from Bacho Kiro Cave, Bulgaria
+2025-03-05 00:29:40,249 - INFO - pubmed_id: 32433609
+2025-03-05 00:29:41,544 - INFO - querying PubMed for Investigating the origins of eastern Polynesians using genome-wide data from the Leeward Society Isles
+2025-03-05 00:29:42,132 - INFO - pubmed_id: 29379068
+2025-03-05 00:29:43,397 - INFO - querying PubMed for Revealing the prehistoric settlement of Australia by Y chromosome and mtDNA analysis
+2025-03-05 00:29:46,209 - INFO - pubmed_id: 17496137
+2025-03-05 00:29:47,344 - INFO - querying PubMed for A recent genetic link between Sami and the Volga-Ural region of Russia
+2025-03-05 00:29:47,918 - INFO - pubmed_id: 16985502
+2025-03-05 00:29:49,606 - INFO - querying PubMed for Mitochondrial genome variation and evolutionary history of Australian and New Guinean aborigines
+2025-03-05 00:29:50,186 - INFO - pubmed_id: 12840039
+2025-03-05 00:29:51,561 - INFO - querying PubMed for Rate variation between mitochondrial domains and adaptive evolution in humans
+2025-03-05 00:29:52,145 - INFO - pubmed_id: 17617636
+2025-03-05 00:29:53,207 - INFO - querying PubMed for Mitochondrial genome variation and the origin of modern humans
+2025-03-05 00:29:53,798 - INFO - pubmed_id: 11130070
+2025-03-05 00:29:54,852 - INFO - querying PubMed for Novel mitochondrial DNA length variants and genetic instability in a family with diabetes and deafness
+2025-03-05 00:29:56,716 - INFO - pubmed_id: 16705548
+2025-03-05 00:29:57,650 - INFO - querying PubMed for Novel non-neutral mitochondrial DNA mutations found in childhood acute lymphoblastic leukemia
+2025-03-05 00:29:58,245 - INFO - pubmed_id: 28708239
+2025-03-05 00:29:59,365 - INFO - querying PubMed for Mitochondrial DNA 10609T Promotes Hypoxia-Induced Increase of Intracellular ROS and Is a Risk Factor of High Altitude Polycythemia
+2025-03-05 00:29:59,948 - INFO - pubmed_id: 24498190
+2025-03-05 00:30:01,178 - INFO - querying PubMed for Mitochondrial DNA variant associated with Leber hereditary optic neuropathy and high-altitude Tibetans
+2025-03-05 00:30:01,814 - INFO - pubmed_id: 22517755
+2025-03-05 00:30:03,172 - INFO - querying PubMed for Evolutionary history of continental southeast asians: 'early train' hypothesis based on genetic analysis of mitochondrial and autosomal DNA data
+2025-03-05 00:30:05,151 - INFO - pubmed_id: 22729749
+2025-03-05 00:30:06,259 - INFO - querying PubMed for Association of mitochondrial DNA mutations with Chinese esophageal squamous cell carcinomas (ESCC) by analyzing the whole mitochondrial DNA genomes
+2025-03-05 00:30:08,387 - INFO - No pubmed id available.
+2025-03-05 00:30:08,387 - INFO - querying PubMed for Mitochondrial DNA haplogroups M7b1'2 and M8a affect clinical expression of leber hereditary optic neuropathy in Chinese families with the m.11778G-->a mutation
+2025-03-05 00:30:10,065 - INFO - pubmed_id: 19026397
+2025-03-05 00:30:11,744 - INFO - querying PubMed for Mitochondrial genomes reveal an east to west cline of steppe ancestry in Corded Ware populations
+2025-03-05 00:30:14,084 - INFO - pubmed_id: 30072694
+2025-03-05 00:30:15,167 - INFO - querying PubMed for Diverse origin of mitochondrial lineages in Iron Age Black Sea Scythians
+2025-03-05 00:30:15,796 - INFO - pubmed_id: 28266657
+2025-03-05 00:30:17,219 - INFO - querying PubMed for Complete mitochondrial genome sequences for 265 African American and U.S. 'Hispanic' individuals
+2025-03-05 00:30:18,933 - INFO - pubmed_id: 19083815
+2025-03-05 00:30:20,039 - INFO - querying PubMed for Full mtGenome reference data: Development and characterization of 588 forensic-quality haplotypes representing three U.S. populations
+2025-03-05 00:30:20,650 - INFO - pubmed_id: 25450785
+2025-03-05 00:30:21,944 - INFO - querying PubMed for mtDNA Lineage Expansions in Sherpa Population Suggest Adaptive Evolution in Tibetan Highlands
+2025-03-05 00:30:22,772 - INFO - pubmed_id: 24002810
+2025-03-05 00:30:23,922 - INFO - querying PubMed for MtDNA analysis reveals enriched pathogenic mutations in Tibetan highlanders
+2025-03-05 00:30:24,498 - INFO - pubmed_id: 27498855
+2025-03-05 00:30:25,968 - INFO - querying PubMed for Ancient DNA at the edge of the world: Continental immigration and the persistence of Neolithic lineages in Bronze Age Orkney
+2025-03-05 00:30:28,478 - INFO - pubmed_id: 35131896
+2025-03-05 00:30:29,650 - INFO - querying PubMed for Mitochondrial DNA sequence analysis of patients with 'atypical psychosis'
+2025-03-05 00:30:30,213 - INFO - pubmed_id: 16048457
+2025-03-05 00:30:31,166 - INFO - querying PubMed for Integrated Approach Reveals Role of Mitochondrial Germ-Line Mutation F18L in Respiratory Chain, Oxidative Alterations, Drug Sensitivity, and Patient Prognosis in Glioblastoma
+2025-03-05 00:30:31,942 - INFO - pubmed_id: 31323957
+2025-03-05 00:30:33,308 - INFO - querying PubMed for Co-occurrence of m.1555A>G and m.11778G>A mitochondrial DNA mutations in two Indian families with strikingly different clinical penetrance of Leber hereditary optic neuropathy
+2025-03-05 00:30:33,949 - INFO - pubmed_id: 23805034
+2025-03-05 00:30:35,128 - INFO - querying PubMed for Analysis of functional variants in mitochondrial DNA of Finnish athletes
+2025-03-05 00:30:35,746 - INFO - pubmed_id: 31664900
+2025-03-05 00:30:37,074 - INFO - querying PubMed for Identification of the remains of King Richard III
+2025-03-05 00:30:37,648 - INFO - pubmed_id: 25463651
+2025-03-05 00:30:38,866 - INFO - querying PubMed for The role of selection in the evolution of human mitochondrial genomes
+2025-03-05 00:30:39,655 - INFO - pubmed_id: 16172508
+2025-03-05 00:30:40,603 - INFO - querying PubMed for Somatic mutations throughout the entire mitochondrial genome are associated with elevated PSA levels in prostate cancer patients
+2025-03-05 00:30:41,171 - INFO - pubmed_id: 21129724
+2025-03-05 00:30:42,252 - INFO - querying PubMed for Validation of Next-Generation Sequencing of Entire Mitochondrial Genomes and the Diversity of Mitochondrial DNA Mutations in Oral Squamous Cell Carcinoma
+2025-03-05 00:30:42,873 - INFO - pubmed_id: 26262956
+2025-03-05 00:30:44,450 - INFO - querying PubMed for Genetic resiliency and the Black Death: No apparent loss of mitogenomic diversity due to the Black Death in medieval London and Denmark
+2025-03-05 00:30:47,248 - INFO - pubmed_id: 30964548
+2025-03-05 00:30:48,933 - INFO - querying PubMed for Complete mitochondrial DNA genome sequences from the first New Zealanders
+2025-03-05 00:30:49,517 - INFO - pubmed_id: 23091021
+2025-03-05 00:30:50,748 - INFO - querying PubMed for Female exogamy and gene pool diversification at the transition from the Final Neolithic to the Early Bronze Age in central Europe
+2025-03-05 00:30:53,560 - INFO - pubmed_id: 28874531
+2025-03-05 00:30:54,654 - INFO - querying PubMed for Early austronesians: into and out of Taiwan
+2025-03-05 00:30:55,262 - INFO - pubmed_id: 24607387
+2025-03-05 00:30:57,364 - INFO - querying PubMed for Analysis to Estimate Genetic Variations in the Idarubicin-Resistant Derivative MOLT-3
+2025-03-05 00:30:58,013 - INFO - pubmed_id: 28025493
+2025-03-05 00:30:59,212 - INFO - querying PubMed for Updating the East Asian mtDNA phylogeny: a prerequisite for the identification of pathogenic mutations
+2025-03-05 00:30:59,800 - INFO - pubmed_id: 16714301
+2025-03-05 00:31:00,984 - INFO - querying PubMed for Large-Scale mtDNA Screening Reveals a Surprising Matrilineal Complexity in East Asia and Its Implications to the Peopling of the Region
+2025-03-05 00:31:04,849 - INFO - pubmed_id: 20713468
+2025-03-05 00:31:05,729 - INFO - querying PubMed for Phylogeny of east Asian mitochondrial DNA lineages inferred from complete sequences
+2025-03-05 00:31:07,974 - INFO - pubmed_id: 12870132
+2025-03-05 00:31:08,905 - INFO - querying PubMed for Standing at the gateway to europe - the genetic structure of Western balkan populations based on autosomal and haploid markers
+2025-03-05 00:31:10,971 - INFO - pubmed_id: 25148043
+2025-03-05 00:31:12,326 - INFO - querying PubMed for Large scale mitochondrial sequencing in Mexican Americans suggests a reappraisal of Native American origins
+2025-03-05 00:31:12,901 - INFO - pubmed_id: 21978175
+2025-03-05 00:31:13,949 - INFO - querying PubMed for The earliest settlers' antiquity and evolutionary history of Indian populations: evidence from M2 mtDNA lineage
+2025-03-05 00:31:14,721 - INFO - pubmed_id: 18691441
+2025-03-05 00:31:16,153 - INFO - querying PubMed for Reconstructing Indian-Australian phylogenetic link
+2025-03-05 00:31:16,723 - INFO - pubmed_id: 19624810
+2025-03-05 00:31:17,771 - INFO - querying PubMed for Uniparental genetic heritage of belarusians: encounter of rare middle eastern matrilineages with a central European mitochondrial DNA pool
+2025-03-05 00:31:18,376 - INFO - pubmed_id: 23785503
+2025-03-05 00:31:19,480 - INFO - querying PubMed for New insights from Thailand into the maternal genetic history of Mainland Southeast Asia
+2025-03-05 00:31:20,066 - INFO - pubmed_id: 29483671
+2025-03-05 00:31:21,317 - INFO - querying PubMed for Contrasting maternal and paternal genetic variation of hunter-gatherer groups in Thailand
+2025-03-05 00:31:21,896 - INFO - pubmed_id: 29367746
+2025-03-05 00:31:23,071 - INFO - querying PubMed for Complete mitochondrial genomes of Thai and Lao populations indicate an ancient origin of Austroasiatic groups and demic diffusion in the spread of Tai-Kadai languages
+2025-03-05 00:31:23,893 - INFO - pubmed_id: 28324218
+2025-03-05 00:31:24,896 - INFO - querying PubMed for Cultural variation impacts paternal and maternal genetic lineages of the Hmong-Mien and Sino-Tibetan groups from Thailand
+2025-03-05 00:31:25,478 - INFO - pubmed_id: 32690935
+2025-03-05 00:31:26,632 - INFO - querying PubMed for Rare mtDNA variants in Leber hereditary optic neuropathy families with recurrence of myoclonus
+2025-03-05 00:31:27,189 - INFO - pubmed_id: 18216301
+2025-03-05 00:31:28,488 - INFO - querying PubMed for Association of the mtDNA m.4171C>A/MT-ND1 mutation with both optic neuropathy and bilateral brainstem lesions
+2025-03-05 00:31:29,078 - INFO - pubmed_id: 24884847
+2025-03-05 00:31:30,221 - INFO - querying PubMed for Mitochondrial DNA mutations distinguish bilateral multifocal renal oncocytomas from familial Birt-Hogg-Dube tumors
+2025-03-05 00:31:33,102 - INFO - pubmed_id: 26428318
+2025-03-05 00:31:34,028 - INFO - querying PubMed for Carriers of mitochondrial DNA macrohaplogroup R colonized Eurasia and Australasia from a southeast Asia core area
+2025-03-05 00:31:34,618 - INFO - pubmed_id: 28535779
+2025-03-05 00:31:35,675 - INFO - querying PubMed for Identification of Whole Mitochondrial Genomes from Venezuela and Implications on Regional Phylogenies in South America
+2025-03-05 00:31:36,237 - INFO - pubmed_id: 26416320
+2025-03-05 00:31:37,511 - INFO - querying PubMed for A draft human pangenome reference
+2025-03-05 00:31:38,152 - INFO - pubmed_id: 37165242
+2025-03-05 00:31:40,007 - INFO - querying PubMed for mtDNA Heteroplasmy in Monozygotic Twins Discordant for Schizophrenia
+2025-03-05 00:31:41,228 - INFO - pubmed_id: 27343181
+2025-03-05 00:31:42,078 - INFO - querying PubMed for Recent kuru-induced female gene flow disrupted the coevolution of genes and languages in the Papua New Guinea highlands
+2025-03-05 00:31:42,715 - INFO - pubmed_id: 32150286
+2025-03-05 00:31:43,748 - INFO - querying PubMed for Human paternal and maternal demographic histories: insights from high-resolution Y chromosome and mtDNA sequences
+2025-03-05 00:31:44,387 - INFO - pubmed_id: 25254093
+2025-03-05 00:31:45,488 - INFO - querying PubMed for Deciphering the signature of selective constraints on cancerous mitochondrial genome
+2025-03-05 00:31:46,072 - INFO - pubmed_id: 22130971
+2025-03-05 00:31:47,390 - INFO - querying PubMed for Ancient inland human dispersals from Myanmar into interior East Asia since the Late Pleistocene
+2025-03-05 00:31:48,024 - INFO - pubmed_id: 25826227
+2025-03-05 00:31:50,614 - INFO - querying PubMed for Identification and functional prediction of mitochondrial complex III and IV mutations associated with glioblastoma
+2025-03-05 00:31:52,238 - INFO - pubmed_id: 25731774
+2025-03-05 00:31:53,215 - INFO - querying PubMed for MicroCT and genetic analysis of a rare case of Caffey's disease in a 5-7 month old girl
+2025-03-05 00:31:57,281 - INFO - No pubmed id available.
+2025-03-05 00:31:57,282 - INFO - querying PubMed for Genetic affinities between the Yami tribe people of Orchid Island and the Philippine Islanders of the Batanes archipelago
+2025-03-05 00:31:58,191 - INFO - pubmed_id: 21281460
+2025-03-05 00:31:59,283 - INFO - querying PubMed for Mitochondrial DNA association study of type 2 diabetes with or without ischemic stroke in Taiwan
+2025-03-05 00:32:02,579 - INFO - pubmed_id: 24713204
+2025-03-05 00:32:05,152 - INFO - querying PubMed for Mitochondrial DNA pathogenic mutations in multiple symmetric lipomatosis
+2025-03-05 00:32:06,715 - INFO - pubmed_id: 31912494
+2025-03-05 00:32:07,823 - INFO - querying PubMed for Food derived respiratory complex I inhibitors modify the effect of Leber hereditary optic neuropathy mutations
+2025-03-05 00:32:08,488 - INFO - pubmed_id: 29991444
+2025-03-05 00:32:09,643 - INFO - querying PubMed for Expanding the clinical phenotypes of MT-ATP6 mutations
+2025-03-05 00:32:10,812 - INFO - pubmed_id: 24986921
+2025-03-05 00:32:12,145 - INFO - querying PubMed for Biological sexing of a 4,000 year-old Egyptian mummy head to assess the potential of nuclear DNA recovery from the most damaged and limited forensic specimens
+2025-03-05 00:32:15,032 - INFO - pubmed_id: 29494531
+2025-03-05 00:32:16,100 - INFO - querying PubMed for Frequency and spectrum of MT-TT variants associated with Leber's hereditary optic neuropathy in a Chinese cohort of subjects
+2025-03-05 00:32:17,616 - INFO - pubmed_id: 33365504
+2025-03-05 00:32:18,840 - INFO - querying PubMed for Phenotypic variants of the deafness-associated mitochondrial DNA A7445G mutation
+2025-03-05 00:32:19,415 - INFO - pubmed_id: 18537605
+2025-03-05 00:32:20,579 - INFO - querying PubMed for Major genomic mitochondrial lineages delineate early human expansions
+2025-03-05 00:32:21,142 - INFO - pubmed_id: 11553319
+2025-03-05 00:32:22,543 - INFO - querying PubMed for Mitochondrial DNA transit between West Asia and North Africa inferred from U6 phylogeography
+2025-03-05 00:32:23,159 - INFO - pubmed_id: 14563219
+2025-03-05 00:32:24,223 - INFO - querying PubMed for Single, rapid coastal settlement of Asia revealed by analysis of complete mitochondrial genomes
+2025-03-05 00:32:24,787 - INFO - pubmed_id: 15890885
+2025-03-05 00:32:25,917 - INFO - querying PubMed for African mitochondrial haplogroup L7: a 100,000-year-old maternal human lineage discovered through reassessment and new sequencing
+2025-03-05 00:32:26,503 - INFO - pubmed_id: 35750688
+2025-03-05 00:32:27,629 - INFO - querying PubMed for Brief communication: Mitochondrial haplotype C4c confirmed as a founding genome in the Americas
+2025-03-05 00:32:28,197 - INFO - pubmed_id: 20027611
+2025-03-05 00:32:29,514 - INFO - querying PubMed for Reconstructing the phylogeny of African mitochondrial DNA lineages in Slavs
+2025-03-05 00:32:30,089 - INFO - pubmed_id: 18398433
+2025-03-05 00:32:31,229 - INFO - querying PubMed for Mitochondrial DNA variability in Slovaks, with application to the Roma origin
+2025-03-05 00:32:33,774 - INFO - pubmed_id: 18205894
+2025-03-05 00:32:35,184 - INFO - querying PubMed for Mitogenomic diversity in tatars from the volga-ural region of Russia
+2025-03-05 00:32:36,134 - INFO - pubmed_id: 20457583
+2025-03-05 00:32:37,127 - INFO - querying PubMed for Whole mitochondrial genome diversity in two Hungarian populations
+2025-03-05 00:32:37,800 - INFO - pubmed_id: 29948329
+2025-03-05 00:32:39,066 - INFO - querying PubMed for The peopling of Europe from the mitochondrial haplogroup U5 perspective
+2025-03-05 00:32:39,671 - INFO - pubmed_id: 20422015
+2025-03-05 00:32:40,748 - INFO - querying PubMed for Mitochondrial DNA phylogeny in Eastern and Western Slavs
+2025-03-05 00:32:41,397 - INFO - pubmed_id: 18477584
+2025-03-05 00:32:43,497 - INFO - querying PubMed for Mitogenomic diversity in Russians and Poles
+2025-03-05 00:32:44,119 - INFO - pubmed_id: 28633069
+2025-03-05 00:32:45,039 - INFO - querying PubMed for Sex-specific genetic diversity is shaped by cultural factors in Inner Asian human populations
+2025-03-05 00:32:45,828 - INFO - pubmed_id: 28158897
+2025-03-05 00:32:46,775 - INFO - querying PubMed for Eight millennia of matrilineal genetic continuity in the South Caucasus
+2025-03-05 00:32:47,356 - INFO - pubmed_id: 28669760
+2025-03-05 00:32:48,508 - INFO - querying PubMed for Eight Millennia of Matrilineal Genetic Continuity in the South Caucasus
+2025-03-05 00:32:49,097 - INFO - pubmed_id: 28669760
+2025-03-05 00:32:50,309 - INFO - querying PubMed for Carriers of human mitochondrial DNA macrohaplogroup M colonized India from southeastern Asia
+2025-03-05 00:32:50,925 - INFO - pubmed_id: 27832758
+2025-03-05 00:32:51,965 - INFO - querying PubMed for A European Mitochondrial Haplotype Identified in Ancient Phoenician Remains from Carthage, North Africa
+2025-03-05 00:32:52,543 - INFO - pubmed_id: 27224451
+2025-03-05 00:32:53,642 - INFO - querying PubMed for Ancient mitogenomes of Phoenicians from Sardinia and Lebanon: A story of settlement, integration, and female mobility
+2025-03-05 00:32:57,023 - INFO - pubmed_id: 29320542
+2025-03-05 00:32:58,040 - INFO - querying PubMed for Spectrum of mitochondrial genomic variation and associated clinical presentation of prostate cancer in South African men
+2025-03-05 00:32:58,658 - INFO - pubmed_id: 26660354
+2025-03-05 00:32:59,766 - INFO - querying PubMed for Deep sequencing reveals the mitochondrial DNA variation landscapes of breast-to-brain metastasis blood samples
+2025-03-05 00:33:00,335 - INFO - pubmed_id: 28712340
+2025-03-05 00:33:01,332 - INFO - querying PubMed for Ancient mitochondrial M haplogroups identified in the Southwest Pacific
+2025-03-05 00:33:01,923 - INFO - pubmed_id: 16150714
+2025-03-05 00:33:03,011 - INFO - querying PubMed for The history of slavs inferred from complete mitochondrial genome sequences
+2025-03-05 00:33:03,589 - INFO - pubmed_id: 23342138
+2025-03-05 00:33:04,801 - INFO - querying PubMed for The history of Slavs inferred from complete mitochondrial genome sequences
+2025-03-05 00:33:05,385 - INFO - pubmed_id: 23342138
+2025-03-05 00:33:06,531 - INFO - querying PubMed for Natural selection shaped regional mtDNA variation in humans
+2025-03-05 00:33:07,101 - INFO - pubmed_id: 12509511
+2025-03-05 00:33:08,205 - INFO - querying PubMed for The Genetic Prehistory of the Baltic Sea Region
+2025-03-05 00:33:08,826 - INFO - pubmed_id: 29382937
+2025-03-05 00:33:10,028 - INFO - querying PubMed for Population dynamics in the Japanese Archipelago since the Pleistocene revealed by the complete mitochondrial genome sequences
+2025-03-05 00:33:10,611 - INFO - pubmed_id: 34121089
+2025-03-05 00:33:12,118 - INFO - querying PubMed for Imputation approach for deducing a complete mitogenome sequence from low-depth-coverage next-generation sequencing data: application to ancient remains from the Moon Pyramid, Mexico
+2025-03-05 00:33:13,007 - INFO - pubmed_id: 28202952
+2025-03-05 00:33:14,097 - INFO - querying PubMed for A study of 8,300-year-old Jomon human remains in Japan using complete mitogenome sequences obtained by next-generation sequencing
+2025-03-05 00:33:14,683 - INFO - pubmed_id: 32674620
+2025-03-05 00:33:15,761 - INFO - querying PubMed for Diversity in matrilineages among the Jomon individuals of Japan
+2025-03-05 00:33:16,341 - INFO - pubmed_id: 37431939
+2025-03-05 00:33:17,302 - INFO - querying PubMed for Bioarchaeological study of ancient Teotihuacans based on complete mitochondrial genome sequences and diet isotopes
+2025-03-05 00:33:17,876 - INFO - pubmed_id: 37812249
+2025-03-05 00:33:19,154 - INFO - querying PubMed for Paleogenetic and morphometric analysis of a Mesolithic individual from Grotta d'Oriente: An oldest genetic legacy for the first modern humans in Sicily
+2025-03-05 00:33:21,805 - INFO - No pubmed id available.
+2025-03-05 00:33:21,805 - INFO - querying PubMed for The mitogenome portrait of Umbria in Central Italy as depicted by contemporary inhabitants and pre-Roman remains
+2025-03-05 00:33:22,386 - INFO - pubmed_id: 32612271
+2025-03-05 00:33:24,039 - INFO - querying PubMed for Ancient human mitochondrial genomes from Bronze Age Bulgaria: new insights into the genetic history of Thracians
+2025-03-05 00:33:25,207 - INFO - pubmed_id: 30931994
+2025-03-05 00:33:26,220 - INFO - querying PubMed for Combined methodologies for gaining much information from ancient dental calculus: testing experimental strategies for simultaneously analyzing DNA and food residues
+2025-03-05 00:33:28,376 - INFO - No pubmed id available.
+2025-03-05 00:33:28,376 - INFO - querying PubMed for More data on ancient human mitogenome variability in Italy: new mitochondrial genome sequences from three Upper Palaeolithic burials
+2025-03-05 00:33:29,008 - INFO - pubmed_id: 34459344
+2025-03-05 00:33:30,285 - INFO - querying PubMed for First ancient mitochondrial human genome from a prepastoralist southern african
+2025-03-05 00:33:30,852 - INFO - pubmed_id: 25212860
+2025-03-05 00:33:32,111 - INFO - querying PubMed for Primer genoma mitocondrial en restos humanos de la costa de Santa Cruz, Argentina
+2025-03-05 00:33:34,796 - INFO - No pubmed id available.
+2025-03-05 00:33:34,796 - INFO - querying PubMed for Population history of the Red Sea--genetic exchanges between the Arabian Peninsula and East Africa signaled in the mitochondrial DNA HV1 haplogroup
+2025-03-05 00:33:36,385 - INFO - pubmed_id: 21660931
+2025-03-05 00:33:37,405 - INFO - querying PubMed for Aboriginal Australian mitochondrial genome variation - an increased understanding of population antiquity and diversity
+2025-03-05 00:33:38,317 - INFO - pubmed_id: 28287095
+2025-03-05 00:33:39,512 - INFO - querying PubMed for Revising mtDNA haplotypes of the ancient Hungarian conquerors with next generation sequencing
+2025-03-05 00:33:40,090 - INFO - pubmed_id: 28422985
+2025-03-05 00:33:41,195 - INFO - querying PubMed for Mitochondrial DNA analysis of eneolithic trypillians from Ukraine reveals neolithic farming genetic roots
+2025-03-05 00:33:41,764 - INFO - pubmed_id: 28235025
+2025-03-05 00:33:42,824 - INFO - querying PubMed for Phylogenetic classification of Japanese mtDNA assisted by complete mitochondrial DNA sequences
+2025-03-05 00:33:43,602 - INFO - pubmed_id: 19066930
+2025-03-05 00:33:44,793 - INFO - querying PubMed for Matriclans shape populations: Insights from the Angolan Namib Desert into the maternal genetic history of southern Africa
+2025-03-05 00:33:45,409 - INFO - pubmed_id: 29313877
+2025-03-05 00:33:46,369 - INFO - querying PubMed for The mtDNA Legacy of the Levantine Early Upper Palaeolithic in Africa
+2025-03-05 00:33:46,935 - INFO - pubmed_id: 17170302
+2025-03-05 00:33:48,340 - INFO - querying PubMed for Mitogenomes from Two Uncommon Haplogroups Mark Late Glacial/Postglacial Expansions from the Near East and Neolithic Dispersals within Europe
+2025-03-05 00:33:49,602 - INFO - pubmed_id: 23936216
+2025-03-05 00:33:50,817 - INFO - querying PubMed for Mitogenome Diversity in Sardinians: a Genetic Window onto an Island's Past
+2025-03-05 00:33:51,408 - INFO - pubmed_id: 28177087
+2025-03-05 00:33:53,528 - INFO - querying PubMed for Mitochondrial haplogroup H1 in north Africa: an early holocene arrival from Iberia
+2025-03-05 00:33:55,644 - INFO - pubmed_id: 20975840
+2025-03-05 00:33:56,509 - INFO - querying PubMed for Human mitochondrial DNA lineages in Iron-Age Fennoscandia suggest incipient admixture and eastern introduction of farming-related maternal ancestry
+2025-03-05 00:33:57,083 - INFO - pubmed_id: 31729399
+2025-03-05 00:33:58,429 - INFO - querying PubMed for Mitochondrial antibiograms in personalized medicine
+2025-03-05 00:33:59,011 - INFO - pubmed_id: 23223015
+2025-03-05 00:34:00,112 - INFO - querying PubMed for Mitochondrial haplogroup U5b3: a distant echo of the epipaleolithic in Italy and the legacy of the early Sardinians
+2025-03-05 00:34:00,688 - INFO - pubmed_id: 19500771
+2025-03-05 00:34:03,660 - INFO - querying PubMed for Mitochondrial DNA signals of late glacial recolonization of europe from near eastern refugia
+2025-03-05 00:34:04,228 - INFO - pubmed_id: 22560092
+2025-03-05 00:34:06,098 - INFO - querying PubMed for Tamil merchant in ancient mesopotamia
+2025-03-05 00:34:06,675 - INFO - pubmed_id: 25299580
+2025-03-05 00:34:07,923 - INFO - querying PubMed for West Eurasian mtDNA lineages in India: an insight into the spread of the Dravidian language and the origins of the caste system
+2025-03-05 00:34:08,620 - INFO - pubmed_id: 25832481
+2025-03-05 00:34:09,722 - INFO - querying PubMed for Phylogeny of mitochondrial DNA macrohaplogroup N in India, based on complete sequencing: implications for the peopling of South Asia
+2025-03-05 00:34:10,649 - INFO - pubmed_id: 15467980
+2025-03-05 00:34:11,959 - INFO - querying PubMed for Mitochondrial haplogroup N1a phylogeography, with implication to the origin of European farmers
+2025-03-05 00:34:14,810 - INFO - pubmed_id: 20939899
+2025-03-05 00:34:15,635 - INFO - querying PubMed for East Eurasian ancestry in the middle of Europe: genetic footprints of Steppe nomads in the genomes of Belarusian Lipka Tatars
+2025-03-05 00:34:16,667 - INFO - pubmed_id: 27453128
+2025-03-05 00:34:17,827 - INFO - querying PubMed for Over the sands and far away: Interpreting an Iberian mitochondrial lineage with ancient Western African origins
+2025-03-05 00:34:18,442 - INFO - pubmed_id: 25130626
+2025-03-05 00:34:19,420 - INFO - querying PubMed for The First complete Zoroastrian-Parsi Mitochondria Reference Genome: Implications of mitochondrial signatures in an endogamous, non-smoking population
+2025-03-05 00:34:22,317 - INFO - No pubmed id available.
+2025-03-05 00:34:22,317 - INFO - querying PubMed for Papuan mitochondrial genomes and the settlement of Sahul
+2025-03-05 00:34:22,894 - INFO - pubmed_id: 32483274
+2025-03-05 00:34:24,317 - INFO - querying PubMed for Mitochondrial DNA background modulates the assembly kinetics of OXPHOS complexes in a cellular model of mitochondrial disease
+2025-03-05 00:34:26,662 - INFO - pubmed_id: 18806273
+2025-03-05 00:34:27,766 - INFO - querying PubMed for Tracing the legacy of the early Hainan Islanders - a perspective from mitochondrial DNA
+2025-03-05 00:34:29,456 - INFO - pubmed_id: 21324107
+2025-03-05 00:34:30,523 - INFO - querying PubMed for Inland post-glacial dispersal in East Asia revealed by mitochondrial haplogroup M9a'b
+2025-03-05 00:34:31,241 - INFO - pubmed_id: 21219640
+2025-03-05 00:34:32,354 - INFO - querying PubMed for Tracing the austronesian footprint in mainland southeast Asia: a perspective from mitochondrial DNA
+2025-03-05 00:34:32,965 - INFO - pubmed_id: 20513740
+2025-03-05 00:34:34,877 - INFO - querying PubMed for Divorcing the Late Upper Palaeolithic demographic histories of mtDNA haplogroups M1 and U6 in Africa
+2025-03-05 00:34:35,507 - INFO - pubmed_id: 23206491
+2025-03-05 00:34:37,282 - INFO - querying PubMed for Distinctive Paleo-Indian migration routes from Beringia marked by two rare mtDNA haplogroups
+2025-03-05 00:34:37,857 - INFO - pubmed_id: 19135370
+2025-03-05 00:34:39,459 - INFO - querying PubMed for The initial peopling of the Americas: a growing number of founding mitochondrial genomes from Beringia
+2025-03-05 00:34:40,061 - INFO - pubmed_id: 20587512
+2025-03-05 00:34:41,694 - INFO - querying PubMed for Decrypting the mitochondrial gene pool of modern panamanians
+2025-03-05 00:34:42,283 - INFO - pubmed_id: 22675545
+2025-03-05 00:34:43,491 - INFO - querying PubMed for Reconciling analyses of ancient and contemporary genomes: A major source for the European Neolithic within Mediterranean Europe
+2025-03-05 00:34:45,806 - INFO - pubmed_id: 28330913
+2025-03-05 00:34:46,770 - INFO - querying PubMed for Linking the sub-Saharan and West Eurasian gene pools: maternal and paternal heritage of the Tuareg nomads from the African Sahel
+2025-03-05 00:34:47,462 - INFO - pubmed_id: 20234393
+2025-03-05 00:34:48,522 - INFO - querying PubMed for Population expansion in the North African Late Pleistocene signalled by mitochondrial DNA haplogroup U6
+2025-03-05 00:34:49,266 - INFO - pubmed_id: 21176127
+2025-03-05 00:34:50,122 - INFO - querying PubMed for Isoleucyl-tRNA synthetase levels modulate the penetrance of a homoplasmic m.4277T>C mitochondrial tRNAIle mutation causing hypertrophic cardiomyopathy
+2025-03-05 00:34:51,821 - INFO - pubmed_id: 21945886
+2025-03-05 00:34:52,767 - INFO - querying PubMed for Drawing the history of the Hutterite population on a genetic landscape: inference from Y-chromosome and mtDNA genotypes
+2025-03-05 00:34:53,721 - INFO - pubmed_id: 19844259
+2025-03-05 00:34:54,704 - INFO - querying PubMed for Genomic landscape of human diversity across Madagascar
+2025-03-05 00:34:55,294 - INFO - pubmed_id: 28716916
+2025-03-05 00:34:56,453 - INFO - querying PubMed for Deciphering past human population movements in Oceania: provably optimal trees of 127 mtDNA genomes
+2025-03-05 00:34:57,029 - INFO - pubmed_id: 16855009
+2025-03-05 00:34:58,134 - INFO - querying PubMed for A missense MT-ND5 mutation in differentiated Parkinson Disease cytoplasmic hybrid induces ROS-dependent DNA Damage Response amplified by DROSHA
+2025-03-05 00:34:59,043 - INFO - pubmed_id: 28842646
+2025-03-05 00:35:00,228 - INFO - querying PubMed for mtDNA Haplogroup T Phylogeny Based on Full Mitochondrial Sequences
+2025-03-05 00:35:04,764 - INFO - No pubmed id available.
+2025-03-05 00:35:04,764 - INFO - querying PubMed for Mitochondrial Genome Variation in Polish Elite Athletes
+2025-03-05 00:35:05,340 - INFO - pubmed_id: 37629173
+2025-03-05 00:35:06,638 - INFO - querying PubMed for The genetic impact of the lake chad basin population in north Africa as documented by mitochondrial diversity and internal variation of the l3e5 haplogroup
+2025-03-05 00:35:07,447 - INFO - pubmed_id: 25069842
+2025-03-05 00:35:08,531 - INFO - querying PubMed for Mitogenomic and microsatellite variation in descendants of the founder population of Newfoundland: high genetic diversity in an historically isolated population
+2025-03-05 00:35:12,752 - INFO - pubmed_id: 21326367
+2025-03-05 00:35:14,212 - INFO - querying PubMed for A hybrid pipeline for reconstruction and analysis of viral genomes at multi-organ level
+2025-03-05 00:35:14,950 - INFO - pubmed_id: 32815536
+2025-03-05 00:35:16,080 - INFO - querying PubMed for Whole-genome sequencing identifies a novel ABCB7 gene mutation for X-linked congenital cerebellar ataxia in a large family of Mongolian ancestry
+2025-03-05 00:35:19,423 - INFO - pubmed_id: 26242992
+2025-03-05 00:35:20,452 - INFO - querying PubMed for Maternal traces of deep common ancestry and asymmetric gene flow between Pygmy hunter-gatherers and Bantu-speaking farmers
+2025-03-05 00:35:21,017 - INFO - pubmed_id: 18216239
+2025-03-05 00:35:22,455 - INFO - querying PubMed for Complete mitogenomes document substantial genetic contribution from the Eurasian Steppe into northern Pakistani Indo-Iranian speakers
+2025-03-05 00:35:23,274 - INFO - pubmed_id: 33637889
+2025-03-05 00:35:24,361 - INFO - querying PubMed for Phylogeny and antiquity of M macrohaplogroup inferred from complete mt DNA sequence of Indian specific lineages
+2025-03-05 00:35:25,053 - INFO - pubmed_id: 15804362
+2025-03-05 00:35:26,101 - INFO - querying PubMed for Mitochondrial DNA haplogroup 'R' is associated with Noonan syndrome of South India
+2025-03-05 00:35:28,387 - INFO - pubmed_id: 20006740
+2025-03-05 00:35:29,160 - INFO - querying PubMed for The co-occurrence of mtDNA mutations on different oxidative phosphorylation subunits, not detected by haplogroup analysis, affects human longevity and is population specific
+2025-03-05 00:35:30,675 - INFO - pubmed_id: 24341918
+2025-03-05 00:35:31,875 - INFO - querying PubMed for Inherited and somatic mitochondrial DNA mutations in Guam amyotrophic lateral sclerosis and parkinsonism-dementia
+2025-03-05 00:35:32,440 - INFO - pubmed_id: 21822691
+2025-03-05 00:35:33,533 - INFO - querying PubMed for A new deep branch of eurasian mtDNA macrohaplogroup M reveals additional complexity regarding the settlement of Madagascar
+2025-03-05 00:35:34,139 - INFO - pubmed_id: 20003445
+2025-03-05 00:35:36,373 - INFO - querying PubMed for Improved calibration of the human mitochondrial clock using ancient genomes
+2025-03-05 00:35:36,947 - INFO - pubmed_id: 25100861
+2025-03-05 00:35:37,976 - INFO - querying PubMed for The First Modern Human Dispersals across Africa
+2025-03-05 00:35:38,546 - INFO - pubmed_id: 24236171
+2025-03-05 00:35:39,694 - INFO - querying PubMed for Genomic identification in the historical case of the Nicholas II royal family
+2025-03-05 00:35:40,264 - INFO - pubmed_id: 19251637
+2025-03-05 00:35:41,419 - INFO - querying PubMed for Mitochondrial ancestry of medieval individuals carelessly interred in a multiple burial from southeastern Romania
+2025-03-05 00:35:42,726 - INFO - pubmed_id: 30700787
+2025-03-05 00:35:43,801 - INFO - querying PubMed for Maternal DNA lineages at the gate of Europe in the 10th century AD
+2025-03-05 00:35:44,402 - INFO - pubmed_id: 29538439
+2025-03-05 00:35:45,561 - INFO - querying PubMed for Origin and spread of human mitochondrial DNA haplogroup U7
+2025-03-05 00:35:46,135 - INFO - pubmed_id: 28387361
+2025-03-05 00:35:47,859 - INFO - querying PubMed for Whole sequence of the mitochondrial DNA genome of Kearns Sayre Syndrome patients: Identification of deletions and variants
+2025-03-05 00:35:48,452 - INFO - pubmed_id: 30528267
+2025-03-05 00:35:49,367 - INFO - querying PubMed for Genomic affinities of two 7,000-year-old iberian hunter-gatherers
+2025-03-05 00:35:49,935 - INFO - pubmed_id: 22748318
+2025-03-05 00:35:51,088 - INFO - querying PubMed for A new mitochondrial c1 lineage from the prehistory of uruguay: population genocide, ethnocide, and continuity
+2025-03-05 00:35:51,661 - INFO - pubmed_id: 23020097
+2025-03-05 00:35:52,619 - INFO - querying PubMed for A South American Prehistoric Mitogenome: Context, Continuity, and the Origin of Haplogroup C1d
+2025-03-05 00:35:53,190 - INFO - pubmed_id: 26509686
+2025-03-05 00:35:54,234 - INFO - querying PubMed for Evidence for sub-haplogroup h5 of mitochondrial DNA as a risk factor for late onset Alzheimer's disease
+2025-03-05 00:35:54,889 - INFO - pubmed_id: 20700462
+2025-03-05 00:35:56,290 - INFO - querying PubMed for Maternal genetic heritage of southeastern europe reveals a new croatian isolate and a novel, local sub-branching in the x2 haplogroup
+2025-03-05 00:35:58,741 - INFO - pubmed_id: 24621318
+2025-03-05 00:35:59,600 - INFO - querying PubMed for High-throughput sequencing of complete human mtDNA genomes from the Caucasus and West Asia: high diversity and demographic inferences
+2025-03-05 00:36:00,240 - INFO - pubmed_id: 21487439
+2025-03-05 00:36:01,495 - INFO - querying PubMed for Genetic diversity and evidence for population admixture in Batak Negritos from Palawan
+2025-03-05 00:36:02,126 - INFO - pubmed_id: 21796613
+2025-03-05 00:36:03,098 - INFO - querying PubMed for The history of the North African mitochondrial DNA haplogroup U6 gene flow into the African, Eurasian and American continents
+2025-03-05 00:36:03,798 - INFO - pubmed_id: 24885141
+2025-03-05 00:36:04,860 - INFO - querying PubMed for The Mitochondrial Genome Is a 'Genetic Sanctuary' during the Oncogenic Process
+2025-03-05 00:36:06,502 - INFO - pubmed_id: 21858071
+2025-03-05 00:36:07,625 - INFO - querying PubMed for Mitochondrial mutations in subjects with psychiatric disorders
+2025-03-05 00:36:08,229 - INFO - pubmed_id: 26011537
+2025-03-05 00:36:09,672 - INFO - querying PubMed for Genetic affinities of the central Indian tribal populations
+2025-03-05 00:36:10,242 - INFO - pubmed_id: 22393414
+2025-03-05 00:36:11,617 - INFO - querying PubMed for The Druze: a population genetic refugium of the Near East
+2025-03-05 00:36:12,200 - INFO - pubmed_id: 18461126
+2025-03-05 00:36:13,194 - INFO - querying PubMed for 60,000 years of interactions between Central and Eastern Africa documented by major African mitochondrial haplogroup L2
+2025-03-05 00:36:13,761 - INFO - pubmed_id: 26211407
+2025-03-05 00:36:15,167 - INFO - querying PubMed for A genetic chronology for the Indian Subcontinent points to heavily sex-biased dispersals
+2025-03-05 00:36:15,741 - INFO - pubmed_id: 28335724
+2025-03-05 00:36:16,988 - INFO - querying PubMed for Biomolecular insights into North African-related ancestry, mobility and diet in eleventh-century Al-Andalus
+2025-03-05 00:36:17,565 - INFO - pubmed_id: 34518562
+2025-03-05 00:36:18,953 - INFO - querying PubMed for The maternal inheritance of Alto Parana revealed by full mitogenome sequences
+2025-03-05 00:36:21,087 - INFO - pubmed_id: 30594063
+2025-03-05 00:36:22,090 - INFO - querying PubMed for Mitogenomic differences between the normal and tumour cells of colorectal cancer patients
+2025-03-05 00:36:24,312 - INFO - pubmed_id: 29330893
+2025-03-05 00:36:25,220 - INFO - querying PubMed for Heteroplasmic substitutions in the entire mitochondrial genomes of human colon cells detected by ultra-deep 454 sequencing
+2025-03-05 00:36:25,804 - INFO - pubmed_id: 25465762
+2025-03-05 00:36:26,736 - INFO - querying PubMed for The Expansion of mtDNA Haplogroup L3 within and out of Africa
+2025-03-05 00:36:27,294 - INFO - pubmed_id: 22096215
+2025-03-05 00:36:28,281 - INFO - querying PubMed for Resolving the ancestry of Austronesian-speaking populations
+2025-03-05 00:36:28,851 - INFO - pubmed_id: 26781090
+2025-03-05 00:36:30,373 - INFO - querying PubMed for Ancient voyaging and polynesian origins
+2025-03-05 00:36:30,969 - INFO - pubmed_id: 21295281
+2025-03-05 00:36:32,326 - INFO - querying PubMed for Climate change and postglacial human dispersals in southeast Asia
+2025-03-05 00:36:32,890 - INFO - pubmed_id: 18359946
+2025-03-05 00:36:34,108 - INFO - querying PubMed for Genomic insights on the ethno-history of the Maya and the 'Ladinos' from Guatemala
+2025-03-05 00:36:34,703 - INFO - pubmed_id: 25887241
+2025-03-05 00:36:35,852 - INFO - querying PubMed for Mitochondrial DNA sequence variation in Finnish patients with matrilineal diabetes mellitus
+2025-03-05 00:36:36,418 - INFO - pubmed_id: 22780954
+2025-03-05 00:36:37,877 - INFO - querying PubMed for A novel MTTT mutation m.15933G > A revealed in analysis of mitochondrial DNA in patients with suspected mitochondrial disease
+2025-03-05 00:36:39,732 - INFO - pubmed_id: 28187756
+2025-03-05 00:36:40,763 - INFO - querying PubMed for Mitochondrial DNA diversity in indigenous populations of the southern extent of Siberia, and the origins of Native American haplogroups
+2025-03-05 00:36:41,423 - INFO - pubmed_id: 15638829
+2025-03-05 00:36:42,362 - INFO - querying PubMed for Mitochondrial DNA Variation of Leber's Hereditary Optic Neuropathy in Western Siberia
+2025-03-05 00:36:43,241 - INFO - pubmed_id: 31817256
+2025-03-05 00:36:44,116 - INFO - querying PubMed for Haplogroup J mitogenomes are the most sensitive to the pesticide rotenone: Relevance for human diseases
+2025-03-05 00:36:45,431 - INFO - pubmed_id: 29486301
+2025-03-05 00:36:46,490 - INFO - querying PubMed for Mitochondrial genome diversity in the Tubalar, Even, and Ulchi: contribution to prehistory of native Siberians and their affinities to Native Americans
+2025-03-05 00:36:47,989 - INFO - pubmed_id: 22487888
+2025-03-05 00:36:48,755 - INFO - querying PubMed for Large-scale mitochondrial DNA analysis in Southeast Asia reveals evolutionary effects of cultural isolation in the multi-ethnic population of Myanmar
+2025-03-05 00:36:49,436 - INFO - pubmed_id: 24467713
+2025-03-05 00:36:50,790 - INFO - querying PubMed for The dazzling array of basal branches in the mtDNA macrohaplogroup M from India as inferred from complete genomes
+2025-03-05 00:36:51,405 - INFO - pubmed_id: 16361303
+2025-03-05 00:36:53,161 - INFO - querying PubMed for Ancient DNA and multimethod dating confirm the late arrival of anatomically modern humans in southern China
+2025-03-05 00:36:54,058 - INFO - pubmed_id: 33558418
+2025-03-05 00:36:55,312 - INFO - querying PubMed for Maternal genetic link of a south Dravidian tribe with native Iranians indicating bidirectional migration
+2025-03-05 00:36:56,105 - INFO - pubmed_id: 30909755
+2025-03-05 00:36:57,206 - INFO - querying PubMed for Neolithic phylogenetic continuity inferred from complete mitochondrial DNA sequences in a tribal population of Southern India
+2025-03-05 00:37:00,148 - INFO - pubmed_id: 30203139
+2025-03-05 00:37:01,032 - INFO - querying PubMed for An Updated Phylogeny of mtDNA Haplogroup R8 Based on Complete Mitogenomes
+2025-03-05 00:37:02,867 - INFO - No pubmed id available.
+2025-03-05 00:37:02,867 - INFO - querying PubMed for Philippine mitochondrial DNA diversity: a populated viaduct between Taiwan and Indonesia?
+2025-03-05 00:37:03,450 - INFO - pubmed_id: 19755666
+2025-03-05 00:37:05,826 - INFO - querying PubMed for The genetic legacy of the pre-colonial period in contemporary bolivians
+2025-03-05 00:37:06,401 - INFO - pubmed_id: 23527064
+2025-03-05 00:37:07,435 - INFO - querying PubMed for Two contemporaneous mitogenomes from terminal Pleistocene burials in eastern Beringia
+2025-03-05 00:37:08,359 - INFO - pubmed_id: 26504230
+2025-03-05 00:37:09,487 - INFO - querying PubMed for Beringian standstill and spread of Native American founders
+2025-03-05 00:37:10,083 - INFO - pubmed_id: 17786201
+2025-03-05 00:37:11,083 - INFO - querying PubMed for Mitochondrial genome variation in eastern Asia and the peopling of Japan
+2025-03-05 00:37:12,232 - INFO - pubmed_id: 15466285
+2025-03-05 00:37:13,575 - INFO - querying PubMed for Platinum-quality mitogenome haplotypes from United States populations
+2025-03-05 00:37:14,193 - INFO - pubmed_id: 33138247
+2025-03-05 00:37:15,936 - INFO - querying PubMed for Reconstructing the origin of Andaman Islanders
+2025-03-05 00:37:16,503 - INFO - pubmed_id: 15890876
+2025-03-05 00:37:17,527 - INFO - querying PubMed for In situ origin of deep rooting lineages of mitochondrial Macrohaplogroup 'M' in India
+2025-03-05 00:37:18,326 - INFO - pubmed_id: 16776823
+2025-03-05 00:37:19,805 - INFO - querying PubMed for Deep rooting in-situ expansion of mtDNA Haplogroup R8 in South Asia
+2025-03-05 00:37:20,375 - INFO - pubmed_id: 19662095
+2025-03-05 00:37:21,455 - INFO - querying PubMed for A genetic contribution from the Far East into Ashkenazi Jews via the ancient Silk Road
+2025-03-05 00:37:22,093 - INFO - pubmed_id: 25669617
+2025-03-05 00:37:23,093 - INFO - querying PubMed for Harvesting the fruit of the human mtDNA tree
+2025-03-05 00:37:23,936 - INFO - pubmed_id: 16678300
+2025-03-05 00:37:24,683 - INFO - querying PubMed for Exploring European ancestry among the Kalash population: a mitogenomic perspective
+2025-03-05 00:37:25,248 - INFO - pubmed_id: 32692490
+2025-03-05 00:37:26,218 - INFO - querying PubMed for A genetic perspective on Longobard-Era migrations
+2025-03-05 00:37:27,573 - INFO - pubmed_id: 30651584
+2025-03-05 00:37:28,556 - INFO - querying PubMed for Ancestral mitochondrial N lineage from the Neolithic 'green' Sahara
+2025-03-05 00:37:29,494 - INFO - pubmed_id: 30837540
+2025-03-05 00:37:30,576 - INFO - querying PubMed for Characterization of mtDNA variation in a cohort of South African paediatric patients with mitochondrial disease
+2025-03-05 00:37:33,040 - INFO - pubmed_id: 22258525
+2025-03-05 00:37:34,025 - INFO - querying PubMed for Mitochondrial genomics identifies major haplogroups in Aboriginal Australians
+2025-03-05 00:37:35,009 - INFO - pubmed_id: 16596590
+2025-03-05 00:37:36,510 - INFO - querying PubMed for An investigation of ancient Maya intentional dental modification practices at Midnight Terror Cave using anthroposcopic and paleogenomic methods
+2025-03-05 00:37:39,179 - INFO - No pubmed id available.
+2025-03-05 00:37:39,180 - INFO - querying PubMed for Hereditary spastic paraplegia-like disorder due to a mitochondrial ATP6 gene point mutation
+2025-03-05 00:37:39,767 - INFO - pubmed_id: 20656066
+2025-03-05 00:37:40,713 - INFO - querying PubMed for Mitochondrial genome diversity in arctic Siberians, with particular reference to the evolutionary history of Beringia and Pleistocenic peopling of the Americas
+2025-03-05 00:37:42,089 - INFO - pubmed_id: 18452887
+2025-03-05 00:37:43,965 - INFO - querying PubMed for Bayesian analyses of Yemeni mitochondrial genomes suggest multiple migration events with Africa and Western Eurasia
+2025-03-05 00:37:44,547 - INFO - pubmed_id: 26567083
+2025-03-05 00:37:45,458 - INFO - querying PubMed for Complete mitochondrial genome sequencing reveals double-buried Jomon individuals excavated from the Ikawazu shell-mound site were not in a mother-child relationship
+2025-03-05 00:37:48,074 - INFO - No pubmed id available.
+2025-03-05 00:37:48,075 - INFO - querying PubMed for Somatic mtDNA mutations in lung tissues of pesticide-exposed fruit growers
+2025-03-05 00:37:48,654 - INFO - pubmed_id: 22079233
+2025-03-05 00:37:49,673 - INFO - querying PubMed for Uncovering the profile of somatic mtDNA mutations in Chinese colorectal cancer patients
+2025-03-05 00:37:50,244 - INFO - pubmed_id: 21738732
+2025-03-05 00:37:51,231 - INFO - querying PubMed for Somatic mutations of mitochondrial genome in early stage breast cancer
+2025-03-05 00:37:51,803 - INFO - pubmed_id: 17514652
+2025-03-05 00:37:53,043 - INFO - querying PubMed for Strikingly different penetrance of LHON in two Chinese families with primary mutation G11778A is independent of mtDNA haplogroup background and secondary mutation G13708A
+2025-03-05 00:37:53,882 - INFO - pubmed_id: 18619472
+2025-03-05 00:37:54,808 - INFO - querying PubMed for Mitochondrial DNA evidence supports northeast Indian origin of the aboriginal Andamanese in the Late Paleolithic
+2025-03-05 00:37:55,405 - INFO - pubmed_id: 21477783
+2025-03-05 00:37:56,362 - INFO - querying PubMed for Resolving mitochondrial haplogroups B2 and B4 with next-generation mitogenome sequencing to distinguish Native American from Asian haplotypes
+2025-03-05 00:37:56,992 - INFO - pubmed_id: 31473588
+2025-03-05 00:37:58,373 - INFO - querying PubMed for Ancient nuclear genomes enable repatriation of Indigenous human remains
+2025-03-05 00:37:59,027 - INFO - pubmed_id: 30585290
+2025-03-05 00:38:00,294 - INFO - querying PubMed for Evidence of early gene flow between Ashkenazi Jews and non-Jewish Europeans in mitochondrial DNA haplogroup H7
+2025-03-05 00:38:02,794 - INFO - No pubmed id available.
+2025-03-05 00:38:02,794 - INFO - querying PubMed for Genetic Drift Can Compromise Mitochondrial Replacement by Nuclear Transfer in Human Oocytes
+2025-03-05 00:38:03,396 - INFO - pubmed_id: 27212703
+2025-03-05 00:38:04,892 - INFO - querying PubMed for Novel A14841G mutation is associated with high penetrance of LHON/C4171A family
+2025-03-05 00:38:06,488 - INFO - pubmed_id: 19555656
+2025-03-05 00:38:07,327 - INFO - querying PubMed for Confirmation of the mitochondrial ND1 gene mutation G3635A as a primary LHON mutation
+2025-03-05 00:38:07,974 - INFO - pubmed_id: 19497304
+2025-03-05 00:38:09,193 - INFO - querying PubMed for The novel G10680A mutation is associated with complete penetrance of the LHON/T14484C family
+2025-03-05 00:38:09,829 - INFO - pubmed_id: 19394449
+2025-03-05 00:38:11,022 - INFO - querying PubMed for Mitochondrial DNA polymorphisms are associated with the longevity in the Guangxi Bama population of China
+2025-03-05 00:38:11,610 - INFO - pubmed_id: 22729909
+2025-03-05 00:38:12,572 - INFO - querying PubMed for Molecular characterization of six Chinese families with m.3460G>A and Leber hereditary optic neuropathy
+2025-03-05 00:38:13,165 - INFO - pubmed_id: 20232220
+2025-03-05 00:38:14,340 - INFO - querying PubMed for Mitochondrial DNA sequence variation and haplogroup distribution in Chinese patients with LHON and m.14484T>C
+2025-03-05 00:38:14,912 - INFO - pubmed_id: 20976138
+2025-03-05 00:38:16,302 - INFO - querying PubMed for Mitochondrial DNA abnormalities provide mechanistic insight and predict reactive oxygen species-stimulating drug efficacy
+2025-03-05 00:38:16,880 - INFO - pubmed_id: 33971830
+2025-03-05 00:38:17,731 - INFO - querying PubMed for Ancient DNA of Phoenician remains indicates discontinuity in the settlement history of Ibiza
+2025-03-05 00:38:18,368 - INFO - pubmed_id: 30514893
+2025-03-05 00:38:19,427 - INFO - querying PubMed for Mitochondrial cardiomyopathies: how to identify candidate pathogenic mutations by mitochondrial DNA sequencing, MITOMASTER and phylogeny
+2025-03-05 00:38:20,027 - INFO - pubmed_id: 20978534
+2025-03-05 00:38:21,205 - INFO - querying PubMed for Mitochondrial DNA variant discovery and evaluation in human Cardiomyopathies through next-generation sequencing
+2025-03-05 00:38:24,086 - INFO - pubmed_id: 20808834
+2025-03-05 00:38:25,184 - INFO - querying PubMed for Is Mitochondrial tRNA Variant m.593T>C a Synergistically Pathogenic Mutation in Chinese LHON Families with m.11778G>A?
+2025-03-05 00:38:27,143 - INFO - pubmed_id: 22039503
+2025-03-05 00:38:28,018 - INFO - querying PubMed for Mitochondrial DNA haplogroup background affects LHON, but not suspected LHON, in chinese patients
+2025-03-05 00:38:42,666 - INFO - No pubmed id available.
+2025-03-05 00:38:42,667 - INFO - querying PubMed for Mitochondrial DNA mutation m.10680G > A is associated with Leber hereditary optic neuropathy in Chinese patients
+2025-03-05 00:38:43,466 - INFO - pubmed_id: 22400981
+2025-03-05 00:38:44,587 - INFO - querying PubMed for Co-occurrence of A1555G and G11778A in a Chinese family with high penetrance of Leber's hereditary optic neuropathy
+2025-03-05 00:38:46,615 - INFO - pubmed_id: 18775412
+2025-03-05 00:38:47,408 - INFO - querying PubMed for Mitochondrial DNA mutation m.3635G>A may be associated with Leber hereditary optic neuropathy in Chinese
+2025-03-05 00:38:48,009 - INFO - pubmed_id: 19527690
+2025-03-05 00:38:49,043 - INFO - querying PubMed for Maternal genetic history of ancient Tibetans over the past 4000 years
+2025-03-05 00:38:50,843 - INFO - pubmed_id: 36933795
+2025-03-05 00:38:51,713 - INFO - querying PubMed for Analysis of mitochondrial genome diversity identifies new and ancient maternal lineages in Cambodian aborigines
+2025-03-05 00:38:52,275 - INFO - pubmed_id: 24121720
+2025-03-05 00:38:53,446 - INFO - querying PubMed for Mitochondrial haplogroups N9 and G are associated with metabolic syndrome among HIV-infected patients in China
+2025-03-05 00:38:56,177 - INFO - pubmed_id: 30950284
+2025-03-05 00:38:57,055 - INFO - querying PubMed for Mitochondrial genome evidence reveals successful Late Paleolithic settlement on the Tibetan Plateau
+2025-03-05 00:38:57,760 - INFO - pubmed_id: 19955425
+2025-03-05 00:39:00,698 - INFO - querying PubMed for Mitochondrial DNA Diversity of the Nangan Islanders Living in the Mazu Archipelago of the Taiwan Strait
+2025-03-05 00:39:03,246 - INFO - No pubmed id available.
+2025-03-05 00:39:03,246 - INFO - querying PubMed for The MT-ND1 and MT-ND5 genes are mutational hotspots for Chinese families with clinical features of LHON but lacking the three primary mutations
+2025-03-05 00:39:03,890 - INFO - pubmed_id: 20643099
+2025-03-05 00:39:04,790 - INFO - querying PubMed for Inheritance of mitochondrial DNA recombinants in double-heteroplasmic families: potential implications for phylogenetic analysis
+2025-03-05 00:39:05,599 - INFO - pubmed_id: 17236134
+2025-03-05 00:39:06,669 - INFO - querying PubMed for Severe epilepsy as the major symptom of new mutations in the mitochondrial tRNA(Phe) gene
+2025-03-05 00:39:09,245 - INFO - pubmed_id: 20142618
+2025-03-05 00:39:10,456 - INFO - Pubmed ID extraction completed
+2025-03-05 00:39:10,457 - INFO - Pubmed article extraction begins
+2025-03-05 00:39:10,765 - INFO - pmd_id: 18269758 and pmc_id: PMC2268671 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:11,345 - INFO - pmd_id: 22879922 and pmc_id: PMC3411744 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:13,155 - INFO - pmd_id: 21695278 and pmc_id: PMC3111471 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:13,846 - INFO - pmd_id: 18335039 and pmc_id: PMC2258150 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:14,551 - INFO - pmd_id: 23940335 and pmc_id: PMC3761611 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:15,221 - INFO - pmd_id: 15791543 and pmc_id: PMC1199377 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:15,737 - INFO - pmd_id: 15382008 and pmc_id: PMC1182122 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:17,360 - INFO - No PMC Id available for pubmed id 22927010
+2025-03-05 00:39:17,668 - INFO - pmd_id: 19340307 and pmc_id: PMC2660437 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:18,260 - INFO - pmd_id: 21970613 and pmc_id: PMC3215667 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:18,955 - INFO - No PMC Id available for pubmed id 27159691
+2025-03-05 00:39:19,308 - INFO - No PMC Id available for pubmed id 7219534
+2025-03-05 00:39:19,585 - INFO - No PMC Id available for pubmed id 10508508
+2025-03-05 00:39:21,224 - INFO - No PMC Id available for pubmed id 29076529
+2025-03-05 00:39:21,473 - INFO - No PMC Id available for pubmed id 8919866
+2025-03-05 00:39:21,853 - INFO - No PMC Id available for pubmed id 31325893
+2025-03-05 00:39:22,449 - INFO - No PMC Id available for pubmed id 15958208
+2025-03-05 00:39:22,833 - INFO - No PMC Id available for pubmed id 24323467
+2025-03-05 00:39:23,141 - INFO - pmd_id: 24901532 and pmc_id: PMC4047067 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:23,732 - INFO - pmd_id: 23332919 and pmc_id: PMC3567273 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:25,338 - INFO - No PMC Id available for pubmed id 22130972
+2025-03-05 00:39:25,576 - INFO - pmd_id: 26434580 and pmc_id: PMC4593049 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:26,394 - INFO - pmd_id: 27441366 and pmc_id: PMC4956223 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:26,996 - INFO - No PMC Id available for pubmed id 36242641
+2025-03-05 00:39:27,403 - INFO - No PMC Id available for pubmed id 21041797
+2025-03-05 00:39:27,840 - INFO - pmd_id: 22108605 and pmc_id: PMC3306851 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:28,500 - INFO - pmd_id: 22365151 and pmc_id: PMC3309182 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:29,204 - INFO - pmd_id: 16404693 and pmc_id: PMC1380291 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:30,547 - INFO - pmd_id: 18446216 and pmc_id: PMC2323359 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:31,290 - INFO - pmd_id: 22482806 and pmc_id: PMC3322232 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:31,878 - INFO - pmd_id: 18439549 and pmc_id: PMC2427203 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:33,708 - INFO - No PMC Id available for pubmed id 25908660
+2025-03-05 00:39:34,982 - INFO - pmd_id: 26538459 and pmc_id: PMC4633682 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:35,648 - INFO - No PMC Id available for pubmed id 32589725
+2025-03-05 00:39:35,963 - INFO - No PMC Id available for pubmed id 21419139
+2025-03-05 00:39:36,394 - INFO - pmd_id: 23304069 and pmc_id: PMC3538042 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:36,941 - INFO - No PMC Id available for pubmed id 20151402
+2025-03-05 00:39:37,366 - INFO - No PMC Id available for pubmed id 25457022
+2025-03-05 00:39:37,711 - INFO - pmd_id: 35743173 and pmc_id: PMC9223851 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:38,279 - INFO - No PMC Id available for pubmed id 25303789
+2025-03-05 00:39:38,755 - INFO - pmd_id: 22333566 and pmc_id: PMC3337427 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:39,373 - INFO - No PMC Id available for pubmed id 24114781
+2025-03-05 00:39:39,758 - INFO - pmd_id: 27041535 and pmc_id: PMC4969906 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:40,313 - INFO - pmd_id: 29099937 and pmc_id: PMC5850732 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:40,924 - INFO - pmd_id: 19050723 and pmc_id: PMC2986270 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:41,455 - INFO - pmd_id: 23612305 and pmc_id: PMC3978205 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:42,108 - INFO - No PMC Id available for pubmed id 11479733
+2025-03-05 00:39:42,997 - INFO - pmd_id: 30715341 and pmc_id: PMC6423374 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:44,269 - INFO - pmd_id: 29304377 and pmc_id: PMC5777450 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:46,704 - INFO - pmd_id: 29921229 and pmc_id: PMC6009813 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:47,365 - INFO - pmd_id: 33761327 and pmc_id: PMC8024902 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:47,863 - INFO - matched paragraphs for Archaeogenomic distinctiveness of the Isthmo-Colombian area
+2025-03-05 00:39:48,103 - INFO - pmd_id: 23246842 and pmc_id: PMC3778985 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:48,747 - INFO - pmd_id: 29444077 and pmc_id: PMC5828459 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:49,342 - INFO - pmd_id: 35069708 and pmc_id: PMC8773455 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:50,005 - INFO - pmd_id: 22234246 and pmc_id: PMC3356810 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:50,786 - INFO - pmd_id: 23844106 and pmc_id: PMC3700859 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:51,471 - INFO - pmd_id: 16532388 and pmc_id: PMC1424694 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:52,163 - INFO - No PMC Id available for pubmed id 24863938
+2025-03-05 00:39:52,493 - INFO - pmd_id: 21878127 and pmc_id: PMC3176197 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:53,356 - INFO - pmd_id: 22454235 and pmc_id: PMC3337428 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:53,960 - INFO - pmd_id: 19309521 and pmc_id: PMC2680838 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:55,118 - INFO - No PMC Id available for pubmed id 20643865
+2025-03-05 00:39:55,420 - INFO - No PMC Id available for pubmed id 33727727
+2025-03-05 00:39:55,802 - INFO - pmd_id: 25807545 and pmc_id: PMC4373779 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:56,439 - INFO - pmd_id: 18680585 and pmc_id: PMC2529308 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:57,054 - INFO - pmd_id: 28302068 and pmc_id: PMC5356262 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:57,406 - INFO - matched paragraphs for Late Danubian mitochondrial genomes shed light into the Neolithisation of Central Europe in the 5th millennium BC
+2025-03-05 00:39:57,657 - INFO - No PMC Id available for pubmed id 14760490
+2025-03-05 00:39:58,041 - INFO - pmd_id: 26764605 and pmc_id: PMC4725900 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:58,604 - INFO - pmd_id: 24146900 and pmc_id: PMC3798711 
+retrieving complete article from PubMedCentral
+2025-03-05 00:39:58,966 - INFO - matched paragraphs for Mitochondrial sequence variation in african-american primary open-angle glaucoma patients
+2025-03-05 00:39:59,254 - INFO - No PMC Id available for pubmed id 19133286
+2025-03-05 00:39:59,695 - INFO - pmd_id: 24104924 and pmc_id: PMC3806353 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:00,361 - INFO - pmd_id: 23843972 and pmc_id: PMC3700925 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:00,937 - INFO - No PMC Id available for pubmed id 19158811
+2025-03-05 00:40:01,351 - INFO - pmd_id: 19875463 and pmc_id: PMC2796897 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:02,033 - INFO - No PMC Id available for pubmed id 25418795
+2025-03-05 00:40:02,628 - INFO - No PMC Id available for pubmed id 32504149
+2025-03-05 00:40:02,864 - INFO - pmd_id: 26640946 and pmc_id: PMC4671665 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:03,455 - INFO - pmd_id: 23756438 and pmc_id: PMC3895641 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:04,968 - INFO - No PMC Id available for pubmed id 17199225
+2025-03-05 00:40:05,254 - INFO - No PMC Id available for pubmed id 12500682
+2025-03-05 00:40:05,749 - INFO - pmd_id: 12082644 and pmc_id: PMC379174 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:06,279 - INFO - No PMC Id available for pubmed id 34757478
+2025-03-05 00:40:06,849 - INFO - No PMC Id available for pubmed id 37316650
+2025-03-05 00:40:07,121 - INFO - No PMC Id available for pubmed id 29215085
+2025-03-05 00:40:07,509 - INFO - No PMC Id available for pubmed id 31372716
+2025-03-05 00:40:07,987 - INFO - pmd_id: 24244704 and pmc_id: PMC3828245 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:08,596 - INFO - pmd_id: 25301575 and pmc_id: PMC4195960 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:09,255 - INFO - pmd_id: 22363811 and pmc_id: PMC3283723 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:09,864 - INFO - pmd_id: 17924343 and pmc_id: PMC2265662 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:10,841 - INFO - pmd_id: 21203537 and pmc_id: PMC3006427 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:11,468 - INFO - pmd_id: 23240014 and pmc_id: PMC3519775 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:12,146 - INFO - pmd_id: 22306605 and pmc_id: PMC3339237 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:12,790 - INFO - pmd_id: 35328086 and pmc_id: PMC8951852 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:13,155 - INFO - matched paragraphs for Circum-Saharan Prehistory through the Lens of mtDNA Diversity
+2025-03-05 00:40:13,371 - INFO - pmd_id: 34440446 and pmc_id: PMC8391833 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:13,989 - INFO - No PMC Id available for pubmed id 28526291
+2025-03-05 00:40:14,337 - INFO - pmd_id: 25564040 and pmc_id: PMC4592082 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:14,965 - INFO - pmd_id: 33507977 and pmc_id: PMC7842996 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:15,622 - INFO - pmd_id: 32660486 and pmc_id: PMC7359603 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:16,344 - INFO - No PMC Id available for pubmed id 20067372
+2025-03-05 00:40:17,107 - INFO - pmd_id: 23313375 and pmc_id: PMC3567265 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:17,751 - INFO - pmd_id: 24726474 and pmc_id: PMC4067553 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:18,353 - INFO - No PMC Id available for pubmed id 29033326
+2025-03-05 00:40:18,713 - INFO - pmd_id: 24349531 and pmc_id: PMC3861515 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:19,296 - INFO - pmd_id: 30076323 and pmc_id: PMC6076260 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:19,951 - INFO - pmd_id: 19809480 and pmc_id: PMC2859343 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:20,615 - INFO - No PMC Id available for pubmed id 21787884
+2025-03-05 00:40:21,130 - INFO - pmd_id: 19243582 and pmc_id: PMC2657161 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:21,691 - INFO - No PMC Id available for pubmed id 18976917
+2025-03-05 00:40:22,167 - INFO - pmd_id: 18313026 and pmc_id: PMC2427228 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:22,786 - INFO - No PMC Id available for pubmed id 24006865
+2025-03-05 00:40:23,131 - INFO - pmd_id: 18445251 and pmc_id: PMC2386827 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:24,542 - INFO - pmd_id: 23782551 and pmc_id: PMC3695835 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:25,243 - INFO - No PMC Id available for pubmed id 29033334
+2025-03-05 00:40:26,605 - INFO - pmd_id: 26061688 and pmc_id: PMC4464891 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:27,277 - INFO - No PMC Id available for pubmed id 20697806
+2025-03-05 00:40:27,550 - INFO - pmd_id: 19331681 and pmc_id: PMC2669098 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:28,191 - INFO - pmd_id: 22284828 and pmc_id: PMC3276663 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:28,880 - INFO - pmd_id: 25738654 and pmc_id: PMC4349752 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:29,582 - INFO - No PMC Id available for pubmed id 36450887
+2025-03-05 00:40:30,936 - INFO - pmd_id: 33293675 and pmc_id: PMC7722846 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:31,605 - INFO - pmd_id: 11349229 and pmc_id: PMC1226134 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:32,273 - INFO - pmd_id: 37488251 and pmc_id: PMC10366206 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:32,648 - INFO - matched paragraphs for Bioarchaeological and paleogenomic profiling of the unusual Neolithic burial from Grotta di Pietra Sant'Angelo (Calabria, Italy)
+2025-03-05 00:40:33,083 - INFO - pmd_id: 19573232 and pmc_id: PMC2720951 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:33,760 - INFO - No PMC Id available for pubmed id 16901986
+2025-03-05 00:40:34,391 - INFO - pmd_id: 26053380 and pmc_id: PMC4460043 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:35,074 - INFO - pmd_id: 30012588 and pmc_id: PMC6064982 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:35,352 - INFO - matched paragraphs for Ancient genomes from North Africa evidence prehistoric migrations to the Maghreb from both the Levant and Europe
+2025-03-05 00:40:35,722 - INFO - pmd_id: 30893316 and pmc_id: PMC6426200 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:36,213 - INFO - matched paragraphs for Mitogenomes illuminate the origin and migration patterns of the indigenous people of the Canary Islands
+2025-03-05 00:40:36,503 - INFO - pmd_id: 19337312 and pmc_id: PMC2986650 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:37,301 - INFO - pmd_id: 24676463 and pmc_id: PMC3968120 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:37,874 - INFO - No PMC Id available for pubmed id 15814828
+2025-03-05 00:40:38,221 - INFO - pmd_id: 17327912 and pmc_id: PMC1803017 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:38,939 - INFO - pmd_id: 23341637 and pmc_id: PMC3568306 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:39,257 - INFO - matched paragraphs for DNA analysis of an early modern human from Tianyuan Cave, China
+2025-03-05 00:40:39,585 - INFO - pmd_id: 23523248 and pmc_id: PMC5036973 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:40,152 - INFO - pmd_id: 22427842 and pmc_id: PMC3302788 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:40,755 - INFO - pmd_id: 32938921 and pmc_id: PMC7494889 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:41,395 - INFO - No PMC Id available for pubmed id 33856032
+2025-03-05 00:40:41,628 - INFO - No PMC Id available for pubmed id 32062111
+2025-03-05 00:40:42,134 - INFO - pmd_id: 20407470 and pmc_id: PMC3183843 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:42,723 - INFO - pmd_id: 36647378 and pmc_id: PMC9840145 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:43,560 - INFO - pmd_id: 17517629 and pmc_id: PMC1885617 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:44,477 - INFO - pmd_id: 19936068 and pmc_id: PMC2774515 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:45,133 - INFO - pmd_id: 25032828 and pmc_id: PMC4102503 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:45,769 - INFO - No PMC Id available for pubmed id 18511654
+2025-03-05 00:40:46,097 - INFO - pmd_id: 20862300 and pmc_id: PMC2941448 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:46,685 - INFO - pmd_id: 33236215 and pmc_id: PMC7817585 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:47,317 - INFO - pmd_id: 25757516 and pmc_id: PMC4342813 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:49,164 - INFO - No PMC Id available for pubmed id 26188410
+2025-03-05 00:40:49,447 - INFO - pmd_id: 21526175 and pmc_id: PMC3079712 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:50,025 - INFO - pmd_id: 24143169 and pmc_id: PMC3797067 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:51,775 - INFO - No PMC Id available for pubmed id 20566709
+2025-03-05 00:40:51,997 - INFO - No PMC Id available for pubmed id 17194802
+2025-03-05 00:40:52,406 - INFO - pmd_id: 16719915 and pmc_id: PMC1523212 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:52,988 - INFO - pmd_id: 17620140 and pmc_id: PMC1945034 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:53,638 - INFO - pmd_id: 30963949 and pmc_id: PMC6364581 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:53,992 - INFO - matched paragraphs for A western route of prehistoric human migration from Africa into the Iberian Peninsula
+2025-03-05 00:40:54,238 - INFO - No PMC Id available for pubmed id 21296687
+2025-03-05 00:40:54,710 - INFO - pmd_id: 33382772 and pmc_id: PMC7774974 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:55,367 - INFO - No PMC Id available for pubmed id 19900585
+2025-03-05 00:40:55,951 - INFO - pmd_id: 21147912 and pmc_id: PMC3012916 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:56,284 - INFO - matched paragraphs for High-throughput sequencing of complete human mtDNA genomes from the Philippines
+2025-03-05 00:40:56,559 - INFO - No PMC Id available for pubmed id 21407194
+2025-03-05 00:40:56,953 - INFO - No PMC Id available for pubmed id 34346491
+2025-03-05 00:40:57,293 - INFO - No PMC Id available for pubmed id 22749828
+2025-03-05 00:40:57,612 - INFO - No PMC Id available for pubmed id 16060290
+2025-03-05 00:40:58,026 - INFO - No PMC Id available for pubmed id 27687549
+2025-03-05 00:40:58,378 - INFO - pmd_id: 32867169 and pmc_id: PMC7565518 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:58,960 - INFO - pmd_id: 20459715 and pmc_id: PMC2875235 
+retrieving complete article from PubMedCentral
+2025-03-05 00:40:59,709 - INFO - pmd_id: 26263179 and pmc_id: PMC4532489 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:00,418 - INFO - pmd_id: 26509580 and pmc_id: PMC4624789 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:01,056 - INFO - pmd_id: 11938495 and pmc_id: PMC447592 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:01,808 - INFO - pmd_id: 27274055 and pmc_id: PMC4922152 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:02,501 - INFO - No PMC Id available for pubmed id 16982817
+2025-03-05 00:41:02,778 - INFO - pmd_id: 35252560 and pmc_id: PMC8893589 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:03,395 - INFO - pmd_id: 34907203 and pmc_id: PMC8671481 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:03,880 - INFO - matched paragraphs for An infant burial from Arma Veirana in northwestern Italy provides insights into funerary practices and female personhood in early Mesolithic Europe
+2025-03-05 00:41:04,183 - INFO - pmd_id: 27274049 and pmc_id: PMC4922144 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:04,566 - INFO - matched paragraphs for Early farmers from across Europe directly descended from Neolithic Aegeans
+2025-03-05 00:41:05,048 - INFO - No PMC Id available for pubmed id 22024980
+2025-03-05 00:41:05,312 - INFO - pmd_id: 7530363 and pmc_id: PMC42775 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:05,924 - INFO - No PMC Id available for pubmed id 32433609
+2025-03-05 00:41:06,272 - INFO - pmd_id: 29379068 and pmc_id: PMC5789021 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:06,666 - INFO - matched paragraphs for Investigating the origins of eastern Polynesians using genome-wide data from the Leeward Society Isles
+2025-03-05 00:41:06,953 - INFO - pmd_id: 17496137 and pmc_id: PMC1885570 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:07,553 - INFO - No PMC Id available for pubmed id 16985502
+2025-03-05 00:41:07,975 - INFO - pmd_id: 12840039 and pmc_id: PMC403733 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:08,614 - INFO - No PMC Id available for pubmed id 17617636
+2025-03-05 00:41:08,842 - INFO - No PMC Id available for pubmed id 11130070
+2025-03-05 00:41:09,392 - INFO - No PMC Id available for pubmed id 16705548
+2025-03-05 00:41:09,664 - INFO - No PMC Id available for pubmed id 28708239
+2025-03-05 00:41:10,027 - INFO - pmd_id: 24498190 and pmc_id: PMC3907523 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:10,658 - INFO - pmd_id: 22517755 and pmc_id: PMC3358837 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:12,269 - INFO - No PMC Id available for pubmed id 22729749
+2025-03-05 00:41:12,552 - INFO - pmd_id: 19026397 and pmc_id: PMC2668067 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:13,173 - INFO - pmd_id: 30072694 and pmc_id: PMC6072757 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:13,525 - INFO - matched paragraphs for Mitochondrial genomes reveal an east to west cline of steppe ancestry in Corded Ware populations
+2025-03-05 00:41:13,813 - INFO - pmd_id: 28266657 and pmc_id: PMC5339713 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:14,179 - INFO - matched paragraphs for Diverse origin of mitochondrial lineages in Iron Age Black Sea Scythians
+2025-03-05 00:41:14,678 - INFO - No PMC Id available for pubmed id 19083815
+2025-03-05 00:41:15,044 - INFO - No PMC Id available for pubmed id 25450785
+2025-03-05 00:41:15,258 - INFO - No PMC Id available for pubmed id 24002810
+2025-03-05 00:41:15,665 - INFO - pmd_id: 27498855 and pmc_id: PMC4976311 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:16,276 - INFO - pmd_id: 35131896 and pmc_id: PMC8872714 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:16,658 - INFO - matched paragraphs for Ancient DNA at the edge of the world: Continental immigration and the persistence of Neolithic lineages in Bronze Age Orkney
+2025-03-05 00:41:17,307 - INFO - No PMC Id available for pubmed id 16048457
+2025-03-05 00:41:17,585 - INFO - pmd_id: 31323957 and pmc_id: PMC6651022 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:18,376 - INFO - pmd_id: 23805034 and pmc_id: PMC3692426 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:18,959 - INFO - pmd_id: 31664900 and pmc_id: PMC6819560 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:19,642 - INFO - pmd_id: 25463651 and pmc_id: PMC4268703 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:20,473 - INFO - pmd_id: 16172508 and pmc_id: PMC1456165 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:21,198 - INFO - pmd_id: 21129724 and pmc_id: PMC2997360 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:21,941 - INFO - pmd_id: 26262956 and pmc_id: PMC4532422 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:22,724 - INFO - No PMC Id available for pubmed id 30964548
+2025-03-05 00:41:24,195 - INFO - pmd_id: 23091021 and pmc_id: PMC3494939 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:24,868 - INFO - pmd_id: 28874531 and pmc_id: PMC5617280 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:25,605 - INFO - pmd_id: 24607387 and pmc_id: PMC3951936 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:27,255 - INFO - pmd_id: 28025493 and pmc_id: PMC5297647 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:27,989 - INFO - No PMC Id available for pubmed id 16714301
+2025-03-05 00:41:28,405 - INFO - No PMC Id available for pubmed id 20713468
+2025-03-05 00:41:28,684 - INFO - pmd_id: 12870132 and pmc_id: PMC1180693 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:29,680 - INFO - pmd_id: 25148043 and pmc_id: PMC4141785 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:30,332 - INFO - pmd_id: 21978175 and pmc_id: PMC3217880 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:30,968 - INFO - pmd_id: 18691441 and pmc_id: PMC2528015 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:32,055 - INFO - pmd_id: 19624810 and pmc_id: PMC2720955 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:33,281 - INFO - pmd_id: 23785503 and pmc_id: PMC3681942 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:33,976 - INFO - pmd_id: 29483671 and pmc_id: PMC5974021 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:34,661 - INFO - pmd_id: 29367746 and pmc_id: PMC5784115 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:35,883 - INFO - pmd_id: 28324218 and pmc_id: PMC6828122 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:36,453 - INFO - pmd_id: 32690935 and pmc_id: PMC7576213 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:36,832 - INFO - matched paragraphs for Cultural variation impacts paternal and maternal genetic lineages of the Hmong-Mien and Sino-Tibetan groups from Thailand
+2025-03-05 00:41:37,115 - INFO - No PMC Id available for pubmed id 18216301
+2025-03-05 00:41:37,556 - INFO - pmd_id: 24884847 and pmc_id: PMC4047257 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:38,238 - INFO - pmd_id: 26428318 and pmc_id: PMC4628590 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:38,927 - INFO - pmd_id: 28535779 and pmc_id: PMC5442693 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:39,626 - INFO - No PMC Id available for pubmed id 26416320
+2025-03-05 00:41:40,020 - INFO - pmd_id: 37165242 and pmc_id: PMC10172123 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:40,573 - INFO - matched paragraphs for A draft human pangenome reference
+2025-03-05 00:41:40,797 - INFO - No PMC Id available for pubmed id 27343181
+2025-03-05 00:41:41,203 - INFO - No PMC Id available for pubmed id 32150286
+2025-03-05 00:41:41,691 - INFO - pmd_id: 25254093 and pmc_id: PMC4174254 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:42,080 - INFO - matched paragraphs for Human paternal and maternal demographic histories: insights from high-resolution Y chromosome and mtDNA sequences
+2025-03-05 00:41:42,340 - INFO - No PMC Id available for pubmed id 22130971
+2025-03-05 00:41:42,792 - INFO - pmd_id: 25826227 and pmc_id: PMC4379912 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:43,608 - INFO - pmd_id: 25731774 and pmc_id: PMC4474231 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:44,649 - INFO - pmd_id: 21281460 and pmc_id: PMC3044674 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:45,434 - INFO - pmd_id: 24713204 and pmc_id: PMC4108081 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:46,056 - INFO - No PMC Id available for pubmed id 31912494
+2025-03-05 00:41:46,665 - INFO - No PMC Id available for pubmed id 29991444
+2025-03-05 00:41:46,935 - INFO - No PMC Id available for pubmed id 24986921
+2025-03-05 00:41:47,278 - INFO - pmd_id: 29494531 and pmc_id: PMC5867856 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:47,616 - INFO - matched paragraphs for Biological sexing of a 4,000 year-old Egyptian mummy head to assess the potential of nuclear DNA recovery from the most damaged and limited forensic specimens
+2025-03-05 00:41:48,348 - INFO - pmd_id: 33365504 and pmc_id: PMC7687527 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:49,172 - INFO - No PMC Id available for pubmed id 18537605
+2025-03-05 00:41:49,521 - INFO - pmd_id: 11553319 and pmc_id: PMC55343 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:50,552 - INFO - pmd_id: 14563219 and pmc_id: PMC270091 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:51,212 - INFO - No PMC Id available for pubmed id 15890885
+2025-03-05 00:41:51,607 - INFO - pmd_id: 35750688 and pmc_id: PMC9232647 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:52,595 - INFO - No PMC Id available for pubmed id 20027611
+2025-03-05 00:41:53,262 - INFO - No PMC Id available for pubmed id 18398433
+2025-03-05 00:41:53,642 - INFO - No PMC Id available for pubmed id 18205894
+2025-03-05 00:41:54,441 - INFO - No PMC Id available for pubmed id 20457583
+2025-03-05 00:41:54,856 - INFO - No PMC Id available for pubmed id 29948329
+2025-03-05 00:41:55,091 - INFO - pmd_id: 20422015 and pmc_id: PMC2858207 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:56,116 - INFO - No PMC Id available for pubmed id 18477584
+2025-03-05 00:41:56,432 - INFO - No PMC Id available for pubmed id 28633069
+2025-03-05 00:41:56,774 - INFO - No PMC Id available for pubmed id 28158897
+2025-03-05 00:41:57,154 - INFO - No PMC Id available for pubmed id 28669760
+2025-03-05 00:41:57,566 - INFO - No PMC Id available for pubmed id 28669760
+2025-03-05 00:41:57,847 - INFO - pmd_id: 27832758 and pmc_id: PMC5105315 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:58,493 - INFO - pmd_id: 27224451 and pmc_id: PMC4880306 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:59,143 - INFO - pmd_id: 29320542 and pmc_id: PMC5761892 
+retrieving complete article from PubMedCentral
+2025-03-05 00:41:59,547 - INFO - matched paragraphs for Ancient mitogenomes of Phoenicians from Sardinia and Lebanon: A story of settlement, integration, and female mobility
+2025-03-05 00:42:00,037 - INFO - pmd_id: 26660354 and pmc_id: PMC4832339 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:01,088 - INFO - No PMC Id available for pubmed id 28712340
+2025-03-05 00:42:01,548 - INFO - pmd_id: 16150714 and pmc_id: PMC1201611 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:02,114 - INFO - pmd_id: 23342138 and pmc_id: PMC3544712 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:02,721 - INFO - pmd_id: 23342138 and pmc_id: PMC3544712 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:03,394 - INFO - pmd_id: 12509511 and pmc_id: PMC140917 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:04,118 - INFO - pmd_id: 29382937 and pmc_id: PMC5789860 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:04,482 - INFO - matched paragraphs for The Genetic Prehistory of the Baltic Sea Region
+2025-03-05 00:42:04,773 - INFO - pmd_id: 34121089 and pmc_id: PMC8200360 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:05,364 - INFO - No PMC Id available for pubmed id 28202952
+2025-03-05 00:42:05,690 - INFO - No PMC Id available for pubmed id 32674620
+2025-03-05 00:42:06,169 - INFO - No PMC Id available for pubmed id 37431939
+2025-03-05 00:42:06,755 - INFO - No PMC Id available for pubmed id 37812249
+2025-03-05 00:42:07,084 - INFO - pmd_id: 32612271 and pmc_id: PMC7329865 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:07,739 - INFO - pmd_id: 30931994 and pmc_id: PMC6443937 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:08,719 - INFO - No PMC Id available for pubmed id 34459344
+2025-03-05 00:42:10,312 - INFO - pmd_id: 25212860 and pmc_id: PMC4224329 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:12,645 - INFO - No PMC Id available for pubmed id 21660931
+2025-03-05 00:42:13,531 - INFO - pmd_id: 28287095 and pmc_id: PMC5347126 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:14,526 - INFO - pmd_id: 28422985 and pmc_id: PMC5396865 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:15,361 - INFO - pmd_id: 28235025 and pmc_id: PMC5325568 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:15,918 - INFO - No PMC Id available for pubmed id 19066930
+2025-03-05 00:42:16,316 - INFO - No PMC Id available for pubmed id 29313877
+2025-03-05 00:42:16,682 - INFO - No PMC Id available for pubmed id 17170302
+2025-03-05 00:42:17,188 - INFO - pmd_id: 23936216 and pmc_id: PMC3729697 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:18,520 - INFO - pmd_id: 28177087 and pmc_id: PMC5400395 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:19,122 - INFO - pmd_id: 20975840 and pmc_id: PMC2958834 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:19,736 - INFO - pmd_id: 31729399 and pmc_id: PMC6858343 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:20,932 - INFO - No PMC Id available for pubmed id 23223015
+2025-03-05 00:42:21,365 - INFO - pmd_id: 19500771 and pmc_id: PMC2694970 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:22,781 - INFO - pmd_id: 22560092 and pmc_id: PMC3376494 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:23,428 - INFO - pmd_id: 25299580 and pmc_id: PMC4192148 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:24,002 - INFO - No PMC Id available for pubmed id 25832481
+2025-03-05 00:42:24,441 - INFO - pmd_id: 15467980 and pmc_id: PMC1182158 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:25,039 - INFO - pmd_id: 20939899 and pmc_id: PMC2964711 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:25,707 - INFO - pmd_id: 27453128 and pmc_id: PMC4958967 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:26,427 - INFO - No PMC Id available for pubmed id 25130626
+2025-03-05 00:42:26,936 - INFO - pmd_id: 32483274 and pmc_id: PMC7449881 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:27,567 - INFO - No PMC Id available for pubmed id 18806273
+2025-03-05 00:42:28,013 - INFO - pmd_id: 21324107 and pmc_id: PMC3048540 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:28,764 - INFO - pmd_id: 21219640 and pmc_id: PMC3027199 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:29,755 - INFO - No PMC Id available for pubmed id 20513740
+2025-03-05 00:42:30,034 - INFO - pmd_id: 23206491 and pmc_id: PMC3582464 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:30,659 - INFO - No PMC Id available for pubmed id 19135370
+2025-03-05 00:42:31,096 - INFO - pmd_id: 20587512 and pmc_id: PMC2928495 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:31,646 - INFO - pmd_id: 22675545 and pmc_id: PMC3366925 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:32,294 - INFO - pmd_id: 28330913 and pmc_id: PMC5378072 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:32,953 - INFO - pmd_id: 20234393 and pmc_id: PMC2987384 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:33,880 - INFO - pmd_id: 21176127 and pmc_id: PMC3016289 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:34,480 - INFO - No PMC Id available for pubmed id 21945886
+2025-03-05 00:42:34,848 - INFO - pmd_id: 19844259 and pmc_id: PMC2987252 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:35,851 - INFO - pmd_id: 28716916 and pmc_id: PMC5559028 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:36,634 - INFO - pmd_id: 16855009 and pmc_id: PMC2674580 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:37,315 - INFO - pmd_id: 28842646 and pmc_id: PMC5573376 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:38,016 - INFO - pmd_id: 37629173 and pmc_id: PMC10454803 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:38,617 - INFO - No PMC Id available for pubmed id 25069842
+2025-03-05 00:42:39,551 - INFO - No PMC Id available for pubmed id 21326367
+2025-03-05 00:42:39,903 - INFO - pmd_id: 32815536 and pmc_id: PMC7439602 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:40,524 - INFO - pmd_id: 26242992 and pmc_id: PMC4929865 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:40,946 - INFO - matched paragraphs for Whole-genome sequencing identifies a novel ABCB7 gene mutation for X-linked congenital cerebellar ataxia in a large family of Mongolian ancestry
+2025-03-05 00:42:41,224 - INFO - pmd_id: 18216239 and pmc_id: PMC2234190 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:42,460 - INFO - pmd_id: 33637889 and pmc_id: PMC8187500 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:42,788 - INFO - matched paragraphs for Complete mitogenomes document substantial genetic contribution from the Eurasian Steppe into northern Pakistani Indo-Iranian speakers
+2025-03-05 00:42:43,103 - INFO - pmd_id: 15804362 and pmc_id: PMC1079809 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:43,803 - INFO - No PMC Id available for pubmed id 20006740
+2025-03-05 00:42:44,347 - INFO - pmd_id: 24341918 and pmc_id: PMC4326891 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:44,999 - INFO - No PMC Id available for pubmed id 21822691
+2025-03-05 00:42:45,367 - INFO - pmd_id: 20003445 and pmc_id: PMC2808327 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:46,173 - INFO - pmd_id: 25100861 and pmc_id: PMC4166928 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:46,939 - INFO - pmd_id: 24236171 and pmc_id: PMC3827445 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:47,724 - INFO - pmd_id: 19251637 and pmc_id: PMC2664067 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:48,685 - INFO - pmd_id: 30700787 and pmc_id: PMC6353917 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:49,027 - INFO - matched paragraphs for Mitochondrial ancestry of medieval individuals carelessly interred in a multiple burial from southeastern Romania
+2025-03-05 00:42:49,762 - INFO - pmd_id: 29538439 and pmc_id: PMC5851556 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:50,657 - INFO - pmd_id: 28387361 and pmc_id: PMC5384202 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:51,351 - INFO - No PMC Id available for pubmed id 30528267
+2025-03-05 00:42:51,803 - INFO - No PMC Id available for pubmed id 22748318
+2025-03-05 00:42:52,129 - INFO - No PMC Id available for pubmed id 23020097
+2025-03-05 00:42:52,502 - INFO - pmd_id: 26509686 and pmc_id: PMC4625051 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:53,357 - INFO - pmd_id: 20700462 and pmc_id: PMC2917370 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:54,149 - INFO - No PMC Id available for pubmed id 24621318
+2025-03-05 00:42:54,456 - INFO - pmd_id: 21487439 and pmc_id: PMC3179362 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:55,170 - INFO - No PMC Id available for pubmed id 21796613
+2025-03-05 00:42:56,026 - INFO - pmd_id: 24885141 and pmc_id: PMC4062890 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:56,723 - INFO - pmd_id: 21858071 and pmc_id: PMC3157371 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:58,025 - INFO - pmd_id: 26011537 and pmc_id: PMC4444211 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:58,650 - INFO - pmd_id: 22393414 and pmc_id: PMC3290590 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:59,311 - INFO - pmd_id: 18461126 and pmc_id: PMC2324201 
+retrieving complete article from PubMedCentral
+2025-03-05 00:42:59,971 - INFO - pmd_id: 26211407 and pmc_id: PMC4515592 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:00,749 - INFO - pmd_id: 28335724 and pmc_id: PMC5364613 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:01,620 - INFO - pmd_id: 34518562 and pmc_id: PMC8438022 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:02,003 - INFO - matched paragraphs for Biomolecular insights into North African-related ancestry, mobility and diet in eleventh-century Al-Andalus
+2025-03-05 00:43:02,307 - INFO - No PMC Id available for pubmed id 30594063
+2025-03-05 00:43:02,770 - INFO - No PMC Id available for pubmed id 29330893
+2025-03-05 00:43:03,395 - INFO - No PMC Id available for pubmed id 25465762
+2025-03-05 00:43:03,620 - INFO - No PMC Id available for pubmed id 22096215
+2025-03-05 00:43:04,056 - INFO - pmd_id: 26781090 and pmc_id: PMC4757630 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:04,743 - INFO - pmd_id: 21295281 and pmc_id: PMC3035714 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:05,643 - INFO - No PMC Id available for pubmed id 18359946
+2025-03-05 00:43:05,948 - INFO - pmd_id: 25887241 and pmc_id: PMC4422311 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:06,568 - INFO - pmd_id: 22780954 and pmc_id: PMC3434112 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:07,210 - INFO - pmd_id: 28187756 and pmc_id: PMC5303298 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:07,798 - INFO - pmd_id: 15638829 and pmc_id: PMC3905771 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:09,669 - INFO - pmd_id: 31817256 and pmc_id: PMC6953113 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:10,735 - INFO - No PMC Id available for pubmed id 29486301
+2025-03-05 00:43:10,992 - INFO - No PMC Id available for pubmed id 22487888
+2025-03-05 00:43:11,350 - INFO - pmd_id: 24467713 and pmc_id: PMC3913319 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:13,743 - INFO - No PMC Id available for pubmed id 16361303
+2025-03-05 00:43:14,042 - INFO - pmd_id: 33558418 and pmc_id: PMC7923607 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:14,791 - INFO - No PMC Id available for pubmed id 30909755
+2025-03-05 00:43:15,020 - INFO - No PMC Id available for pubmed id 30203139
+2025-03-05 00:43:15,406 - INFO - No PMC Id available for pubmed id 19755666
+2025-03-05 00:43:15,776 - INFO - pmd_id: 23527064 and pmc_id: PMC3604014 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:16,366 - INFO - pmd_id: 26504230 and pmc_id: PMC4653186 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:16,957 - INFO - pmd_id: 17786201 and pmc_id: PMC1952074 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:17,695 - INFO - pmd_id: 15466285 and pmc_id: PMC524407 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:18,482 - INFO - pmd_id: 33138247 and pmc_id: PMC7716222 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:19,227 - INFO - No PMC Id available for pubmed id 15890876
+2025-03-05 00:43:19,539 - INFO - pmd_id: 16776823 and pmc_id: PMC1534032 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:20,092 - INFO - pmd_id: 19662095 and pmc_id: PMC2718812 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:20,695 - INFO - pmd_id: 25669617 and pmc_id: PMC4323646 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:21,354 - INFO - No PMC Id available for pubmed id 16678300
+2025-03-05 00:43:21,687 - INFO - pmd_id: 32692490 and pmc_id: PMC7475010 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:22,801 - INFO - pmd_id: 30651584 and pmc_id: PMC6460631 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:23,504 - INFO - pmd_id: 30837540 and pmc_id: PMC6401177 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:24,115 - INFO - pmd_id: 22258525 and pmc_id: PMC3355259 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:24,741 - INFO - No PMC Id available for pubmed id 16596590
+2025-03-05 00:43:25,037 - INFO - No PMC Id available for pubmed id 20656066
+2025-03-05 00:43:25,483 - INFO - pmd_id: 18452887 and pmc_id: PMC2427195 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:26,169 - INFO - No PMC Id available for pubmed id 26567083
+2025-03-05 00:43:26,488 - INFO - No PMC Id available for pubmed id 22079233
+2025-03-05 00:43:27,574 - INFO - pmd_id: 21738732 and pmc_id: PMC3125228 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:28,162 - INFO - No PMC Id available for pubmed id 17514652
+2025-03-05 00:43:28,598 - INFO - No PMC Id available for pubmed id 18619472
+2025-03-05 00:43:29,427 - INFO - No PMC Id available for pubmed id 21477783
+2025-03-05 00:43:29,975 - INFO - No PMC Id available for pubmed id 31473588
+2025-03-05 00:43:30,277 - INFO - pmd_id: 30585290 and pmc_id: PMC6300400 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:30,611 - INFO - matched paragraphs for Ancient nuclear genomes enable repatriation of Indigenous human remains
+2025-03-05 00:43:31,301 - INFO - pmd_id: 27212703 and pmc_id: PMC9326498 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:31,811 - INFO - No PMC Id available for pubmed id 19555656
+2025-03-05 00:43:32,324 - INFO - No PMC Id available for pubmed id 19497304
+2025-03-05 00:43:33,084 - INFO - No PMC Id available for pubmed id 19394449
+2025-03-05 00:43:33,423 - INFO - No PMC Id available for pubmed id 22729909
+2025-03-05 00:43:33,955 - INFO - No PMC Id available for pubmed id 20232220
+2025-03-05 00:43:34,353 - INFO - pmd_id: 20976138 and pmc_id: PMC2956641 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:34,963 - INFO - pmd_id: 33971830 and pmc_id: PMC8111762 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:35,465 - INFO - pmd_id: 30514893 and pmc_id: PMC6279797 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:35,851 - INFO - matched paragraphs for Ancient DNA of Phoenician remains indicates discontinuity in the settlement history of Ibiza
+2025-03-05 00:43:36,147 - INFO - pmd_id: 20978534 and pmc_id: PMC3025796 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:36,961 - INFO - pmd_id: 20808834 and pmc_id: PMC2924892 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:37,676 - INFO - pmd_id: 22039503 and pmc_id: PMC3198432 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:38,537 - INFO - pmd_id: 22400981 and pmc_id: PMC3372436 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:39,134 - INFO - No PMC Id available for pubmed id 18775412
+2025-03-05 00:43:39,473 - INFO - No PMC Id available for pubmed id 19527690
+2025-03-05 00:43:39,865 - INFO - No PMC Id available for pubmed id 36933795
+2025-03-05 00:43:40,231 - INFO - No PMC Id available for pubmed id 24121720
+2025-03-05 00:43:40,665 - INFO - No PMC Id available for pubmed id 30950284
+2025-03-05 00:43:41,023 - INFO - pmd_id: 19955425 and pmc_id: PMC2795552 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:41,723 - INFO - No PMC Id available for pubmed id 20643099
+2025-03-05 00:43:42,011 - INFO - pmd_id: 17236134 and pmc_id: PMC1785346 
+retrieving complete article from PubMedCentral
+2025-03-05 00:43:42,747 - INFO - No PMC Id available for pubmed id 20142618
