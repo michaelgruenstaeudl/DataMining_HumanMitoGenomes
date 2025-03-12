@@ -36,7 +36,8 @@ data_availability_list: list = [
     "data availability",
     "availability of data",
     "data and code availability",
-    "data availability statement"
+    "data availability statement",
+    "availability of data and material"
 ]
 
 class LXMLops:
