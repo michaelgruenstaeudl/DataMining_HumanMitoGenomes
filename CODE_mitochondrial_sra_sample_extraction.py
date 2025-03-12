@@ -1,4 +1,5 @@
 import datetime
+import json
 import logging
 import os
 import bs4
@@ -28,7 +29,7 @@ def main():
     
     pubmed_info_with_bioproject = pubmed_info_with_bioproject.fillna("")
     
-    pubmed_dataframe = pd.DataFrame(columns=["Title", "BioProject_uid", "BioProject", "SRA_Code", "Pubmed_ID", "PMC_ID", "SRA_Count", "SRA_Id_list"])
+    pubmed_dataframe = pd.DataFrame(columns=["Title", "BioProject_uid", "BioProject", "SRA_Code", "Pubmed_ID", "PMC_ID", "SRA_Count", "SRA_Id_list", "Is_in_Genbank"])
     
     for row in pubmed_info_with_bioproject.itertuples():
         log.info(row)
@@ -130,7 +131,12 @@ def main():
     pubmed_dataframe.to_csv("DATA_pubmed_info_with_bioproj_sra_sample.csv", index=False)
     log.info("SRA Id Extraction Process completed.")
     
-    pubmed_dataframe = pd.read_csv("DATA_pubmed_info_with_bioproj_sra_sample.csv")
+    pubmed_dataframe = pd.read_csv("DATA_pubmed_info_with_bioproj_sra_sample.csv",
+                                    dtype={
+                                        'BioProject_uid': 'string',
+                                        'BioProject': 'string',
+                                        'SRA_Id_list': 'string',
+                                        'Is_in_Genbank': 'bool'}).fillna("")
     if(len(pubmed_dataframe) <= 0):
         return
     
@@ -138,55 +144,72 @@ def main():
     for record in pubmed_dataframe.itertuples():
         sra_id_list =  []
         sra_id_list = record.SRA_Id_list.split(",")
-        if(record.PMC_ID != ""):
+        if(record.PMC_ID != "" and len(sra_id_list) > 0):
             article_content = pubmed_interact.get_complete_article_by_pmc_id(record.PMC_ID)
             fulltext_soup = bs4.BeautifulSoup(article_content, 'html.parser') 
             
             for sra_id in sra_id_list:
+                log.info(f"Processing {record.BioProject}: {sra_id}")
                 sra_item = {
                     "BioProject": record.BioProject,
                     "SRA_Id": sra_id,
                     "Sample_Title": ""
                 }
-                sra_fetch_handle = Entrez.efetch(db="sra", id=sra_id)
-                sra_content = sra_fetch_handle.read()
-                fulltext_etree = lxml.etree.fromstring(sra_content)
+                
+                if(record.Is_in_Genbank):
+                    sra_fetch_handle = Entrez.efetch(db="sra", id=sra_id)
+                    sra_content = sra_fetch_handle.read()
+                    fulltext_etree = lxml.etree.fromstring(sra_content)
 
-                pool_tag_list = fulltext_etree.xpath("//Pool")
-                if(len(pool_tag_list) > 0):
-                    member_tag = pool_tag_list[0].find("Member")
-                    sample_title = member_tag.get("sample_title")
-                    if(sample_title):
-                        sra_item["Sample_Title"] = sample_title
-                if(sra_item["Sample_Title"] != ""):
-                    target_content = fulltext_soup.find(string= lambda text: text and sra_item["Sample_Title"].lower() in text.lower())
-                    if(target_content):
-                        target_tag = target_content.find_parent()
-                        if(target_tag.name == "td"):
-                            header_tag = target_tag.find_parent().find_parent().find_parent().find("thead")
-                            table_column_name_list = []
-                            for table_header_tag in header_tag.find_all("th"):
-                                table_column_name_list.append(table_header_tag.text)
-                            
-                            data_row_tag = target_tag.find_parent()
-                            data_row_list = []
-                            for data_tag in data_row_tag.find_all("td"):
-                                data_row_list.append(data_tag.text)
-                            
-                            table_obj = {}
-                            for i in range(len(table_column_name_list)):
-                                table_obj[table_column_name_list[i]] = data_row_list[i]    
-                            
-                            sra_item["Matched_Information"] = table_obj
-                        elif(target_tag.name == "p"):
-                            sra_item["Matched_Information"] = target_tag.text
-                        # if(target_tag.name == "p"):
-            # Extract SRA ID List 
-            # Extract SRA Esummary 
-            # Extract SRA Sample Name 
-            # Look for key word in fulltext_soup 
-            # If In paragraph: Extract first paragraph 
-            # If in table: Extract header and first row
+                    pool_tag_list = fulltext_etree.xpath("//Pool")
+                    if(len(pool_tag_list) > 0):
+                        member_tag = pool_tag_list[0].find("Member")
+                        sample_title = member_tag.get("sample_title")
+                        if(sample_title):
+                            sra_item["Sample_Title"] = sample_title
+                    if(sra_item["Sample_Title"] != ""):
+                        log.info(f"Sample Title: {sra_item['Sample_Title']}")
+                        target_content = fulltext_soup.find(string= lambda text: text and sra_item["Sample_Title"].lower() in text.lower())
+                        if(target_content):
+                            target_tag = target_content.find_parent()
+                            if(target_tag.name == "td"):
+                                header_tag = target_tag.find_parent().find_parent().find_parent().find("thead")
+                                table_column_name_list = []
+                                for table_header_tag in header_tag.find_all("th"):
+                                    table_column_name_list.append(table_header_tag.text)
+                                
+                                data_row_tag = target_tag.find_parent()
+                                data_row_list = []
+                                for data_tag in data_row_tag.find_all("td"):
+                                    data_row_list.append(data_tag.text)
+                                
+                                table_obj = {}
+                                for i in range(len(table_column_name_list)):
+                                    table_obj[table_column_name_list[i]] = data_row_list[i]    
+                                
+                                sra_item["Matched_Information"] = table_obj
+                                
+                                log.info(f"Matched Information: for {sra_item['BioProject']} - {sra_item['SRA_Id']} in tablular format.")
+                            elif(target_tag.name == "p"):
+                                sra_item["Matched_Information"] = target_tag.text
+                                
+                                log.info(f"Matched Information: for {sra_item['BioProject']} - {sra_item['SRA_Id']} in paragraph.")
+                            else:
+                                log.info(f"{target_tag.name} Case yet to handled but Matched Information: for {sra_item['BioProject']} - {sra_item['SRA_Id']}.")
+                        else:
+                            log.info("Sample Title not found in full text.")
+                    else:
+                        log.info("Sample Title not present.")
+                else:
+                    log.info("BioProject not in Genbank.")
+                data.append(sra_item)
+        else:
+            log.info(f"PMC_ID: {record.PMC_ID} or SRA_ID: {record.SRA_Id_list} not found for {record.BioProject}")
+    output_file_name = "DATA_sra_info_in_pmc.json"
+    with open(output_file_name, "w") as file:
+        json.dump(data, file, indent=4)
+    log.info(f"Data written to {output_file_name}")
+    log.info("Finished.")
 
 
 if(__name__=="__main__"):
