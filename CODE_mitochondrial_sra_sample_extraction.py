@@ -37,6 +37,7 @@ def main():
             "BioProject": row.ENA,
             "SRA_Code": row.SRA_Code,
             "BioProject_uid": "",
+            "Is_in_Genbank": False,
         }
         pubmed_id = ""
         pubmed_id= pubmed_interact.lookup_pubmed_id_by_title(row.TITLE)
@@ -98,6 +99,7 @@ def main():
                 pubmed_item["SRA_Id_list"] = sra_ids
                 log.info(f"SRA ID count: {sra_len}")
                 pubmed_item["SRA_Count"] = sra_len
+                pubmed_item["Is_in_Genbank"] = True
                 # print("Count: ", len(bio_proj_elink_record))
                 pubmed_dataframe.loc[len(pubmed_dataframe)] = pubmed_item
             except Exception as ex:
@@ -162,15 +164,22 @@ def main():
                         target_tag = target_content.find_parent()
                         if(target_tag.name == "td"):
                             header_tag = target_tag.find_parent().find_parent().find_parent().find("thead")
-                            table_name_list = []
+                            table_column_name_list = []
                             for table_header_tag in header_tag.find_all("th"):
-                                table_name_list.append(table_header_tag.text)
+                                table_column_name_list.append(table_header_tag.text)
                             
                             data_row_tag = target_tag.find_parent()
                             data_row_list = []
                             for data_tag in data_row_tag.find_all("td"):
                                 data_row_list.append(data_tag.text)
-                                
+                            
+                            table_obj = {}
+                            for i in range(len(table_column_name_list)):
+                                table_obj[table_column_name_list[i]] = data_row_list[i]    
+                            
+                            sra_item["Matched_Information"] = table_obj
+                        elif(target_tag.name == "p"):
+                            sra_item["Matched_Information"] = target_tag.text
                         # if(target_tag.name == "p"):
             # Extract SRA ID List 
             # Extract SRA Esummary 
