@@ -131,14 +131,13 @@ def main():
     pubmed_dataframe.to_csv("DATA_pubmed_info_with_bioproj_sra_sample.csv", index=False)
     log.info("SRA Id Extraction Process completed.")
     
-    pubmed_dataframe = pd.read_csv("DATA_pubmed_info_with_bioproj_sra_sample.csv",
+    if(len(pubmed_dataframe) <= 0):
+        pubmed_dataframe = pd.read_csv("DATA_pubmed_info_with_bioproj_sra_sample.csv",
                                     dtype={
                                         'BioProject_uid': 'string',
                                         'BioProject': 'string',
                                         'SRA_Id_list': 'string',
                                         'Is_in_Genbank': 'bool'}).fillna("")
-    if(len(pubmed_dataframe) <= 0):
-        return
     
     data = []
     for record in pubmed_dataframe.itertuples():
@@ -160,16 +159,28 @@ def main():
                     sra_fetch_handle = Entrez.efetch(db="sra", id=sra_id)
                     sra_content = sra_fetch_handle.read()
                     fulltext_etree = lxml.etree.fromstring(sra_content)
-
                     pool_tag_list = fulltext_etree.xpath("//Pool")
                     if(len(pool_tag_list) > 0):
                         member_tag = pool_tag_list[0].find("Member")
                         sample_title = member_tag.get("sample_title")
+                        sra_item["Original_Sample_Title"] = sample_title
                         if(sample_title):
-                            sra_item["Sample_Title"] = sample_title
+                            if("_" in sample_title):
+                                sample_title_splitted = sample_title.split("_")
+                                if(len(sample_title_splitted) > 0):
+                                    sra_item["Sample_Title"] = sample_title_splitted[0]
+                            else:
+                                sra_item["Sample_Title"] = sample_title
                     if(sra_item["Sample_Title"] != ""):
                         log.info(f"Sample Title: {sra_item['Sample_Title']}")
-                        target_content = fulltext_soup.find(string= lambda text: text and sra_item["Sample_Title"].lower() in text.lower())
+                        target_content = None
+                        target_content_list = fulltext_soup.find_all(string= lambda text: text and sra_item["Sample_Title"].lower() in text.lower())
+                        if(len(target_content_list) > 0):
+                            for target_content_item in target_content_list:
+                                target_contentitem_tag = target_content_item.find_parent()
+                                if((target_contentitem_tag.name == "td") or (target_contentitem_tag.name == "p")):
+                                    target_content = target_content_item
+                                    break
                         if(target_content):
                             target_tag = target_content.find_parent()
                             if(target_tag.name == "td"):
@@ -177,6 +188,10 @@ def main():
                                 table_column_name_list = []
                                 for table_header_tag in header_tag.find_all("th"):
                                     table_column_name_list.append(table_header_tag.text)
+                                
+                                if(len(table_column_name_list) == 0):
+                                    for table_header_tag in header_tag.find_all("td"):
+                                        table_column_name_list.append(table_header_tag.text)
                                 
                                 data_row_tag = target_tag.find_parent()
                                 data_row_list = []
@@ -205,7 +220,7 @@ def main():
                 data.append(sra_item)
         else:
             log.info(f"PMC_ID: {record.PMC_ID} or SRA_ID: {record.SRA_Id_list} not found for {record.BioProject}")
-    output_file_name = "DATA_sra_info_in_pmc.json"
+    output_file_name = "DATA_sra_info_in_pmc_1.json"
     with open(output_file_name, "w") as file:
         json.dump(data, file, indent=4)
     log.info(f"Data written to {output_file_name}")
