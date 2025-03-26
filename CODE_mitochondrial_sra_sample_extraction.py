@@ -10,6 +10,32 @@ from CODE_mitochondrial_pubmed_article_extraction import PubmedInteract
 from Bio import Entrez
 import requests
 
+def extract_library_info_from_sra_content(fulltext_etree: lxml.etree._Element):
+    library_item = {}
+    library_descriptor_list = fulltext_etree.xpath('//LIBRARY_DESCRIPTOR')
+
+    if(len(library_descriptor_list) > 0):
+    # Iterate through all child elements and print their tags and text
+        for element in library_descriptor_list[0].iterchildren():
+            key = element.tag
+            value= ""
+            if(element.tag == "LIBRARY_LAYOUT"):
+                for layout_element in element.iterchildren():
+                    value += layout_element.tag
+            else:
+                value = element.text
+            library_item[key] = value
+            
+    platform_list = fulltext_etree.xpath('//PLATFORM')
+    if(len(platform_list) > 0):
+        platform = platform_list[0]
+        instrument_model_list = platform.xpath('//INSTRUMENT_MODEL')
+        if(len(instrument_model_list) > 0):
+            instrument_model = instrument_model_list[0]
+            library_item[instrument_model.tag] = instrument_model.text
+
+    return library_item
+
 def main():
     formatted_datetime = datetime.datetime.now().strftime("%Y%m%d_%H%M")
     if(not os.path.isdir("./log")):
@@ -159,6 +185,11 @@ def main():
                     sra_fetch_handle = Entrez.efetch(db="sra", id=sra_id)
                     sra_content = sra_fetch_handle.read()
                     fulltext_etree = lxml.etree.fromstring(sra_content)
+                    
+                    library_item = extract_library_info_from_sra_content(fulltext_etree)
+                    sra_item["Library"] = library_item
+                    
+                    # Extracting Sample Title from Pool Tag
                     pool_tag_list = fulltext_etree.xpath("//Pool")
                     if(len(pool_tag_list) > 0):
                         member_tag = pool_tag_list[0].find("Member")
@@ -216,11 +247,46 @@ def main():
                     else:
                         log.info("Sample Title not present.")
                 else:
-                    log.info("BioProject not in Genbank.")
+                    
+                    # URL for POST request for European Nucleotide Archive
+                    post_url = 'https://www.ebi.ac.uk/ena/browser/api/xml'
+
+                    # Headers
+                    headers = {
+                        'accept': 'application/xml',
+                        'Content-Type': 'application/json'
+                    }
+
+                    # Data to be sent in the POST request
+                    request_body = {
+                        "accessions": [
+                            sra_id
+                        ],
+                        "expanded": True,
+                        "annotationOnly": True,
+                        "lineLimit": 0,
+                        "download": False,
+                        "gzip": True,
+                        "set": True,
+                        "includeLinks": True,
+                        "range": "string",
+                        "complement": True
+                    }
+
+                    # Send the POST request
+                    response = requests.post(post_url, json=request_body, headers=headers)
+                    
+                    if(response.status_code == 200):
+                        fulltext_etree = lxml.etree.fromstring(response.text)
+                        
+                        library_item = extract_library_info_from_sra_content(fulltext_etree)
+                        sra_item["Library"] = library_item
+                        log.info("Library information is extracted.")
+                    log.info("BioProject not in Genbank and ENA does not contain Sample Name.")
                 data.append(sra_item)
         else:
             log.info(f"PMC_ID: {record.PMC_ID} or SRA_ID: {record.SRA_Id_list} not found for {record.BioProject}")
-    output_file_name = "DATA_sra_info_in_pmc_1.json"
+    output_file_name = "DATA_sra_info_in_pmc.json"
     with open(output_file_name, "w") as file:
         json.dump(data, file, indent=4)
     log.info(f"Data written to {output_file_name}")
