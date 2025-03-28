@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+__version__ = 'b_thapamagar@mail.fhsu.edu|2025-03-10'
+
+import argparse
 import datetime
 import json
 import logging
@@ -36,7 +40,39 @@ def extract_library_info_from_sra_content(fulltext_etree: lxml.etree._Element):
 
     return library_item
 
-def main():
+def extract_SRA_info_from_ENA(ena_accession_id):
+    # URL for POST request for European Nucleotide Archive
+    post_url = 'https://www.ebi.ac.uk/ena/browser/api/xml'
+
+    # Headers
+    headers = {
+        'accept': 'application/xml',
+        'Content-Type': 'application/json'
+    }
+
+    # Data to be sent in the POST request
+    request_body = {
+        "accessions": [
+            ena_accession_id
+        ],
+        "expanded": True,
+        "annotationOnly": True,
+        "lineLimit": 0,
+        "download": False,
+        "gzip": True,
+        "set": True,
+        "includeLinks": True,
+        "range": "string",
+        "complement": True
+    }
+    # Send the POST request
+    response = requests.post(post_url, json=request_body, headers=headers)
+    return response
+
+def main(args):
+    email = args.mail
+    verbose = args.verbose
+    
     formatted_datetime = datetime.datetime.now().strftime("%Y%m%d_%H%M")
     if(not os.path.isdir("./log")):
         os.mkdir("./log")
@@ -44,12 +80,17 @@ def main():
     logging.basicConfig(filename=logger_filename, level=logging.DEBUG,
                         format='%(asctime)s - %(levelname)s - %(message)s')
     log = logging.getLogger(__name__)
-    # if verbose:
-    coloredlogs.install(fmt='%(asctime)s [%(levelname)s] %(message)s', level=logging.DEBUG, logger=log)
+    if verbose:
+        coloredlogs.install(fmt='%(asctime)s [%(levelname)s] %(message)s', level=logging.DEBUG, logger=log)
+    else:
+        coloredlogs.install(fmt='%(asctime)s [%(levelname)s] %(message)s', level=logging.INFO, logger=log)
     
-    pubmed_interact = PubmedInteract(email= "b_thapamagar@mail.fhsu.edu", logger=log)
+    pubmed_interact = PubmedInteract(email= email, logger=log)
+    
+    # DATA_pubmed_info_with_bioproj_and_sra.csv file contains the information of the articles from PubMed with BioProject and SRA Code 
+    # (Extracted by CODE_mitochondrial_pubmed_article_extraction.py and manually by Bryce)
+    
     pubmed_info_with_bioproject = pd.read_csv("DATA_pubmed_info_with_bioproj_and_sra.csv")
-    # print(pubmed_info_with_bioproject.head())
     pubmed_info_with_bioproject = pubmed_info_with_bioproject.rename(columns={"European Nucleotide Archive": "ENA", "SRA Code": "SRA_Code"})
     print(pubmed_info_with_bioproject.info())
     
@@ -151,9 +192,7 @@ def main():
                 else:
                     log.error("BioProject accession number not found.")
                     
-            pubmed_dataframe.loc[len(pubmed_dataframe)] = pubmed_item
-            
-            
+            pubmed_dataframe.loc[len(pubmed_dataframe)] = pubmed_item  
     pubmed_dataframe.to_csv("DATA_pubmed_info_with_bioproj_sra_sample.csv", index=False)
     log.info("SRA Id Extraction Process completed.")
     
@@ -247,38 +286,9 @@ def main():
                     else:
                         log.info("Sample Title not present.")
                 else:
-                    
-                    # URL for POST request for European Nucleotide Archive
-                    post_url = 'https://www.ebi.ac.uk/ena/browser/api/xml'
-
-                    # Headers
-                    headers = {
-                        'accept': 'application/xml',
-                        'Content-Type': 'application/json'
-                    }
-
-                    # Data to be sent in the POST request
-                    request_body = {
-                        "accessions": [
-                            sra_id
-                        ],
-                        "expanded": True,
-                        "annotationOnly": True,
-                        "lineLimit": 0,
-                        "download": False,
-                        "gzip": True,
-                        "set": True,
-                        "includeLinks": True,
-                        "range": "string",
-                        "complement": True
-                    }
-
-                    # Send the POST request
-                    response = requests.post(post_url, json=request_body, headers=headers)
-                    
+                    response = extract_SRA_info_from_ENA(sra_id)
                     if(response.status_code == 200):
                         fulltext_etree = lxml.etree.fromstring(response.text)
-                        
                         library_item = extract_library_info_from_sra_content(fulltext_etree)
                         sra_item["Library"] = library_item
                         log.info("Library information is extracted.")
@@ -294,4 +304,11 @@ def main():
 
 
 if(__name__=="__main__"):
-    main()
+    parser = argparse.ArgumentParser(description='Author|Version: '+__version__)
+    parser.add_argument("--mail", "-m", type=str, required=True,
+                        help="Your email address (needed for querying NCBI PubMed via Entrez)")
+    
+    parser.add_argument("--verbose", "-v", action="store_true", required=False, 
+                        default=True, help="(Optional) Enable verbose logging")
+    args = parser.parse_args()
+    main(args)

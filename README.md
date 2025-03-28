@@ -45,6 +45,8 @@ Files and scripts to identify associated entries across NCBI GenBank, NCBI SRA, 
 
 - `log` directory: This directory contains log generated from `CODE_mitochondrial_pubmed_article_extraction.py` script execution.
 
+- `CODE_mitochondrial_sra_info_extraction.py`: A python script to extract the SRA record informations and first paragraph/data from corresponding pubmed article based on pubmed article title, BioProject Accession Number or European Nucleotide Archive Number or SRA ID or BioSample Accession Number.
+
 ### Data Files
 
 - `DATA_GenBank_accessions_Mitobank_2025_01_31.txt`: A text file listing the GenBank accession numbers of all full-length human mitochondrial genome sequences listed on Mitobank as of 31-Jan-2024; it was downloaded directly from [Mitobank](https://www.mitomap.org/foswiki/bin/view/MITOMAP/Mitobank). The file contains a total of 61845 accession numbers.
@@ -64,6 +66,20 @@ Files and scripts to identify associated entries across NCBI GenBank, NCBI SRA, 
 - `DATA_pubmed_records_with_data_source_info.json`: A JSON file contains all pubmed article informations which contains data source informations.
 
 - `pubmed_records.json`: A JSON file containing pubmed article informations.
+- `DATA_pubmed_info_with_bioproj_and_sra.csv`: A CSV file containing pubmed article with corresponding BioProject Id or European Nucleotide Archive ID or SRA ID. This file is important for `CODE_mitochondrial_sra_info_extraction.py`.
+- `DATA_pubmed_info_with_bioproj_sra_sample.csv`: A CSV file containing following informations:
+
+  - Title: Title of Pubmed Article
+  - BioProject_uid: BioProject Unique Identifier associated to the pubmed article
+  - BioProject: BioProject Accession Number associated to the pubmed article
+  - SRA_Code : SRA code associated with pubmed Article
+  - Pubmed_ID : Pubmed Unique Identifier related to article.
+  - PMC_ID : Pubmed central unique identifier (Pubmed article id)
+  - SRA_Count: Total number of SRA records associated with BioProject.
+  - SRA_Id_list: Unique SRA Id list associated with BioProject.
+  - Is_in_Genbank: Whether records present in NCBI Genbank or European Nucleotide Archive.
+
+- `DATA_sra_info_in_pmc.json`: A JSON file which contains SRA records metadata. It contains all SRA records present in `DATA_pubmed_info_with_bioproj_sra_sample.csv`.
 
 ## RESOURCES
 
