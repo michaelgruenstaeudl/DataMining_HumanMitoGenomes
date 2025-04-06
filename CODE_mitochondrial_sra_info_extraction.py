@@ -90,7 +90,7 @@ def main(args):
     # DATA_pubmed_info_with_bioproj_and_sra.csv file contains the information of the articles from PubMed with BioProject and SRA Code 
     # (Extracted by CODE_mitochondrial_pubmed_article_extraction.py and manually by Bryce)
     
-    pubmed_info_with_bioproject = pd.read_csv("DATA_pubmed_info_with_bioproj_and_sra.csv")
+    pubmed_info_with_bioproject = pd.read_csv("DATA_Combined_DATA_pubmed_info_with_bioproj_and_sra.csv")
     pubmed_info_with_bioproject = pubmed_info_with_bioproject.rename(columns={"European Nucleotide Archive": "ENA", "SRA Code": "SRA_Code"})
     print(pubmed_info_with_bioproject.info())
     
@@ -152,6 +152,12 @@ def main(args):
                 bio_proj_elink_record = Entrez.read(bio_proj_elink_handle)
                 pubmed_item["BioProject_uid"] = bio_proj_elink_record[0]["LinkSetDb"][0]["Link"][0]["Id"]
             
+            if(pubmed_item["BioProject_uid"] != ""):
+                bio_proj_efetch_handle = Entrez.efetch(db="bioproject", id=pubmed_item["BioProject_uid"], retmode="xml")
+                bioproj_etree = lxml.etree.fromstring(bio_proj_efetch_handle.read())
+                archive_tag_list = bioproj_etree.xpath("//ArchiveID")
+                if(len(archive_tag_list) > 0):
+                    pubmed_item["BioProject"] = archive_tag_list[0].get("accession")
         if(pubmed_item["BioProject_uid"] != ""):    
             try:
                 bio_proj_elink_handle = Entrez.elink(dbfrom="bioproject", db="sra", id=pubmed_item["BioProject_uid"])
@@ -193,9 +199,10 @@ def main(args):
                     log.error("BioProject accession number not found.")
                     
             pubmed_dataframe.loc[len(pubmed_dataframe)] = pubmed_item  
-    pubmed_dataframe.to_csv("DATA_pubmed_info_with_bioproj_sra_sample.csv", index=False)
+    pubmed_dataframe.to_csv("DATA_pubmed_info_with_bioproj_sra_sample_new.csv", index=False)
     log.info("SRA Id Extraction Process completed.")
     
+    pubmed_dataframe = pubmed_dataframe.fillna("")
     if(len(pubmed_dataframe) <= 0):
         pubmed_dataframe = pd.read_csv("DATA_pubmed_info_with_bioproj_sra_sample.csv",
                                     dtype={
@@ -216,6 +223,7 @@ def main(args):
                 log.info(f"Processing {record.BioProject}: {sra_id}")
                 sra_item = {
                     "BioProject": record.BioProject,
+                    "BioProject_uid": record.BioProject_uid,
                     "SRA_Id": sra_id,
                     "Sample_Title": ""
                 }
@@ -224,7 +232,9 @@ def main(args):
                     sra_fetch_handle = Entrez.efetch(db="sra", id=sra_id)
                     sra_content = sra_fetch_handle.read()
                     fulltext_etree = lxml.etree.fromstring(sra_content)
-                    
+                    title_tag_list = fulltext_etree.xpath("//TITLE")
+                    if(len(title_tag_list) > 0):
+                        sra_item["Title"] = title_tag_list[0].text
                     library_item = extract_library_info_from_sra_content(fulltext_etree)
                     sra_item["Library"] = library_item
                     

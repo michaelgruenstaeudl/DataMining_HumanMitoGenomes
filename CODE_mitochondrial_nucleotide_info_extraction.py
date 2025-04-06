@@ -46,7 +46,7 @@ def main(args):
     coloredlogs.install(fmt='%(asctime)s [%(levelname)s] %(message)s', level=logging.DEBUG, logger=log)
     
     nucleotide_interact = NucleotideInteract(email="b_thapamagar@mail.fhsu.edu", logger=log)
-    nucleotide_pubmed_data = pd.read_csv("nucleotide_pubmed_data.csv")
+    nucleotide_pubmed_data = pd.read_csv("DATA_Nucleotide_Pubmed_data_combined.csv")
     nucleotide_pubmed_data = nucleotide_pubmed_data.rename(columns={"European Nucleotide Archive": "ENA", "SRA Code": "SRA_Code"})
     nucleotide_data_list = []
     for row in nucleotide_pubmed_data.itertuples():
@@ -55,11 +55,13 @@ def main(args):
             "BioProject": row.BioProject
         }
         nucleotide_info = nucleotide_interact.fetch_nucleotide_info(row.AccessionID)
+        if(len(nucleotide_info) > 0 and "GBSeq_definition" in nucleotide_info[0]):
+            nucleotide_item["Title"] = nucleotide_info[0]["GBSeq_definition"]
         source_info = nucleotide_interact.extract_source_info_from_nucleotide_info(nucleotide_info)
         nucleotide_item["Source"] = source_info
         nucleotide_data_list.append(nucleotide_item)
         
-    output_file_name = "DATA_nucleotide_data_list.json"
+    output_file_name = "DATA_nucleotide_data_list_new.json"
     with open(output_file_name, "w") as file:
         json.dump(nucleotide_data_list, file, indent=4)
     log.info(f"Data written to {output_file_name}")
