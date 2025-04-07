@@ -204,7 +204,7 @@ def main(args):
     
     pubmed_dataframe = pubmed_dataframe.fillna("")
     if(len(pubmed_dataframe) <= 0):
-        pubmed_dataframe = pd.read_csv("DATA_pubmed_info_with_bioproj_sra_sample.csv",
+        pubmed_dataframe = pd.read_csv("DATA_pubmed_info_with_bioproj_sra_sample_new.csv",
                                     dtype={
                                         'BioProject_uid': 'string',
                                         'BioProject': 'string',
@@ -215,97 +215,102 @@ def main(args):
     for record in pubmed_dataframe.itertuples():
         sra_id_list =  []
         sra_id_list = record.SRA_Id_list.split(",")
+        fulltext_soup = bs4.BeautifulSoup("", "html.parser")
+        
         if(record.PMC_ID != "" and len(sra_id_list) > 0):
             article_content = pubmed_interact.get_complete_article_by_pmc_id(record.PMC_ID)
             fulltext_soup = bs4.BeautifulSoup(article_content, 'html.parser') 
             
-            for sra_id in sra_id_list:
-                log.info(f"Processing {record.BioProject}: {sra_id}")
-                sra_item = {
-                    "BioProject": record.BioProject,
-                    "BioProject_uid": record.BioProject_uid,
-                    "SRA_Id": sra_id,
-                    "Sample_Title": ""
-                }
+        for sra_id in sra_id_list:
+            log.info(f"Processing {record.BioProject}: {sra_id}")
+            sra_item = {
+                "BioProject": record.BioProject,
+                "BioProject_uid": record.BioProject_uid,
+                "SRA_Id": sra_id,
+                "Sample_Title": ""
+            }
+            
+            if(record.Is_in_Genbank):
+                sra_fetch_handle = Entrez.efetch(db="sra", id=sra_id)
+                sra_content = sra_fetch_handle.read()
+                fulltext_etree = lxml.etree.fromstring(sra_content)
+                title_tag_list = fulltext_etree.xpath("//TITLE")
+                if(len(title_tag_list) > 0):
+                    sra_item["Title"] = title_tag_list[0].text
+                library_item = extract_library_info_from_sra_content(fulltext_etree)
+                sra_item["Library"] = library_item
                 
-                if(record.Is_in_Genbank):
-                    sra_fetch_handle = Entrez.efetch(db="sra", id=sra_id)
-                    sra_content = sra_fetch_handle.read()
-                    fulltext_etree = lxml.etree.fromstring(sra_content)
-                    title_tag_list = fulltext_etree.xpath("//TITLE")
-                    if(len(title_tag_list) > 0):
-                        sra_item["Title"] = title_tag_list[0].text
+                # Extracting Sample Title from Pool Tag
+                pool_tag_list = fulltext_etree.xpath("//Pool")
+                if(len(pool_tag_list) > 0):
+                    member_tag = pool_tag_list[0].find("Member")
+                    sample_title = member_tag.get("sample_title")
+                    sra_item["Original_Sample_Title"] = sample_title
+                    if(sample_title):
+                        if("_" in sample_title):
+                            sample_title_splitted = sample_title.split("_")
+                            if(len(sample_title_splitted) > 0):
+                                sra_item["Sample_Title"] = sample_title_splitted[0]
+                        else:
+                            sra_item["Sample_Title"] = sample_title
+                if(sra_item["Sample_Title"] != "" and fulltext_soup.contents):
+                    log.info(f"Sample Title: {sra_item['Sample_Title']}")
+                    target_content = None
+                    target_content_list = fulltext_soup.find_all(string= lambda text: text and sra_item["Sample_Title"].lower() in text.lower())
+                    if(len(target_content_list) > 0):
+                        for target_content_item in target_content_list:
+                            target_contentitem_tag = target_content_item.find_parent()
+                            if((target_contentitem_tag.name == "td") or (target_contentitem_tag.name == "p")):
+                                target_content = target_content_item
+                                break
+                    if(target_content):
+                        target_tag = target_content.find_parent()
+                        if(target_tag.name == "td"):
+                            header_tag = target_tag.find_parent().find_parent().find_parent().find("thead")
+                            table_column_name_list = []
+                            for table_header_tag in header_tag.find_all("th"):
+                                table_column_name_list.append(table_header_tag.text)
+                            
+                            if(len(table_column_name_list) == 0):
+                                for table_header_tag in header_tag.find_all("td"):
+                                    table_column_name_list.append(table_header_tag.text)
+                            
+                            data_row_tag = target_tag.find_parent()
+                            data_row_list = []
+                            for data_tag in data_row_tag.find_all("td"):
+                                data_row_list.append(data_tag.text)
+                            
+                            table_obj = {}
+                            for i in range(len(table_column_name_list)):
+                                table_obj[table_column_name_list[i]] = data_row_list[i]    
+                            
+                            sra_item["Matched_Information"] = table_obj
+                            
+                            log.info(f"Matched Information: for {sra_item['BioProject']} - {sra_item['SRA_Id']} in tablular format.")
+                        elif(target_tag.name == "p"):
+                            sra_item["Matched_Information"] = target_tag.text
+                            
+                            log.info(f"Matched Information: for {sra_item['BioProject']} - {sra_item['SRA_Id']} in paragraph.")
+                        else:
+                            log.info(f"{target_tag.name} Case yet to handled but Matched Information: for {sra_item['BioProject']} - {sra_item['SRA_Id']}.")
+                    else:
+                        log.info("Sample Title not found in full text.")
+                else:
+                    if(not fulltext_soup.contents):
+                        log.info("Full text not found.")
+                    if(sra_item["Sample_Title"] == ""):
+                        log.info("Sample Title not present.")
+            else:
+                response = extract_SRA_info_from_ENA(sra_id)
+                if(response.status_code == 200):
+                    fulltext_etree = lxml.etree.fromstring(response.text)
                     library_item = extract_library_info_from_sra_content(fulltext_etree)
                     sra_item["Library"] = library_item
-                    
-                    # Extracting Sample Title from Pool Tag
-                    pool_tag_list = fulltext_etree.xpath("//Pool")
-                    if(len(pool_tag_list) > 0):
-                        member_tag = pool_tag_list[0].find("Member")
-                        sample_title = member_tag.get("sample_title")
-                        sra_item["Original_Sample_Title"] = sample_title
-                        if(sample_title):
-                            if("_" in sample_title):
-                                sample_title_splitted = sample_title.split("_")
-                                if(len(sample_title_splitted) > 0):
-                                    sra_item["Sample_Title"] = sample_title_splitted[0]
-                            else:
-                                sra_item["Sample_Title"] = sample_title
-                    if(sra_item["Sample_Title"] != ""):
-                        log.info(f"Sample Title: {sra_item['Sample_Title']}")
-                        target_content = None
-                        target_content_list = fulltext_soup.find_all(string= lambda text: text and sra_item["Sample_Title"].lower() in text.lower())
-                        if(len(target_content_list) > 0):
-                            for target_content_item in target_content_list:
-                                target_contentitem_tag = target_content_item.find_parent()
-                                if((target_contentitem_tag.name == "td") or (target_contentitem_tag.name == "p")):
-                                    target_content = target_content_item
-                                    break
-                        if(target_content):
-                            target_tag = target_content.find_parent()
-                            if(target_tag.name == "td"):
-                                header_tag = target_tag.find_parent().find_parent().find_parent().find("thead")
-                                table_column_name_list = []
-                                for table_header_tag in header_tag.find_all("th"):
-                                    table_column_name_list.append(table_header_tag.text)
-                                
-                                if(len(table_column_name_list) == 0):
-                                    for table_header_tag in header_tag.find_all("td"):
-                                        table_column_name_list.append(table_header_tag.text)
-                                
-                                data_row_tag = target_tag.find_parent()
-                                data_row_list = []
-                                for data_tag in data_row_tag.find_all("td"):
-                                    data_row_list.append(data_tag.text)
-                                
-                                table_obj = {}
-                                for i in range(len(table_column_name_list)):
-                                    table_obj[table_column_name_list[i]] = data_row_list[i]    
-                                
-                                sra_item["Matched_Information"] = table_obj
-                                
-                                log.info(f"Matched Information: for {sra_item['BioProject']} - {sra_item['SRA_Id']} in tablular format.")
-                            elif(target_tag.name == "p"):
-                                sra_item["Matched_Information"] = target_tag.text
-                                
-                                log.info(f"Matched Information: for {sra_item['BioProject']} - {sra_item['SRA_Id']} in paragraph.")
-                            else:
-                                log.info(f"{target_tag.name} Case yet to handled but Matched Information: for {sra_item['BioProject']} - {sra_item['SRA_Id']}.")
-                        else:
-                            log.info("Sample Title not found in full text.")
-                    else:
-                        log.info("Sample Title not present.")
-                else:
-                    response = extract_SRA_info_from_ENA(sra_id)
-                    if(response.status_code == 200):
-                        fulltext_etree = lxml.etree.fromstring(response.text)
-                        library_item = extract_library_info_from_sra_content(fulltext_etree)
-                        sra_item["Library"] = library_item
-                        log.info("Library information is extracted.")
-                    log.info("BioProject not in Genbank and ENA does not contain Sample Name.")
-                data.append(sra_item)
-        else:
-            log.info(f"PMC_ID: {record.PMC_ID} or SRA_ID: {record.SRA_Id_list} not found for {record.BioProject}")
+                    log.info("Library information is extracted.")
+                log.info("BioProject not in Genbank and ENA does not contain Sample Name.")
+            data.append(sra_item)
+        # else:
+        #     log.info(f"PMC_ID: {record.PMC_ID} or SRA_ID: {record.SRA_Id_list} not found for {record.BioProject}")
     output_file_name = "DATA_sra_info_in_pmc.json"
     with open(output_file_name, "w") as file:
         json.dump(data, file, indent=4)
