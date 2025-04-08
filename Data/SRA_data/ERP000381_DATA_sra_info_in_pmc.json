@@ -1,0 +1,1637 @@
+[
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033415",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam10",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033416",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam2",
+        "Library": {
+            "LIBRARY_NAME": "Pool1",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033418",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam36",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033420",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam38",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033421",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam39",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033422",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam4",
+        "Library": {
+            "LIBRARY_NAME": "Pool1",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033425",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam45",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033434",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam57",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033435",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam6",
+        "Library": {
+            "LIBRARY_NAME": "Pool1",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033437",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam61",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033438",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam62",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033442",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam66",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033443",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam67",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033445",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam70",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033446",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam72",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033447",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam76",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033450",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam80",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033451",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam81",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033454",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man101",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033455",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man102",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033456",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man103",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033458",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man105",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033459",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man106",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033460",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man107",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033466",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man114",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033470",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man118",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033479",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man128",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033480",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man129",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033482",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man84",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033484",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man86",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033488",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man91",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033493",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man96",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033495",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man99",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033496",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur11",
+        "Library": {
+            "LIBRARY_NAME": "Pool2",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033509",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur140",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033511",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur142",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033514",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur19",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033515",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur21",
+        "Library": {
+            "LIBRARY_NAME": "Pool2",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033516",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur22",
+        "Library": {
+            "LIBRARY_NAME": "Pool2",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033521",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur32",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033414",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam1",
+        "Library": {
+            "LIBRARY_NAME": "Pool1",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033419",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam37",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033423",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam40",
+        "Library": {
+            "LIBRARY_NAME": "Pool1",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033426",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam46",
+        "Library": {
+            "LIBRARY_NAME": "Pool1",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033428",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam48",
+        "Library": {
+            "LIBRARY_NAME": "Pool1",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033429",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam49",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033430",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam51",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033431",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam52",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033432",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam53",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033436",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam60",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033439",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam63",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033448",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam77",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033449",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam79",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033453",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man100",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033457",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man104",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033461",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man109",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033465",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man113",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033467",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man115",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033471",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man119",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033472",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man121",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033474",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man123",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033475",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man124",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033476",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man125",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033477",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man126",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033478",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man127",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033483",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man85",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033490",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man93",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033492",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man95",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033494",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man97",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033498",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur13",
+        "Library": {
+            "LIBRARY_NAME": "Pool2",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033500",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur131",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033501",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur132",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033504",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur136",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033505",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur137",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033507",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur139",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033510",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur141",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033512",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur17",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033522",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur33",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033417",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam3",
+        "Library": {
+            "LIBRARY_NAME": "Pool1",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033424",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam42",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033427",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam47",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033433",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam56",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033440",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam64",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033441",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam65",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033444",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam68",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033452",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Mam82",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033462",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man110",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033463",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man111",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033464",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man112",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033468",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man116",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033469",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man117",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033473",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man122",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033481",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man83",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033485",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man88",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033486",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man89",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033487",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man90",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033489",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man92",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033491",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Man94",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033497",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur12",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033499",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur130",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033502",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur133",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033503",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur135",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033506",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur138",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033508",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur14",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033513",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur18",
+        "Library": {
+            "LIBRARY_NAME": "Pool1",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033517",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur23",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033518",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur25",
+        "Library": {
+            "LIBRARY_NAME": "Pool5",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033519",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur29",
+        "Library": {
+            "LIBRARY_NAME": "Pool2",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    },
+    {
+        "BioProject": "ERP000381",
+        "BioProject_uid": "",
+        "SRA_Id": "ERX033520",
+        "Sample_Title": "",
+        "Sample_Ref_Name": "Sur30",
+        "Library": {
+            "LIBRARY_NAME": "Pool4",
+            "LIBRARY_STRATEGY": "OTHER",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "454 GS FLX"
+        }
+    }
+]

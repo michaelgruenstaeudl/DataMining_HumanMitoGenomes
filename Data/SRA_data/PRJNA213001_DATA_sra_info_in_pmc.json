@@ -1,0 +1,750 @@
+[
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456247",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 156",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456231",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 88",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456193",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 549",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456229",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 32",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456197",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 576",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456250",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 180",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456245",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American populations",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 154",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456244",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American populations",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 150",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456238",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 122",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456203",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 591",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456248",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 161",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456198",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 577",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456233",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 95",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456240",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 134",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456234",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 109",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456191",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 547",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456239",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 124",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456225",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 626",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456246",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American populations",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 155",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456194",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 555",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456199",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequence of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 579",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456206",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 611",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456237",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 119",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456241",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 145",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456232",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 94",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "387319",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondria Sequence variation in African American Population",
+        "Library": {
+            "LIBRARY_NAME": "Ion Fragment library",
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 479",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456251",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 220",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456204",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American populations",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 605",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456235",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 113",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456249",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 162",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456226",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 637",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456236",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 117",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456228",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American Population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 17",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456224",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 625",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456196",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 562",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456200",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequence of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 580",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456230",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "CON 68",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456207",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 612",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456201",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 583",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "455921",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American Population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 535",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456205",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 607",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456202",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 590",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456195",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 556",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    },
+    {
+        "BioProject": "PRJNA213001",
+        "BioProject_uid": "213001",
+        "SRA_Id": "456227",
+        "Sample_Title": "Generic sample from Homo Sapiens",
+        "Title": "Mitochondrial sequences of African American population",
+        "Library": {
+            "LIBRARY_NAME": null,
+            "LIBRARY_STRATEGY": "AMPLICON",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "PCR",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Ion Torrent PGM"
+        },
+        "Sample_Alias": "GLA 643",
+        "Original_Sample_Title": "Generic sample from Homo Sapiens"
+    }
+]

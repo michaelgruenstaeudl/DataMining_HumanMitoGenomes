@@ -1,0 +1,92 @@
+[
+    {
+        "BioProject": "PRJEB11848",
+        "BioProject_uid": "322372",
+        "SRA_Id": "2566675",
+        "Sample_Title": "Ancient human DNA",
+        "Title": "Illumina HiSeq 2500 sequencing",
+        "Library": {
+            "LIBRARY_NAME": "unspecified",
+            "LIBRARY_STRATEGY": "WGS",
+            "LIBRARY_SOURCE": "OTHER",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+        },
+        "Sample_Alias": "SAMEA3672575",
+        "submitter_id": "Rev5",
+        "Original_Sample_Title": "Ancient human DNA"
+    },
+    {
+        "BioProject": "PRJEB11848",
+        "BioProject_uid": "322372",
+        "SRA_Id": "2566673",
+        "Sample_Title": "Ancient human DNA",
+        "Title": "Illumina HiSeq 2500 sequencing",
+        "Library": {
+            "LIBRARY_NAME": "unspecified",
+            "LIBRARY_STRATEGY": "WGS",
+            "LIBRARY_SOURCE": "OTHER",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+        },
+        "Sample_Alias": "SAMEA3672572",
+        "submitter_id": "Bar31",
+        "Original_Sample_Title": "Ancient human DNA"
+    },
+    {
+        "BioProject": "PRJEB11848",
+        "BioProject_uid": "322372",
+        "SRA_Id": "2566676",
+        "Sample_Title": "Ancient human DNA",
+        "Title": "Illumina HiSeq 2500 sequencing",
+        "Library": {
+            "LIBRARY_NAME": "unspecified",
+            "LIBRARY_STRATEGY": "WGS",
+            "LIBRARY_SOURCE": "OTHER",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+        },
+        "Sample_Alias": "SAMEA3672571",
+        "submitter_id": "Bar8",
+        "Original_Sample_Title": "Ancient human DNA"
+    },
+    {
+        "BioProject": "PRJEB11848",
+        "BioProject_uid": "322372",
+        "SRA_Id": "2566674",
+        "Sample_Title": "Ancient human DNA",
+        "Title": "Illumina HiSeq 2500 sequencing",
+        "Library": {
+            "LIBRARY_NAME": "unspecified",
+            "LIBRARY_STRATEGY": "WGS",
+            "LIBRARY_SOURCE": "OTHER",
+            "LIBRARY_SELECTION": "unspecified",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+        },
+        "Sample_Alias": "SAMEA3672574",
+        "submitter_id": "Pal7",
+        "Original_Sample_Title": "Ancient human DNA"
+    },
+    {
+        "BioProject": "PRJEB11848",
+        "BioProject_uid": "322372",
+        "SRA_Id": "2566704",
+        "Sample_Title": "Ancient human DNA",
+        "Title": "Illumina HiSeq 2500 sequencing",
+        "Library": {
+            "LIBRARY_NAME": "unspecified",
+            "LIBRARY_STRATEGY": "WGS",
+            "LIBRARY_SOURCE": "GENOMIC",
+            "LIBRARY_SELECTION": "RANDOM",
+            "LIBRARY_LAYOUT": "SINGLE",
+            "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+        },
+        "Sample_Alias": "SAMEA3672573",
+        "submitter_id": "Klei10",
+        "Original_Sample_Title": "Ancient human DNA"
+    }
+]

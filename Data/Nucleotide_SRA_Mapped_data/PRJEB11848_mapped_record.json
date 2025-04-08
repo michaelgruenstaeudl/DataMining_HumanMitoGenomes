@@ -1,0 +1,154 @@
+[
+    {
+        "nucleotide_info": {
+            "AccessionID": "KU171096",
+            "BioProject": "PRJEB11848",
+            "Title": "Homo sapiens isolate Rev5 haplogroup X2b mitochondrion, partial genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Rev5",
+                "isolation_source": "early neolithic individual; Revenia",
+                "db_xref": "taxon:9606",
+                "haplogroup": "X2b",
+                "geo_loc_name": "Greece: Revenia, Northern Greece"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB11848",
+                "BioProject_uid": "322372",
+                "SRA_Id": "2566675",
+                "Sample_Title": "Ancient human DNA",
+                "Title": "Illumina HiSeq 2500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "unspecified",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "OTHER",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+                },
+                "Sample_Alias": "SAMEA3672575",
+                "submitter_id": "Rev5",
+                "Original_Sample_Title": "Ancient human DNA"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "KU171097",
+            "BioProject": "PRJEB11848",
+            "Title": "Homo sapiens isolate Bar31 haplogroup X2m mitochondrion, partial genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Bar31",
+                "isolation_source": "Early Neolithic individual; Barcin",
+                "db_xref": "taxon:9606",
+                "haplogroup": "X2m",
+                "geo_loc_name": "Turkey: Barcin, Western Anatolia"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB11848",
+                "BioProject_uid": "322372",
+                "SRA_Id": "2566673",
+                "Sample_Title": "Ancient human DNA",
+                "Title": "Illumina HiSeq 2500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "unspecified",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "OTHER",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+                },
+                "Sample_Alias": "SAMEA3672572",
+                "submitter_id": "Bar31",
+                "Original_Sample_Title": "Ancient human DNA"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "KU171098",
+            "BioProject": "PRJEB11848",
+            "Title": "Homo sapiens isolate Bar8 haplogroup K1a2 mitochondrion, partial genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Bar8",
+                "isolation_source": "Early Neolithic individual; Barcin",
+                "db_xref": "taxon:9606",
+                "haplogroup": "K1a2",
+                "geo_loc_name": "Turkey: Barcin, Western Anatolia"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB11848",
+                "BioProject_uid": "322372",
+                "SRA_Id": "2566676",
+                "Sample_Title": "Ancient human DNA",
+                "Title": "Illumina HiSeq 2500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "unspecified",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "OTHER",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+                },
+                "Sample_Alias": "SAMEA3672571",
+                "submitter_id": "Bar8",
+                "Original_Sample_Title": "Ancient human DNA"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "KU171099",
+            "BioProject": "PRJEB11848",
+            "Title": "Homo sapiens isolate Pal7 haplogroup J1c1 mitochondrion, partial genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Pal7",
+                "isolation_source": "late neolithic individual; Paliambela",
+                "db_xref": "taxon:9606",
+                "haplogroup": "J1c1",
+                "geo_loc_name": "Greece: Paliambela, Northern Greece"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB11848",
+                "BioProject_uid": "322372",
+                "SRA_Id": "2566674",
+                "Sample_Title": "Ancient human DNA",
+                "Title": "Illumina HiSeq 2500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "unspecified",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "OTHER",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+                },
+                "Sample_Alias": "SAMEA3672574",
+                "submitter_id": "Pal7",
+                "Original_Sample_Title": "Ancient human DNA"
+            }
+        ],
+        "sra_count": 1
+    }
+]

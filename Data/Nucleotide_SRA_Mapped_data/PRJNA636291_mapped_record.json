@@ -1,0 +1,3300 @@
+[
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506338",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_A2v_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_A2v_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972061",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_A2v_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_A2v_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506337",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_A2v_3 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_A2v_3",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972072",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_A2v_3",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_A2v_3",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506336",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_A2v_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_A2v_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972060",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_A2v_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_A2v_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506335",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV12b_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV12b_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972094",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV12b_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV12b_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506334",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U4b_6 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U4b_6",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972145",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U4b_6",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U4b_6",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506333",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U4b_11 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U4b_11",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972141",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U4b_11",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U4b_11",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506332",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U4b_10 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U4b_10",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972140",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U4b_10",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U4b_10",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506331",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U4b_4 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U4b_4",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972144",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U4b_4",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U4b_4",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506330",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U4b_9 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U4b_9",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972148",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U4b_9",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U4b_9",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506329",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U4b_8 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U4b_8",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972147",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U4b_8",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U4b_8",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506328",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U4b_3 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U4b_3",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972143",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U4b_3",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U4b_3",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506327",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U4b_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U4b_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972142",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U4b_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U4b_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506326",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U4b_7 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U4b_7",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972146",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U4b_7",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U4b_7",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506325",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U4b_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U4b_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972139",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U4b_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U4b_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506324",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_12 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_12",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972138",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_12",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_12",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506323",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_5 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_5",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972066",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_5",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_5",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506322",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_8 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_8",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972069",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_8",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_8",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506321",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_14 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_14",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972062",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_14",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_14",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506320",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_3 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_3",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972064",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_3",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_3",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506319",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_13 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_13",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972149",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_13",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_13",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506318",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972063",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506317",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_4 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_4",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972065",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_4",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_4",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506316",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_7 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_7",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972068",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_7",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_7",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506315",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_6 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_6",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972067",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_6",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_6",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506314",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972105",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506313",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_11 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_11",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972127",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_11",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_11",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506312",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_10 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_10",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972116",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_10",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_10",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506311",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_HV2a_9 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_HV2a_9",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972070",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_HV2a_9",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_HV2a_9",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506310",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_T2b_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_T2b_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972131",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_T2b_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_T2b_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506309",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_F1g_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_F1g_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972083",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_F1g_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_F1g_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506308",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_T2i_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_T2i_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972133",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_T2i_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_T2i_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506307",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_T2g_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_T2g_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972132",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_T2g_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_T2g_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506306",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_T1a_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_T1a_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972130",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_T1a_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_T1a_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506305",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_T1a_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_T1a_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972129",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_T1a_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_T1a_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506304",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U7a_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U7a_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972150",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U7a_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U7a_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506303",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U7a_5 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U7a_5",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972154",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U7a_5",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U7a_5",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506302",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U7a_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U7a_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972151",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U7a_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U7a_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506301",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U7a_6 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U7a_6",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972155",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U7a_6",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U7a_6",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506300",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U7a_4 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U7a_4",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972153",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U7a_4",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U7a_4",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506299",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U7a_3 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U7a_3",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972152",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U7a_3",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U7a_3",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506298",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M30d_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M30d_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972085",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M30d_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M30d_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506297",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M30d_5 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M30d_5",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972091",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M30d_5",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M30d_5",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506296",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M30d_7 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M30d_7",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972093",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M30d_7",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M30d_7",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506295",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M30d_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M30d_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972088",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M30d_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M30d_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506294",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M30d_6 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M30d_6",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972092",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M30d_6",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M30d_6",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506293",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M30d_4 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M30d_4",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972090",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M30d_4",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M30d_4",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506292",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M30d_3 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M30d_3",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972089",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M30d_3",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M30d_3",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506291",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M30d_11 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M30d_11",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972087",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M30d_11",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M30d_11",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506290",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M30d_10 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M30d_10",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972086",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M30d_10",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M30d_10",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506289",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M30d_9 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M30d_9",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972096",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M30d_9",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M30d_9",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506288",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M30d_8 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M30d_8",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972095",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M30d_8",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M30d_8",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506287",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_Z1a_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_Z1a_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972156",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_Z1a_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_Z1a_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506286",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M24a_8 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M24a_8",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972079",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M24a_8",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M24a_8",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506285",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M24a_7 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M24a_7",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972078",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M24a_7",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M24a_7",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506284",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M24a_6 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M24a_6",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972077",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M24a_6",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M24a_6",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506283",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M24a_5 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M24a_5",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972076",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M24a_5",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M24a_5",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506282",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M24a_4 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M24a_4",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972075",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M24a_4",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M24a_4",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506281",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M24a_3 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M24a_3",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972074",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M24a_3",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M24a_3",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506280",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M24a_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M24a_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972073",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M24a_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M24a_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506279",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M24a_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M24a_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972071",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M24a_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M24a_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506278",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M3a_4 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M3a_4",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972112",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M3a_4",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M3a_4",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506277",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M3a_8 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M3a_8",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972115",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M3a_8",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M3a_8",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506276",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M3a_3 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M3a_3",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972111",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M3a_3",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M3a_3",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506275",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M3a_6 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M3a_6",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972114",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M3a_6",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M3a_6",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506274",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M3a_5 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M3a_5",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972113",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M3a_5",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M3a_5",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506273",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M3a_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M3a_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972109",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M3a_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M3a_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506272",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M3a_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M3a_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972110",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M3a_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M3a_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506271",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M35b_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M35b_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972098",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M35b_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M35b_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506270",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M4a_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M4a_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972117",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M4a_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M4a_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506269",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M27b_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M27b_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972080",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M27b_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M27b_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506268",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M52b_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M52b_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972119",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M52b_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M52b_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506267",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M52b_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M52b_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972118",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M52b_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M52b_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506266",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M5a_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M5a_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972128",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M5a_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M5a_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506265",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M5a_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M5a_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972126",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M5a_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M5a_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506264",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M39b_3 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M39b_3",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972101",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M39b_3",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M39b_3",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506263",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M39b_5 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M39b_5",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972103",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M39b_5",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M39b_5",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506262",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M39b_4 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M39b_4",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972102",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M39b_4",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M39b_4",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506261",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M39b_9 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M39b_9",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972108",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M39b_9",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M39b_9",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506260",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M39b_8 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M39b_8",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972107",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M39b_8",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M39b_8",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506259",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M39b_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M39b_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972100",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M39b_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M39b_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506258",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M39b_7 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M39b_7",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972106",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M39b_7",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M39b_7",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506257",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M39b_6 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M39b_6",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972104",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M39b_6",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M39b_6",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506256",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M39b_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M39b_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972099",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M39b_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M39b_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506255",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M33a_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M33a_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972097",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M33a_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M33a_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506254",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M2a_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M2a_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972081",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M2a_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M2a_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506253",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M2a_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M2a_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972082",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M2a_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M2a_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506252",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U2e_3 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U2e_3",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972137",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U2e_3",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U2e_3",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506251",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U2e_2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U2e_2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972136",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U2e_2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U2e_2",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506250",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U2e_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U2e_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972135",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U2e_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U2e_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506249",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M52b_4 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M52b_4",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972121",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M52b_4",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M52b_4",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506248",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M52b_9 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M52b_9",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972125",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M52b_9",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M52b_9",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506247",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M52b_3 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M52b_3",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972120",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M52b_3",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M52b_3",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506246",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M52b_8 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M52b_8",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972124",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M52b_8",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M52b_8",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506245",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M52b_7 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M52b_7",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972123",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M52b_7",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M52b_7",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506244",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M52b_6 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M52b_6",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972122",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M52b_6",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M52b_6",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506243",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_U1a_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_U1a_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972134",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_U1a_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_U1a_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MT506242",
+            "BioProject": "PRJNA636291",
+            "Title": "Homo sapiens isolate AGENOME_ZPMS_M2b_1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "AGENOME_ZPMS_M2b_1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJNA636291",
+                "BioProject_uid": "636291",
+                "SRA_Id": "10972084",
+                "Sample_Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Title": "Zoroastrian Parsi Mitochondria Genome",
+                "Library": {
+                    "LIBRARY_NAME": "ZPMS_M2b_1",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "PAIRED",
+                    "INSTRUMENT_MODEL": "Illumina NovaSeq 6000"
+                },
+                "Sample_Alias": "AGENOME_ZPMS_M2b_1",
+                "Original_Sample_Title": "Zoroastrian Parsi Mitochondria Genome"
+            }
+        ],
+        "sra_count": 1
+    }
+]
