@@ -1,0 +1,3490 @@
+[
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733826",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur33 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur33",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033522",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur33",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733825",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur32 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur32",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033521",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur32",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733824",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur30 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur30",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033520",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur30",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733823",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur29 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur29",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033519",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur29",
+                "Library": {
+                    "LIBRARY_NAME": "Pool2",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733822",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur25 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur25",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033518",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur25",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733821",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur23 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur23",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033517",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur23",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733820",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur22 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur22",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033516",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur22",
+                "Library": {
+                    "LIBRARY_NAME": "Pool2",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733819",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur21 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur21",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033515",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur21",
+                "Library": {
+                    "LIBRARY_NAME": "Pool2",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733818",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur19 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur19",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033514",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur19",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733817",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur18 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur18",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033513",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur18",
+                "Library": {
+                    "LIBRARY_NAME": "Pool1",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733816",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur17 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur17",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033512",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur17",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733815",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur142 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur142",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033511",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur142",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733814",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur141 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur141",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033510",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur141",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733813",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur140 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur140",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033509",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur140",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733812",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur14 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur14",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033508",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur14",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733811",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur139 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur139",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033507",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur139",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733810",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur138 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur138",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033506",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur138",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733809",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur137 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur137",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033505",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur137",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733808",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur136 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur136",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033504",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur136",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733807",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur135 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur135",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033503",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur135",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733806",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur133 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur133",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033502",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur133",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733805",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur132 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur132",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033501",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur132",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733804",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur131 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur131",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033500",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur131",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733803",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur130 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur130",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033499",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur130",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733802",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur13 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur13",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033498",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur13",
+                "Library": {
+                    "LIBRARY_NAME": "Pool2",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733801",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur12 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur12",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033497",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur12",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733800",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Sur11 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Sur11",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033496",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Sur11",
+                "Library": {
+                    "LIBRARY_NAME": "Pool2",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733799",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man99 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man99",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033495",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man99",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733798",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man97 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man97",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033494",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man97",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733797",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man110 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man110",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033462",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man110",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733796",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man122 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man122",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033473",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man122",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733795",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man96 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man96",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033493",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man96",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733794",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man95 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man95",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033492",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man95",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733793",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man94 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man94",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033491",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man94",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733792",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man93 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man93",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033490",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man93",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733791",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man92 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man92",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033489",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man92",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733790",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man91 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man91",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033488",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man91",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733789",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man90 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man90",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033487",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man90",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733788",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man89 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man89",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033486",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man89",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733787",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man88 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man88",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033485",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man88",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733786",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man86 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man86",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033484",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man86",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733785",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man85 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man85",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033483",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man85",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733784",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man84 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man84",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033482",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man84",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733783",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man83 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man83",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033481",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man83",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733782",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man129 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man129",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033480",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man129",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733781",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man128 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man128",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033479",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man128",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733780",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man127 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man127",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033478",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man127",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733779",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man126 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man126",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033477",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man126",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733778",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man125 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man125",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033476",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man125",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733777",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man124 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man124",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033475",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man124",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733776",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man123 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man123",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033474",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man123",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733775",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man121 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man121",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033472",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man121",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733774",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man119 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man119",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033471",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man119",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733773",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man118 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man118",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033470",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man118",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733772",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man117 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man117",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033469",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man117",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733771",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man116 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man116",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033468",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man116",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733770",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man115 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man115",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033467",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man115",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733769",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man114 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man114",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033466",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man114",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733768",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man113 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man113",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033465",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man113",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733767",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man112 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man112",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033464",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man112",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733766",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man111 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man111",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033463",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man111",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733765",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man109 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man109",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033461",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man109",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733764",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man107 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man107",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033460",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man107",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733763",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man106 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man106",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033459",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man106",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733762",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man105 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man105",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033458",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man105",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733761",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man104 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man104",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033457",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man104",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733760",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man103 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man103",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033456",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man103",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733759",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man102 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man102",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033455",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man102",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733758",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man101 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man101",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033454",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man101",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733757",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Man100 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Man100",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033453",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Man100",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733756",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam82 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam82",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033452",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam82",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733755",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam81 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam81",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033451",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam81",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733754",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam80 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam80",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033450",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam80",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733753",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam79 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam79",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033449",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam79",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733752",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam77 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam77",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033448",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam77",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733751",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam76 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam76",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033447",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam76",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733750",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam72 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam72",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033446",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam72",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733749",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam70 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam70",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033445",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam70",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733748",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam68 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam68",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033444",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam68",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733747",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam67 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam67",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033443",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam67",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733746",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam66 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam66",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033442",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam66",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733745",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam65 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam65",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033441",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam65",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733744",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam64 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam64",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033440",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam64",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733743",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam63 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam63",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033439",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam63",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733742",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam62 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam62",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033438",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam62",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733741",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam61 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam61",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033437",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam61",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733740",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam60 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam60",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033436",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam60",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733739",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam6 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam6",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033435",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam6",
+                "Library": {
+                    "LIBRARY_NAME": "Pool1",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733738",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam57 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam57",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033434",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam57",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733737",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam56 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam56",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033433",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam56",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733736",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam53 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam53",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033432",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam53",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733735",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam52 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam52",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033431",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam52",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733734",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam51 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam51",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033430",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam51",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733733",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam49 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam49",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033429",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam49",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733732",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam48 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam48",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033428",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam48",
+                "Library": {
+                    "LIBRARY_NAME": "Pool1",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733731",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam47 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam47",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033427",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam47",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733730",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam46 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam46",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033426",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam46",
+                "Library": {
+                    "LIBRARY_NAME": "Pool1",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733729",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam45 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam45",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033425",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam45",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733728",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam42 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam42",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033424",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam42",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733727",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam40 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam40",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033423",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam40",
+                "Library": {
+                    "LIBRARY_NAME": "Pool1",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733726",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam4 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam4",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033422",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam4",
+                "Library": {
+                    "LIBRARY_NAME": "Pool1",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733725",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam39 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam39",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033421",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam39",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733724",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam38 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam38",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033420",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam38",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733723",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam37 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam37",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033419",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam37",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733722",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam36 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam36",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033418",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam36",
+                "Library": {
+                    "LIBRARY_NAME": "Pool5",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733721",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam3 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam3",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033417",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam3",
+                "Library": {
+                    "LIBRARY_NAME": "Pool1",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733720",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam2",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033416",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam2",
+                "Library": {
+                    "LIBRARY_NAME": "Pool1",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733719",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam10 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam10",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033415",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam10",
+                "Library": {
+                    "LIBRARY_NAME": "Pool4",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "GU733718",
+            "BioProject": "ERP000381",
+            "Title": "Homo sapiens isolate Mam1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Mam1",
+                "db_xref": "taxon:9606"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "ERP000381",
+                "BioProject_uid": "",
+                "SRA_Id": "ERX033414",
+                "Sample_Title": "",
+                "Sample_Ref_Name": "Mam1",
+                "Library": {
+                    "LIBRARY_NAME": "Pool1",
+                    "LIBRARY_STRATEGY": "OTHER",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "unspecified",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "454 GS FLX"
+                }
+            }
+        ],
+        "sra_count": 1
+    }
+]

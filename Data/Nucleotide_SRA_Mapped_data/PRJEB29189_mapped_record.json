@@ -1,0 +1,694 @@
+[
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321345",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate Pv517 haplogroup K2b1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Pv517",
+                "db_xref": "taxon:9606",
+                "haplogroup": "K2b1",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013498",
+                "Sample_Title": "",
+                "Title": "Illumina HiSeq 2500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "Pv517",
+                    "LIBRARY_STRATEGY": "Targeted-Capture",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "Hybrid Selection",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+                },
+                "Sample_Alias": "SAMEA4976134",
+                "submitter_id": "Pv517"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321344",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate Pxevi haplogroup J2a1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Pxevi",
+                "db_xref": "taxon:9606",
+                "haplogroup": "J2a1",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013499",
+                "Sample_Title": "",
+                "Title": "Illumina HiSeq 2500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "Pxevi",
+                    "LIBRARY_STRATEGY": "Targeted-Capture",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "Hybrid Selection",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+                },
+                "Sample_Alias": "SAMEA4976135",
+                "submitter_id": "Pxevi"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321343",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate Rebolal haplogroup K2b1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Rebolal",
+                "db_xref": "taxon:9606",
+                "haplogroup": "K2b1",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013500",
+                "Sample_Title": "Ancient human",
+                "Title": "Illumina HiSeq 2500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "Rebolal",
+                    "LIBRARY_STRATEGY": "Targeted-Capture",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "Hybrid Selection",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+                },
+                "Sample_Alias": "SAMEA4976136",
+                "submitter_id": "Rebolal",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321342",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate Eiros2 haplogroup U5b3 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Eiros2",
+                "db_xref": "taxon:9606",
+                "haplogroup": "U5b3",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013493",
+                "Sample_Title": "Ancient human",
+                "Title": "NextSeq 500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "Eiros2",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "NextSeq 500"
+                },
+                "Sample_Alias": "SAMEA4976129",
+                "submitter_id": "Eiros2",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321341",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate Eiros1 haplogroup V mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Eiros1",
+                "db_xref": "taxon:9606",
+                "haplogroup": "V",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013497",
+                "Sample_Title": "",
+                "Title": "Illumina HiSeq 2500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "Eiros1",
+                    "LIBRARY_STRATEGY": "Targeted-Capture",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "Hybrid Selection",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+                },
+                "Sample_Alias": "SAMEA4976133",
+                "submitter_id": "Eiros1"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321340",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate Val146 haplogroup H1bm mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Val146",
+                "db_xref": "taxon:9606",
+                "haplogroup": "H1bm",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013504",
+                "Sample_Title": "Ancient human",
+                "Title": "Illumina HiSeq 2500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "Val146",
+                    "LIBRARY_STRATEGY": "Targeted-Capture",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "Hybrid Selection",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+                },
+                "Sample_Alias": "SAMEA4976139",
+                "submitter_id": "Val146",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321339",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate Val145 haplogroup H1bm mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Val145",
+                "db_xref": "taxon:9606",
+                "haplogroup": "H1bm",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013503",
+                "Sample_Title": "",
+                "Title": "Illumina HiSeq 2500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "Val145",
+                    "LIBRARY_STRATEGY": "Targeted-Capture",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "Hybrid Selection",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+                },
+                "Sample_Alias": "SAMEA4976140",
+                "submitter_id": "Val145"
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321338",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate Val107 haplogroup H1bm mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Val107",
+                "db_xref": "taxon:9606",
+                "haplogroup": "H1bm",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013502",
+                "Sample_Title": "Ancient human",
+                "Title": "Illumina HiSeq 2500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "Val107",
+                    "LIBRARY_STRATEGY": "Targeted-Capture",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "Hybrid Selection",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+                },
+                "Sample_Alias": "SAMEA4976138",
+                "submitter_id": "Val107",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321336",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate Val05 haplogroup H1ay mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "Val05",
+                "db_xref": "taxon:9606",
+                "haplogroup": "H1ay",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013501",
+                "Sample_Title": "Ancient human",
+                "Title": "Illumina HiSeq 2500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "Val05",
+                    "LIBRARY_STRATEGY": "Targeted-Capture",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "Hybrid Selection",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "Illumina HiSeq 2500"
+                },
+                "Sample_Alias": "SAMEA4976137",
+                "submitter_id": "Val05",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321335",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate LD903 haplogroup U3a1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "LD903",
+                "db_xref": "taxon:9606",
+                "haplogroup": "U3a1",
+                "tissue_type": "bone",
+                "geo_loc_name": "Portugal"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013494",
+                "Sample_Title": "Ancient human",
+                "Title": "NextSeq 500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "LD903",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "NextSeq 500"
+                },
+                "Sample_Alias": "SAMEA4976130",
+                "submitter_id": "LD903",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321334",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate LD1174 haplogroup U5b2 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "LD1174",
+                "db_xref": "taxon:9606",
+                "haplogroup": "U5b2",
+                "tissue_type": "bone",
+                "geo_loc_name": "Portugal"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013491",
+                "Sample_Title": "Ancient human",
+                "Title": "HiSeq X Ten sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "LD1174",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "HiSeq X Ten"
+                },
+                "Sample_Alias": "SAMEA4976127",
+                "submitter_id": "LD1174-MT",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            },
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013487",
+                "Sample_Title": "Ancient human",
+                "Title": "HiSeq X Ten sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "LD1174",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "HiSeq X Ten"
+                },
+                "Sample_Alias": "SAMEA4976123",
+                "submitter_id": "LD1174",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            }
+        ],
+        "sra_count": 2
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321333",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate LD270 haplogroup U8a mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "LD270",
+                "db_xref": "taxon:9606",
+                "haplogroup": "U8a",
+                "tissue_type": "bone",
+                "geo_loc_name": "Portugal"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013490",
+                "Sample_Title": "Ancient human",
+                "Title": "HiSeq X Ten sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "LD270",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "HiSeq X Ten"
+                },
+                "Sample_Alias": "SAMEA4976126",
+                "submitter_id": "LD270-MT",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            },
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013486",
+                "Sample_Title": "Ancient human",
+                "Title": "HiSeq X Ten sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "LD270",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "HiSeq X Ten"
+                },
+                "Sample_Alias": "SAMEA4976122",
+                "submitter_id": "LD270",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            }
+        ],
+        "sra_count": 2
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321332",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate LU657 haplogroup U5b1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "LU657",
+                "db_xref": "taxon:9606",
+                "haplogroup": "U5b1",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013495",
+                "Sample_Title": "Ancient human",
+                "Title": "NextSeq 500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "LU657",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "NextSeq 500"
+                },
+                "Sample_Alias": "SAMEA4976131",
+                "submitter_id": "LU657",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321331",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate LU339 haplogroup H mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "LU339",
+                "db_xref": "taxon:9606",
+                "haplogroup": "H",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013485",
+                "Sample_Title": "Ancient human",
+                "Title": "NextSeq 500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "LU339",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "NextSeq 500"
+                },
+                "Sample_Alias": "SAMEA4976121",
+                "submitter_id": "LU339",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            },
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013489",
+                "Sample_Title": "Ancient human",
+                "Title": "NextSeq 500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "LU339",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "NextSeq 500"
+                },
+                "Sample_Alias": "SAMEA4976125",
+                "submitter_id": "LU339-MT",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            }
+        ],
+        "sra_count": 2
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321330",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate COV20125 haplogroup U2e1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "COV20125",
+                "db_xref": "taxon:9606",
+                "haplogroup": "U2e1",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013492",
+                "Sample_Title": "Ancient human",
+                "Title": "NextSeq 500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "COV20125",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "NextSeq 500"
+                },
+                "Sample_Alias": "SAMEA4976128",
+                "submitter_id": "COV20125-MT",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            }
+        ],
+        "sra_count": 1
+    },
+    {
+        "nucleotide_info": {
+            "AccessionID": "MK321329",
+            "BioProject": "PRJEB29189",
+            "Title": "Homo sapiens isolate COV20126 haplogroup L2a1 mitochondrion, complete genome",
+            "Source": {
+                "organism": "Homo sapiens",
+                "organelle": "mitochondrion",
+                "mol_type": "genomic DNA",
+                "isolate": "COV20126",
+                "db_xref": "taxon:9606",
+                "haplogroup": "L2a1",
+                "tissue_type": "bone",
+                "geo_loc_name": "Spain"
+            }
+        },
+        "sra_info": [
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013488",
+                "Sample_Title": "Ancient human",
+                "Title": "NextSeq 500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "COV20126",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "NextSeq 500"
+                },
+                "Sample_Alias": "SAMEA4976124",
+                "submitter_id": "COV20126-MT",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            },
+            {
+                "BioProject": "PRJEB29189",
+                "BioProject_uid": "512750",
+                "SRA_Id": "7013484",
+                "Sample_Title": "Ancient human",
+                "Title": "NextSeq 500 sequencing",
+                "Library": {
+                    "LIBRARY_NAME": "COV20126",
+                    "LIBRARY_STRATEGY": "WGS",
+                    "LIBRARY_SOURCE": "GENOMIC",
+                    "LIBRARY_SELECTION": "PCR",
+                    "LIBRARY_LAYOUT": "SINGLE",
+                    "INSTRUMENT_MODEL": "NextSeq 500"
+                },
+                "Sample_Alias": "SAMEA4976120",
+                "submitter_id": "COV20126",
+                "Original_Sample_Title": "Ancient human",
+                "Matched_Information": "Here we used a combination of shotgun and whole-genome capture (WGC) strategies to generate whole-genome data from four prehistoric human remains (coverage from 0.4\u20134.8\u00d7) and 13 mitogenomes from the Iberian Peninsula, dated well before any historical African presence in Iberia. We found one sample from Andalusia (southern Spain) to carry the sub-Saharan mitochondrial haplogroup L2a1, to our knowledge never observed before in ancient human remains outside Africa. In addition, the analyses of the ancient nuclear genomes revealed an increased similarity between Middle Neolithic/Chalcolithic (MN/ChL) samples from Spain and ancient sub-Saharan remains. To our knowledge, this study reports for the first time, both at nuclear and mitochondrial level, direct evidence of prehistoric northbound gene flow from Africa into Europe, probably following a trans-Mediterranean western route."
+            }
+        ],
+        "sra_count": 2
+    }
+]

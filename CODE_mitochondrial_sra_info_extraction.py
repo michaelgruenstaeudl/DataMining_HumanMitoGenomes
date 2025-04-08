@@ -198,12 +198,12 @@ def main(args):
                     log.error("BioProject accession number not found.")
                     
             pubmed_dataframe.loc[len(pubmed_dataframe)] = pubmed_item  
-    pubmed_dataframe.to_csv("DATA_pubmed_info_with_bioproj_sra_sample_new.csv", index=False)
+    pubmed_dataframe.to_csv("DATA_pubmed_info_with_bioproj_sra_ids.csv", index=False)
     log.info("SRA Id Extraction Process completed.")
     
     pubmed_dataframe = pubmed_dataframe.fillna("")
     if(len(pubmed_dataframe) <= 0):
-        pubmed_dataframe = pd.read_csv("DATA_pubmed_info_with_bioproj_sra_sample_new.csv",
+        pubmed_dataframe = pd.read_csv("DATA_pubmed_info_with_bioproj_sra_ids.csv",
                                     dtype={
                                         'BioProject_uid': 'string',
                                         'BioProject': 'string',
@@ -337,7 +337,7 @@ def main(args):
             data.append(sra_item)
         # else:
         #     log.info(f"PMC_ID: {record.PMC_ID} or SRA_ID: {record.SRA_Id_list} not found for {record.BioProject}")
-    output_file_name = "Nucleotide_SRA_Mapped_data/SRA_data/DATA_sra_info_in_pmc.json"
+    output_file_name = "Data/SRA_data/DATA_sra_info_in_pmc.json"
     with open(output_file_name, "w") as file:
         json.dump(data, file, indent=4)
     log.info(f"Data written to {output_file_name}")
