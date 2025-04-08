@@ -89,7 +89,6 @@ def main(args):
     
     # DATA_pubmed_info_with_bioproj_and_sra.csv file contains the information of the articles from PubMed with BioProject and SRA Code 
     # (Extracted by CODE_mitochondrial_pubmed_article_extraction.py and manually by Bryce)
-    
     pubmed_info_with_bioproject = pd.read_csv("DATA_Combined_DATA_pubmed_info_with_bioproj_and_sra.csv")
     pubmed_info_with_bioproject = pubmed_info_with_bioproject.rename(columns={"European Nucleotide Archive": "ENA", "SRA Code": "SRA_Code"})
     print(pubmed_info_with_bioproject.info())
@@ -240,6 +239,25 @@ def main(args):
                 library_item = extract_library_info_from_sra_content(fulltext_etree)
                 sra_item["Library"] = library_item
                 
+                #Extracting sample alias from SRA
+                sample_tag_list = fulltext_etree.xpath("//SAMPLE")
+                if(len(sample_tag_list) > 0):
+                    sra_item["Sample_Alias"] = sample_tag_list[0].get("alias")
+
+                # Extracting Sample Submitter Id
+                sample_attribute_list = fulltext_etree.xpath('//SAMPLE_ATTRIBUTES')
+                
+                submitter_id_value = ""
+                if(len(sample_attribute_list) > 0):
+                    for sample_attribute in sample_attribute_list[0].iterchildren():
+                        tag = sample_attribute.find('TAG').text
+                        if tag == "Submitter Id":
+                            submitter_id_value = sample_attribute.find('VALUE').text
+                            break
+                
+                if(submitter_id_value != "" and submitter_id_value != None):   
+                    sra_item["submitter_id"] = submitter_id_value
+                    
                 # Extracting Sample Title from Pool Tag
                 pool_tag_list = fulltext_etree.xpath("//Pool")
                 if(len(pool_tag_list) > 0):
@@ -304,6 +322,14 @@ def main(args):
                 response = extract_SRA_info_from_ENA(sra_id)
                 if(response.status_code == 200):
                     fulltext_etree = lxml.etree.fromstring(response.text)
+                    sample_descriptor_list = fulltext_etree.xpath('//SAMPLE_DESCRIPTOR')
+                    sample_ref_name = ""
+                    if(len(sample_descriptor_list) > 0):
+                        sample_ref_name = sample_descriptor_list[0].get("refname")
+                    
+                    if(sample_ref_name != "" and sample_ref_name != None):   
+                        sra_item["Sample_Ref_Name"] = sample_ref_name
+                        
                     library_item = extract_library_info_from_sra_content(fulltext_etree)
                     sra_item["Library"] = library_item
                     log.info("Library information is extracted.")
@@ -311,7 +337,7 @@ def main(args):
             data.append(sra_item)
         # else:
         #     log.info(f"PMC_ID: {record.PMC_ID} or SRA_ID: {record.SRA_Id_list} not found for {record.BioProject}")
-    output_file_name = "DATA_sra_info_in_pmc.json"
+    output_file_name = "Nucleotide_SRA_Mapped_data/SRA_data/DATA_sra_info_in_pmc.json"
     with open(output_file_name, "w") as file:
         json.dump(data, file, indent=4)
     log.info(f"Data written to {output_file_name}")
