@@ -55,13 +55,17 @@ def main(args):
             "BioProject": row.BioProject
         }
         nucleotide_info = nucleotide_interact.fetch_nucleotide_info(row.AccessionID)
-        if(len(nucleotide_info) > 0 and "GBSeq_definition" in nucleotide_info[0]):
-            nucleotide_item["Title"] = nucleotide_info[0]["GBSeq_definition"]
+        if(len(nucleotide_info) > 0):
+            if("GBSeq_definition" in nucleotide_info[0]):
+                nucleotide_item["Title"] = nucleotide_info[0]["GBSeq_definition"]
+            if("GBSeq_comment" in nucleotide_info[0]):
+                nucleotide_item["Assembly_Info"] = (nucleotide_info[0]["GBSeq_comment"])
+        
         source_info = nucleotide_interact.extract_source_info_from_nucleotide_info(nucleotide_info)
         nucleotide_item["Source"] = source_info
         nucleotide_data_list.append(nucleotide_item)
         
-    output_file_name = "DATA_nucleotide_data_list_new.json"
+    output_file_name = "Data/Nucleotide_metadata/DATA_nucleotide_metadata_list.json"
     with open(output_file_name, "w") as file:
         json.dump(nucleotide_data_list, file, indent=4)
     log.info(f"Data written to {output_file_name}")
