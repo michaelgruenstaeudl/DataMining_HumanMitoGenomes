@@ -4,6 +4,7 @@
             "AccessionID": "MF681706",
             "BioProject": "PRJEB22217",
             "Title": "Homo sapiens isolate RN39 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.5a-r405 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -40,6 +41,7 @@
             "AccessionID": "MF681705",
             "BioProject": "PRJEB22217",
             "Title": "Homo sapiens isolate RN041 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.5a-r405 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -76,6 +78,7 @@
             "AccessionID": "MF681704",
             "BioProject": "PRJEB22217",
             "Title": "Homo sapiens isolate RN037 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.5a-r405 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -112,6 +115,7 @@
             "AccessionID": "MF681703",
             "BioProject": "PRJEB22217",
             "Title": "Homo sapiens isolate RN036 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.5a-r405 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -148,6 +152,7 @@
             "AccessionID": "MF681702",
             "BioProject": "PRJEB22217",
             "Title": "Homo sapiens isolate RN035 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.5a-r405 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",

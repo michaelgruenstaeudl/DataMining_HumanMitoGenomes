@@ -4,6 +4,7 @@
             "AccessionID": "MK165687",
             "BioProject": "PRJEB29663",
             "Title": "Homo sapiens isolate Ancient Aboriginal Australian WPAH4 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.6.2 ; Assembly Name :: Ancient Aboriginal Australians ; Coverage :: 331.9 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -42,6 +43,7 @@
             "AccessionID": "MK165679",
             "BioProject": "PRJEB29663",
             "Title": "Homo sapiens isolate Ancient Aboriginal Australian MH8 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.6.2 ; Assembly Name :: Ancient Aboriginal Australians ; Coverage :: 331.9 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -80,6 +82,7 @@
             "AccessionID": "MK165678",
             "BioProject": "PRJEB29663",
             "Title": "Homo sapiens isolate Ancient Aboriginal Australian MH7 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.6.2 ; Assembly Name :: Ancient Aboriginal Australians ; Coverage :: 331.9 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -117,6 +120,7 @@
             "AccessionID": "MK165677",
             "BioProject": "PRJEB29663",
             "Title": "Homo sapiens isolate Ancient Aboriginal Australian MH6 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.6.2 ; Assembly Name :: Ancient Aboriginal Australians ; Coverage :: 331.9 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -154,6 +158,7 @@
             "AccessionID": "MK165670",
             "BioProject": "PRJEB29663",
             "Title": "Homo sapiens isolate Ancient Aboriginal Australian PA109 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.6.2 ; Assembly Name :: Ancient Aboriginal Australians ; Coverage :: 331.9 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -192,6 +197,7 @@
             "AccessionID": "MK165669",
             "BioProject": "PRJEB29663",
             "Title": "Homo sapiens isolate Ancient Aboriginal Australian PA86 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.6.2 ; Assembly Name :: Ancient Aboriginal Australians ; Coverage :: 331.9 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -230,6 +236,7 @@
             "AccessionID": "MK165668",
             "BioProject": "PRJEB29663",
             "Title": "Homo sapiens isolate Ancient Aboriginal Australian KP2 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.6.2 ; Assembly Name :: Ancient Aboriginal Australians ; Coverage :: 331.9 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -267,6 +274,7 @@
             "AccessionID": "MK165667",
             "BioProject": "PRJEB29663",
             "Title": "Homo sapiens isolate Ancient Aboriginal Australian KP1 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.6.2 ; Assembly Name :: Ancient Aboriginal Australians ; Coverage :: 331.9 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -305,6 +313,7 @@
             "AccessionID": "MK165666",
             "BioProject": "PRJEB29663",
             "Title": "Homo sapiens isolate Ancient Aboriginal Australian FLI2 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.6.2 ; Assembly Name :: Ancient Aboriginal Australians ; Coverage :: 331.9 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",

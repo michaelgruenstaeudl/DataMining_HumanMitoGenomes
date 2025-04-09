@@ -4,6 +4,7 @@
             "AccessionID": "KF055333",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_643_88_BC9 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -39,6 +40,7 @@
             "AccessionID": "KF055332",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_637_88_BC7 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -74,6 +76,7 @@
             "AccessionID": "KF055331",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_626_88_BC5 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -109,6 +112,7 @@
             "AccessionID": "KF055330",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_625_88_BC3 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -144,6 +148,7 @@
             "AccessionID": "KF055329",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_612_117_BC15 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -179,6 +184,7 @@
             "AccessionID": "KF055328",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_611_P6_BC12 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -214,6 +220,7 @@
             "AccessionID": "KF055327",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_607_P6_BC11 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -249,6 +256,7 @@
             "AccessionID": "KF055326",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_605_117_BC13 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -284,6 +292,7 @@
             "AccessionID": "KF055325",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_591_UP_NBC mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -319,6 +328,7 @@
             "AccessionID": "KF055324",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_590_117_BC11 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -354,6 +364,7 @@
             "AccessionID": "KF055323",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_583_117_BC9 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -389,6 +400,7 @@
             "AccessionID": "KF055322",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_580_88_BC15 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -424,6 +436,7 @@
             "AccessionID": "KF055321",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_579_117_BC7 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -459,6 +472,7 @@
             "AccessionID": "KF055320",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_577_117_BC5 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -494,6 +508,7 @@
             "AccessionID": "KF055319",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_576_117_BC1 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -529,6 +544,7 @@
             "AccessionID": "KF055318",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_562_117_BC3 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -564,6 +580,7 @@
             "AccessionID": "KF055317",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_556_88_BC1 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -599,6 +616,7 @@
             "AccessionID": "KF055316",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_555_88_BC13 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -634,6 +652,7 @@
             "AccessionID": "KF055315",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_549_UP_NBC mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -669,6 +688,7 @@
             "AccessionID": "KF055314",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_547_88_BC11 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -704,6 +724,7 @@
             "AccessionID": "KF055313",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_535_P6_BC10 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -739,6 +760,7 @@
             "AccessionID": "KF055312",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate GLA_479_UP_NBC mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -774,6 +796,7 @@
             "AccessionID": "KF055311",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_220_P6_BC9 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -809,6 +832,7 @@
             "AccessionID": "KF055310",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_180_88_BC10 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -844,6 +868,7 @@
             "AccessionID": "KF055309",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_162_117_BC8 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -879,6 +904,7 @@
             "AccessionID": "KF055308",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_161_117_BC2 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -914,6 +940,7 @@
             "AccessionID": "KF055307",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_156_117_BC14 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -949,6 +976,7 @@
             "AccessionID": "KF055306",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_155_88_BC14 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -984,6 +1012,7 @@
             "AccessionID": "KF055305",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_154_117_BC4 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1019,6 +1048,7 @@
             "AccessionID": "KF055304",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_150_117_BC6 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1054,6 +1084,7 @@
             "AccessionID": "KF055302",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_134_88_BC12 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1089,6 +1120,7 @@
             "AccessionID": "KF055301",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_124_88_BC8 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1124,6 +1156,7 @@
             "AccessionID": "KF055300",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_122_117_BC10 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1159,6 +1192,7 @@
             "AccessionID": "KF055299",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_119_88_BC2 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1194,6 +1228,7 @@
             "AccessionID": "KF055298",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_117_117_BC16 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1229,6 +1264,7 @@
             "AccessionID": "KF055297",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_113_88_BC4 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1264,6 +1300,7 @@
             "AccessionID": "KF055296",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_109_P6_BC8 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1299,6 +1336,7 @@
             "AccessionID": "KF055295",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_95_UP_NBC mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1334,6 +1372,7 @@
             "AccessionID": "KF055294",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_94_88_BC6 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1369,6 +1408,7 @@
             "AccessionID": "KF055293",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_88_88_BC16 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1404,6 +1444,7 @@
             "AccessionID": "KF055292",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_68_UP_NBC mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1439,6 +1480,7 @@
             "AccessionID": "KF055291",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_32_P6_BC7 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1474,6 +1516,7 @@
             "AccessionID": "KF055290",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_17_UP_NBC mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1509,6 +1552,7 @@
             "AccessionID": "KF055303",
             "BioProject": "PRJNA213001",
             "Title": "Homo sapiens isolate CON_145_117_BC12 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: Sequencher v. 4.9 ; Sequencing Technology :: Sanger dideoxy sequencing; IonTorrent ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",

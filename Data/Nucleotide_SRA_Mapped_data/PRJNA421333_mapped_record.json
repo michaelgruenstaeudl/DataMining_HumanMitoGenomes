@@ -4,6 +4,7 @@
             "AccessionID": "MG429049",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Saxtorp5164_EN_TRB mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -72,6 +73,7 @@
             "AccessionID": "MG429047",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kivutkalns42_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -123,6 +125,7 @@
             "AccessionID": "MG429046",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kivutkalns25_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -174,6 +177,7 @@
             "AccessionID": "MG429045",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kivutkalns222_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -225,6 +229,7 @@
             "AccessionID": "MG429044",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kivutkalns215_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -276,6 +281,7 @@
             "AccessionID": "MG429043",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kivutkalns209_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -327,6 +333,7 @@
             "AccessionID": "MG429042",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kivutkalns207_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -378,6 +385,7 @@
             "AccessionID": "MG429041",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kivutkalns19_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -429,6 +437,7 @@
             "AccessionID": "MG429040",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kivutkalns194_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -480,6 +489,7 @@
             "AccessionID": "MG429039",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kivutkalns164_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -514,6 +524,7 @@
             "AccessionID": "MG429038",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kivutkalns153_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -582,6 +593,7 @@
             "AccessionID": "MG429037",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Turlojiske1_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -616,6 +628,7 @@
             "AccessionID": "MG429036",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Turlojiske4_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -667,6 +680,7 @@
             "AccessionID": "MG429035",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Turlojiske3_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -752,6 +766,7 @@
             "AccessionID": "MG429033",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Turlojiske5_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -786,6 +801,7 @@
             "AccessionID": "MG429031",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Turlojiske1932_Baltic_BA mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -820,6 +836,7 @@
             "AccessionID": "MG429030",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Spiginas2_Baltic_LN mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -871,6 +888,7 @@
             "AccessionID": "MG429028",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Plinkaigalis242_Baltic_LN mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -922,6 +940,7 @@
             "AccessionID": "MG429027",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Plinkaigalis241_Baltic_LN mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -973,6 +992,7 @@
             "AccessionID": "MG429026",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kunila2_Baltic_LN mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1024,6 +1044,7 @@
             "AccessionID": "MG429024",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Gyvakarai1_Baltic_LN mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1075,6 +1096,7 @@
             "AccessionID": "MG429020",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Tamula3_Baltic_MN_CCC mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1109,6 +1131,7 @@
             "AccessionID": "MG429018",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Tamula1_Baltic_MN_CCC mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1143,6 +1166,7 @@
             "AccessionID": "MG429011",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Veibri4__Baltic_EMN_Narva mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1177,6 +1201,7 @@
             "AccessionID": "MG429009",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Spiginas1_Baltic_EMN_Narva mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1228,6 +1253,7 @@
             "AccessionID": "MG429008",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kretuonas5_Baltic_EMN_Narva mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1262,6 +1288,7 @@
             "AccessionID": "MG429007",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kretuonas4_Baltic_EMN_Narva mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1313,6 +1340,7 @@
             "AccessionID": "MG429006",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kretuonas2_Baltic_EMN_Narva mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1364,6 +1392,7 @@
             "AccessionID": "MG429005",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kretuonas1_Baltic_EMN_Narva mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1432,6 +1461,7 @@
             "AccessionID": "MG429003",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Kivisaare3_Baltic_EMN_Narva mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1466,6 +1496,7 @@
             "AccessionID": "MG429001",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Donkalnis7_Baltic_Mesolithic_Kunda mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1534,6 +1565,7 @@
             "AccessionID": "MG429000",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Donkalnis6_Baltic_Mesolithic_Kunda mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1585,6 +1617,7 @@
             "AccessionID": "MG428999",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Donkalnis1_Baltic_Mesolithic_Kunda mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1653,6 +1686,7 @@
             "AccessionID": "MG428998",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Spiginas4_Baltic_Mesolithic_Kunda mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1704,6 +1738,7 @@
             "AccessionID": "MG428996",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate Donkalnis4_Baltic_Mesolithic_Kunda mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -1772,6 +1807,7 @@
             "AccessionID": "MG428995",
             "BioProject": "PRJNA421333",
             "Title": "Homo sapiens isolate UzOO77_Mesolithic_EHG mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",

@@ -4,6 +4,7 @@
             "AccessionID": "MF991448",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate BOT.1 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -40,6 +41,7 @@
             "AccessionID": "MF991446",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate TOR.11 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -76,6 +78,7 @@
             "AccessionID": "MF991445",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate TOR.8 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -130,6 +133,7 @@
             "AccessionID": "MF991444",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate TOR.7 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -184,6 +188,7 @@
             "AccessionID": "MF991443",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate TOR.6 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -238,6 +243,7 @@
             "AccessionID": "MF991440",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate KEB.8 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -292,6 +298,7 @@
             "AccessionID": "MF991438",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate KEB.6 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -346,6 +353,7 @@
             "AccessionID": "MF991437",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate KEB.4 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -400,6 +408,7 @@
             "AccessionID": "MF991435",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate KEB.1 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -436,6 +445,7 @@
             "AccessionID": "MF991434",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate IAM.7 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -472,6 +482,7 @@
             "AccessionID": "MF991433",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate IAM.6 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -526,6 +537,7 @@
             "AccessionID": "MF991432",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate IAM.5 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -580,6 +592,7 @@
             "AccessionID": "MF991431",
             "BioProject": "PRJEB22699",
             "Title": "Homo sapiens isolate IAM.4 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: bwa v. 0.7.12 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",

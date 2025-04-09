@@ -3,6 +3,7 @@
         "AccessionID": "KU171094",
         "BioProject": "PRJEB11848",
         "Title": "Homo sapiens isolate Theo5 haplogroup K1c mitochondrion, complete genome",
+        "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.9a; GATK v. 3.3.0; SAMtools v. 0.1.19 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
         "Source": {
             "organism": "Homo sapiens",
             "organelle": "mitochondrion",
@@ -18,6 +19,7 @@
         "AccessionID": "KU171095",
         "BioProject": "PRJEB11848",
         "Title": "Homo sapiens isolate Theo1 haplogroup K1c mitochondrion, complete genome",
+        "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.9a; GATK v. 3.3.0; SAMtools v. 0.1.19 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
         "Source": {
             "organism": "Homo sapiens",
             "organelle": "mitochondrion",
@@ -33,6 +35,7 @@
         "AccessionID": "KU171096",
         "BioProject": "PRJEB11848",
         "Title": "Homo sapiens isolate Rev5 haplogroup X2b mitochondrion, partial genome",
+        "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.9a; GATK v. 3.3.0; SAMtools v. 0.1.19 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
         "Source": {
             "organism": "Homo sapiens",
             "organelle": "mitochondrion",
@@ -48,6 +51,7 @@
         "AccessionID": "KU171097",
         "BioProject": "PRJEB11848",
         "Title": "Homo sapiens isolate Bar31 haplogroup X2m mitochondrion, partial genome",
+        "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.9a; GATK v. 3.3.0; SAMtools v. 0.1.19 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
         "Source": {
             "organism": "Homo sapiens",
             "organelle": "mitochondrion",
@@ -63,6 +67,7 @@
         "AccessionID": "KU171098",
         "BioProject": "PRJEB11848",
         "Title": "Homo sapiens isolate Bar8 haplogroup K1a2 mitochondrion, partial genome",
+        "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.9a; GATK v. 3.3.0; SAMtools v. 0.1.19 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
         "Source": {
             "organism": "Homo sapiens",
             "organelle": "mitochondrion",
@@ -78,6 +83,7 @@
         "AccessionID": "KU171099",
         "BioProject": "PRJEB11848",
         "Title": "Homo sapiens isolate Pal7 haplogroup J1c1 mitochondrion, partial genome",
+        "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.9a; GATK v. 3.3.0; SAMtools v. 0.1.19 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
         "Source": {
             "organism": "Homo sapiens",
             "organelle": "mitochondrion",

@@ -4,6 +4,7 @@
             "AccessionID": "MK321345",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate Pv517 haplogroup K2b1 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -41,6 +42,7 @@
             "AccessionID": "MK321344",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate Pxevi haplogroup J2a1 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -78,6 +80,7 @@
             "AccessionID": "MK321343",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate Rebolal haplogroup K2b1 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -117,6 +120,7 @@
             "AccessionID": "MK321342",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate Eiros2 haplogroup U5b3 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -156,6 +160,7 @@
             "AccessionID": "MK321341",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate Eiros1 haplogroup V mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -193,6 +198,7 @@
             "AccessionID": "MK321340",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate Val146 haplogroup H1bm mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -232,6 +238,7 @@
             "AccessionID": "MK321339",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate Val145 haplogroup H1bm mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -269,6 +276,7 @@
             "AccessionID": "MK321338",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate Val107 haplogroup H1bm mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -308,6 +316,7 @@
             "AccessionID": "MK321336",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate Val05 haplogroup H1ay mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -347,6 +356,7 @@
             "AccessionID": "MK321335",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate LD903 haplogroup U3a1 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -386,6 +396,7 @@
             "AccessionID": "MK321334",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate LD1174 haplogroup U5b2 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -444,6 +455,7 @@
             "AccessionID": "MK321333",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate LD270 haplogroup U8a mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -502,6 +514,7 @@
             "AccessionID": "MK321332",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate LU657 haplogroup U5b1 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -541,6 +554,7 @@
             "AccessionID": "MK321331",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate LU339 haplogroup H mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -599,6 +613,7 @@
             "AccessionID": "MK321330",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate COV20125 haplogroup U2e1 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -638,6 +653,7 @@
             "AccessionID": "MK321329",
             "BioProject": "PRJEB29189",
             "Title": "Homo sapiens isolate COV20126 haplogroup L2a1 mitochondrion, complete genome",
+            "Assembly_Info": "##Assembly-Data-START## ; Assembly Method :: boa v. 0.7.5 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",

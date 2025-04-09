@@ -4,6 +4,7 @@
             "AccessionID": "KY797263",
             "BioProject": "PRJNA416844",
             "Title": "Homo sapiens isolate MS10587 mitochondrion, complete genome",
+            "Assembly_Info": "On Jan 17, 2018 this sequence version replaced KY797263.1.; ##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.15 ; Assembly Name :: NC_012920.1 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -40,6 +41,7 @@
             "AccessionID": "KY797262",
             "BioProject": "PRJNA416844",
             "Title": "Homo sapiens isolate MS10585 mitochondrion, complete genome",
+            "Assembly_Info": "On Jan 17, 2018 this sequence version replaced KY797262.1.; ##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.15 ; Assembly Name :: NC_012920.1 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -76,6 +78,7 @@
             "AccessionID": "KY797261",
             "BioProject": "PRJNA416844",
             "Title": "Homo sapiens isolate MS10584 mitochondrion, complete genome",
+            "Assembly_Info": "On Jan 17, 2018 this sequence version replaced KY797261.1.; ##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.15 ; Assembly Name :: NC_012920.1 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -112,6 +115,7 @@
             "AccessionID": "KY797260",
             "BioProject": "PRJNA416844",
             "Title": "Homo sapiens isolate MS10582 mitochondrion, complete genome",
+            "Assembly_Info": "On Jan 17, 2018 this sequence version replaced KY797260.1.; ##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.15 ; Assembly Name :: NC_012920.1 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -148,6 +152,7 @@
             "AccessionID": "KY797259",
             "BioProject": "PRJNA416844",
             "Title": "Homo sapiens isolate MS10581 mitochondrion, complete genome",
+            "Assembly_Info": "On Jan 17, 2018 this sequence version replaced KY797259.1.; ##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.15 ; Assembly Name :: NC_012920.1 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -184,6 +189,7 @@
             "AccessionID": "KY797258",
             "BioProject": "PRJNA416844",
             "Title": "Homo sapiens isolate MS10580 mitochondrion, complete genome",
+            "Assembly_Info": "On Jan 17, 2018 this sequence version replaced KY797258.1.; ##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.15 ; Assembly Name :: NC_012920.1 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -220,6 +226,7 @@
             "AccessionID": "KY797257",
             "BioProject": "PRJNA416844",
             "Title": "Homo sapiens isolate MS10579 mitochondrion, complete genome",
+            "Assembly_Info": "On Jan 17, 2018 this sequence version replaced KY797257.1.; ##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.15 ; Assembly Name :: NC_012920.1 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -256,6 +263,7 @@
             "AccessionID": "KY797256",
             "BioProject": "PRJNA416844",
             "Title": "Homo sapiens isolate MS10578 mitochondrion, complete genome",
+            "Assembly_Info": "On Jan 17, 2018 this sequence version replaced KY797256.1.; ##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.15 ; Assembly Name :: NC_012920.1 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -292,6 +300,7 @@
             "AccessionID": "KY797255",
             "BioProject": "PRJNA416844",
             "Title": "Homo sapiens isolate MS10577 mitochondrion, complete genome",
+            "Assembly_Info": "On Jan 17, 2018 this sequence version replaced KY797255.1.; ##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.15 ; Assembly Name :: NC_012920.1 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -328,6 +337,7 @@
             "AccessionID": "KY797254",
             "BioProject": "PRJNA416844",
             "Title": "Homo sapiens isolate MS10575 mitochondrion, complete genome",
+            "Assembly_Info": "On Jan 17, 2018 this sequence version replaced KY797254.1.; ##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.15 ; Assembly Name :: NC_012920.1 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -364,6 +374,7 @@
             "AccessionID": "KY797253",
             "BioProject": "PRJNA416844",
             "Title": "Homo sapiens isolate MS10565 mitochondrion, complete genome",
+            "Assembly_Info": "On Jan 17, 2018 this sequence version replaced KY797253.1.; ##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.15 ; Assembly Name :: NC_012920.1 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
@@ -400,6 +411,7 @@
             "AccessionID": "KY797250",
             "BioProject": "PRJNA416844",
             "Title": "Homo sapiens isolate MS10560 mitochondrion, complete genome",
+            "Assembly_Info": "On Jan 17, 2018 this sequence version replaced KY797250.1.; ##Assembly-Data-START## ; Assembly Method :: BWA v. 0.7.15 ; Assembly Name :: NC_012920.1 ; Sequencing Technology :: Illumina ; ##Assembly-Data-END##",
             "Source": {
                 "organism": "Homo sapiens",
                 "organelle": "mitochondrion",
