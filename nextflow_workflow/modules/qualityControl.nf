@@ -1,7 +1,5 @@
 #!/usr/bin/env nextflow
 
-// container 'genomicpariscentre/trimgalore:0.6.10' 
-
 process qualityControl {
 
     tag "${sample_id}"
@@ -25,7 +23,7 @@ process qualityControl {
 
     script:
     """
-    trim_galore --paired --length 30 --quality 20 \
+    trim_galore --paired_end --three_prime_clip_R1 3 --three_prime_clip_R2 3 --length 72 --max_length ${upper_cutoff} --quality 20 \
     --fastqc \
     --output_dir trimmed_output \
     ${input_file1} ${input_file2}
