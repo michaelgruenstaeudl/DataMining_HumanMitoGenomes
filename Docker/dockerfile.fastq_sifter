@@ -1,0 +1,31 @@
+FROM ubuntu:latest
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+# apt-get update && apt-get upgrade && \
+#     apt-get -y --no-install-recommends install
+
+# apk update && apk upgrade &&\
+#     apk add --no-cache \
+
+RUN apt-get -y update && apt-get -y upgrade && \
+    apt-get -y --no-install-recommends install \
+    ca-certificates \
+    perl-base \
+    bwa \
+    git \
+    perl-doc \
+    build-essential &&\
+    git clone https://github.com/josephryan/JFR-PerlModules.git && \
+    cd JFR-PerlModules && \
+    perl Makefile.PL && \
+    make && \
+    make test && \
+    make install && \
+    cd .. && \
+    git clone https://github.com/josephryan/FastqSifter.git && \
+    cd FastqSifter && \
+    perl Makefile.PL && \
+    make && \
+    make install
+CMD ["FastqSifter", "--help"]
