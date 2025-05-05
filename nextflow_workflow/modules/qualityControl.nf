@@ -20,6 +20,7 @@ process qualityControl {
     path "trimmed_output/${sample_id}_2_val_2_fastqc.zip", emit: fastqc_report2_zip
     path "trimmed_output/${sample_id}_2_val_2.fq", emit: trimmed_fastq2
     path "trimmed_output/${sample_id}_2.fastq_trimming_report.txt", emit: fastq_trimming_report2
+    val sample_id, emit: sample_id
 
     script:
     """
