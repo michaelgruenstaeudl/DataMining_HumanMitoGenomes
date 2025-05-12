@@ -1,0 +1,28 @@
+# Use the official Ubuntu 22.04 image as the base image
+FROM ubuntu:22.04
+
+# Set the environment variable for non-interactive installs
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install required packages
+RUN apt-get update && \
+    apt-get -y --no-install-recommends install \
+    perl-base \
+    git \
+    cmake \
+    g++-9 \
+    zlib1g \
+    zlib1g-dev \
+    make \
+    build-essential \
+    curl \
+    r-base-core && \
+    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 1 && \
+    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 1 && \
+    curl -k https://bioinf.eva.mpg.de/schmutzi/schmutzi.tar.gz | tar xzvf - && \
+    cd schmutzi && \
+    make && \
+    make install
+
+# Set the default command that will be executed when the container is run
+CMD ["bash"]
