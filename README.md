@@ -1,6 +1,6 @@
-# NCBI Record Mining
+# Data Mining on Human Mitochondrial Genome Data
 
-Files and scripts to identify associated entries across NCBI GenBank, NCBI SRA, and other NCBI databases
+Pipeline for data mining on human mitochondrial genome data 
 
 ## FILE CONTENTS
 
