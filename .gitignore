@@ -6,3 +6,4 @@ work/
 results/
 .nextflow/
 SRA_data
+sensitive_data
