@@ -1,6 +1,6 @@
 # Data Mining on Human Mitochondrial Genome Data
 
-Pipeline for data mining on human mitochondrial genome data 
+Pipeline for data mining on human mitochondrial genome data
 
 ## FILE CONTENTS
 
@@ -99,3 +99,6 @@ Up-to-date list of **all GenBank accession numbers** of all **complete mitochond
 #### On NCBI SRA
 
 `(mitochondrion[ALL] OR mitochondrial[ALL]) AND ("Homo sapiens"[ORGN] OR human[TITLE]) AND "biomol dna"[PROP] AND "platform illumina"[PROP]` produces 14,238 hits on NCBI SRA
+
+## Funding & Citation
+This code development is part of NIH project R01LM014506.
