@@ -8,7 +8,7 @@ process calculate_sequence_length_threshold {
     tuple val(sample_id), path(sra_file_path)
 
     output:
-    tuple env("lower_cutoff"), env("upper_cutoff"), emit: length_cutoffs
+    tuple val(sample_id), env("lower_cutoff"), env("upper_cutoff"), emit: length_cutoffs
 
     script:
     """
