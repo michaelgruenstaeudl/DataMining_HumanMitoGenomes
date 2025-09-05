@@ -6,11 +6,9 @@ include { novoplast_process } from './modules/novoplasty_assembler.nf'
 
 params.input1 = '/home/b_thapamagar/BioInformatics/NCBIrecordMining/SRA_data/SRR6245224_1.fastq'
 params.input2 = '/home/b_thapamagar/BioInformatics/NCBIrecordMining/SRA_data/SRR6245224_2.fastq'
-params.reference_fasta = '/home/b_thapamagar/BioInformatics/NCBIrecordMining/nextflow_workflow/reference.fasta'
-params.seed_mito = '/home/b_thapamagar/BioInformatics/NCBIrecordMining/nextflow_workflow/Seed_mito.fasta'
-params.config_file = '/home/b_thapamagar/BioInformatics/NCBIrecordMining/nextflow_workflow/config.txt'
+
 workflow {
-    input_ch = Channel.fromFilePairs("/home/b_thapamagar/BioInformatics/NCBIrecordMining/SRA_data/*_{1,2}.fastq")
+    input_ch = Channel.fromFilePairs("../SRA_data/*_{1,2}.fastq")
         .map { sample_id, read -> tuple(sample_id, read[0], read[1]) }
     // .view()
     reference_ch = channel.fromPath(params.reference_fasta)
@@ -19,7 +17,7 @@ workflow {
     input_to_calculate_sequence_lengt_threshold = input_ch.map { [it[0], it[1]] }
     // .view { "Input to calculate sequence length threshold: ${it}" }
     calculate_sequence_length_threshold(input_to_calculate_sequence_lengt_threshold)
-
+    calculate_sequence_length_threshold.out.length_cutoffs.view { "Output from calculate sequence length threshold: ${it}" }
     //Quality control process
     qualityControl_input_ch = input_ch
         .join(calculate_sequence_length_threshold.out.length_cutoffs)
@@ -35,9 +33,7 @@ workflow {
         .combine(reference_ch)
     // .view { "Input to mapping: ${it}" }
 
-    // combined_ch = sample_id_ch.combine(trimmed_fastq1_ch).combine(trimmed_fastq2_ch)
-
-    // mapping_process(mapping_input_ch)
+    mapping_process(mapping_input_ch)
 
     // De novo assembly process
     seed_mito_ch = channel.fromPath(params.seed_mito)
