@@ -11,7 +11,10 @@ process mapping_process {
     tuple val(sample_id), path(input_file1), path(input_file2), path(reference_fasta)
 
     output:
-    tuple val(sample_id), path("mapped_output/${sample_id}.filtered.A.fq"), path("mapped_output/${sample_id}.filtered.B.fq"), path("mapped_output/${sample_id}.bwa.A.sai"), path("mapped_output/${sample_id}.bwa.B.sai"), path("mapped_output/${sample_id}.bwa.sampe.sam"), emit: mapping_process_output
+    tuple val(sample_id), path("mapped_output/${sample_id}.filtered.A.fq"), path("mapped_output/${sample_id}.filtered.B.fq"), emit: mapping_process_output
+    path "mapped_output/${sample_id}.bwa.A.sai"
+    path "mapped_output/${sample_id}.bwa.B.sai"
+    path "mapped_output/${sample_id}.bwa.sampe.sam"
 
     script:
     """

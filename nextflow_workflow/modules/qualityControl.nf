@@ -12,7 +12,13 @@ process qualityControl {
 
     output:
     // val sample_id, emit: sample_id
-    tuple val(sample_id), path("trimmed_output/${sample_id}_1_val_1_fastqc.html"), path("trimmed_output/${sample_id}_1_val_1_fastqc.zip"), path("trimmed_output/${sample_id}_1_val_1.fq"), path("trimmed_output/${sample_id}_1.fastq_trimming_report.txt"), path("trimmed_output/${sample_id}_2_val_2_fastqc.html"), path("trimmed_output/${sample_id}_2_val_2_fastqc.zip"), path("trimmed_output/${sample_id}_2_val_2.fq"), path("trimmed_output/${sample_id}_2.fastq_trimming_report.txt"), emit: quality_control_output
+    tuple val(sample_id), path("trimmed_output/${sample_id}_1_val_1.fq"), path("trimmed_output/${sample_id}_2_val_2.fq"), emit: quality_control_output
+    path "trimmed_output/${sample_id}_1_val_1_fastqc.html"
+    path "trimmed_output/${sample_id}_1_val_1_fastqc.zip"
+    path "trimmed_output/${sample_id}_1.fastq_trimming_report.txt"
+    path "trimmed_output/${sample_id}_2_val_2_fastqc.html"
+    path "trimmed_output/${sample_id}_2_val_2_fastqc.zip"
+    path "trimmed_output/${sample_id}_2.fastq_trimming_report.txt"
 
     script:
     """
