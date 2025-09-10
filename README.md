@@ -100,5 +100,39 @@ Up-to-date list of **all GenBank accession numbers** of all **complete mitochond
 
 `(mitochondrion[ALL] OR mitochondrial[ALL]) AND ("Homo sapiens"[ORGN] OR human[TITLE]) AND "biomol dna"[PROP] AND "platform illumina"[PROP]` produces 14,238 hits on NCBI SRA
 
+## Nextflow Pipeline:
+
+### Flowchart
+
+```mermaid
+flowchart TB
+    subgraph " "
+    subgraph params
+    v8["contamination_db"]
+    v0["input_files_directory"]
+    v14["seed_mito"]
+    v2["reference_fasta"]
+    v16["config_file"]
+    end
+    v5([calculate_sequence_length_threshold])
+    v7([qualityControl])
+    v11([contamination_removal])
+    v13([mapping_process])
+    v19([novoplast_process])
+    v0 --> v5
+    v0 --> v7
+    v5 --> v7
+    v7 --> v11
+    v8 --> v11
+    v2 --> v13
+    v11 --> v13
+    v16 --> v19
+    v5 --> v19
+    v13 --> v19
+    v14 --> v19
+    end
+```
+
 ## Funding & Citation
+
 This code development is part of NIH project R01LM014506.
