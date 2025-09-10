@@ -9,7 +9,7 @@ params.input1 = '/home/b_thapamagar/BioInformatics/NCBIrecordMining/SRA_data/SRR
 params.input2 = '/home/b_thapamagar/BioInformatics/NCBIrecordMining/SRA_data/SRR6245224_2.fastq'
 
 workflow {
-    input_ch = Channel.fromFilePairs("../SRA_data/*_{1,2}.fastq")
+    input_ch = Channel.fromFilePairs(params.input_files_directory + '/*_{1,2}.fastq')
         .map { sample_id, read -> tuple(sample_id, read[0], read[1]) }
     // .view()
     reference_ch = channel.fromPath(params.reference_fasta)
