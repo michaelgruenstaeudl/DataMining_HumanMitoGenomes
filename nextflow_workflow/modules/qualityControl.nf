@@ -21,8 +21,9 @@ process qualityControl {
     path "trimmed_output/${sample_id}_2.fastq_trimming_report.txt"
 
     script:
+    clip_length = upper_cutoff.toInteger() - 3
     """
-    trim_galore --paired_end --three_prime_clip_R1 3 --three_prime_clip_R2 3 --length 72 --max_length ${upper_cutoff} --quality 20 \
+    trim_galore --paired_end --three_prime_clip_R1 3 --three_prime_clip_R2 3 --length ${clip_length} --max_length ${upper_cutoff} --quality 20 \
     --fastqc \
     --output_dir trimmed_output \
     ${input_file1} ${input_file2}
