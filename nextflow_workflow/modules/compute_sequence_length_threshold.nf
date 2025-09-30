@@ -13,7 +13,7 @@ process calculate_sequence_length_threshold {
 
     script:
     """
-    cutoffs=\$(python ${workflow.projectDir}/bin/compute_sequence_length_statistics.py --fastq_file ${sra_file_path})
+    cutoffs=\$(python ${workflow.projectDir}/lib/compute_sequence_length_statistics.py --fastq_file ${sra_file_path})
     lower_cutoff=\$(echo \$cutoffs | cut -d ',' -f 1)
     upper_cutoff=\$(echo \$cutoffs | cut -d ',' -f 2)
     echo "\$lower_cutoff \$upper_cutoff"
