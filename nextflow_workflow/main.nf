@@ -46,6 +46,7 @@ workflow {
     quality_control_workflow(qualityControl_input_ch)
     // quality_control_workflow.out.quality_control_out_ch.view { "Quality Control Output: ${it}" }
 
+    size_ch = size_ch.mix(quality_control_workflow.out.repair_read_size_ch)
     size_ch = size_ch.concat(
         quality_control_workflow.out.quality_control_out_ch.map { sample_id, r1, _r2 ->
             trackFileSizes(tuple(sample_id, r1), "Quality Control Output", "Read_1")
