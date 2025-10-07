@@ -4,12 +4,14 @@ include { qualityControl } from '../modules/qualityControl.nf'
 include { qualityControl as qualityControlRepair } from '../modules/qualityControl.nf'
 include { detectEncoding } from '../modules/detect_encoding.nf'
 include { repairReads } from '../modules/repair_reads.nf'
+include { trackFileSizes ; WriteCSV } from '../lib/utils.nf'
 
 workflow quality_control_workflow {
     take:
     quality_control_input_channel
 
     main:
+    repair_read_size_ch = Channel.empty()
     qualityControl(quality_control_input_channel)
 
     conditional_channel = qualityControl.out.qc_status_report.branch { _sample_id, exit_code, _fastqc_report ->
@@ -46,9 +48,17 @@ workflow quality_control_workflow {
     // repair_reads_input_ch.view { "Repair Reads Input: ${it}" }
 
     repairReads(repair_reads_input_ch)
-    repairReads.out.repaired_reads_output_channel
-    // .view { "Repaired Reads: ${it}" }
 
+    repair_read_size_ch = repair_read_size_ch.concat(
+        repairReads.out.repaired_reads_output_channel.map { sample_id, r1, _r2 ->
+            trackFileSizes(tuple(sample_id, r1), "Repair Read Output", "Read_1")
+        }
+    )
+    repair_read_size_ch = repair_read_size_ch.concat(
+        repairReads.out.repaired_reads_output_channel.map { sample_id, _r1, r2 ->
+            trackFileSizes(tuple(sample_id, r2), "Repair Read Output", "Read_2")
+        }
+    )
     repairReads.out.repaired_reads_output_channel
         .join(cutoffs_ch)
         .set { repaired_quality_control_input_ch }
@@ -59,4 +69,5 @@ workflow quality_control_workflow {
 
     emit:
     quality_control_out_ch
+    repair_read_size_ch
 }
