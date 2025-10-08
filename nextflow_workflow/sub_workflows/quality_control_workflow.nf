@@ -4,7 +4,7 @@ include { qualityControl } from '../modules/qualityControl.nf'
 include { qualityControl as qualityControlRepair } from '../modules/qualityControl.nf'
 include { detectEncoding } from '../modules/detect_encoding.nf'
 include { repairReads } from '../modules/repair_reads.nf'
-include { trackFileSizes ; WriteCSV } from '../lib/utils.nf'
+include { addSizeTracking ; WriteCSV } from '../lib/utils.nf'
 
 workflow quality_control_workflow {
     take:
@@ -21,7 +21,6 @@ workflow quality_control_workflow {
     quality_control_success_out_ch = qualityControl.out.quality_control_output.join(
         conditional_channel.success.map { sample_id, _exit_code, _fastqc_report -> sample_id }
     )
-
     input_read_channel = quality_control_input_channel.map { sample_id, read1, read2, _lower, _upper ->
         tuple(sample_id, read1, read2)
     }
@@ -29,36 +28,25 @@ workflow quality_control_workflow {
         tuple(sample_id, lower, upper)
     }
 
-    // conditional_channel.failed.view { "Conditional Channel: ${it}" }
-    // conditional_channel.failed
+    // Encoding detection process
     conditional_channel.failed
         .map { sample_id, _exit_code, fastqc_report -> tuple(sample_id, fastqc_report) }
         .set { encoding_detection_input_ch }
 
     detectEncoding(encoding_detection_input_ch)
-    detectEncoding.out.encoding_output_channel
-    // .view { "Detected Encoding: ${it}" }
 
+
+    // Repair reads process
     input_read_channel
         .join(
             detectEncoding.out.encoding_output_channel
         )
         .set { repair_reads_input_ch }
 
-    // repair_reads_input_ch.view { "Repair Reads Input: ${it}" }
-
     repairReads(repair_reads_input_ch)
 
-    repair_read_size_ch = repair_read_size_ch.concat(
-        repairReads.out.repaired_reads_output_channel.map { sample_id, r1, _r2 ->
-            trackFileSizes(tuple(sample_id, r1), "Repair Read Output", "Read_1")
-        }
-    )
-    repair_read_size_ch = repair_read_size_ch.concat(
-        repairReads.out.repaired_reads_output_channel.map { sample_id, _r1, r2 ->
-            trackFileSizes(tuple(sample_id, r2), "Repair Read Output", "Read_2")
-        }
-    )
+    repair_read_size_ch = addSizeTracking(repair_read_size_ch, repairReads.out.repaired_reads_output_channel, "Repair Read Output")
+
     repairReads.out.repaired_reads_output_channel
         .join(cutoffs_ch)
         .set { repaired_quality_control_input_ch }
