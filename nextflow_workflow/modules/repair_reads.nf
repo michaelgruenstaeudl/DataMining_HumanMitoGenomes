@@ -18,7 +18,14 @@ process repairReads {
     script:
     """
     mkdir repair_read_output
-    repair.sh in1=${input_file1} in2=${input_file2} out1=repair_read_output/${sample_id}_1.fastq out2=repair_read_output/${sample_id}_2.fastq outs=repair_read_output/${sample_id}_singletons.fastq overwrite=true qin=${encoding_int}
+    repair.sh \
+        in1=${input_file1} \
+        in2=${input_file2} \
+        out1=repair_read_output/${sample_id}_1.fastq \
+        out2=repair_read_output/${sample_id}_2.fastq \
+        outs=repair_read_output/${sample_id}_singletons.fastq \
+        overwrite=true \
+        qin=${encoding_int}
     """
 }
 
