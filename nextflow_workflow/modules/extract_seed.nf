@@ -7,21 +7,21 @@ process seedExtractionProcess {
     publishDir "results/${sample_id}", mode: 'copy', overwrite: true
 
     input:
-    tuple val(sample_id), path(input_file1), path(input_file2)
+    tuple val(sample_id), path(input_file)
 
     output:
     // val sample_id, emit: sample_id
     tuple val(sample_id), path("seed_output/${sample_id}_seed.fasta", optional: true), emit: seed_output_channel
 
     script:
-    def merged_file_name = "merged_${sample_id}"
+    // def merged_file_name = "merged_${sample_id}"
+    // # pear -f "${input_file1}" -r "${input_file2}" -o "${merged_file_name}"
     def seed_file = "seed_output/${sample_id}_seed.fasta"
     """
     mkdir seed_output
-    pear -f "${input_file1}" -r "${input_file2}" -o "${merged_file_name}"
     
-    header=\$(head -n 1 "${merged_file_name}.assembled.fastq")
-    sequence=\$(sed -n '2p' "${merged_file_name}.assembled.fastq")
+    header=\$(head -n 1 "${input_file}")
+    sequence=\$(sed -n '2p' "${input_file}")
 
     # Clean header name (remove '@' and extra info)
     header_name=\$(echo "\$header" | cut -d' ' -f1 | sed 's/@//')
