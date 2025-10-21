@@ -1,0 +1,44 @@
+FROM ubuntu:22.04
+
+# Set environment variables
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=America/Chicago
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+
+RUN apt-get update && apt-get install -y tzdata locales && \
+    locale-gen en_US.UTF-8 && \
+    update-locale LANG=en_US.UTF-8 && \
+    ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && \
+    echo $TZ > /etc/timezone && \
+    apt-get install -y \
+    r-base-core \
+    build-essential \
+    libfreetype6-dev \
+    libpng-dev \
+    libtiff5-dev \
+    libjpeg-dev \
+    libwebp-dev \
+    pkg-config \
+    libfontconfig1-dev \
+    libharfbuzz-dev \
+    libfribidi-dev \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev \
+    libgit2-dev \
+    git && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+# Install R packages non-interactively
+RUN R -e "install.packages('BiocManager', repos='https://cloud.r-project.org')"
+RUN R -e "install.packages('optparse', repos='https://cloud.r-project.org')"
+RUN R -e "options(ask=FALSE); BiocManager::install(c('Biostrings','GenomicAlignments','GenomicRanges','IRanges'), ask=FALSE, update=TRUE)"
+RUN R -e "install.packages('devtools', repos='https://cloud.r-project.org')"
+RUN R -e "devtools::install_github('michaelgruenstaeudl/PACVr')"
+
+# Set working directory
+WORKDIR /workspace
+
+# Start bash by default
+CMD ["/bin/bash"]
