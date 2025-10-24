@@ -9,10 +9,47 @@ include { contamination_removal } from "./modules/contamination_control.nf"
 include { addSizeTracking ; WriteCSV } from './lib/utils.nf'
 include { quality_control_workflow } from './sub_workflows/quality_control_workflow.nf'
 include { seedExtractionProcess } from './modules/extract_seed.nf'
+include {
+    evenness_calculation_workflow as evenness_calculation_workflow_initial ;
+    evenness_calculation_workflow as evenness_calculation_workflow_final
+} from './sub_workflows/evenness_calculation_workflow.nf'
+include { merge_pacvr_evenness_figures } from './modules/merge_pacvr_evenness_figure.nf'
 
 workflow {
-    input_ch = Channel.fromFilePairs(params.input_files_directory + '/*_{1,2}.fastq')
-        .map { sample_id, read -> tuple(sample_id, read[0], read[1]) }
+    all_samples_ch = Channel.fromPath(params.csv_file)
+        .splitCsv(header: true, sep: ',')
+
+    initial_channel = all_samples_ch.map { row ->
+        tuple(
+            row.SRA_Run,
+            row.Nucleotide_AccessionID,
+            file("${params.fastq_directory}/${row.SRA_Run}_1.fastq"),
+            file("${params.fastq_directory}/${row.SRA_Run}_2.fastq"),
+            file("${params.gb_directory}/${row.Nucleotide_AccessionID}.gb"),
+            file("${params.fasta_directory}/${row.Nucleotide_AccessionID}.fasta"),
+        )
+    }
+    merge_pacvr_evenness_fig_script_ch = channel.fromPath(params.merge_pacvr_evenness_figure_script)
+
+    evenness_calculation_workflow_initial_input_ch = initial_channel.map { sample_id, _accession, fastq1, fastq2, gb_file, fasta_file ->
+        tuple(sample_id, fastq1, fastq2, gb_file, fasta_file)
+    }
+    evenness_calculation_workflow_initial(evenness_calculation_workflow_initial_input_ch, "initial_phase")
+    initial_evenness_output_ch = evenness_calculation_workflow_initial.out.evenness_output_ch
+    accession_ch = initial_channel.map { sample_id, accession, _fastq1, _fastq2, _gb_file, _fasta_file ->
+        tuple(sample_id, accession)
+    }
+    input_ch = initial_channel.map { sample_id, _accession, fastq1, fastq2, _gb_file, _fasta_file ->
+        tuple(sample_id, fastq1, fastq2)
+    }
+    gb_channel = initial_channel.map { sample_id, _accession, _fastq1, _fastq2, gb_file, _fasta_file ->
+        tuple(sample_id, gb_file)
+    }
+    fasta_channel = initial_channel.map { sample_id, _accession, _fastq1, _fastq2, _gb_file, fasta_file ->
+        tuple(sample_id, fasta_file)
+    }
+    // input_ch = Channel.fromFilePairs(params.input_files_directory + '/*_{1,2}.fastq')
+    //     .map { sample_id, read -> tuple(sample_id, read[0], read[1]) }
     // .view()
 
     size_ch = Channel.empty()
@@ -42,6 +79,21 @@ workflow {
     mapping_process(mapping_input_ch)
     size_ch = addSizeTracking(size_ch, mapping_process.out.mapping_process_output, "Mapping Output")
 
+
+    //Evenness calculation workflow
+    final_evenness_calculation_input_ch = mapping_process.out.mapping_process_output.join(gb_channel).join(fasta_channel)
+    evenness_calculation_workflow_final(final_evenness_calculation_input_ch, "mapping_phase")
+    contamination_removed_evenness_output_ch = evenness_calculation_workflow_final.out.evenness_output_ch
+
+    merge_evenness_figure_input_ch = accession_ch
+        .join(initial_evenness_output_ch)
+        .join(contamination_removed_evenness_output_ch)
+        .combine(merge_pacvr_evenness_fig_script_ch)
+
+    merge_pacvr_evenness_figures(
+        merge_evenness_figure_input_ch
+    )
+    // Write file sizes to CSV
     csv_lines_ch = size_ch.map { tuple ->
         tuple.join(",")
     }
@@ -67,9 +119,9 @@ workflow {
                 tuple(sample_id, read_length, insert_size)
             }
         )
-        .join(seedExtractionProcess.out.seed_output_channel)
+        .combine(seed_mito_ch)
         .combine(config_file_ch)
-    // .combine(seed_mito_ch)
+    // .join(seedExtractionProcess.out.seed_output_channel)
 
 
     novoplast_process(denovo_assmebly_input_ch)
