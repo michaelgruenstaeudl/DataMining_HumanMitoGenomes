@@ -14,43 +14,23 @@ include {
     evenness_calculation_workflow as evenness_calculation_workflow_final
 } from './sub_workflows/evenness_calculation_workflow.nf'
 include { merge_pacvr_evenness_figures } from './modules/merge_pacvr_evenness_figure.nf'
+include { read_csv_workflow } from './sub_workflows/read_csv_workflow.nf'
 
 workflow {
-    all_samples_ch = channel.fromPath(params.csv_file)
-        .splitCsv(header: true, sep: ',')
+    // Call the read_csv_workflow with params
+    read_csv_workflow(params)
+    evenness_calculation_workflow_initial_input_ch = read_csv_workflow.out.evenness_calculation_workflow_initial_input_ch
+    accession_ch = read_csv_workflow.out.accession_ch
+    input_ch = read_csv_workflow.out.input_ch
+    gb_channel = read_csv_workflow.out.gb_channel
+    fasta_channel = read_csv_workflow.out.fasta_channel
 
-    initial_channel = all_samples_ch.map { row ->
-        tuple(
-            row.SRA_Run,
-            row.Nucleotide_AccessionID,
-            file("${params.fastq_directory}/${row.SRA_Run}_1.fastq"),
-            file("${params.fastq_directory}/${row.SRA_Run}_2.fastq"),
-            file("${params.gb_directory}/${row.Nucleotide_AccessionID}.gb"),
-            file("${params.fasta_directory}/${row.Nucleotide_AccessionID}.fasta"),
-        )
-    }
     merge_pacvr_evenness_fig_script_ch = channel.fromPath(params.merge_pacvr_evenness_figure_script)
 
-    evenness_calculation_workflow_initial_input_ch = initial_channel.map { sample_id, _accession, fastq1, fastq2, gb_file, fasta_file ->
-        tuple(sample_id, fastq1, fastq2, gb_file, fasta_file)
-    }
+
     evenness_calculation_workflow_initial(evenness_calculation_workflow_initial_input_ch, "initial_phase")
     initial_evenness_output_ch = evenness_calculation_workflow_initial.out.evenness_output_ch
-    accession_ch = initial_channel.map { sample_id, accession, _fastq1, _fastq2, _gb_file, _fasta_file ->
-        tuple(sample_id, accession)
-    }
-    input_ch = initial_channel.map { sample_id, _accession, fastq1, fastq2, _gb_file, _fasta_file ->
-        tuple(sample_id, fastq1, fastq2)
-    }
-    gb_channel = initial_channel.map { sample_id, _accession, _fastq1, _fastq2, gb_file, _fasta_file ->
-        tuple(sample_id, gb_file)
-    }
-    fasta_channel = initial_channel.map { sample_id, _accession, _fastq1, _fastq2, _gb_file, fasta_file ->
-        tuple(sample_id, fasta_file)
-    }
-    // input_ch = Channel.fromFilePairs(params.input_files_directory + '/*_{1,2}.fastq')
-    //     .map { sample_id, read -> tuple(sample_id, read[0], read[1]) }
-    // .view()
+
 
     size_ch = channel.empty()
 
