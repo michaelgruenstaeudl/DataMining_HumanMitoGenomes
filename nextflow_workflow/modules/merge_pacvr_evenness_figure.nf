@@ -6,6 +6,9 @@ process merge_pacvr_evenness_figures {
 
     // container 'evolbioinfo/schmutzi:v1.5.6'
     publishDir "results/${sample_id}", mode: 'copy', overwrite: true
+    // 2️⃣ Also collect specific outputs in one shared folder
+    publishDir "results", mode: 'copy', overwrite: true
+
     container "texlive/texlive:latest"
 
     input:
