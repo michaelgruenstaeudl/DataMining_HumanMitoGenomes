@@ -16,7 +16,7 @@ include {
 include { merge_pacvr_evenness_figures } from './modules/merge_pacvr_evenness_figure.nf'
 
 workflow {
-    all_samples_ch = Channel.fromPath(params.csv_file)
+    all_samples_ch = channel.fromPath(params.csv_file)
         .splitCsv(header: true, sep: ',')
 
     initial_channel = all_samples_ch.map { row ->
@@ -52,7 +52,7 @@ workflow {
     //     .map { sample_id, read -> tuple(sample_id, read[0], read[1]) }
     // .view()
 
-    size_ch = Channel.empty()
+    size_ch = channel.empty()
 
     size_ch = addSizeTracking(size_ch, input_ch, "Initial Input Files")
 
