@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 
-include { qualityControl } from '../modules/qualityControl.nf'
-include { qualityControl as qualityControlRepair } from '../modules/qualityControl.nf'
+include { quality_control } from '../modules/quality_control.nf'
+include { quality_control as quality_control_repair } from '../modules/quality_control.nf'
 include { detectEncoding } from '../modules/detect_encoding.nf'
 include { repairReads } from '../modules/repair_reads.nf'
 include { addSizeTracking ; WriteCSV } from '../lib/utils.nf'
@@ -27,14 +27,14 @@ workflow quality_control_workflow {
 
     // Initial Quality control process
     quality_control_input_channel_with_cutoffs = quality_control_input_channel.join(calculate_sequence_length_threshold.out.length_cutoffs)
-    qualityControl(quality_control_input_channel_with_cutoffs, 'initial_quality_control')
+    quality_control(quality_control_input_channel_with_cutoffs, 'initial_quality_control')
 
     // Separate channels for success and failed QC based on exit code
-    conditional_channel = qualityControl.out.qc_status_report.branch { _sample_id, exit_code, _fastqc_report ->
+    conditional_channel = quality_control.out.qc_status_report.branch { _sample_id, exit_code, _fastqc_report ->
         success: exit_code == "0"
         failed: exit_code != "0"
     }
-    quality_control_success_out_ch = qualityControl.out.quality_control_output.join(
+    quality_control_success_out_ch = quality_control.out.quality_control_output.join(
         conditional_channel.success.map { sample_id, _exit_code, _fastqc_report -> sample_id }
     )
     success_out_cutoff_ch = calculate_sequence_length_threshold.out.length_cutoffs.join(
@@ -75,8 +75,8 @@ workflow quality_control_workflow {
         .join(calculate_sequence_length_threshold_repair.out.length_cutoffs)
         .set { repaired_quality_control_input_ch }
 
-    qualityControlRepair(repaired_quality_control_input_ch, 'repaired_quality_control')
-    quality_control_repair_out_ch = qualityControlRepair.out.quality_control_output
+    quality_control_repair(repaired_quality_control_input_ch, 'repaired_quality_control')
+    quality_control_repair_out_ch = quality_control_repair.out.quality_control_output
 
     // Merging quality control outputs and cutoff outputs from both initial(success) and repaired reads
     quality_control_out_ch = quality_control_success_out_ch.mix(quality_control_repair_out_ch)

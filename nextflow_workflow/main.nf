@@ -69,6 +69,7 @@ workflow {
     merge_pacvr_evenness_figures(
         merge_evenness_figure_input_ch
     )
+
     // Write file sizes to CSV
     csv_lines_ch = size_ch.map { tuple ->
         tuple.join(",")

@@ -1,7 +1,7 @@
 #!/usr/bin/env nextflow
 
 include { generate_sam } from '../modules/generate_sam.nf'
-include { sam_to_bam } from '../modules/SAM_to_BAM.nf'
+include { sam_to_bam } from '../modules/sam_to_bam.nf'
 include { calculate_evenness } from '../modules/calculate_evenness.nf'
 include { repairReads } from '../modules/repair_reads.nf'
 

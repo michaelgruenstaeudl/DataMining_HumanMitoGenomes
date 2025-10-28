@@ -1,6 +1,6 @@
 #!/usr/bin/env nextflow
 
-process qualityControl {
+process quality_control {
 
     tag "${sample_id}"
 
