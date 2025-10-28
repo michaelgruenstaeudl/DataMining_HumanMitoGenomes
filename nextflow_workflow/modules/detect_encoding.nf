@@ -8,7 +8,6 @@ process detectEncoding {
     tuple val(sample_id), path(fastqc_report)
 
     output:
-    // val sample_id, emit: sample_id
     tuple val(sample_id), env("encoding_int"), emit: encoding_output_channel
 
     script:

@@ -3,7 +3,7 @@
 include { quality_control } from '../modules/quality_control.nf'
 include { quality_control as quality_control_repair } from '../modules/quality_control.nf'
 include { detectEncoding } from '../modules/detect_encoding.nf'
-include { repairReads } from '../modules/repair_reads.nf'
+include { repair_reads } from '../modules/repair_reads.nf'
 include { addSizeTracking ; WriteCSV } from '../lib/utils.nf'
 include { calculate_sequence_length_threshold } from '../modules/compute_sequence_length_threshold.nf'
 include { calculate_sequence_length_threshold as calculate_sequence_length_threshold_repair } from '../modules/compute_sequence_length_threshold.nf'
@@ -56,12 +56,12 @@ workflow quality_control_workflow {
         )
         .set { repair_reads_input_ch }
 
-    repairReads(repair_reads_input_ch, "qc")
+    repair_reads(repair_reads_input_ch, "qc")
 
-    repair_read_size_ch = addSizeTracking(repair_read_size_ch, repairReads.out.repaired_reads_output_channel, "Repair Read Output")
+    repair_read_size_ch = addSizeTracking(repair_read_size_ch, repair_reads.out.repaired_reads_output_channel, "Repair Read Output")
 
     // Calculate sequence length threshold for repaired reads
-    input_to_calculate_sequence_length_threshold_repair = repairReads.out.repaired_reads_output_channel
+    input_to_calculate_sequence_length_threshold_repair = repair_reads.out.repaired_reads_output_channel
         .map { sample_id, read1, _read2 ->
             tuple(sample_id, read1)
         }
@@ -71,7 +71,7 @@ workflow quality_control_workflow {
     calculate_sequence_length_threshold_repair(input_to_calculate_sequence_length_threshold_repair)
 
     // Quality control process for repaired reads
-    repairReads.out.repaired_reads_output_channel
+    repair_reads.out.repaired_reads_output_channel
         .join(calculate_sequence_length_threshold_repair.out.length_cutoffs)
         .set { repaired_quality_control_input_ch }
 

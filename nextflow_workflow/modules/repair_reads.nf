@@ -1,6 +1,6 @@
 #!/usr/bin/env nextflow
 
-process repairReads {
+process repair_reads {
 
     tag "${sample_id}"
 
@@ -38,6 +38,6 @@ workflow {
         .map { sample_id, read -> tuple(sample_id, read[0], read[1], 33) }
         .view { it -> "Input to repair reads: ${it}" }
 
-    repairReads(input_ch)
-    repairReads.out.repaired_reads_output_channel.view { it -> "Output from repair reads: ${it}" }
+    repair_reads(input_ch)
+    repair_reads.out.repaired_reads_output_channel.view { it -> "Output from repair reads: ${it}" }
 }

@@ -1,6 +1,6 @@
 #!/usr/bin/env nextflow
 
-process seedExtractionProcess {
+process extract_seed {
 
     tag "${sample_id}"
 
@@ -35,6 +35,6 @@ workflow {
         .map { sample_id, read -> tuple(sample_id, read[0]) }
         .view { it -> "Input to repair reads: ${it}" }
 
-    seedExtractionProcess(input_ch)
-    seedExtractionProcess.out.seed_output_channel.view { it -> "Extracted seed file: ${it}" }
+    extract_seed(input_ch)
+    extract_seed.out.seed_output_channel.view { it -> "Extracted seed file: ${it}" }
 }

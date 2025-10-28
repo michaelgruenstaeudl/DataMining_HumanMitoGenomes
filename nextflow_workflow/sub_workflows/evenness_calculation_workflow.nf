@@ -3,7 +3,7 @@
 include { generate_sam } from '../modules/generate_sam.nf'
 include { sam_to_bam } from '../modules/sam_to_bam.nf'
 include { calculate_evenness } from '../modules/calculate_evenness.nf'
-include { repairReads } from '../modules/repair_reads.nf'
+include { repair_reads } from '../modules/repair_reads.nf'
 
 workflow evenness_calculation_workflow {
     take:
@@ -30,8 +30,8 @@ workflow evenness_calculation_workflow {
 
     //encoding integer hardcoded to 33 for now
 
-    repairReads(repair_reads_input_ch, phase)
-    repairReads.out.repaired_reads_output_channel.join(fasta_file_ch).set { generate_sam_input_ch }
+    repair_reads(repair_reads_input_ch, phase)
+    repair_reads.out.repaired_reads_output_channel.join(fasta_file_ch).set { generate_sam_input_ch }
     generate_sam(generate_sam_input_ch, phase)
 
     // Separate channels for success and failed generate_sam based on exit code

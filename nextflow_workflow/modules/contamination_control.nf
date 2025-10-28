@@ -4,7 +4,6 @@ process contamination_removal {
 
     tag "${sample_id}"
 
-    // container 'evolbioinfo/schmutzi:v1.5.6'
     // container "community.wave.seqera.io/library/kraken2:2.1.6--62621491c438309a"
 
     publishDir "results/${sample_id}", mode: 'copy'

@@ -3,13 +3,13 @@
 nextflow.enable.dsl = 2
 
 include { calculate_sequence_length_threshold } from './modules/compute_sequence_length_threshold.nf'
-include { mapping_process } from './modules/mapping.nf'
-include { novoplast_process } from './modules/novoplasty_assembler.nf'
+include { mapping_process } from './modules/mapping_process.nf'
+include { novoplast_process } from './modules/novoplasty_process.nf'
 include { contamination_removal } from './modules/contamination_control.nf'
 include { addSizeTracking ; WriteCSV } from './lib/utils.nf'
 include { quality_control_workflow } from './sub_workflows/quality_control_workflow.nf'
-include { seedExtractionProcess } from './modules/extract_seed.nf'
-include { merge_pacvr_evenness_figures } from './modules/merge_pacvr_evenness_figure.nf'
+include { extract_seed } from './modules/extract_seed.nf'
+include { merge_pacvr_evenness_figures } from './modules/merge_pacvr_evenness_figures.nf'
 include { read_csv_workflow } from './sub_workflows/read_csv_workflow.nf'
 include {
     evenness_calculation_workflow as evenness_calculation_workflow_initial ;
@@ -83,7 +83,7 @@ workflow {
     seed_extraction_input_ch = mapping_process.out.mapping_process_output.map { sample_id, mapped_read1, _mapped_read2 ->
         tuple(sample_id, mapped_read1)
     }
-    seedExtractionProcess(seed_extraction_input_ch)
+    extract_seed(seed_extraction_input_ch)
     // seedExtractionProcess(quality_control_workflow.out.quality_control_out_ch.map { sample_id, read1, _read2 -> tuple(sample_id, read1) })
 
     // De novo assembly process
@@ -98,7 +98,7 @@ workflow {
         )
         .combine(seed_mito_ch)
         .combine(config_file_ch)
-    // .join(seedExtractionProcess.out.seed_output_channel)
+    // .join(extract_seed.out.seed_output_channel)
 
     novoplast_process(denovo_assmebly_input_ch)
 
