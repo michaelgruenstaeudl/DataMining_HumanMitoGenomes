@@ -5,16 +5,16 @@ nextflow.enable.dsl = 2
 include { calculate_sequence_length_threshold } from './modules/compute_sequence_length_threshold.nf'
 include { mapping_process } from './modules/mapping.nf'
 include { novoplast_process } from './modules/novoplasty_assembler.nf'
-include { contamination_removal } from "./modules/contamination_control.nf"
+include { contamination_removal } from './modules/contamination_control.nf'
 include { addSizeTracking ; WriteCSV } from './lib/utils.nf'
 include { quality_control_workflow } from './sub_workflows/quality_control_workflow.nf'
 include { seedExtractionProcess } from './modules/extract_seed.nf'
+include { merge_pacvr_evenness_figures } from './modules/merge_pacvr_evenness_figure.nf'
+include { read_csv_workflow } from './sub_workflows/read_csv_workflow.nf'
 include {
     evenness_calculation_workflow as evenness_calculation_workflow_initial ;
     evenness_calculation_workflow as evenness_calculation_workflow_final
 } from './sub_workflows/evenness_calculation_workflow.nf'
-include { merge_pacvr_evenness_figures } from './modules/merge_pacvr_evenness_figure.nf'
-include { read_csv_workflow } from './sub_workflows/read_csv_workflow.nf'
 
 workflow {
     // Call the read_csv_workflow with params
@@ -27,10 +27,8 @@ workflow {
 
     merge_pacvr_evenness_fig_script_ch = channel.fromPath(params.merge_pacvr_evenness_figure_script)
 
-
-    evenness_calculation_workflow_initial(evenness_calculation_workflow_initial_input_ch, "initial_phase")
+    evenness_calculation_workflow_initial(evenness_calculation_workflow_initial_input_ch, 'initial_phase')
     initial_evenness_output_ch = evenness_calculation_workflow_initial.out.evenness_output_ch
-
 
     size_ch = channel.empty()
 
@@ -53,12 +51,10 @@ workflow {
     contamination_removal(contamination_control_input_ch)
     size_ch = addSizeTracking(size_ch, contamination_removal.out.contamination_removal_fastq_output, "Contamination Output")
 
-
     // Mapping process
     mapping_input_ch = contamination_removal.out.contamination_removal_fastq_output.combine(reference_ch)
     mapping_process(mapping_input_ch)
     size_ch = addSizeTracking(size_ch, mapping_process.out.mapping_process_output, "Mapping Output")
-
 
     //Evenness calculation workflow
     final_evenness_calculation_input_ch = mapping_process.out.mapping_process_output.join(gb_channel).join(fasta_channel)
@@ -80,7 +76,7 @@ workflow {
     tmp_csv = csv_lines_ch.collectFile(name: "file_sizes.tmp", newLine: true)
 
     WriteCSV(tmp_csv)
-    size_ch.count().view { "Total tuples in channel: ${it}" }
+    size_ch.count().view { it -> "Total tuples in channel: ${it}" }
 
     // Seed extraction process
     seed_extraction_input_ch = mapping_process.out.mapping_process_output.map { sample_id, mapped_read1, _mapped_read2 ->
@@ -103,10 +99,9 @@ workflow {
         .combine(config_file_ch)
     // .join(seedExtractionProcess.out.seed_output_channel)
 
-
     novoplast_process(denovo_assmebly_input_ch)
 
     workflow.onComplete {
-        println("✅ Finished all processes!")
+        println('✅ Finished all processes!')
     }
 }

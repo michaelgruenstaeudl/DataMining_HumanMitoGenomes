@@ -31,10 +31,10 @@ process seedExtractionProcess {
 }
 
 workflow {
-    input_ch = Channel.fromFilePairs("/home/b_thapamagar/BioInformatics/DataMining_HumanMitoGenomes/temp_data2/temp" + '/*_{1,2}.fastq')
+    input_ch = channel.fromFilePairs("/home/b_thapamagar/BioInformatics/DataMining_HumanMitoGenomes/temp_data2/temp" + '/*_{1,2}.fastq')
         .map { sample_id, read -> tuple(sample_id, read[0]) }
-        .view { "Input to repair reads: ${it}" }
+        .view { it -> "Input to repair reads: ${it}" }
 
     seedExtractionProcess(input_ch)
-    seedExtractionProcess.out.seed_output_channel.view { "Extracted seed file: ${it}" }
+    seedExtractionProcess.out.seed_output_channel.view { it -> "Extracted seed file: ${it}" }
 }

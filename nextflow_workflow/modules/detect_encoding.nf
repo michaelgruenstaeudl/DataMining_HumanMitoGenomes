@@ -22,6 +22,6 @@ process detectEncoding {
 
 workflow {
     input_ch = channel.of(tuple('sample1', '/home/b_thapamagar/BioInformatics/DataMining_HumanMitoGenomes/temp_data2/temp/ERR322856_1.fastq_trimming_report.txt'))
-        .view { "Input to detect encoding: ${it}" }
+        .view { it -> "Input to detect encoding: ${it}" }
     detectEncoding(input_ch)
 }

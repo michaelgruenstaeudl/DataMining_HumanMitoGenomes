@@ -4,8 +4,9 @@ process mapping_process {
 
     tag "${sample_id}"
 
+    // container 'fastq_sifter'
+
     publishDir "results/${sample_id}", mode: 'copy'
-    container 'fastq_sifter'
 
     input:
     tuple val(sample_id), path(input_file1), path(input_file2), path(reference_fasta)

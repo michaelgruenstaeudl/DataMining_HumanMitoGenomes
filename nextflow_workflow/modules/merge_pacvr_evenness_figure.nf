@@ -4,12 +4,11 @@ process merge_pacvr_evenness_figures {
 
     tag "${sample_id}"
 
-    // container 'evolbioinfo/schmutzi:v1.5.6'
+    // container "texlive/texlive:latest"
+
     publishDir "results/${sample_id}", mode: 'copy', overwrite: true
     // 2️⃣ Also collect specific outputs in one shared folder
     publishDir "results", mode: 'copy', overwrite: true
-
-    container "texlive/texlive:latest"
 
     input:
     tuple val(sample_id), val(accession_number), path(pacvr_evenness_initial_figure), path(pacvr_evenness_figure_after_contamination_removal), path(merge_pacvr_evenness_fig_script)
