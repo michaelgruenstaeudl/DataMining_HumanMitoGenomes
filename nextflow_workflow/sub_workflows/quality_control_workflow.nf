@@ -13,7 +13,7 @@ workflow quality_control_workflow {
     calculate_sequence_length_threshold_script_ch
 
     main:
-    repair_read_size_ch = Channel.empty()
+    repair_read_size_ch = channel.empty()
 
     // Calculate sequence length threshold process
     input_to_calculate_sequence_length_threshold = quality_control_input_channel
@@ -56,7 +56,7 @@ workflow quality_control_workflow {
         )
         .set { repair_reads_input_ch }
 
-    repairReads(repair_reads_input_ch)
+    repairReads(repair_reads_input_ch, "qc")
 
     repair_read_size_ch = addSizeTracking(repair_read_size_ch, repairReads.out.repaired_reads_output_channel, "Repair Read Output")
 

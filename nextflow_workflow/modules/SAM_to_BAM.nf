@@ -1,12 +1,14 @@
 #!/usr/bin/env nextflow
 
 
-process SAM_to_BAM {
+process sam_to_bam {
 
     tag "${sample_id}"
 
+    // container "biocontainers/samtools:v1.9-4-deb_cv1" --docker container
+    // container 'oras://community.wave.seqera.io/library/samtools:1.22.1--9a10f06c24cdf05f' --apptainer container
+
     publishDir "results/${sample_id}", mode: 'copy', overwrite: true
-    container "biocontainers/samtools:v1.9-4-deb_cv1"
 
     input:
     tuple val(sample_id), path(fasta_file), path(sam_file)

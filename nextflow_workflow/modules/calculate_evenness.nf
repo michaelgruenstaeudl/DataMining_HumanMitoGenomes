@@ -5,8 +5,8 @@ process calculate_evenness {
     tag "${sample_id}"
 
     // container 'evolbioinfo/schmutzi:v1.5.6'
+    // container "apptainer/pacvr.sif" 
     publishDir "results/${sample_id}", mode: 'copy', overwrite: true
-    container "pacvr"
 
     input:
     tuple val(sample_id), path(gb_file), path(bam_file)
