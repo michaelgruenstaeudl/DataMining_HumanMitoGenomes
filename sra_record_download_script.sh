@@ -1,8 +1,8 @@
 #!/bin/bash
 
-csv_file="sensitive_data/PRJEB4417_nucleotide_sra_mapped_infor_with_run.csv"
+csv_file="sensitive_data/PAIRED_nucleotide_sra_mapped_info_with_run_except_PRJEB4417.csv"
 temp_file=$(mktemp)
-output_dir="PRJEB4417_genome_data"
+output_dir="genome_data"
 SRA_data_dir="$output_dir/SRA_data"
 complete_genome_fasta_dir="$output_dir/complete_genome/fasta"
 complete_genome_genbank_dir="$output_dir/complete_genome/genbank"
@@ -17,9 +17,41 @@ while IFS=, read -r Accession _SRA_Uid RUN _LibraryLayout; do
     echo "SRA: $RUN"
     # echo "Sample Name: $Samples"
     echo "Accession: $Accession"
-    fasterq-dump -O "${SRA_data_dir}" -p -S "$RUN"
-    efetch -db nuccore -id "$Accession" -format fasta >${complete_genome_fasta_dir}/"$Accession".fasta
-    efetch -db nuccore -id "$Accession" -format gb >${complete_genome_genbank_dir}/"$Accession".gb
+
+    FASTQ1="${SRA_data_dir}/${RUN}_1.fastq"
+    FASTQ2="${SRA_data_dir}/${RUN}_2.fastq"
+    FASTA="${complete_genome_fasta_dir}/${Accession}.fasta"
+    GB="${complete_genome_genbank_dir}/${Accession}.gb"
+
+    # Download FASTQ if missing
+    if [[ ! -f "$FASTQ1" || ! -f "$FASTQ2" ]]; then
+        echo "Downloading FASTQ for $RUN ..."
+        fasterq-dump -O "${SRA_data_dir}" -p -S "$RUN"
+    else
+        echo "FASTQ for $RUN already exists, skipping."
+    fi
+
+    # fasterq-dump -O "${SRA_data_dir}" -p -S "$RUN"
+
+    # Download GenBank if missing
+    if [[ ! -f "$FASTA" ]]; then
+        echo "Downloading FASTA for $Accession ..."
+        efetch -db nuccore -id "$Accession" -format fasta >"$FASTA"
+    else
+        echo "FASTA for $Accession already exists, skipping."
+    fi
+
+    # efetch -db nuccore -id "$Accession" -format fasta >${complete_genome_fasta_dir}/"$Accession".fasta
+
+    # Download GenBank if missing
+    if [[ ! -f "$GB" ]]; then
+        echo "Downloading GenBank for $Accession ..."
+        efetch -db nuccore -id "$Accession" -format gb >"$GB"
+    else
+        echo "GenBank for $Accession already exists, skipping."
+    fi
+
+    # efetch -db nuccore -id "$Accession" -format gb >${complete_genome_genbank_dir}/"$Accession".gb
 
     echo "$count" completed
     count=$((count + 1))
