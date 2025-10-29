@@ -10,22 +10,13 @@ original_figure_file_path=$3
 contamination_removed_figure_file_path=$4
 
 # Inputs
-original_plot_directory="Data/PACVr_output_Analysis2/original"
-normalized_plot_directory="Data/PACVr_output_Analysis2/normalized"
 output_directory="combined_coverage_visualization"
 
 latex_file_directory="latex_output"
 
-# temp_file=$(mktemp)
-# Skip header and write to temp file
-# tail -n +2 "$csv_file" >"$temp_file"
 mkdir -p "${latex_file_directory}"
 
-# while IFS=, read -r SRA_NUMBER ACC_NUMBER; do
 latex_file_name="${latex_file_directory}/${ACC_NUMBER}.tex"
-original_plot_file_path="${original_plot_directory}/${ACC_NUMBER}_PlastomeOnly_original_CoverageViz.pdf"
-normalized_plot_file_path="${normalized_plot_directory}/${ACC_NUMBER}_PlastomeOnly_normalized_CoverageViz.pdf"
-
 ESCAPED_ACCESSION=$(echo "$ACC_NUMBER" | sed 's/_/\\_/g')
 
 # Generate LaTeX source
@@ -65,7 +56,7 @@ EOF
 # Compile LaTeX
 pdflatex -output-directory=${latex_file_directory} "$latex_file_name"
 
-output_file_name="$output_directory/${ACC_NUMBER}_merged.pdf"
+output_file_name="$output_directory/${SRA_NUMBER}_${ACC_NUMBER}_merged.pdf"
 # Rename output
 mv "${latex_file_directory}/${ACC_NUMBER}.pdf" "${output_file_name}"
 
