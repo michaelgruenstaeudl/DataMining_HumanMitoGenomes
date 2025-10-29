@@ -6,10 +6,11 @@ process contamination_removal {
 
     // container "community.wave.seqera.io/library/kraken2:2.1.6--62621491c438309a"
 
-    publishDir "results/${sample_id}", mode: 'copy'
+    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
 
     input:
     tuple val(sample_id), path(fastq1), path(fastq2), path(db_path)
+    val parent_output_dir
 
     output:
     tuple val(sample_id), path("kraken2_output/${sample_id}.unclassified_1.fastq"), path("kraken2_output/${sample_id}.unclassified_2.fastq"), emit: contamination_removal_fastq_output

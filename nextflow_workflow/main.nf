@@ -16,7 +16,11 @@ include {
     evenness_calculation_workflow as evenness_calculation_workflow_final
 } from './sub_workflows/evenness_calculation_workflow.nf'
 
+
 workflow {
+    def timestamp = new Date().format('yyyy_MM_dd_HH_mm_ss')
+    parent_output_dir = "${params.outdir}_${timestamp}"
+
     // Call the read_csv_workflow with params
     read_csv_workflow(params)
     evenness_calculation_workflow_initial_input_ch = read_csv_workflow.out.evenness_calculation_workflow_initial_input_ch
@@ -27,7 +31,7 @@ workflow {
 
     merge_pacvr_evenness_fig_script_ch = channel.fromPath(params.merge_pacvr_evenness_figure_script)
 
-    evenness_calculation_workflow_initial(evenness_calculation_workflow_initial_input_ch, 'initial_phase')
+    evenness_calculation_workflow_initial(evenness_calculation_workflow_initial_input_ch, 'initial_phase', parent_output_dir)
     initial_evenness_output_ch = evenness_calculation_workflow_initial.out.evenness_output_ch
 
     size_ch = channel.empty()
@@ -40,7 +44,7 @@ workflow {
     calculate_sequence_length_threshold_script_ch = channel.fromPath(params.calculate_sequence_length_threshold_script)
 
     //Quality control process
-    quality_control_workflow(input_ch, calculate_sequence_length_threshold_script_ch)
+    quality_control_workflow(input_ch, calculate_sequence_length_threshold_script_ch, parent_output_dir)
     size_ch = size_ch.mix(quality_control_workflow.out.repair_read_size_ch)
     size_ch = addSizeTracking(size_ch, quality_control_workflow.out.quality_control_out_ch, "Quality Control Output")
     cutoffs_ch = quality_control_workflow.out.cutoffs_ch
@@ -48,17 +52,17 @@ workflow {
     //contamination control process
     contamination_db_channel = channel.fromPath(params.contamination_db)
     contamination_control_input_ch = quality_control_workflow.out.quality_control_out_ch.combine(contamination_db_channel)
-    contamination_removal(contamination_control_input_ch)
+    contamination_removal(contamination_control_input_ch, parent_output_dir)
     size_ch = addSizeTracking(size_ch, contamination_removal.out.contamination_removal_fastq_output, "Contamination Output")
 
     // Mapping process
     mapping_input_ch = contamination_removal.out.contamination_removal_fastq_output.combine(reference_ch)
-    mapping_process(mapping_input_ch)
+    mapping_process(mapping_input_ch, parent_output_dir)
     size_ch = addSizeTracking(size_ch, mapping_process.out.mapping_process_output, "Mapping Output")
 
     //Evenness calculation workflow
     final_evenness_calculation_input_ch = mapping_process.out.mapping_process_output.join(gb_channel).join(fasta_channel)
-    evenness_calculation_workflow_final(final_evenness_calculation_input_ch, "mapping_phase")
+    evenness_calculation_workflow_final(final_evenness_calculation_input_ch, "mapping_phase", parent_output_dir)
     contamination_removed_evenness_output_ch = evenness_calculation_workflow_final.out.evenness_output_ch
 
     merge_evenness_figure_input_ch = accession_ch
@@ -67,7 +71,8 @@ workflow {
         .combine(merge_pacvr_evenness_fig_script_ch)
 
     merge_pacvr_evenness_figures(
-        merge_evenness_figure_input_ch
+        merge_evenness_figure_input_ch,
+        parent_output_dir,
     )
 
     // Write file sizes to CSV
@@ -76,14 +81,14 @@ workflow {
     }
     tmp_csv = csv_lines_ch.collectFile(name: "file_sizes.tmp", newLine: true)
 
-    WriteCSV(tmp_csv)
+    WriteCSV(tmp_csv, parent_output_dir)
     size_ch.count().view { it -> "Total tuples in channel: ${it}" }
 
     // Seed extraction process
     seed_extraction_input_ch = mapping_process.out.mapping_process_output.map { sample_id, mapped_read1, _mapped_read2 ->
         tuple(sample_id, mapped_read1)
     }
-    extract_seed(seed_extraction_input_ch)
+    extract_seed(seed_extraction_input_ch, parent_output_dir)
     // seedExtractionProcess(quality_control_workflow.out.quality_control_out_ch.map { sample_id, read1, _read2 -> tuple(sample_id, read1) })
 
     // De novo assembly process
@@ -100,7 +105,7 @@ workflow {
         .combine(config_file_ch)
     // .join(extract_seed.out.seed_output_channel)
 
-    novoplast_process(denovo_assmebly_input_ch)
+    novoplast_process(denovo_assmebly_input_ch, parent_output_dir)
 
     workflow.onComplete {
         println('✅ Finished all processes!')

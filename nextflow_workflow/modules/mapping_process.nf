@@ -6,10 +6,11 @@ process mapping_process {
 
     // container 'fastq_sifter'
 
-    publishDir "results/${sample_id}", mode: 'copy'
+    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
 
     input:
     tuple val(sample_id), path(input_file1), path(input_file2), path(reference_fasta)
+    val parent_output_dir
 
     output:
     tuple val(sample_id), path("mapped_output/${sample_id}.filtered.A.fq"), path("mapped_output/${sample_id}.filtered.B.fq"), emit: mapping_process_output

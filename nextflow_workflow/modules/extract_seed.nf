@@ -4,10 +4,11 @@ process extract_seed {
 
     tag "${sample_id}"
 
-    publishDir "results/${sample_id}", mode: 'copy', overwrite: true
+    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
 
     input:
     tuple val(sample_id), path(input_file)
+    val parent_output_dir
 
     output:
     // val sample_id, emit: sample_id

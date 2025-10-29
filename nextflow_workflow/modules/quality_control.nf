@@ -6,11 +6,12 @@ process quality_control {
 
     // container 'community.wave.seqera.io/library/trim-galore:0.6.10--1bf8ca4e1967cd18'
     errorStrategy 'ignore'
-    publishDir "results/${sample_id}", mode: 'copy', overwrite: true
+    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
 
     input:
     tuple val(sample_id), path(input_file1), path(input_file2), val(lower_cutoff), val(upper_cutoff)
     val quality_control_stage
+    val parent_output_dir
 
     output:
     // val sample_id, emit: sample_id

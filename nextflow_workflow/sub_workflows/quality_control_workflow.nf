@@ -11,6 +11,7 @@ workflow quality_control_workflow {
     take:
     quality_control_input_channel
     calculate_sequence_length_threshold_script_ch
+    parent_output_dir
 
     main:
     repair_read_size_ch = channel.empty()
@@ -27,7 +28,7 @@ workflow quality_control_workflow {
 
     // Initial Quality control process
     quality_control_input_channel_with_cutoffs = quality_control_input_channel.join(calculate_sequence_length_threshold.out.length_cutoffs)
-    quality_control(quality_control_input_channel_with_cutoffs, 'initial_quality_control')
+    quality_control(quality_control_input_channel_with_cutoffs, 'initial_quality_control', parent_output_dir)
 
     // Separate channels for success and failed QC based on exit code
     conditional_channel = quality_control.out.qc_status_report.branch { _sample_id, exit_code, _fastqc_report ->
@@ -56,7 +57,7 @@ workflow quality_control_workflow {
         )
         .set { repair_reads_input_ch }
 
-    repair_reads(repair_reads_input_ch, "qc")
+    repair_reads(repair_reads_input_ch, "qc", parent_output_dir)
 
     repair_read_size_ch = addSizeTracking(repair_read_size_ch, repair_reads.out.repaired_reads_output_channel, "Repair Read Output")
 
@@ -75,7 +76,7 @@ workflow quality_control_workflow {
         .join(calculate_sequence_length_threshold_repair.out.length_cutoffs)
         .set { repaired_quality_control_input_ch }
 
-    quality_control_repair(repaired_quality_control_input_ch, 'repaired_quality_control')
+    quality_control_repair(repaired_quality_control_input_ch, 'repaired_quality_control', parent_output_dir)
     quality_control_repair_out_ch = quality_control_repair.out.quality_control_output
 
     // Merging quality control outputs and cutoff outputs from both initial(success) and repaired reads

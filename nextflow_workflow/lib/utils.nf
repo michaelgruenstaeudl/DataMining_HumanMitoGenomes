@@ -1,5 +1,6 @@
-// utils.nf or inside main.nf
-def trackFileSizes(tuple_input, String processName, String readLabel = "") {
+#!/usr/bin/env nextflow
+
+def trackFileSizes(tuple_input, processName, readLabel) {
     def sraNumber = tuple_input[0]
     // First element is SRA/sample ID
     def filepath = tuple_input[1]
@@ -13,7 +14,7 @@ def trackFileSizes(tuple_input, String processName, String readLabel = "") {
     return tuple(sraNumber, filename, filepath, processName, readLabel, sizeBytes, sizeKB, sizeMB)
 }
 
-def addSizeTracking(size_ch, input_ch, String category) {
+def addSizeTracking(size_ch, input_ch, category) {
     def mapped = input_ch.flatMap { tuple_vals ->
         def sample_id = tuple_vals[0]
         def files = tuple_vals.size() > 1 ? tuple_vals[1..-1] : []
@@ -30,10 +31,11 @@ def addSizeTracking(size_ch, input_ch, String category) {
 }
 process WriteCSV {
 
-    publishDir "results/reports", mode: 'copy'
+    publishDir "${parent_output_dir}/reports", mode: 'copy'
 
     input:
     path csv_tmp
+    val parent_output_dir
 
     output:
     path "file_sizes.csv"

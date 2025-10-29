@@ -9,6 +9,7 @@ workflow evenness_calculation_workflow {
     take:
     evenness_calculation_input_channel
     phase
+    parent_output_dir
 
     main:
     // generate_sam_input_ch = evenness_calculation_input_channel.map { sample_id, fastq1, fastq2, _gb_file, fasta_file ->
@@ -30,9 +31,9 @@ workflow evenness_calculation_workflow {
 
     //encoding integer hardcoded to 33 for now
 
-    repair_reads(repair_reads_input_ch, phase)
+    repair_reads(repair_reads_input_ch, phase, parent_output_dir)
     repair_reads.out.repaired_reads_output_channel.join(fasta_file_ch).set { generate_sam_input_ch }
-    generate_sam(generate_sam_input_ch, phase)
+    generate_sam(generate_sam_input_ch, phase, parent_output_dir)
 
     // Separate channels for success and failed generate_sam based on exit code
     //     conditional_channel = generate_sam.out.sam_status_report.branch { _sample_id, exit_code ->
@@ -50,10 +51,10 @@ workflow evenness_calculation_workflow {
     // generate_sam
     // generate_sam.out.bam_output_ch.view { "Generated SAM files: ${it}" }
     sam_to_bam_input_ch = fasta_file_ch.join(generate_sam.out.sam_output_ch)
-    sam_to_bam(sam_to_bam_input_ch, phase)
+    sam_to_bam(sam_to_bam_input_ch, phase, parent_output_dir)
     // SAM_to_BAM.out.bam_output_ch.view { "Generated BAM files: ${it}" }
     calculate_evenness_input_ch = gb_file_ch.join(sam_to_bam.out.bam_output_ch)
-    calculate_evenness(calculate_evenness_input_ch, phase)
+    calculate_evenness(calculate_evenness_input_ch, phase, parent_output_dir)
     evenness_output_ch = calculate_evenness.out.evenness_output_ch
 
     emit:

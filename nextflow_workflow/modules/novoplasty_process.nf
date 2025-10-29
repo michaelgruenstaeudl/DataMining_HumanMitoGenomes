@@ -7,10 +7,11 @@ process novoplast_process {
     tag "${sample_id}"
 
     // container 'community.wave.seqera.io/library/novoplasty:4.3.5--d66ab53450fa5022'
-    publishDir "results/${sample_id}", mode: 'copy'
+    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
 
     input:
     tuple val(sample_id), path(input_file1), path(input_file2), val(read_length), val(insert_size), path(seed_mito_path), path(config_file_path)
+    val parent_output_dir
 
     output:
     path "novoplasty_output/*"

@@ -8,11 +8,12 @@ process generate_sam {
     // container "quay.io/biocontainers/bowtie2:2.5.4--he96a11b_6" -- Docker container
     // container 'oras://community.wave.seqera.io/library/bowtie2:2.5.4--2ec535d45cd82f0b' -- Apptainer container
 
-    publishDir "results/${sample_id}", mode: 'copy'
+    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
 
     input:
     tuple val(sample_id), path(fastq1), path(fastq2), path(fasta_file)
     val phase
+    val parent_output_dir
 
     output:
     tuple val(sample_id), env("exit_code"), emit: sam_status_report
