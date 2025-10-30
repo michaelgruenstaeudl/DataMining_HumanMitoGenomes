@@ -38,7 +38,7 @@ process WriteCSV {
     val parent_output_dir
 
     output:
-    path "file_sizes.csv"
+    path "file_sizes.csv", emit: file_sizes_csv_output
 
     script:
     """
