@@ -1,0 +1,16 @@
+Bootstrap: docker
+From: python:3.13-slim
+
+%post
+    apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
+        && rm -rf /var/lib/apt/lists/*
+
+    pip install --no-cache-dir numpy pandas matplotlib
+
+%labels
+    Author "Buddha Thapa Magar"
+    Description "Python environment with numpy, pandas, matplotlib"
+
+# %runscript
+#     exec python "$@"

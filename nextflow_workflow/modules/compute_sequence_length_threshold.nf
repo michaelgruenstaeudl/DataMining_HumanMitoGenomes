@@ -2,6 +2,7 @@
 
 process calculate_sequence_length_threshold {
 
+    label 'python_env'
     // container 'community.wave.seqera.io/library/python:3.13.7--b46958bde3c7e023'
     tag "${sample_id}"
 
