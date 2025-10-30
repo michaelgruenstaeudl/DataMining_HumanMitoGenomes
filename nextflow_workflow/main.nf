@@ -15,11 +15,10 @@ include {
     evenness_calculation_workflow as evenness_calculation_workflow_initial ;
     evenness_calculation_workflow as evenness_calculation_workflow_final
 } from './sub_workflows/evenness_calculation_workflow.nf'
-
+include { plot_size_diff } from './modules/plot_size_diff.nf'
 
 workflow {
-    def timestamp = new Date().format('yyyy_MM_dd_HH_mm_ss')
-    parent_output_dir = "${params.outdir}_${timestamp}"
+    parent_output_dir = params.outdir
 
     // Call the read_csv_workflow with params
     read_csv_workflow(params)
@@ -83,6 +82,12 @@ workflow {
 
     WriteCSV(tmp_csv, parent_output_dir)
     size_ch.count().view { it -> "Total tuples in channel: ${it}" }
+
+
+    plot_size_diff_input_ch = WriteCSV.out.file_sizes_csv_output
+        .combine(channel.fromPath(parent_output_dir))
+        .combine(channel.fromPath(params.visualize_file_size_changes_script))
+    plot_size_diff(plot_size_diff_input_ch)
 
     // Seed extraction process
     seed_extraction_input_ch = mapping_process.out.mapping_process_output.map { sample_id, mapped_read1, _mapped_read2 ->
