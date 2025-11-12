@@ -11,3 +11,8 @@ temp_data*
 db
 reference_genome
 DataVerse
+
+nextflow_workflow/reports/
+results*
+genome_data/
+*genome_data/
