@@ -7,6 +7,8 @@ include { repair_reads } from '../modules/repair_reads.nf'
 include { addSizeTracking ; WriteCSV } from '../lib/utils.nf'
 include { calculate_sequence_length_threshold } from '../modules/compute_sequence_length_threshold.nf'
 include { calculate_sequence_length_threshold as calculate_sequence_length_threshold_repair } from '../modules/compute_sequence_length_threshold.nf'
+include { fastqc_process } from '../modules/fastqc_process.nf'
+
 workflow quality_control_workflow {
     take:
     quality_control_input_channel
@@ -15,6 +17,9 @@ workflow quality_control_workflow {
 
     main:
     repair_read_size_ch = channel.empty()
+
+    //initial fastqc report 
+    fastqc_process(quality_control_input_channel, parent_output_dir)
 
     // Calculate sequence length threshold process
     input_to_calculate_sequence_length_threshold = quality_control_input_channel
