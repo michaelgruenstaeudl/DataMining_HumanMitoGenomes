@@ -1,10 +1,9 @@
 #!/usr/bin/env nextflow
 
-process quality_control {
+process quality_control_cutadapt {
 
     tag "${sample_id}"
 
-    // container 'community.wave.seqera.io/library/trim-galore:0.6.10--1bf8ca4e1967cd18'
     errorStrategy 'ignore'
     publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
 
@@ -25,13 +24,21 @@ process quality_control {
     path "${quality_control_stage}/${sample_id}_2.fastq_trimming_report.txt", optional: true
 
     script:
-    // clip_length = upper_cutoff.toInteger() - 3
+    clip_length = upper_cutoff.toInteger() - 3
     """
     set +e
-    trim_galore --paired_end --three_prime_clip_R1 3 --three_prime_clip_R2 3  --max_length ${upper_cutoff} --quality 10 \
-    --fastqc \
-    --output_dir ${quality_control_stage} \
-    ${input_file1} ${input_file2} 
+    mkdir -p ${quality_control_stage}
+    # trim_galore --paired_end --three_prime_clip_R1 3 --three_prime_clip_R2 3 --length ${clip_length} --max_length ${upper_cutoff} --quality 10 \
+    # --fastqc \
+    # --output_dir ${quality_control_stage} \
+    # ${input_file1} ${input_file2} 
+
+    cutadapt -j 4 -u -3 -U -3 --length ${clip_length} \
+        --maximum-length ${upper_cutoff} \
+        -o ${quality_control_stage}/${sample_id}_1_val_1.fq \
+        -p ${quality_control_stage}/${sample_id}_2_val_2.fq \
+        ${input_file1} ${input_file2} \
+        > ${quality_control_stage}/${sample_id}_1.fastq_trimming_report.txt 2>&1
     
     exit_code=\$(echo \$? )
     echo \$exit_code > .exitcode
