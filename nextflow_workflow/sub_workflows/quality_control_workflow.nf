@@ -7,7 +7,7 @@ include { repair_reads } from '../modules/repair_reads.nf'
 include { addSizeTracking ; WriteCSV } from '../lib/utils.nf'
 include { calculate_sequence_length_threshold } from '../modules/compute_sequence_length_threshold.nf'
 include { calculate_sequence_length_threshold as calculate_sequence_length_threshold_repair } from '../modules/compute_sequence_length_threshold.nf'
-include { fastqc_process } from '../modules/fastqc_process.nf'
+include { fastqc_process ; fastqc_process as fastqc_process_after_qc } from '../modules/fastqc_process.nf'
 
 workflow quality_control_workflow {
     take:
@@ -19,7 +19,7 @@ workflow quality_control_workflow {
     repair_read_size_ch = channel.empty()
 
     //initial fastqc report 
-    fastqc_process(quality_control_input_channel, parent_output_dir)
+    fastqc_process(quality_control_input_channel, parent_output_dir, "initial_fastqc")
 
     // Calculate sequence length threshold process
     input_to_calculate_sequence_length_threshold = quality_control_input_channel
@@ -86,6 +86,8 @@ workflow quality_control_workflow {
 
     // Merging quality control outputs and cutoff outputs from both initial(success) and repaired reads
     quality_control_out_ch = quality_control_success_out_ch.mix(quality_control_repair_out_ch)
+
+    fastqc_process_after_qc(quality_control_out_ch, parent_output_dir, "fastqc_after_quality_control")
 
     cutoffs_ch = calculate_sequence_length_threshold_repair.out.length_cutoffs.mix(success_out_cutoff_ch)
 
