@@ -9,13 +9,14 @@ process fastqc_process {
     input:
     tuple val(sample_id), path(input_file1), path(input_file2)
     val parent_output_dir
+    val phase
 
     output:
-    path "fastqc_output/*"
+    path "${phase}/*"
 
     script:
     """
-    mkdir fastqc_output
-    fastqc -o fastqc_output ${input_file1} ${input_file2}
+    mkdir ${phase}
+    fastqc -o ${phase} ${input_file1} ${input_file2}
     """
 }
