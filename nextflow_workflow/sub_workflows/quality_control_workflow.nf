@@ -1,14 +1,14 @@
 #!/usr/bin/env nextflow
 
-// include { quality_control } from '../modules/quality_control.nf'
-// include { quality_control as quality_control_repair } from '../modules/quality_control.nf'
+include { quality_control } from '../modules/quality_control.nf'
+include { quality_control as quality_control_repair } from '../modules/quality_control.nf'
 include { detectEncoding } from '../modules/detect_encoding.nf'
 include { repair_reads } from '../modules/repair_reads.nf'
 include { addSizeTracking ; WriteCSV } from '../lib/utils.nf'
 include { calculate_sequence_length_threshold } from '../modules/compute_sequence_length_threshold.nf'
 include { calculate_sequence_length_threshold as calculate_sequence_length_threshold_repair } from '../modules/compute_sequence_length_threshold.nf'
 include { fastqc_process ; fastqc_process as fastqc_process_after_qc } from '../modules/fastqc_process.nf'
-include { quality_control_cutadapt as quality_control ; quality_control_cutadapt as quality_control_repair } from '../modules/quality_control_cutadapt.nf'
+// include { quality_control_cutadapt as quality_control ; quality_control_cutadapt as quality_control_repair } from '../modules/quality_control_cutadapt.nf'
 workflow quality_control_workflow {
     take:
     quality_control_input_channel

@@ -8,16 +8,44 @@ workflow read_csv_workflow {
     all_samples_ch = channel.fromPath(params.csv_file)
         .splitCsv(header: true, sep: ',')
 
-    initial_channel = all_samples_ch.map { row ->
-        tuple(
-            row.SRA_Run,
-            row.Nucleotide_AccessionID,
-            file("${params.fastq_directory}/${row.SRA_Run}_1.fastq"),
-            file("${params.fastq_directory}/${row.SRA_Run}_2.fastq"),
-            file("${params.gb_directory}/${row.Nucleotide_AccessionID}.gb"),
-            file("${params.fasta_directory}/${row.Nucleotide_AccessionID}.fasta"),
-        )
-    }
+    initial_channel = all_samples_ch
+        .map { row ->
+            def r1 = file("${params.fastq_directory}/${row.SRA_Run}_1.fastq")
+            def r2 = file("${params.fastq_directory}/${row.SRA_Run}_2.fastq")
+            def gb = file("${params.gb_directory}/${row.Nucleotide_AccessionID}.gb")
+            def fa = file("${params.fasta_directory}/${row.Nucleotide_AccessionID}.fasta")
+
+            // Collect missing files
+            def missing = []
+            if (!r1.exists()) {
+                missing << r1
+            }
+            if (!r2.exists()) {
+                missing << r2
+            }
+            if (!gb.exists()) {
+                missing << gb
+            }
+            if (!fa.exists()) {
+                missing << fa
+            }
+
+            // If missing, log them and skip row
+            if (missing) {
+                log.warn("Skipping sample ${row.SRA_Run}. Missing files: ${missing.join(', ')}")
+                return null
+            }
+
+            return tuple(
+                row.SRA_Run,
+                row.Nucleotide_AccessionID,
+                file("${params.fastq_directory}/${row.SRA_Run}_1.fastq"),
+                file("${params.fastq_directory}/${row.SRA_Run}_2.fastq"),
+                file("${params.gb_directory}/${row.Nucleotide_AccessionID}.gb"),
+                file("${params.fasta_directory}/${row.Nucleotide_AccessionID}.fasta"),
+            )
+        }
+        .filter { it -> it != null }
 
     evenness_calculation_workflow_initial_input_ch = initial_channel.map { sample_id, _accession, fastq1, fastq2, gb_file, fasta_file ->
         tuple(sample_id, fastq1, fastq2, gb_file, fasta_file)
