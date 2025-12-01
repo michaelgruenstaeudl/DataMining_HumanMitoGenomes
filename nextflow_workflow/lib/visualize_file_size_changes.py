@@ -87,8 +87,13 @@ def main(csv_filepath, file_directory):
     # Positions for bars
     y_pos = np.arange(len(index_labels))
 
+    num_rows = len(index_labels) / 2  # Adjust divisor to control height
+    height_per_row = 0.5  # Adjust this value as needed
+
+    fig_height = num_rows * height_per_row
+
     # Plot
-    fig, ax = plt.subplots(figsize=(20, 130))
+    fig, ax = plt.subplots(figsize=(20, fig_height))
     # custom_colors = ["red", "black", "green", "yellow", "blue"]
     # custom_colors= ["#E41A1C", "#377EB8", "#4DAF4A", "#FF7F00", "#984EA3"]
 
@@ -103,7 +108,7 @@ def main(csv_filepath, file_directory):
         ax.barh(
             y_pos,
             values[:, i],
-            height=0.5,
+            height=height_per_row,
             left=left,
             color=colors[i],
             label=cat,
