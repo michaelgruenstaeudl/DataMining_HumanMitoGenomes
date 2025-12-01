@@ -77,7 +77,7 @@ def main(csv_filepath, file_directory):
     pivot_df = pivot_df.reset_index()
 
     # Set index
-    plot_pivot_df = pivot_df.set_index(["SRA_Number", "Read_Label"])
+    plot_pivot_df = pivot_df.set_index(["SRA_Number", "Read_Label"]).fillna(0)
 
     # Prepare data
     categories = plot_pivot_df.columns
@@ -88,7 +88,7 @@ def main(csv_filepath, file_directory):
     y_pos = np.arange(len(index_labels))
 
     # Plot
-    fig, ax = plt.subplots(figsize=(20, 13))
+    fig, ax = plt.subplots(figsize=(20, 130))
     # custom_colors = ["red", "black", "green", "yellow", "blue"]
     # custom_colors= ["#E41A1C", "#377EB8", "#4DAF4A", "#FF7F00", "#984EA3"]
 
@@ -100,7 +100,15 @@ def main(csv_filepath, file_directory):
     # Draw stacked bars manually
     left = np.zeros(len(index_labels))
     for i, cat in enumerate(categories):
-        ax.barh(y_pos, values[:, i], height=0.3, left=left, color=colors[i], label=cat)
+        ax.barh(
+            y_pos,
+            values[:, i],
+            height=0.5,
+            left=left,
+            color=colors[i],
+            label=cat,
+            edgecolor="black",
+        )
         left += values[:, i]
 
     # Customize
@@ -108,7 +116,7 @@ def main(csv_filepath, file_directory):
     ax.set_yticks(y_pos)
     ax.set_yticklabels([f"{sra} | {read}" for sra, read in index_labels])
     # ax.set_xlabel('Value')
-
+    ax.set_ymargin(0.001)
     ax.invert_yaxis()
     ax.xaxis.set_label_position("top")
     ax.xaxis.tick_top()
