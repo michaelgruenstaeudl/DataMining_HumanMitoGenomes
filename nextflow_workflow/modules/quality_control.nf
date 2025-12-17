@@ -26,9 +26,10 @@ process quality_control {
 
     script:
     // clip_length = upper_cutoff.toInteger() - 3
+    //     trim_galore --paired_end --clip_R1 3 --clip_R2 3  --max_length ${upper_cutoff} --quality 20 \
     """
     set +e
-    trim_galore --paired_end --three_prime_clip_R1 3 --three_prime_clip_R2 3  --max_length ${upper_cutoff} --quality 10 \
+    trim_galore --paired_end --max_length ${upper_cutoff} --quality 20 \
     --fastqc \
     --output_dir ${quality_control_stage} \
     ${input_file1} ${input_file2} 
