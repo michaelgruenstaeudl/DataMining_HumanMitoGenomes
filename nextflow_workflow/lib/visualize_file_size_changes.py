@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
 
-def main(csv_filepath, file_directory):
+def calculate_file_size_reduced_after_each_process(file_size_df):
     file_size_df = pd.read_csv(csv_filepath)
     process_order = [
         "Initial Input Files",
@@ -75,8 +75,10 @@ def main(csv_filepath, file_directory):
     pivot_df = pivot_df[existing_columns]
 
     pivot_df = pivot_df.reset_index()
+    return pivot_df
 
-    # Set index
+
+def plot_stacked_bar_chart(pivot_df, file_directory):
     plot_pivot_df = pivot_df.set_index(["SRA_Number", "Read_Label"]).fillna(0)
 
     # Prepare data
@@ -134,7 +136,75 @@ def main(csv_filepath, file_directory):
         f"{file_directory}/file_size_percentage_difference_stacked_bar_plot.png",
         dpi=300,
     )
-    # plt.show()
+
+
+def plot_aggregate_stacked_bar_chart(pivot_df, file_directory):
+    aggregated_df = pivot_df.groupby("SRA_Number").mean(numeric_only=True).fillna(0)
+    # plot_pivot_df = pivot_df.set_index(["SRA_Number", "Read_Label"]).fillna(0)
+
+    # Prepare data
+    categories = aggregated_df.columns
+    index_labels = aggregated_df.index.tolist()  # .sort()
+    values = aggregated_df.values
+
+    # Positions for bars
+    y_pos = np.arange(len(index_labels))
+
+    num_rows = len(index_labels) / 2  # Adjust divisor to control height
+    height_per_row = 0.5  # Adjust this value as needed
+
+    fig_height = num_rows * height_per_row
+
+    # Plot
+    fig, ax = plt.subplots(figsize=(20, fig_height))
+    # custom_colors = ["red", "black", "green", "yellow", "blue"]
+    # custom_colors= ["#E41A1C", "#377EB8", "#4DAF4A", "#FF7F00", "#984EA3"]
+
+    custom_colors = ["#66C2A5", "#FC8D62", "#8DA0CB", "#E78AC3", "#A6D854"]
+
+    my_cmap = ListedColormap(custom_colors)
+    colors = my_cmap(np.linspace(0, 1, len(categories)))
+
+    # Draw stacked bars manually
+    left = np.zeros(len(index_labels))
+    for i, cat in enumerate(categories):
+        ax.barh(
+            y_pos,
+            values[:, i],
+            height=height_per_row,
+            left=left,
+            color=colors[i],
+            label=cat,
+            edgecolor="black",
+        )
+        left += values[:, i]
+
+    # Customize
+    # ax.invert_yaxis()
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels([f"{sra}" for sra in index_labels])
+    # ax.set_xlabel('Value')
+    ax.set_ymargin(0.001)
+    ax.invert_yaxis()
+    ax.xaxis.set_label_position("top")
+    ax.xaxis.tick_top()
+    plt.xlabel("Percentage Difference")
+    plt.title("Stacked Bar Plot for each SRA_Number")
+    # plt.xticks(rotation=45, ha="right")
+    plt.legend(title="Size in Percentage", bbox_to_anchor=(1.05, 1), loc="upper left")
+    plt.tight_layout()
+    plt.savefig(
+        f"{file_directory}/aggregate_file_size_percentage_difference_stacked_bar_plot.png",
+        dpi=300,
+    )
+
+
+def main(csv_filepath, file_directory):
+    pivot_df = calculate_file_size_reduced_after_each_process(csv_filepath)
+    # Set index
+    plot_stacked_bar_chart(pivot_df, file_directory)
+
+    plot_aggregate_stacked_bar_chart(pivot_df, file_directory)
 
 
 if __name__ == "__main__":
