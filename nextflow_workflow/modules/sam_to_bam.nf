@@ -3,6 +3,7 @@
 
 process sam_to_bam {
 
+    label "samtools_env"
     tag "${sample_id}"
 
     // container "biocontainers/samtools:v1.9-4-deb_cv1" --docker container
