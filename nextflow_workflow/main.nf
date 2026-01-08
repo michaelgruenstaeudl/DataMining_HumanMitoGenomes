@@ -16,6 +16,7 @@ include {
     evenness_calculation_workflow as evenness_calculation_workflow_final
 } from './sub_workflows/evenness_calculation_workflow.nf'
 include { plot_size_diff } from './modules/plot_size_diff.nf'
+include { mapping_workflow } from './sub_workflows/mapping_workflow.nf'
 
 workflow {
     parent_output_dir = params.outdir
@@ -55,12 +56,21 @@ workflow {
     size_ch = addSizeTracking(size_ch, contamination_removal.out.contamination_removal_fastq_output, "Contamination Output")
 
     // Mapping process
-    mapping_input_ch = contamination_removal.out.contamination_removal_fastq_output.combine(reference_ch)
-    mapping_process(mapping_input_ch, parent_output_dir)
-    size_ch = addSizeTracking(size_ch, mapping_process.out.mapping_process_output, "Mapping Output")
+    index_files_ch = channel.fromPath("${params.index_directory}/*").collect()
+    // index_files_ch.view { it -> "Index files: ${it}" }
+    mapping_input_ch = contamination_removal.out.contamination_removal_fastq_output.combine(reference_ch).combine(index_files_ch)
+
+    // stages FASTA + all index files
+    // mapping_process(mapping_input_ch, parent_output_dir)
+    // mapping_process_output = mapping_process.out.mapping_process_output
+
+    mapping_workflow(mapping_input_ch, parent_output_dir)
+    mapping_process_output = mapping_workflow.out.mapping_process_output
+
+    size_ch = addSizeTracking(size_ch, mapping_process_output, "Mapping Output")
 
     //Evenness calculation workflow
-    final_evenness_calculation_input_ch = mapping_process.out.mapping_process_output.join(gb_channel).join(fasta_channel)
+    final_evenness_calculation_input_ch = mapping_process_output.join(gb_channel).join(fasta_channel)
     evenness_calculation_workflow_final(final_evenness_calculation_input_ch, "mapping_phase", parent_output_dir)
     contamination_removed_evenness_output_ch = evenness_calculation_workflow_final.out.evenness_output_ch
 
@@ -90,14 +100,14 @@ workflow {
     plot_size_diff(plot_size_diff_input_ch)
 
     // Seed extraction process
-    seed_extraction_input_ch = mapping_process.out.mapping_process_output.map { sample_id, mapped_read1, _mapped_read2 ->
+    seed_extraction_input_ch = mapping_process_output.map { sample_id, mapped_read1, _mapped_read2 ->
         tuple(sample_id, mapped_read1)
     }
     extract_seed(seed_extraction_input_ch, parent_output_dir)
     // seedExtractionProcess(quality_control_workflow.out.quality_control_out_ch.map { sample_id, read1, _read2 -> tuple(sample_id, read1) })
 
     // De novo assembly process
-    denovo_assmebly_input_ch = mapping_process.out.mapping_process_output
+    denovo_assmebly_input_ch = mapping_process_output
         .join(
             cutoffs_ch.map { length_cutoffs_ch ->
                 def (sample_id, _lower_cutoff, upper_cutoff) = length_cutoffs_ch
