@@ -16,3 +16,8 @@ nextflow_workflow/reports/
 results*
 genome_data/
 *genome_data/
+nextflow_workflow/nextflow_figures/combined_coverage_visualization
+collected_fastqc_report
+nextflow_workflow/nextflow_figures/bwa_mem2
+nextflow_workflow/nextflow_figures
+apptainer
