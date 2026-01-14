@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
+import math
 
 
 def calculate_file_size_reduced_after_each_process(file_size_df):
@@ -199,12 +200,100 @@ def plot_aggregate_stacked_bar_chart(pivot_df, file_directory):
     )
 
 
+def plot_file_size_changes(csv_filepath, file_directory):
+    file_size_df = pd.read_csv(csv_filepath)
+    aggdf = (
+        file_size_df.groupby(["SRA_Number", "Process_Name"])["Size_MB"]
+        .mean()
+        .reset_index()
+    )
+
+    pivot_aggdf = (
+        aggdf.pivot(
+            index=["SRA_Number"],
+            columns="Process_Name",
+            values="Size_MB",
+        )
+        .sort_index()
+        .round(3)
+    )
+    print(list(pivot_aggdf.columns))
+    n_records = len(pivot_aggdf)
+    subplots_per_row = 15
+    if n_records <= 50:
+        subplots_per_row = 5
+    elif n_records <= 100:
+        subplots_per_row = 10
+    else:
+        subplots_per_row = 15
+
+    n_rows = math.ceil(n_records / subplots_per_row)
+
+    custom_colors = ["#66C2A5", "#FC8D62", "#8DA0CB", "#E78AC3", "#A6D854"]
+
+    # Columns in order
+    desired_order = [
+        "Initial Input Files",
+        "Repair Read Output",
+        "Quality Control Output",
+        "Contamination Output",
+        "Mapping Output",
+    ]
+
+    value_cols = [c for c in desired_order if c in pivot_aggdf.columns]
+
+    fig, axs = plt.subplots(n_rows, subplots_per_row, figsize=(150, 200))
+
+    axs = axs.flatten()
+
+    for ax, (_, row) in zip(axs, pivot_aggdf.iterrows()):
+        values = row[value_cols]
+
+        values = values.dropna()
+
+        # Match colors to remaining columns
+        bar_colors = [custom_colors[value_cols.index(col)] for col in values.index]
+
+        ax.bar(
+            values.index,
+            values.values,
+            color=bar_colors,
+            width=0.3,
+            edgecolor="black",
+            linewidth=0.5,
+        )
+
+        # --- LINE PLOT ---
+        ax.plot(
+            values.index,
+            values.values,
+            color="black",
+            marker="o",
+            linewidth=2,
+            markersize=6,
+        )
+
+        ax.set_title(str(row.name))
+        ax.set_ylabel("File Size in MB")
+        ax.grid(axis="y", linestyle="--", alpha=0.5)
+
+    for ax in axs[n_records:]:
+        ax.axis("off")
+
+    plt.tight_layout()
+    plt.savefig(
+        f"{file_directory}/aggregate_file_size_reduction_viz.png",
+        dpi=300,
+    )
+
+
 def main(csv_filepath, file_directory):
     pivot_df = calculate_file_size_reduced_after_each_process(csv_filepath)
     # Set index
     plot_stacked_bar_chart(pivot_df, file_directory)
 
     plot_aggregate_stacked_bar_chart(pivot_df, file_directory)
+    plot_file_size_changes(csv_filepath, file_directory)
 
 
 if __name__ == "__main__":
