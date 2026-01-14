@@ -105,7 +105,7 @@ workflow {
 
 
     // MitoZ assembly process
-    denovo_assmebly_input_ch = quality_control_workflow.out.quality_control_out_ch
+    denovo_assmebly_input_ch = mapping_process.out.mapping_process_output
     mitoz_assembler(denovo_assmebly_input_ch, parent_output_dir)
     extract_assembled_genome_metadata_info(mitoz_assembler.out.mitoz_assembler_output, parent_output_dir)
 
