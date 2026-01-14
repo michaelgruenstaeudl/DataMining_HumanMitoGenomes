@@ -46,7 +46,7 @@ cat >"${latex_file_name}" <<EOF
 	\begin{subfigure}[t]{0.49\textwidth}
 		\centering
 		\includegraphics[width=\linewidth, trim=2cm 3cm 4cm 2cm, clip]{${contamination_removed_figure_file_path}}
-		\caption*{\hspace{0.5in}\bfseries Contamination removed Reads}
+		\caption*{\hspace{0.5in}\bfseries Processed Reads}
 	\end{subfigure}
 \end{figure}
 
