@@ -14,6 +14,7 @@ process mitoz_assembler {
     val parent_output_dir
 
     output:
+    tuple val(sample_id), path("megahit/mito_denovo.megahit.result/mito_denovo.megahit.mitogenome.fa"), emit: mitoz_assembler_output
     path "megahit/*"
 
     script:
