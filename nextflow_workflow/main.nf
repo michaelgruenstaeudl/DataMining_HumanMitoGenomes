@@ -6,7 +6,8 @@ include { calculate_sequence_length_threshold } from './modules/compute_sequence
 include { mapping_process } from './modules/mapping_process.nf'
 include { novoplast_process } from './modules/novoplasty_process.nf'
 include { contamination_removal } from './modules/contamination_control.nf'
-include { addSizeTracking ; WriteCSV } from './lib/utils.nf'
+include { addSizeTracking } from './lib/utils.nf'
+include { write_csv as write_file_sizes_csv } from './modules/write_csv.nf'
 include { quality_control_workflow } from './sub_workflows/quality_control_workflow.nf'
 include { extract_seed } from './modules/extract_seed.nf'
 include { merge_pacvr_evenness_figures } from './modules/merge_pacvr_evenness_figures.nf'
@@ -92,16 +93,16 @@ workflow {
     )
 
     // Write file sizes to CSV
-    csv_lines_ch = size_ch.map { tuple ->
+    file_size_csv_lines_ch = size_ch.map { tuple ->
         tuple.join(",")
     }
-    tmp_csv = csv_lines_ch.collectFile(name: "file_sizes.tmp", newLine: true)
+    file_size_tmp_csv = file_size_csv_lines_ch.collectFile(name: "file_sizes.tmp", newLine: true)
 
-    WriteCSV(tmp_csv, parent_output_dir)
+    write_file_sizes_csv(file_size_tmp_csv, true, "file_sizes.csv", parent_output_dir)
     size_ch.count().view { it -> "Total tuples in channel: ${it}" }
 
 
-    plot_size_diff_input_ch = WriteCSV.out.file_sizes_csv_output
+    plot_size_diff_input_ch = write_file_sizes_csv.out.csv_output
         .combine(channel.fromPath(parent_output_dir))
         .combine(channel.fromPath(params.visualize_file_size_changes_script))
     plot_size_diff(plot_size_diff_input_ch)
