@@ -38,7 +38,7 @@ workflow {
     size_ch = channel.empty()
 
     size_ch = addSizeTracking(size_ch, input_ch, "Initial Input Files")
-    mitoz_assembler(input_ch, parent_output_dir, projectDir, params.eteDbDir)
+    mitoz_assembler(input_ch, parent_output_dir)
 
     workflow.onComplete {
         println('✅ Finished all processes!')

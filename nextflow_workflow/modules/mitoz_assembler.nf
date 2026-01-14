@@ -12,8 +12,6 @@ process mitoz_assembler {
     input:
     tuple val(sample_id), path(input_file1), path(input_file2)
     val parent_output_dir
-    val projectDir
-    val eteDbDir
 
     output:
     path "megahit/*"
