@@ -29,20 +29,3 @@ def addSizeTracking(size_ch, input_ch, category) {
 
     return size_ch.concat(mapped)
 }
-process WriteCSV {
-
-    publishDir "${parent_output_dir}/reports", mode: 'copy'
-
-    input:
-    path csv_tmp
-    val parent_output_dir
-
-    output:
-    path "file_sizes.csv", emit: file_sizes_csv_output
-
-    script:
-    """
-    echo "SRA_Number,File_Name,File_Path,Process_Name,Read_Label,Size_Byte,Size_KB,Size_MB" > file_sizes.csv
-    cat ${csv_tmp} >> file_sizes.csv
-    """
-}
