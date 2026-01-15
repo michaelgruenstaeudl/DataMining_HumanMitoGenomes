@@ -64,12 +64,21 @@ workflow {
 
     // Mapping process
     // stages FASTA + all index files
-    mapping_input_ch = contamination_removal.out.contamination_removal_fastq_output.combine(reference_ch)
+    // mapping_input_ch = contamination_removal.out.contamination_removal_fastq_output.combine(reference_ch)
     // .combine(index_files_ch)
 
     //##Using FastqSifter##
-    mapping_process(mapping_input_ch, parent_output_dir)
-    mapping_process_output = mapping_process.out.mapping_process_output
+    // mapping_process(mapping_input_ch, parent_output_dir)
+    // mapping_process_output = mapping_process.out.mapping_process_output
+
+
+    // ##Using BWA-MEM2##
+    index_files_ch = channel.fromPath("${params.index_directory}/*").collect()
+    mapping_input_ch = contamination_removal.out.contamination_removal_fastq_output
+        .combine(reference_ch)
+        .combine(index_files_ch)
+    mapping_workflow(mapping_input_ch, parent_output_dir)
+    mapping_process_output = mapping_workflow.out.mapping_process_output
 
     size_ch = addSizeTracking(size_ch, mapping_process_output, "Mapping Output")
 
@@ -105,8 +114,8 @@ workflow {
 
 
     // MitoZ assembly process
-    denovo_assmebly_input_ch = mapping_process.out.mapping_process_output
-    mitoz_assembler(denovo_assmebly_input_ch, parent_output_dir)
+    // denovo_assmebly_input_ch = mapping_process.out.mapping_process_output
+    mitoz_assembler(mapping_process_output, parent_output_dir)
     extract_assembled_genome_metadata_info(mitoz_assembler.out.mitoz_assembler_output, parent_output_dir)
 
     // Write assembled genome metadata info into CSV
