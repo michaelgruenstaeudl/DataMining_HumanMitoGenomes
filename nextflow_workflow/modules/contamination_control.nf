@@ -23,6 +23,7 @@ process contamination_removal {
     kraken2 \\
         --db ${db_path} \\
         --paired ${fastq1} ${fastq2} \\
+        --confidence 0.2 \\
         --report kraken2_output/${sample_id}_kraken2_report.txt  \\
         --unclassified-out kraken2_output/"${sample_id}."unclassified#.fastq \\
         --output kraken2_output/${sample_id}_kraken2_output.kraken
