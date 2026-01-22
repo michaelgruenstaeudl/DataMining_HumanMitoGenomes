@@ -1,10 +1,13 @@
 import argparse
 import sys
+import math
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
-import math
+import matplotlib.gridspec as gridspec
+from matplotlib.patches import Rectangle, Patch
+from matplotlib.lines import Line2D
 
 
 def calculate_file_size_reduced_after_each_process(file_size_df):
@@ -141,7 +144,6 @@ def plot_stacked_bar_chart(pivot_df, file_directory):
 
 def plot_aggregate_stacked_bar_chart(pivot_df, file_directory):
     aggregated_df = pivot_df.groupby("SRA_Number").mean(numeric_only=True).fillna(0)
-    # plot_pivot_df = pivot_df.set_index(["SRA_Number", "Read_Label"]).fillna(0)
 
     # Prepare data
     categories = aggregated_df.columns
@@ -158,8 +160,6 @@ def plot_aggregate_stacked_bar_chart(pivot_df, file_directory):
 
     # Plot
     fig, ax = plt.subplots(figsize=(20, fig_height))
-    # custom_colors = ["red", "black", "green", "yellow", "blue"]
-    # custom_colors= ["#E41A1C", "#377EB8", "#4DAF4A", "#FF7F00", "#984EA3"]
 
     custom_colors = ["#66C2A5", "#FC8D62", "#8DA0CB", "#E78AC3", "#A6D854"]
 
@@ -181,17 +181,14 @@ def plot_aggregate_stacked_bar_chart(pivot_df, file_directory):
         left += values[:, i]
 
     # Customize
-    # ax.invert_yaxis()
     ax.set_yticks(y_pos)
     ax.set_yticklabels([f"{sra}" for sra in index_labels])
-    # ax.set_xlabel('Value')
     ax.set_ymargin(0.001)
     ax.invert_yaxis()
     ax.xaxis.set_label_position("top")
     ax.xaxis.tick_top()
     plt.xlabel("Percentage Difference")
     plt.title("Stacked Bar Plot for each SRA_Number")
-    # plt.xticks(rotation=45, ha="right")
     plt.legend(title="Size in Percentage", bbox_to_anchor=(1.05, 1), loc="upper left")
     plt.tight_layout()
     plt.savefig(
@@ -217,7 +214,7 @@ def plot_file_size_changes(csv_filepath, file_directory):
         .sort_index()
         .round(3)
     )
-    print(list(pivot_aggdf.columns))
+
     n_records = len(pivot_aggdf)
     subplots_per_row = 15
     if n_records <= 50:
@@ -231,8 +228,7 @@ def plot_file_size_changes(csv_filepath, file_directory):
 
     custom_colors = ["#66C2A5", "#FC8D62", "#8DA0CB", "#E78AC3", "#A6D854"]
 
-    # Columns in order
-    desired_order = [
+    desired__process_order = [
         "Initial Input Files",
         "Repair Read Output",
         "Quality Control Output",
@@ -240,15 +236,32 @@ def plot_file_size_changes(csv_filepath, file_directory):
         "Mapping Output",
     ]
 
-    value_cols = [c for c in desired_order if c in pivot_aggdf.columns]
+    color_dict = dict(zip(desired__process_order, custom_colors))
 
-    fig, axs = plt.subplots(n_rows, subplots_per_row, figsize=(150, 200))
+    value_cols = [c for c in desired__process_order if c in pivot_aggdf.columns]
+    fig = plt.figure(figsize=(150, 200))
 
-    axs = axs.flatten()
+    # Create GridSpec with controlled spacing
+    gs = gridspec.GridSpec(
+        n_rows,
+        subplots_per_row,
+        figure=fig,
+        wspace=0.3,  # horizontal gap between subplots
+        hspace=0.5,  # vertical gap between subplots
+        left=0.01,
+        right=0.99,
+        bottom=0.01,
+        top=0.99,
+    )
+
+    axs = []
+    for i in range(n_rows):
+        for j in range(subplots_per_row):
+            ax = fig.add_subplot(gs[i, j])
+            axs.append(ax)
 
     for ax, (_, row) in zip(axs, pivot_aggdf.iterrows()):
         values = row[value_cols]
-
         values = values.dropna()
 
         # Match colors to remaining columns
@@ -265,25 +278,151 @@ def plot_file_size_changes(csv_filepath, file_directory):
 
         # --- LINE PLOT ---
         ax.plot(
-            values.index,
-            values.values,
-            color="black",
-            marker="o",
-            linewidth=2,
-            markersize=6,
+            values.index,  # same x-axis
+            values.values,  # y values
+            color="black",  # line color
+            marker="o",  # circle markers
+            linewidth=2,  # line thickness
+            markersize=6,  # marker size
         )
 
-        ax.set_title(str(row.name))
-        ax.set_ylabel("File Size in MB")
+        ax.set_xticks([])
+        ax.set_yticks([])
+
+        ax.set_title(str(row.name), fontsize=75)
+        # ax.set_ylabel([])
         ax.grid(axis="y", linestyle="--", alpha=0.5)
 
     for ax in axs[n_records:]:
         ax.axis("off")
 
-    plt.tight_layout()
+    # -------------------------
+    # Highlight the example subplot
+    # -------------------------
+    example_idx = 20
+    highlight_ax = axs[example_idx]
+    rect = Rectangle(
+        (0, 0),
+        1,
+        1,
+        linewidth=20,
+        edgecolor="red",
+        facecolor="none",
+        linestyle="--",
+        transform=highlight_ax.transAxes,
+        zorder=10,
+    )
+    highlight_ax.add_patch(rect)
+
+    #### Add one large subplot for the example record
+    example_ax = fig.add_axes([1.05, 0.4, 0.5, 0.3])  # large subplot at bottom
+
+    example_record = pivot_aggdf.iloc[example_idx].reindex(desired__process_order)
+
+    example_ax.bar(
+        example_record.index,
+        example_record.values,
+        color=bar_colors,
+        width=0.3,
+        edgecolor="black",
+        linewidth=2,
+    )
+
+    example_ax.plot(
+        example_record.index,  # same x-axis
+        example_record.values,  # y values
+        color="black",  # line color
+        marker="o",  # circle markers
+        linewidth=2,  # line thickness
+        markersize=6,  # marker size
+    )
+
+    # Set ticks safely
+    example_ax.set_xticks(range(len(example_record)))
+    example_ax.set_xticklabels(example_record.index, rotation=30, fontsize=100)
+
+    example_ax.set_yticks(example_ax.get_yticks())
+    example_ax.set_yticklabels(
+        [f"{y:.1f} MB" for y in example_ax.get_yticks()], fontsize=100
+    )
+
+    example_ax.set_title(f"Example Record: {example_record.name}", fontsize=150)
+    example_ax.set_ylabel("File Size in MB", fontsize=100)
+    example_ax.grid(axis="y", linestyle="--", alpha=0.5)
+
+    # -------------------------
+    # Optional: connecting line
+    # -------------------------
+    fig.canvas.draw()  # update coordinates
+
+    bbox_small = highlight_ax.get_window_extent().transformed(
+        fig.transFigure.inverted()
+    )
+
+    bbox_example = example_ax.get_window_extent().transformed(
+        fig.transFigure.inverted()
+    )
+
+    top_line = Line2D(
+        [bbox_small.x1, bbox_example.x0],  # right edge → left edge
+        [bbox_small.y1, bbox_example.y1],  # top → top
+        transform=fig.transFigure,
+        color="red",
+        linewidth=5,
+        linestyle="--",
+        zorder=20,
+    )
+
+    bottom_line = Line2D(
+        [bbox_small.x1, bbox_example.x0],  # right edge → left edge
+        [bbox_small.y0, bbox_example.y0],  # bottom → bottom
+        transform=fig.transFigure,
+        color="red",
+        linewidth=5,
+        linestyle="--",
+        zorder=20,
+    )
+
+    fig.add_artist(bottom_line)
+
+    fig.add_artist(top_line)
+
+    # -------------------------
+    # Add legend
+    # -------------------------
+    # Create handles manually
+
+    legend_handles = [
+        Patch(color=color_dict[name], label=name) for name in desired__process_order
+    ]
+
+    # Place legend at top right of figure (outside main grid)
+    fig.legend(
+        handles=legend_handles,
+        title="Process Name",
+        loc="upper right",
+        bbox_to_anchor=(1.3, 0.99),
+        fontsize=150,
+        title_fontsize=200,
+        frameon=True,
+    )
+
+    # -------------------------
+    # Figure caption at bottom
+    # -------------------------
+    fig.text(
+        0.5,
+        -0.01,
+        "Fig: File Size across Nextflow Processing Steps",
+        ha="center",
+        fontsize=200,
+        fontstyle="italic",
+    )
+
     plt.savefig(
         f"{file_directory}/aggregate_file_size_reduction_viz.png",
-        dpi=300,
+        bbox_inches="tight",
+        dpi=50,
     )
 
 
