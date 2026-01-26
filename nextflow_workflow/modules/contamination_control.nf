@@ -10,6 +10,7 @@ process contamination_removal {
 
     input:
     tuple val(sample_id), path(fastq1), path(fastq2), path(db_path)
+    val confidence_threshold
     val parent_output_dir
 
     output:
@@ -23,7 +24,7 @@ process contamination_removal {
     kraken2 \\
         --db ${db_path} \\
         --paired ${fastq1} ${fastq2} \\
-        --confidence 0.4 \\
+        --confidence ${confidence_threshold}\\
         --report kraken2_output/${sample_id}_kraken2_report.txt  \\
         --unclassified-out kraken2_output/"${sample_id}."unclassified#.fastq \\
         --output kraken2_output/${sample_id}_kraken2_output.kraken
