@@ -27,7 +27,7 @@ include { extract_assembled_genome_metadata_info } from './modules/extract_assem
 
 workflow {
     parent_output_dir = params.outdir
-
+    contamination_confidence_threshold = params.contamination_confidence_threshold
     // Call the read_csv_workflow with params
     read_csv_workflow(params)
     evenness_calculation_workflow_initial_input_ch = read_csv_workflow.out.evenness_calculation_workflow_initial_input_ch
@@ -55,7 +55,11 @@ workflow {
     //contamination control process
     contamination_db_channel = channel.fromPath(params.contamination_db)
     contamination_control_input_ch = quality_control_workflow.out.quality_control_out_ch.combine(contamination_db_channel)
-    contamination_removal(contamination_control_input_ch, parent_output_dir)
+    contamination_removal(
+        contamination_control_input_ch,
+        contamination_confidence_threshold,
+        parent_output_dir,
+    )
     size_ch = addSizeTracking(size_ch, contamination_removal.out.contamination_removal_fastq_output, "Contamination Output")
 
     //Evenness calculation workflow
