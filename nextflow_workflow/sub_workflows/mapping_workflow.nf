@@ -1,6 +1,7 @@
 #!/usr/bin/env nextflow
 
 include { mapping_process } from '../modules/mapping_process.nf'
+include { mapping_bbmap } from '../modules/mapping_bbmap.nf'
 include { mapping_bwa } from '../modules/mapping_bwa.nf'
 include { extract_mapped_fastq } from '../modules/extract_mapped_fastq.nf'
 
@@ -21,8 +22,13 @@ workflow mapping_workflow {
     input_ch = mapping_input_ch.map { sample_id, input_file1, input_file2, reference_fasta, _index_file1, _index_file2, _index_file3, _index_file4, _index_file5 ->
         tuple(sample_id, input_file1, input_file2, reference_fasta)
     }
-    mapping_process(input_ch, parent_output_dir)
-    mapping_process_output = mapping_process.out.mapping_process_output
+    // mapping_process(input_ch, parent_output_dir)
+    // mapping_process_output = mapping_process.out.mapping_process_output
+
+
+    //BBMAP mapping process
+    mapping_bbmap(input_ch, parent_output_dir)
+    mapping_process_output = mapping_bbmap.out.mapping_process_output
 
     emit:
     mapping_process_output
