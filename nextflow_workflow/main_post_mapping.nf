@@ -45,16 +45,16 @@ workflow {
 
     size_ch = addSizeTracking(size_ch, input_ch, "Initial Input Files")
 
-    reference_ch = channel.fromPath(params.reference_fasta)
-    seed_mito_ch = channel.fromPath(params.seed_mito)
-    config_file_ch = channel.fromPath(params.config_file)
+    // Created once here and passed to mapping workflow, which will then pass it to the mapping processes. 
+    //This way we avoid creating multiple index files if the same reference is used for multiple samples.
+    reference_ch = channel.value(file(params.reference_fasta))
+
     calculate_sequence_length_threshold_script_ch = channel.fromPath(params.calculate_sequence_length_threshold_script)
 
     //Quality control process
     quality_control_workflow(input_ch, calculate_sequence_length_threshold_script_ch, parent_output_dir)
     size_ch = size_ch.mix(quality_control_workflow.out.repair_read_size_ch)
     size_ch = addSizeTracking(size_ch, quality_control_workflow.out.quality_control_out_ch, "Quality Control Output")
-    cutoffs_ch = quality_control_workflow.out.cutoffs_ch
 
     //contamination control process
     contamination_db_channel = channel.fromPath(params.contamination_db)
@@ -67,21 +67,10 @@ workflow {
     size_ch = addSizeTracking(size_ch, contamination_removal.out.contamination_removal_fastq_output, "Contamination Output")
 
     // Mapping process
-    // stages FASTA + all index files
-    // mapping_input_ch = contamination_removal.out.contamination_removal_fastq_output.combine(reference_ch)
-    // .combine(index_files_ch)
-
-    //##Using FastqSifter##
-    // mapping_process(mapping_input_ch, parent_output_dir)
-    // mapping_process_output = mapping_process.out.mapping_process_output
-
-
-    // ##Using BWA-MEM2##
-    index_files_ch = channel.fromPath("${params.index_directory}/*").collect()
+    // index_files_ch = channel.fromPath("${params.index_directory}/*").collect()
     mapping_input_ch = contamination_removal.out.contamination_removal_fastq_output
-        .combine(reference_ch)
-        .combine(index_files_ch)
-    mapping_workflow(mapping_input_ch, parent_output_dir)
+    //.combine(index_files_ch)
+    mapping_workflow(mapping_input_ch, reference_ch, parent_output_dir)
     mapping_process_output = mapping_workflow.out.mapping_process_output
 
     size_ch = addSizeTracking(size_ch, mapping_process_output, "Mapping Output")
