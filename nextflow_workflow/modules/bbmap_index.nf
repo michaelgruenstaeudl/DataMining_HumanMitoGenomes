@@ -2,10 +2,11 @@
 
 process bbmap_index {
 
+    label "bbmap_env"
     publishDir "${parent_output_dir}", mode: 'copy', overwrite: true
 
     input:
-    tuple path(reference_fasta)
+    path reference_fasta
     val parent_output_dir
 
     output:
