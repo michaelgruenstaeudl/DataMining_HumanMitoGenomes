@@ -3,11 +3,11 @@
 #SBATCH --mail-user=b_thapamagar@mail.fhsu.edu
 #SBATCH --job-name=dna_analysis
 #SBATCH --mail-type=all
-#SBATCH --mem=64G
-#SBATCH --cpus-per-task=16
+#SBATCH --mem=128G
+#SBATCH --cpus-per-task=24
 #SBATCH --time=12:00:00
 
 source $HOME/miniconda3/etc/profile.d/conda.sh
 conda activate ms_thesis
 
-nextflow run main.nf
+nextflow run main.nf -resume
