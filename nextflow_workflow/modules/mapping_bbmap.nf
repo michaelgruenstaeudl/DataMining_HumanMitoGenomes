@@ -2,7 +2,7 @@
 
 process mapping_bbmap {
 
-    // label "bwa_env"
+    label "bbmap_env"
     tag "${sample_id}"
 
     // container 'fastq_sifter'
