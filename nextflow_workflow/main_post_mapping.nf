@@ -36,11 +36,6 @@ workflow {
     gb_channel = read_csv_workflow.out.gb_channel
     fasta_channel = read_csv_workflow.out.fasta_channel
 
-    merge_pacvr_evenness_fig_script_ch = channel.fromPath(params.merge_pacvr_evenness_figure_script)
-
-    evenness_calculation_workflow_initial(evenness_calculation_workflow_initial_input_ch, 'initial_phase', parent_output_dir)
-    initial_evenness_output_ch = evenness_calculation_workflow_initial.out.evenness_output_ch
-
     size_ch = channel.empty()
 
     size_ch = addSizeTracking(size_ch, input_ch, "Initial Input Files")
@@ -75,20 +70,29 @@ workflow {
 
     size_ch = addSizeTracking(size_ch, mapping_process_output, "Mapping Output")
 
-    //Evenness calculation workflow
-    final_evenness_calculation_input_ch = mapping_process_output.join(gb_channel).join(fasta_channel)
-    evenness_calculation_workflow_final(final_evenness_calculation_input_ch, "mapping_phase", parent_output_dir)
-    cleaned_reads_evenness_output_ch = evenness_calculation_workflow_final.out.evenness_output_ch
+    if (params.is_claculate_evenness) {
+        //Evenness calculation workflow
+        merge_pacvr_evenness_fig_script_ch = channel.fromPath(params.merge_pacvr_evenness_figure_script)
 
-    merge_evenness_figure_input_ch = accession_ch
-        .join(initial_evenness_output_ch)
-        .join(cleaned_reads_evenness_output_ch)
-        .combine(merge_pacvr_evenness_fig_script_ch)
+        //evenness calculation for original reads before cleaning
+        evenness_calculation_workflow_initial(evenness_calculation_workflow_initial_input_ch, 'initial_phase', parent_output_dir)
+        initial_evenness_output_ch = evenness_calculation_workflow_initial.out.evenness_output_ch
 
-    merge_pacvr_evenness_figures(
-        merge_evenness_figure_input_ch,
-        parent_output_dir,
-    )
+        //evenness calculation for cleaned reads after mapping
+        final_evenness_calculation_input_ch = mapping_process_output.join(gb_channel).join(fasta_channel)
+        evenness_calculation_workflow_final(final_evenness_calculation_input_ch, "mapping_phase", parent_output_dir)
+        cleaned_reads_evenness_output_ch = evenness_calculation_workflow_final.out.evenness_output_ch
+
+        merge_evenness_figure_input_ch = accession_ch
+            .join(initial_evenness_output_ch)
+            .join(cleaned_reads_evenness_output_ch)
+            .combine(merge_pacvr_evenness_fig_script_ch)
+
+        merge_pacvr_evenness_figures(
+            merge_evenness_figure_input_ch,
+            parent_output_dir,
+        )
+    }
 
     // Write file sizes to CSV
     file_size_csv_lines_ch = size_ch.map { tuple ->
