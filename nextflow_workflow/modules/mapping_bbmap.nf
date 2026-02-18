@@ -20,9 +20,11 @@ process mapping_bbmap {
     path "bbmap_mapped_output/${sample_id}_unmapped_R2.fq"
 
     script:
+    def avail_mem = (task.memory.toGiga() * 0.85).intValue()
     """
     mkdir bbmap_mapped_output
     bbmap.sh \
+        -Xmx${avail_mem}g \
         path=${index_dir} \
         in1=${input_file1} in2=${input_file2} \
         outm1=bbmap_mapped_output/${sample_id}_mapped_R1.fq outm2=bbmap_mapped_output/${sample_id}_mapped_R2.fq \
