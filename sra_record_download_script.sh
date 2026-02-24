@@ -1,8 +1,8 @@
 #!/bin/bash
-
-csv_file="sensitive_data/PAIRED_nucleotide_sra_mapped_info_with_run_except_PRJEB4417.csv"
+# csv_file="sensitive_data/test_single.csv"
+csv_file="sensitive_data/SINGLE_layout_sample_nucleotide_sra_mapped_info_with_run.csv"
 temp_file=$(mktemp)
-output_dir="genome_data"
+output_dir="single_layout_genome_data"
 SRA_data_dir="$output_dir/SRA_data"
 complete_genome_fasta_dir="$output_dir/complete_genome/fasta"
 complete_genome_genbank_dir="$output_dir/complete_genome/genbank"
@@ -13,7 +13,7 @@ mkdir -p "$complete_genome_genbank_dir"
 # Skip header and write to temp file
 tail -n +2 "$csv_file" >"$temp_file"
 count=1
-while IFS=, read -r Accession _SRA_Uid RUN _LibraryLayout; do
+while IFS=, read -r Accession _SRA_Uid RUN LibraryLayout; do
     echo "SRA: $RUN"
     # echo "Sample Name: $Samples"
     echo "Accession: $Accession"
@@ -24,11 +24,22 @@ while IFS=, read -r Accession _SRA_Uid RUN _LibraryLayout; do
     GB="${complete_genome_genbank_dir}/${Accession}.gb"
 
     # Download FASTQ if missing
-    if [[ ! -f "$FASTQ1" || ! -f "$FASTQ2" ]]; then
-        echo "Downloading FASTQ for $RUN ..."
-        fasterq-dump -O "${SRA_data_dir}" -p -S "$RUN"
+    if [[ "$LibraryLayout" == "SINGLE" ]]; then
+        existing=("${SRA_data_dir}/${RUN}"*.fastq)
+        if [[ ! -e "${existing[0]}" ]]; then
+            echo "Downloading single-end FASTQ for $RUN ..."
+            fasterq-dump -O "${SRA_data_dir}" -p -S "$RUN"
+        else
+            echo "Single-end FASTQ for $RUN already exists, skipping."
+        fi
     else
-        echo "FASTQ for $RUN already exists, skipping."
+        # Paired-end: check both FASTQ1 and FASTQ2
+        if [[ ! -f "$FASTQ1" || ! -f "$FASTQ2" ]]; then
+            echo "Downloading paired-end FASTQ for $RUN ..."
+            fasterq-dump -O "${SRA_data_dir}" -p -S "$RUN"
+        else
+            echo "Paired-end FASTQ for $RUN already exists, skipping."
+        fi
     fi
 
     # fasterq-dump -O "${SRA_data_dir}" -p -S "$RUN"
