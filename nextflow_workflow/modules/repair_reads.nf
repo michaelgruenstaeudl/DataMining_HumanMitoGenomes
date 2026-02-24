@@ -10,35 +10,30 @@ process repair_reads {
     publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
 
     input:
-    tuple val(sample_id), path(input_file1), path(input_file2), val(encoding_int)
+    tuple val(sample_id), path(input_file_list), val(is_single_end), val(encoding_int)
     val phase
     val parent_output_dir
 
     output:
     // val sample_id, emit: sample_id
-    tuple val(sample_id), path("repair_read_output_${phase}/${sample_id}_1.fastq", optional: true), path("repair_read_output_${phase}/${sample_id}_2.fastq", optional: true), emit: repaired_reads_output_channel
+    tuple val(sample_id), path("repair_read_output_${phase}/${sample_id}_*.fastq", optional: true), val(is_single_end), emit: repaired_reads_output_channel
     path "repair_read_output_${phase}/${sample_id}_singletons.fastq", optional: true
 
     script:
     def output_dir = "repair_read_output_${phase}"
+    def input_file = is_single_end
+        ? "in1=${input_file_list[0]}"
+        : "in1=${input_file_list[0]} in2=${input_file_list[1]}"
+
+    def output = is_single_end
+        ? "out1=${output_dir}/${sample_id}_1.fastq outs=${output_dir}/${sample_id}_singletons.fastq"
+        : "out1=${output_dir}/${sample_id}_1.fastq out2=${output_dir}/${sample_id}_2.fastq outs=${output_dir}/${sample_id}_singletons.fastq"
     """
     mkdir ${output_dir}
-    repair.sh \
-        in1=${input_file1} \
-        in2=${input_file2} \
-        out1=${output_dir}/${sample_id}_1.fastq \
-        out2=${output_dir}/${sample_id}_2.fastq \
-        outs=${output_dir}/${sample_id}_singletons.fastq \
-        overwrite=true \
+    repair.sh \\
+        ${input_file} \\
+        ${output} \\
+        overwrite=true \\
         qin=${encoding_int}
     """
-}
-
-workflow {
-    input_ch = channel.fromFilePairs("/home/b_thapamagar/BioInformatics/DataMining_HumanMitoGenomes/temp_data2/temp" + '/*_{1,2}.fastq')
-        .map { sample_id, read -> tuple(sample_id, read[0], read[1], 33) }
-        .view { it -> "Input to repair reads: ${it}" }
-
-    repair_reads(input_ch)
-    repair_reads.out.repaired_reads_output_channel.view { it -> "Output from repair reads: ${it}" }
 }
