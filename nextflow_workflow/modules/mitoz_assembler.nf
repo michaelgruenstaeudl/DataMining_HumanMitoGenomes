@@ -10,7 +10,7 @@ process mitoz_assembler {
     publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
 
     input:
-    tuple val(sample_id), path(input_file1), path(input_file2)
+    tuple val(sample_id), path(input_file_list), val(is_single_end)
     val parent_output_dir
 
     output:
@@ -18,6 +18,7 @@ process mitoz_assembler {
     path "megahit/*"
 
     script:
+    def input_file_param = is_single_end ? "--fq1 ${input_file_list[0]}" : "--fq1 ${input_file_list[0]} --fq2 ${input_file_list[1]}"
     """
     #Env variable for mitoz
     export PATH=/app/anaconda/envs/mitoz3.6/bin:\$PATH
@@ -28,8 +29,7 @@ process mitoz_assembler {
         --clade Chordata   \
         --outprefix mito_denovo   \
         --thread_number 16   \
-        --fq1  ${input_file1}  \
-        --fq2 ${input_file2}  \
+        ${input_file_param} \
         --assembler megahit   \
         --kmers_megahit 21 29 39 59 79 99 119 141 \
         --requiring_taxa 9606
