@@ -9,30 +9,29 @@ process quality_control {
     publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
 
     input:
-    tuple val(sample_id), path(input_file1), path(input_file2), val(lower_cutoff), val(upper_cutoff)
+    tuple val(sample_id), path(input_file_list), val(is_single_end), val(lower_cutoff), val(upper_cutoff)
     val quality_control_stage
     val parent_output_dir
 
     output:
     // val sample_id, emit: sample_id
     tuple val(sample_id), env("exit_code"), path("${quality_control_stage}/${sample_id}_1.fastq_trimming_report.txt", optional: true), emit: qc_status_report
-    tuple val(sample_id), path("${quality_control_stage}/${sample_id}_1_val_1.fq", optional: true), path("${quality_control_stage}/${sample_id}_2_val_2.fq", optional: true), emit: quality_control_output
-    path "${quality_control_stage}/${sample_id}_1_val_1_fastqc.html", optional: true
-    path "${quality_control_stage}/${sample_id}_1_val_1_fastqc.zip", optional: true
-    path "${quality_control_stage}/${sample_id}_1.fastq_trimming_report.txt", optional: true, emit: trimming_report_1
-    path "${quality_control_stage}/${sample_id}_2_val_2_fastqc.html", optional: true
-    path "${quality_control_stage}/${sample_id}_2_val_2_fastqc.zip", optional: true
-    path "${quality_control_stage}/${sample_id}_2.fastq_trimming_report.txt", optional: true
+    tuple val(sample_id), path("${quality_control_stage}/${sample_id}_*.fq", optional: true), val(is_single_end), emit: quality_control_output
+    path "${quality_control_stage}/*"
 
     script:
     // clip_length = upper_cutoff.toInteger() - 3
     //     trim_galore --paired_end --clip_R1 3 --clip_R2 3  --max_length ${upper_cutoff} --quality 20 \
+    def input_file = is_single_end
+        ? "${input_file_list[0]}"
+        : "${input_file_list[0]} ${input_file_list[1]}"
+    def paired_end_option = is_single_end ? "" : "--paired"
     """
     set +e
-    trim_galore --paired_end --max_length ${upper_cutoff} --quality 20 \
+    trim_galore ${paired_end_option} --max_length ${upper_cutoff} --quality 20 \
     --fastqc \
     --output_dir ${quality_control_stage} \
-    ${input_file1} ${input_file2} 
+    ${input_file}
     
     exit_code=\$(echo \$? )
     echo \$exit_code > .exitcode

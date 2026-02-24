@@ -18,13 +18,14 @@ workflow quality_control_workflow {
     main:
     repair_read_size_ch = channel.empty()
 
+    // quality_control_input_channel.view { it -> "Quality control input: ${it}" }
     //initial fastqc report 
     fastqc_process(quality_control_input_channel, parent_output_dir, "initial_fastqc")
 
     // Calculate sequence length threshold process
     input_to_calculate_sequence_length_threshold = quality_control_input_channel
-        .map { sample_id, read1, _read2 ->
-            tuple(sample_id, read1)
+        .map { sample_id, reads, _is_single_end ->
+            tuple(sample_id, reads[0])
         }
         .combine(
             calculate_sequence_length_threshold_script_ch
@@ -34,15 +35,24 @@ workflow quality_control_workflow {
     // Initial Quality control process
     quality_control_input_channel_with_cutoffs = quality_control_input_channel.join(calculate_sequence_length_threshold.out.length_cutoffs)
     quality_control(quality_control_input_channel_with_cutoffs, 'initial_quality_control', parent_output_dir)
-
+    quality_control_output = quality_control.out.quality_control_output.map { sample_id, reads, is_single_end ->
+        def reads_list = reads instanceof List
+            ? reads.findAll { item ->
+                item.name =~ /_(val_1|val_2)\.fq$/
+            }
+            : [reads]
+        tuple(sample_id, reads_list, is_single_end)
+    }
+    // quality_control_output.view { it -> "Quality control output: ${it}" }
     // Separate channels for success and failed QC based on exit code
     conditional_channel = quality_control.out.qc_status_report.branch { _sample_id, exit_code, _fastqc_report ->
         success: exit_code == "0"
         failed: exit_code != "0"
     }
-    quality_control_success_out_ch = quality_control.out.quality_control_output.join(
+    quality_control_success_out_ch = quality_control_output.join(
         conditional_channel.success.map { sample_id, _exit_code, _fastqc_report -> sample_id }
     )
+    // quality_control_success_out_ch.view { it -> "Quality control success output: ${it}" }
     success_out_cutoff_ch = calculate_sequence_length_threshold.out.length_cutoffs.join(
         conditional_channel.success.map { sample_id, _exit_code, _fastqc_report -> sample_id }
     )
@@ -53,7 +63,7 @@ workflow quality_control_workflow {
         .set { encoding_detection_input_ch }
 
     detectEncoding(encoding_detection_input_ch)
-
+    // detectEncoding.out.encoding_output_channel.view { it -> "Encoding detection output: ${it}" }
 
     // Repair reads process for failed QC samples
     quality_control_input_channel
@@ -63,13 +73,20 @@ workflow quality_control_workflow {
         .set { repair_reads_input_ch }
 
     repair_reads(repair_reads_input_ch, "qc", parent_output_dir)
+    repair_read_output_ch = repair_reads.out.repaired_reads_output_channel.map { sample_id, reads, is_single_end ->
+        def reads_list = reads instanceof List
+            ? reads
+            : [reads]
+        tuple(sample_id, reads_list, is_single_end)
+    }
+    // repair_read_output_ch.view { it -> "Repair reads output: ${it}" }
 
-    repair_read_size_ch = addSizeTracking(repair_read_size_ch, repair_reads.out.repaired_reads_output_channel, "Repair Read Output")
+    repair_read_size_ch = addSizeTracking(repair_read_size_ch, repair_read_output_ch, "Repair Read Output")
 
     // Calculate sequence length threshold for repaired reads
-    input_to_calculate_sequence_length_threshold_repair = repair_reads.out.repaired_reads_output_channel
-        .map { sample_id, read1, _read2 ->
-            tuple(sample_id, read1)
+    input_to_calculate_sequence_length_threshold_repair = repair_read_output_ch
+        .map { sample_id, reads, _is_single_end ->
+            tuple(sample_id, reads[0])
         }
         .combine(
             calculate_sequence_length_threshold_script_ch
@@ -77,13 +94,19 @@ workflow quality_control_workflow {
     calculate_sequence_length_threshold_repair(input_to_calculate_sequence_length_threshold_repair)
 
     // Quality control process for repaired reads
-    repair_reads.out.repaired_reads_output_channel
+    repair_read_output_ch
         .join(calculate_sequence_length_threshold_repair.out.length_cutoffs)
         .set { repaired_quality_control_input_ch }
 
     quality_control_repair(repaired_quality_control_input_ch, 'repaired_quality_control', parent_output_dir)
-    quality_control_repair_out_ch = quality_control_repair.out.quality_control_output
-
+    quality_control_repair_out_ch = quality_control_repair.out.quality_control_output.map { sample_id, reads, is_single_end ->
+        def reads_list = reads instanceof List
+            ? reads.findAll { item ->
+                item.name =~ /_(val_1|val_2)\.fq$/
+            }
+            : [reads]
+        tuple(sample_id, reads_list, is_single_end)
+    }
     // Merging quality control outputs and cutoff outputs from both initial(success) and repaired reads
     quality_control_out_ch = quality_control_success_out_ch.mix(quality_control_repair_out_ch)
 
