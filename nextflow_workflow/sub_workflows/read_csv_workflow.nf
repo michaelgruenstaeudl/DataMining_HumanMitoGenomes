@@ -23,7 +23,7 @@ workflow read_csv_workflow {
                 if (r1.size() == 0) {
                     missing << r1
                 }
-                fastq_list << r1
+                fastq_list << r1[0]
             }
             else {
                 def r1 = file("${params.fastq_directory}/${row.SRA_Run}_1.fastq")
