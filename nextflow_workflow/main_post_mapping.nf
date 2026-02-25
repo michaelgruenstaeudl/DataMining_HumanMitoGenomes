@@ -87,7 +87,7 @@ workflow {
 
     size_ch = addSizeTracking(size_ch, mapping_process_output, "Mapping Output")
 
-    if (params.is_claculate_evenness) {
+    if (params.is_calculate_evenness) {
         //Evenness calculation workflow
         merge_pacvr_evenness_fig_script_ch = channel.fromPath(params.merge_pacvr_evenness_figure_script)
 
