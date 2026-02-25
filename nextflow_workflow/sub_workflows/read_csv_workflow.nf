@@ -65,7 +65,7 @@ workflow read_csv_workflow {
         .filter { it -> it != null }
 
     evenness_calculation_workflow_initial_input_ch = initial_channel.map { sample_id, _accession, fastq_list, gb_file, fasta_file, is_single_end ->
-        tuple(sample_id, fastq_list, gb_file, fasta_file, is_single_end)
+        tuple(sample_id, fastq_list, is_single_end, gb_file, fasta_file)
     }
     accession_ch = initial_channel.map { sample_id, accession, _fastq_list, _gb_file, _fasta_file, _is_single_end ->
         tuple(sample_id, accession)
