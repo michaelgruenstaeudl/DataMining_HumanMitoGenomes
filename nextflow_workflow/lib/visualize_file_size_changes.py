@@ -1,4 +1,5 @@
 import argparse
+import random
 import sys
 import math
 import numpy as np
@@ -299,7 +300,7 @@ def plot_file_size_changes(csv_filepath, file_directory):
     # -------------------------
     # Highlight the example subplot
     # -------------------------
-    example_idx = 20
+    example_idx = random.randint(0, len(axs) - 1)
     highlight_ax = axs[example_idx]
     rect = Rectangle(
         (0, 0),
