@@ -11,7 +11,7 @@ process generate_sam {
     publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
 
     input:
-    tuple val(sample_id), path(fastq1), path(fastq2), path(fasta_file)
+    tuple val(sample_id), path(input_fastq_list), val(is_single_end), path(fasta_file)
     val phase
     val parent_output_dir
 
@@ -21,6 +21,9 @@ process generate_sam {
 
     script:
     def output_sam_filename = "sam_output_${phase}/${sample_id}.sam"
+    input_param = is_single_end
+        ? "-U ${input_fastq_list[0]}"
+        : "-1 ${input_fastq_list[0]} -2 ${input_fastq_list[1]}"
     // def output_bam_filename = "bam_output/${sample_id}.bam"
     // #samtools view -@ 8 -Sb -T ${fasta_file} ${output_sam_filename} >${output_bam_filename}
 
@@ -31,7 +34,7 @@ process generate_sam {
     
     mkdir -p temp_data2/temp/db
     bowtie2-build ${fasta_file} temp_data2/temp/db/${sample_id}
-    bowtie2 -x temp_data2/temp/db/${sample_id} -1 ${fastq1} -2 ${fastq2} -S ${output_sam_filename} -p 8
+    bowtie2 -x temp_data2/temp/db/${sample_id} ${input_param} -S ${output_sam_filename} -p 8
 
     exit_code=\$(echo \$? )
     echo \$exit_code > .exitcode
