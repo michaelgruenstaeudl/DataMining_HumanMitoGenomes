@@ -13,7 +13,7 @@ process write_csv {
 
     script:
     def csv_header = is_file_sizes_csv
-        ? "SRA_Number,File_Name,File_Path,Process_Name,Read_Label,Size_Byte,Size_KB,Size_MB"
+        ? "SRA_Number,File_Name,File_Path,Process_Name,Read_Label,Is_Single_End,Size_Byte,Size_KB,Size_MB"
         : "SRA_Number,Topology,Sequence_Length"
 
     // def file_name = is_file_sizes_csv ? "file_sizes.csv" : "assembled_genome_metadata.csv"
