@@ -75,7 +75,9 @@ workflow quality_control_workflow {
     repair_reads(repair_reads_input_ch, "qc", parent_output_dir)
     repair_read_output_ch = repair_reads.out.repaired_reads_output_channel.map { sample_id, reads, is_single_end ->
         def reads_list = reads instanceof List
-            ? reads
+            ? is_single_end
+                ? reads.findAll { item -> item.name =~ /_singletons.fastq$/ }
+                : reads.findAll { item -> item.name =~ /_(1|2)\.fastq$/ }
             : [reads]
         tuple(sample_id, reads_list, is_single_end)
     }
