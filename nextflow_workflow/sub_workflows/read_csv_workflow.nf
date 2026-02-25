@@ -20,7 +20,7 @@ workflow read_csv_workflow {
             def is_single_end = (row.LibraryLayout == "SINGLE")
             if (is_single_end) {
                 def r1 = file("${params.fastq_directory}/${row.SRA_Run}*.fastq")
-                if (!r1.exists()) {
+                if (r1.size() == 0) {
                     missing << r1
                 }
                 fastq_list << r1
