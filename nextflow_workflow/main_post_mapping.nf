@@ -39,7 +39,6 @@ workflow {
     size_ch = channel.empty()
 
     size_ch = addSizeTracking(size_ch, input_ch, "Initial Input Files")
-
     // Created once here and passed to mapping workflow, which will then pass it to the mapping processes. 
     //This way we avoid creating multiple index files if the same reference is used for multiple samples.
     reference_ch = channel.value(file(params.reference_fasta))
@@ -47,7 +46,12 @@ workflow {
     calculate_sequence_length_threshold_script_ch = channel.fromPath(params.calculate_sequence_length_threshold_script)
 
     //Quality control process
-    quality_control_workflow(input_ch, calculate_sequence_length_threshold_script_ch, parent_output_dir)
+    quality_control_workflow(
+        input_ch,
+        calculate_sequence_length_threshold_script_ch,
+        parent_output_dir,
+    )
+    // quality_control_workflow.out.quality_control_out_ch.view { it -> "QC output: ${it}" }
     size_ch = size_ch.mix(quality_control_workflow.out.repair_read_size_ch)
     size_ch = addSizeTracking(size_ch, quality_control_workflow.out.quality_control_out_ch, "Quality Control Output")
 
@@ -59,14 +63,27 @@ workflow {
         contamination_confidence_threshold,
         parent_output_dir,
     )
-    size_ch = addSizeTracking(size_ch, contamination_removal.out.contamination_removal_fastq_output, "Contamination Output")
+    // contamination_removal_out_ch = contamination_removal.out.contamination_removal_fastq_output
+    contamination_removal_out_ch = contamination_removal.out.contamination_removal_fastq_output.map { sample_id, reads, is_single_end ->
+        def reads_list = is_single_end
+            ? [reads]
+            : reads
+        tuple(sample_id, reads_list, is_single_end)
+    }
+    // contamination_removal_out_ch.view { it -> "Contamination removal output: ${it}" }
+    size_ch = addSizeTracking(size_ch, contamination_removal_out_ch, "Contamination Output")
 
     // Mapping process
     // index_files_ch = channel.fromPath("${params.index_directory}/*").collect()
-    mapping_input_ch = contamination_removal.out.contamination_removal_fastq_output
+    // mapping_input_ch = contamination_removal_out_ch
     //.combine(index_files_ch)
-    mapping_workflow(mapping_input_ch, reference_ch, parent_output_dir)
-    mapping_process_output = mapping_workflow.out.mapping_process_output
+    mapping_workflow(contamination_removal_out_ch, reference_ch, parent_output_dir)
+    mapping_process_output = mapping_workflow.out.mapping_process_output.map { sample_id, reads, is_single_end ->
+        def reads_list = is_single_end
+            ? [reads]
+            : reads
+        tuple(sample_id, reads_list, is_single_end)
+    }
 
     size_ch = addSizeTracking(size_ch, mapping_process_output, "Mapping Output")
 
@@ -75,12 +92,22 @@ workflow {
         merge_pacvr_evenness_fig_script_ch = channel.fromPath(params.merge_pacvr_evenness_figure_script)
 
         //evenness calculation for original reads before cleaning
-        evenness_calculation_workflow_initial(evenness_calculation_workflow_initial_input_ch, 'initial_phase', parent_output_dir)
+        evenness_calculation_workflow_initial(
+            evenness_calculation_workflow_initial_input_ch,
+            'initial_phase',
+            parent_output_dir,
+        )
         initial_evenness_output_ch = evenness_calculation_workflow_initial.out.evenness_output_ch
 
-        //evenness calculation for cleaned reads after mapping
-        final_evenness_calculation_input_ch = mapping_process_output.join(gb_channel).join(fasta_channel)
-        evenness_calculation_workflow_final(final_evenness_calculation_input_ch, "mapping_phase", parent_output_dir)
+        // evenness calculation for cleaned reads after mapping
+        final_evenness_calculation_input_ch = mapping_process_output
+            .join(gb_channel)
+            .join(fasta_channel)
+        evenness_calculation_workflow_final(
+            final_evenness_calculation_input_ch,
+            "mapping_phase",
+            parent_output_dir,
+        )
         cleaned_reads_evenness_output_ch = evenness_calculation_workflow_final.out.evenness_output_ch
 
         merge_evenness_figure_input_ch = accession_ch
@@ -111,7 +138,6 @@ workflow {
 
 
     // MitoZ assembly process
-    // denovo_assmebly_input_ch = mapping_process.out.mapping_process_output
     mitoz_assembler(mapping_process_output, parent_output_dir)
     extract_assembled_genome_metadata_info(mitoz_assembler.out.mitoz_assembler_output, parent_output_dir)
 
