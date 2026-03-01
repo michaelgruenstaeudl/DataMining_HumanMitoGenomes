@@ -45,7 +45,11 @@ workflow quality_control_workflow {
     }
     // quality_control_output.view { it -> "Quality control output: ${it}" }
     // Separate channels for success and failed QC based on exit code
-    conditional_channel = quality_control.out.qc_status_report.branch { _sample_id, exit_code, _fastqc_report ->
+    qc_status_report = quality_control.out.qc_status_report.map { sample_id, exit_code, fastqc_report ->
+        def fastqc_report_item = fastqc_report instanceof List ? fastqc_report[0] : fastqc_report
+        tuple(sample_id, exit_code, fastqc_report_item)
+    }
+    conditional_channel = qc_status_report.branch { _sample_id, exit_code, _fastqc_report ->
         success: exit_code == "0"
         failed: exit_code != "0"
     }

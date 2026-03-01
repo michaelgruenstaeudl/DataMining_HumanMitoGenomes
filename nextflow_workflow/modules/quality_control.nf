@@ -15,7 +15,7 @@ process quality_control {
 
     output:
     // val sample_id, emit: sample_id
-    tuple val(sample_id), env("exit_code"), path("${quality_control_stage}/${sample_id}_1.fastq_trimming_report.txt", optional: true), emit: qc_status_report
+    tuple val(sample_id), env("exit_code"), path("${quality_control_stage}/${sample_id}*.fastq_trimming_report.txt", optional: true), emit: qc_status_report
     tuple val(sample_id), path("${quality_control_stage}/${sample_id}_*.fq", optional: true), val(is_single_end), emit: quality_control_output
     path "${quality_control_stage}/*"
 
