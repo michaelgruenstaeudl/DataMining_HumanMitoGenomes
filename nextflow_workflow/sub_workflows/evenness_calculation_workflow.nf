@@ -21,34 +21,34 @@ workflow evenness_calculation_workflow {
         tuple(sample_id, gb_file)
     }
     generate_sam_input_ch = channel.empty()
-    if (phase == 'initial_phase') {
-        repair_reads_input_ch = evenness_calculation_input_channel
-            .map { sample_id, fastq_list, is_single_end, _gb_file, _fasta_file ->
-                tuple(sample_id, fastq_list, is_single_end)
-            }
-            .combine(channel.value("33"))
-        //need to be addressed: encoding value is hardcoded here, should be passed as parameter from main workflow
+    // if (phase == 'initial_phase') {
+    //     repair_reads_input_ch = evenness_calculation_input_channel
+    //         .map { sample_id, fastq_list, is_single_end, _gb_file, _fasta_file ->
+    //             tuple(sample_id, fastq_list, is_single_end)
+    //         }
+    //         .combine(channel.value("33"))
+    //     //need to be addressed: encoding value is hardcoded here, should be passed as parameter from main workflow
 
-        repair_reads(repair_reads_input_ch, phase, parent_output_dir)
-        repair_reads.out.repaired_reads_output_channel
-            .map { sample_id, reads, is_single_end ->
-                def reads_list = reads instanceof List
-                    ? is_single_end
-                        ? reads.findAll { item -> item.name =~ /_singletons.fastq$/ }
-                        : reads
-                    : [reads]
-                tuple(sample_id, reads_list, is_single_end)
-            }
-            .join(fasta_file_ch)
-            .set { generate_sam_input_ch }
-    }
-    else {
-        generate_sam_input_ch = evenness_calculation_input_channel
-            .map { sample_id, fastq_list, is_single_end, _gb_file, _fasta_file ->
-                tuple(sample_id, fastq_list, is_single_end)
-            }
-            .join(fasta_file_ch)
-    }
+    //     repair_reads(repair_reads_input_ch, phase, parent_output_dir)
+    //     repair_reads.out.repaired_reads_output_channel
+    //         .map { sample_id, reads, is_single_end ->
+    //             def reads_list = reads instanceof List
+    //                 ? is_single_end
+    //                     ? reads.findAll { item -> item.name =~ /_singletons.fastq$/ }
+    //                     : reads
+    //                 : [reads]
+    //             tuple(sample_id, reads_list, is_single_end)
+    //         }
+    //         .join(fasta_file_ch)
+    //         .set { generate_sam_input_ch }
+    // }
+    // else {
+    generate_sam_input_ch = evenness_calculation_input_channel
+        .map { sample_id, fastq_list, is_single_end, _gb_file, _fasta_file ->
+            tuple(sample_id, fastq_list, is_single_end)
+        }
+        .join(fasta_file_ch)
+    // }
 
     generate_sam(
         generate_sam_input_ch,
