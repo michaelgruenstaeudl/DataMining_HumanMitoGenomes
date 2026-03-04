@@ -30,7 +30,7 @@ workflow {
     contamination_confidence_threshold = params.contamination_confidence_threshold
     // Call the read_csv_workflow with params
     read_csv_workflow(params)
-    evenness_calculation_workflow_initial_input_ch = read_csv_workflow.out.evenness_calculation_workflow_initial_input_ch
+    // evenness_calculation_workflow_initial_input_ch = read_csv_workflow.out.evenness_calculation_workflow_initial_input_ch
     accession_ch = read_csv_workflow.out.accession_ch
     input_ch = read_csv_workflow.out.input_ch
     gb_channel = read_csv_workflow.out.gb_channel
@@ -51,6 +51,10 @@ workflow {
         calculate_sequence_length_threshold_script_ch,
         parent_output_dir,
     )
+
+    evenness_calculation_workflow_initial_input_ch = quality_control_workflow.out.repair_read_output_ch
+        .join(gb_channel)
+        .join(fasta_channel)
     // quality_control_workflow.out.quality_control_out_ch.view { it -> "QC output: ${it}" }
     size_ch = size_ch.mix(quality_control_workflow.out.repair_read_size_ch)
     size_ch = addSizeTracking(size_ch, quality_control_workflow.out.quality_control_out_ch, "Quality Control Output")
