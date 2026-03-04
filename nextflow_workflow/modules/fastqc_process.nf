@@ -12,6 +12,7 @@ process fastqc_process {
     val phase
 
     output:
+    tuple val(sample_id), path("${phase}/${input_file_list[0].simpleName}_fastqc.zip"), emit: fastqc_output_channel
     path "${phase}/*"
 
     script:

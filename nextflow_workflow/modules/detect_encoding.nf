@@ -12,15 +12,14 @@ process detectEncoding {
 
     script:
     """
-    encoding_int=\$(grep -i'encoding' ${fastqc_report} \
-    | awk -F':' '{print \$2}' \
-    | grep -q "33" && echo "33" || echo "64" )
+    ENCODING=\$(unzip -p ${fastqc_report} \
+        "*/fastqc_data.txt" | grep "Encoding" | cut -f2)
+
+    if echo "\$ENCODING" | grep -qiE "Illumina 1\\.[3-7]|Solexa"; then
+        encoding_int=64
+    else
+        encoding_int=33
+    fi
     echo \$encoding_int
     """
-}
-
-workflow {
-    input_ch = channel.of(tuple('sample1', '/home/b_thapamagar/BioInformatics/DataMining_HumanMitoGenomes/temp_data2/temp/ERR322856_1.fastq_trimming_report.txt'))
-        .view { it -> "Input to detect encoding: ${it}" }
-    detectEncoding(input_ch)
 }
