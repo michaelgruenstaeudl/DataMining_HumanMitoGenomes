@@ -39,6 +39,35 @@ workflow {
     //This way we avoid creating multiple index files if the same reference is used for multiple samples.
     repair_reads(input_ch, 'pre_mapping', parent_output_dir)
 
+    repair_read_output_ch = repair_reads.out.repaired_reads_output_channel.map { sample_id, reads, is_single_end ->
+        def reads_list = reads instanceof List
+            ? is_single_end
+                ? reads.findAll { item -> item.name =~ /_singletons.fastq$/ }
+                : reads.findAll { item -> item.name =~ /_(1|2)\.fastq$/ }
+            : [reads]
+        tuple(sample_id, reads_list, is_single_end)
+    }
+    // repair_read_output_ch.view { it -> "Repair reads output: ${it}" }
+
+    size_ch = addSizeTracking(size_ch, repair_read_output_ch, "Repair Read Output")
+
+    // Write file sizes to CSV
+    file_size_csv_lines_ch = size_ch.map { tuple ->
+        tuple.join(",")
+    }
+    file_size_tmp_csv = file_size_csv_lines_ch.collectFile(name: "file_sizes.tmp", newLine: true)
+
+    write_file_sizes_csv(file_size_tmp_csv, true, "file_sizes.csv", parent_output_dir)
+    size_ch.count().view { it -> "Total tuples in channel: ${it}" }
+
+
+    plot_size_diff_input_ch = write_file_sizes_csv.out.csv_output
+        .combine(channel.fromPath(parent_output_dir))
+        .combine(channel.fromPath(params.visualize_file_size_changes_script))
+    plot_size_diff(plot_size_diff_input_ch)
+
+
+
     workflow.onComplete {
         println('✅ Finished all processes!')
     }
