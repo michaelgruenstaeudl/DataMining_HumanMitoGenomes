@@ -27,45 +27,71 @@ include { extract_assembled_genome_metadata_info } from './modules/extract_assem
 
 workflow {
     parent_output_dir = params.outdir
-
+    contamination_confidence_threshold = params.contamination_confidence_threshold
     // Call the read_csv_workflow with params
     read_csv_workflow(params)
-    evenness_calculation_workflow_initial_input_ch = read_csv_workflow.out.evenness_calculation_workflow_initial_input_ch
+    // evenness_calculation_workflow_initial_input_ch = read_csv_workflow.out.evenness_calculation_workflow_initial_input_ch
     accession_ch = read_csv_workflow.out.accession_ch
     input_ch = read_csv_workflow.out.input_ch
     gb_channel = read_csv_workflow.out.gb_channel
     fasta_channel = read_csv_workflow.out.fasta_channel
 
-    merge_pacvr_evenness_fig_script_ch = channel.fromPath(params.merge_pacvr_evenness_figure_script)
-
-    evenness_calculation_workflow_initial(evenness_calculation_workflow_initial_input_ch, 'initial_phase', parent_output_dir)
-    initial_evenness_output_ch = evenness_calculation_workflow_initial.out.evenness_output_ch
-
     size_ch = channel.empty()
 
     size_ch = addSizeTracking(size_ch, input_ch, "Initial Input Files")
+    // Created once here and passed to mapping workflow, which will then pass it to the mapping processes. 
+    //This way we avoid creating multiple index files if the same reference is used for multiple samples.
+    reference_ch = channel.value(file(params.reference_fasta))
 
     calculate_sequence_length_threshold_script_ch = channel.fromPath(params.calculate_sequence_length_threshold_script)
 
     //Quality control process
-    quality_control_workflow(input_ch, calculate_sequence_length_threshold_script_ch, parent_output_dir)
+    quality_control_workflow(
+        input_ch,
+        calculate_sequence_length_threshold_script_ch,
+        parent_output_dir,
+    )
+
+    evenness_calculation_workflow_initial_input_ch = quality_control_workflow.out.repair_read_output_ch
+        .join(gb_channel)
+        .join(fasta_channel)
+    // quality_control_workflow.out.quality_control_out_ch.view { it -> "QC output: ${it}" }
     size_ch = size_ch.mix(quality_control_workflow.out.repair_read_size_ch)
     size_ch = addSizeTracking(size_ch, quality_control_workflow.out.quality_control_out_ch, "Quality Control Output")
 
-    //Evenness calculation workflow
-    final_evenness_calculation_input_ch = quality_control_workflow.out.quality_control_out_ch.join(gb_channel).join(fasta_channel)
-    evenness_calculation_workflow_final(final_evenness_calculation_input_ch, "mapping_phase", parent_output_dir)
-    contamination_removed_evenness_output_ch = evenness_calculation_workflow_final.out.evenness_output_ch
+    if (params.is_calculate_evenness) {
+        //Evenness calculation workflow
+        merge_pacvr_evenness_fig_script_ch = channel.fromPath(params.merge_pacvr_evenness_figure_script)
 
-    merge_evenness_figure_input_ch = accession_ch
-        .join(initial_evenness_output_ch)
-        .join(contamination_removed_evenness_output_ch)
-        .combine(merge_pacvr_evenness_fig_script_ch)
+        //evenness calculation for original reads before cleaning
+        evenness_calculation_workflow_initial(
+            evenness_calculation_workflow_initial_input_ch,
+            'initial_phase',
+            parent_output_dir,
+        )
+        initial_evenness_output_ch = evenness_calculation_workflow_initial.out.evenness_output_ch
 
-    merge_pacvr_evenness_figures(
-        merge_evenness_figure_input_ch,
-        parent_output_dir,
-    )
+        // evenness calculation for cleaned reads after mapping
+        final_evenness_calculation_input_ch = quality_control_workflow.out.quality_control_out_ch
+            .join(gb_channel)
+            .join(fasta_channel)
+        evenness_calculation_workflow_final(
+            final_evenness_calculation_input_ch,
+            "mapping_phase",
+            parent_output_dir,
+        )
+        cleaned_reads_evenness_output_ch = evenness_calculation_workflow_final.out.evenness_output_ch
+
+        merge_evenness_figure_input_ch = accession_ch
+            .join(initial_evenness_output_ch)
+            .join(cleaned_reads_evenness_output_ch)
+            .combine(merge_pacvr_evenness_fig_script_ch)
+
+        merge_pacvr_evenness_figures(
+            merge_evenness_figure_input_ch,
+            parent_output_dir,
+        )
+    }
 
     // Write file sizes to CSV
     file_size_csv_lines_ch = size_ch.map { tuple ->
@@ -84,8 +110,7 @@ workflow {
 
 
     // MitoZ assembly process
-    denovo_assmebly_input_ch = quality_control_workflow.out.quality_control_out_ch
-    mitoz_assembler(denovo_assmebly_input_ch, parent_output_dir)
+    mitoz_assembler(quality_control_workflow.out.quality_control_out_ch, parent_output_dir)
     extract_assembled_genome_metadata_info(mitoz_assembler.out.mitoz_assembler_output, parent_output_dir)
 
     // Write assembled genome metadata info into CSV
@@ -94,7 +119,6 @@ workflow {
     }
     tmp_csv = assembled_genome_csv_lines_ch.collectFile(name: "assembled_genome_metadata.tmp", newLine: true)
     write_assembled_metadata_csv(tmp_csv, false, "assembled_genome_metadata.csv", parent_output_dir)
-
 
     workflow.onComplete {
         println('✅ Finished all processes!')
