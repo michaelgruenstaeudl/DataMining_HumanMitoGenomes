@@ -1,0 +1,26 @@
+FROM ubuntu:latest AS build
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get -y update && apt-get -y upgrade && \
+    apt-get -y --no-install-recommends install \
+    ca-certificates \
+    git \
+    build-essential \
+    zlib1g-dev
+
+RUN git clone https://github.com/richarddurbin/rotate.git
+
+WORKDIR /rotate
+
+RUN make
+
+# RUN rm -rf /FastqSifter
+
+# Final stage: copy only necessary parts (without repo)
+FROM ubuntu:latest
+
+RUN apt-get -y update && apt-get -y upgrade
+COPY --from=build /rotate/rotate /usr/local/bin/rotate
+
+CMD ["rotate"]
