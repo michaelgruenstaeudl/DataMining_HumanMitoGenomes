@@ -1,7 +1,5 @@
 #!/usr/bin/env nextflow
 
-// output:
-//     path "novoplasty_outptut/*"
 process novoplast_process {
 
     tag "${sample_id}"
@@ -10,7 +8,7 @@ process novoplast_process {
     publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
 
     input:
-    tuple val(sample_id), path(input_file1), path(input_file2), val(read_length), val(insert_size), path(seed_mito_path), path(config_file_path)
+    tuple val(sample_id), path(input_file_list), val(is_single_end), val(read_length), val(insert_size), path(seed_mito_path), path(config_file_path)
     val parent_output_dir
 
     output:
@@ -19,18 +17,20 @@ process novoplast_process {
     script:
     """
     mkdir novoplasty_output
-    echo read_length: ${read_length}
-    echo insert_size: ${insert_size}
-    echo input_file1: ${input_file1}
-    echo input_file2: ${input_file2}
-    echo seed_mito_path: ${seed_mito_path}
-    echo config_file_path: ${config_file_path}
-    pwd ${config_file_path}
+
     sed -i "s|^Read Length.*|Read Length            = ${read_length}|" ${config_file_path}
     sed -i "s|^Insert size.*|Insert size            = ${insert_size}|" ${config_file_path}
     sed -i "s|^Seed Input.*|Seed Input            = ${seed_mito_path}|" ${config_file_path}
-    sed -i "s|^Forward reads.*|Forward reads            = ${input_file1}|" ${config_file_path}
-    sed -i "s|^Reverse reads.*|Reverse reads            = ${input_file2}|" ${config_file_path}
+    sed -i "s|Extend seed directly.*|Extend seed directly  = yes|" ${config_file_path}
+    if["${is_single_end}" = "true"]; then
+        sed -i "s|^Single/Paired.*|Single/Paired         = SE|" ${config_file_path}
+        sed -i "s|^Combined reads.*|Combined reads        = ${input_file_list[1]}|" ${config_file_path}
+    else
+        sed -i "s|^Single/Paired.*|Single/Paired         = SE|" ${config_file_path}
+        sed -i "s|^Forward reads.*|Forward reads            = ${input_file_list[0]}|" ${config_file_path}
+        sed -i "s|^Reverse reads.*|Reverse reads            = ${input_file_list[1]}|" ${config_file_path}
+    fi
+    
     sed -i "s|^Output path.*|Output path            = novoplasty_output/|" ${config_file_path}
 
     NOVOPlasty4.3.5.pl -c ${config_file_path}
