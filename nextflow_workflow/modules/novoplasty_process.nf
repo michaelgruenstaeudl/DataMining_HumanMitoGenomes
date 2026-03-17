@@ -12,6 +12,7 @@ process novoplast_process {
     val parent_output_dir
 
     output:
+    tuple val(sample_id), path("novoplasty_output/*_mito_extend.fasta"), emit: novoplasty_output_ch
     path "novoplasty_output/*"
 
     script:
