@@ -24,10 +24,12 @@ include { mapping_workflow } from './sub_workflows/mapping_workflow.nf'
 include { mapping_bbmap } from './modules/mapping_bbmap.nf'
 include { mitoz_assembler } from './modules/mitoz_assembler.nf'
 include { extract_assembled_genome_metadata_info } from './modules/extract_assembled_genome_metadata_info.nf'
-
+include { rotate_circular_genome_workflow } from './sub_workflows/rotate_circular_genome_workflow.nf'
+include { normalize_complete_genome_length } from './sub_workflows/normalize_complete_genome_length.nf'
 workflow {
     parent_output_dir = params.outdir
     contamination_confidence_threshold = params.contamination_confidence_threshold
+    config_file_ch = channel.fromPath(params.config_file)
     // Call the read_csv_workflow with params
     read_csv_workflow(params)
     // evenness_calculation_workflow_initial_input_ch = read_csv_workflow.out.evenness_calculation_workflow_initial_input_ch
@@ -44,14 +46,15 @@ workflow {
     reference_ch = channel.value(file(params.reference_fasta))
 
     calculate_sequence_length_threshold_script_ch = channel.fromPath(params.calculate_sequence_length_threshold_script)
-
+    rotation_seed_fasta_ch = channel.fromPath(params.rotation_seed_fasta)
+    trim_mitogenome_duplicate_script_ch = channel.fromPath(params.trim_mitogenome_duplicate_script)
     //Quality control process
     quality_control_workflow(
         input_ch,
         calculate_sequence_length_threshold_script_ch,
         parent_output_dir,
     )
-
+    cutoffs_ch = quality_control_workflow.out.cutoffs_ch
     evenness_calculation_workflow_initial_input_ch = quality_control_workflow.out.repair_read_output_ch
         .join(gb_channel)
         .join(fasta_channel)
@@ -143,6 +146,7 @@ workflow {
 
     // MitoZ assembly process
     mitoz_assembler(mapping_process_output, parent_output_dir)
+
     extract_assembled_genome_metadata_info(mitoz_assembler.out.mitoz_assembler_output, parent_output_dir)
 
     // Write assembled genome metadata info into CSV
@@ -153,6 +157,33 @@ workflow {
     write_assembled_metadata_csv(tmp_csv, false, "assembled_genome_metadata.csv", parent_output_dir)
 
 
+    //Circular genome rotation process
+    rotate_genome_input_ch = mitoz_assembler.out.mitoz_assembler_output
+        .join(fasta_channel)
+        .combine(rotation_seed_fasta_ch)
+        .combine(channel.value(params.rotation_mismatch_threshold))
+
+    rotate_circular_genome_workflow(rotate_genome_input_ch, parent_output_dir)
+
+    // rotated_assembled_ch = rotate_circular_genome_workflow.out.rotated_assembled_ch
+    // rotated_official_ch = rotate_circular_genome_workflow.out.rotated_official_ch
+
+    // normalize_fasta_input_ch = mapping_process_output
+    //     .join(
+    //         cutoffs_ch.map { length_cutoffs_ch ->
+    //             def (sample_id, _lower_cutoff, upper_cutoff) = length_cutoffs_ch
+    //             def read_length = upper_cutoff.toInteger() + 1
+    //             def insert_size = upper_cutoff.toInteger() * 2
+    //             tuple(sample_id, read_length, insert_size)
+    //         }
+    //     )
+    //     .join(rotated_assembled_ch)
+    //     .combine(config_file_ch)
+    //     .combine(trim_mitogenome_duplicate_script_ch)
+    // normalize_complete_genome_length(
+    //     normalize_fasta_input_ch,
+    //     parent_output_dir,
+    // )
     workflow.onComplete {
         println('✅ Finished all processes!')
     }
