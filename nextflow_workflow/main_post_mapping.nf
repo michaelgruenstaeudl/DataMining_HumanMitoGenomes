@@ -182,6 +182,7 @@ workflow {
         .combine(trim_mitogenome_duplicate_script_ch)
     normalize_complete_genome_length(
         normalize_fasta_input_ch,
+        trim_mitogenome_duplicate_script_ch,
         parent_output_dir,
     )
     workflow.onComplete {
