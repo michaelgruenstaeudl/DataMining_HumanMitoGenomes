@@ -8,14 +8,15 @@ process rotate_genome {
 
     input:
     tuple val(sample_id), path(input_fasta), path(seed_fasta), val(n_mismatch)
-    val rotation_type
+    val genome_type
     val parent_output_dir
 
     output:
+    tuple val(sample_id), path(output_file_path), emit: rotated_output_ch
     path "rotated_output/*"
 
     script:
-    output_directory = "rotated_output"
+    output_directory = "rotated_output/${genome_type}"
     output_file_path = "${output_directory}/rotated_${sample_id}.fasta"
     log_file_path = "${output_directory}/rotate.log"
     """
