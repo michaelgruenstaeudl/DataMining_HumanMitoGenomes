@@ -22,7 +22,7 @@ process novoplast_process {
     sed -i "s|^Insert size.*|Insert size            = ${insert_size}|" ${config_file_path}
     sed -i "s|^Seed Input.*|Seed Input            = ${seed_mito_path}|" ${config_file_path}
     sed -i "s|Extend seed directly.*|Extend seed directly  = yes|" ${config_file_path}
-    if["${is_single_end}" = "true"]; then
+    if [ "${is_single_end}" = "true" ]; then
         sed -i "s|^Single/Paired.*|Single/Paired         = SE|" ${config_file_path}
         sed -i "s|^Combined reads.*|Combined reads        = ${input_file_list[1]}|" ${config_file_path}
     else

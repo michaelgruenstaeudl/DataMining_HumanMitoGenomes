@@ -165,25 +165,25 @@ workflow {
 
     rotate_circular_genome_workflow(rotate_genome_input_ch, parent_output_dir)
 
-    // rotated_assembled_ch = rotate_circular_genome_workflow.out.rotated_assembled_ch
-    // rotated_official_ch = rotate_circular_genome_workflow.out.rotated_official_ch
+    rotated_assembled_ch = rotate_circular_genome_workflow.out.rotated_assembled_ch
+    rotated_official_ch = rotate_circular_genome_workflow.out.rotated_official_ch
 
-    // normalize_fasta_input_ch = mapping_process_output
-    //     .join(
-    //         cutoffs_ch.map { length_cutoffs_ch ->
-    //             def (sample_id, _lower_cutoff, upper_cutoff) = length_cutoffs_ch
-    //             def read_length = upper_cutoff.toInteger() + 1
-    //             def insert_size = upper_cutoff.toInteger() * 2
-    //             tuple(sample_id, read_length, insert_size)
-    //         }
-    //     )
-    //     .join(rotated_assembled_ch)
-    //     .combine(config_file_ch)
-    //     .combine(trim_mitogenome_duplicate_script_ch)
-    // normalize_complete_genome_length(
-    //     normalize_fasta_input_ch,
-    //     parent_output_dir,
-    // )
+    normalize_fasta_input_ch = mapping_process_output
+        .join(
+            cutoffs_ch.map { length_cutoffs_ch ->
+                def (sample_id, _lower_cutoff, upper_cutoff) = length_cutoffs_ch
+                def read_length = upper_cutoff.toInteger() + 1
+                def insert_size = upper_cutoff.toInteger() * 2
+                tuple(sample_id, read_length, insert_size)
+            }
+        )
+        .join(rotated_assembled_ch)
+        .combine(config_file_ch)
+        .combine(trim_mitogenome_duplicate_script_ch)
+    normalize_complete_genome_length(
+        normalize_fasta_input_ch,
+        parent_output_dir,
+    )
     workflow.onComplete {
         println('✅ Finished all processes!')
     }
