@@ -9,7 +9,9 @@ include { contamination_removal } from './modules/contamination_control.nf'
 include { addSizeTracking } from './lib/utils.nf'
 include {
     write_csv as write_file_sizes_csv ;
-    write_csv as write_assembled_metadata_csv
+    write_csv as write_assembled_metadata_csv ;
+    write_csv as write_rotate_genome_csv ;
+    write_csv as write_rotate_genome_csv_for_reporting
 } from './modules/write_csv.nf'
 include { quality_control_workflow } from './sub_workflows/quality_control_workflow.nf'
 include { extract_seed } from './modules/extract_seed.nf'
@@ -134,7 +136,7 @@ workflow {
     }
     file_size_tmp_csv = file_size_csv_lines_ch.collectFile(name: "file_sizes.tmp", newLine: true)
 
-    write_file_sizes_csv(file_size_tmp_csv, true, "file_sizes.csv", parent_output_dir)
+    write_file_sizes_csv(file_size_tmp_csv, "file_sizes", "file_sizes.csv", parent_output_dir)
     size_ch.count().view { it -> "Total tuples in channel: ${it}" }
 
 
@@ -147,26 +149,25 @@ workflow {
     // MitoZ assembly process
     mitoz_assembler(mapping_process_output, parent_output_dir)
 
-    extract_assembled_genome_metadata_info(mitoz_assembler.out.mitoz_assembler_output, parent_output_dir)
+    extract_assembled_genome_metadata_info(
+        mitoz_assembler.out.mitoz_assembler_output,
+        parent_output_dir,
+    )
 
     // Write assembled genome metadata info into CSV
     assembled_genome_csv_lines_ch = extract_assembled_genome_metadata_info.out.metadata_info_out_ch.map { tuple ->
         tuple.join(",")
     }
-    tmp_csv = assembled_genome_csv_lines_ch.collectFile(name: "assembled_genome_metadata.tmp", newLine: true)
-    write_assembled_metadata_csv(tmp_csv, false, "assembled_genome_metadata.csv", parent_output_dir)
-
-
-    //Circular genome rotation process
-    rotate_genome_input_ch = mitoz_assembler.out.mitoz_assembler_output
-        .join(fasta_channel)
-        .combine(rotation_seed_fasta_ch)
-        .combine(channel.value(params.rotation_mismatch_threshold))
-
-    rotate_circular_genome_workflow(rotate_genome_input_ch, parent_output_dir)
-
-    rotated_assembled_ch = rotate_circular_genome_workflow.out.rotated_assembled_ch
-    rotated_official_ch = rotate_circular_genome_workflow.out.rotated_official_ch
+    tmp_csv = assembled_genome_csv_lines_ch.collectFile(
+        name: "assembled_genome_metadata.tmp",
+        newLine: true,
+    )
+    write_assembled_metadata_csv(
+        tmp_csv,
+        "assembled_genome_metadata",
+        "assembled_genome_metadata.csv",
+        parent_output_dir,
+    )
 
     normalize_fasta_input_ch = mapping_process_output
         .join(
@@ -177,7 +178,7 @@ workflow {
                 tuple(sample_id, read_length, insert_size)
             }
         )
-        .join(rotated_assembled_ch)
+        .join(mitoz_assembler.out.mitoz_assembler_output)
         .combine(config_file_ch)
         .combine(trim_mitogenome_duplicate_script_ch)
     normalize_complete_genome_length(
@@ -185,6 +186,55 @@ workflow {
         trim_mitogenome_duplicate_script_ch,
         parent_output_dir,
     )
+
+    //Circular genome rotation process
+    rotate_genome_input_ch = normalize_complete_genome_length.out.normalized_fasta_ch
+        .join(fasta_channel)
+        .combine(rotation_seed_fasta_ch)
+        .combine(channel.value(params.rotation_mismatch_threshold))
+
+    rotate_circular_genome_workflow(rotate_genome_input_ch, parent_output_dir)
+
+    rotated_assembled_ch = rotate_circular_genome_workflow.out.rotated_assembled_ch
+    rotated_official_ch = rotate_circular_genome_workflow.out.rotated_official_ch
+
+
+    rotated_fasta_ch = rotated_assembled_ch
+        .join(rotated_official_ch)
+        .map { tuple ->
+            tuple.join(",")
+        }
+    rotated_fasta_tmp_csv = rotated_fasta_ch.collectFile(name: "rotated_genome_info.tmp", newLine: true)
+
+    write_rotate_genome_csv(
+        rotated_fasta_tmp_csv,
+        "rotated_genome_info",
+        "rotated_genome_info.csv",
+        parent_output_dir,
+    )
+
+    // For reporting, we want to include the paths to the rotated genome files instead of the actual sequences. 
+    // So we construct new lines for the CSV that have the sample ID and the paths to the rotated assembled 
+    // and official genome files, and then write that to a separate CSV for reporting purposes.
+    rotated_fasta_ch_for_reporting = rotated_assembled_ch
+        .join(rotated_official_ch)
+        .map { sample_id, _assembled, _official ->
+            // Construct results dir paths — NOT work dir paths
+            def assembled_result = "${params.outdir}/${sample_id}/rotated_output/assembled_genome/rotated_${sample_id}.fasta"
+            def official_result = "${params.outdir}/${sample_id}/rotated_output/official_genome/rotated_${sample_id}.fasta"
+
+            "${sample_id},${assembled_result},${official_result}"
+        }
+
+    rotated_fasta_reporting_tmp_csv = rotated_fasta_ch_for_reporting.collectFile(name: "rotated_genome_reporting_info.tmp", newLine: true)
+
+    write_rotate_genome_csv_for_reporting(
+        rotated_fasta_reporting_tmp_csv,
+        "rotated_genome_info",
+        "rotated_genome_reporting_info.csv",
+        parent_output_dir,
+    )
+
     workflow.onComplete {
         println('✅ Finished all processes!')
     }
