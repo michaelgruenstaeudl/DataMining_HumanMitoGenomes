@@ -27,7 +27,7 @@ j = 0
 
 for i in range(1, n):
     while j > 0 and seq[i] != seq[j]:
-        j = pi[j-1]
+        j = pi[j - 1]
     if seq[i] == seq[j]:
         j += 1
     pi[i] = j
@@ -41,4 +41,6 @@ if overlap > 0:
     print(new_header)
     print(trimmed)
 else:
-    sys.exit("No overlap")
+    new_header = header + "_no_overlap"
+    print(new_header)
+    print(seq)
