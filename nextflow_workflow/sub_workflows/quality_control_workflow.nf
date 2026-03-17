@@ -98,7 +98,7 @@ workflow quality_control_workflow {
             calculate_sequence_length_threshold_script_ch
         )
     calculate_sequence_length_threshold(input_to_calculate_sequence_length_threshold_repair)
-
+    cutoffs_ch = calculate_sequence_length_threshold.out.length_cutoffs
     // Quality control process for repaired reads
     repair_read_output_ch
         .join(calculate_sequence_length_threshold.out.length_cutoffs)
@@ -123,4 +123,5 @@ workflow quality_control_workflow {
     quality_control_out_ch
     repair_read_output_ch
     repair_read_size_ch
+    cutoffs_ch
 }
