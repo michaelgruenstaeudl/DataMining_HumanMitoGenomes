@@ -1,12 +1,12 @@
 Project:
 -----------------------
-Project name          = Test
+Project name          = mito_extend
 Type                  = mito
 Genome Range          = 12000-22000
-K-mer                 = 33
+K-mer                 = 39
 Max memory            = 
 Extended log          = 0
-Save assembled reads  = no
+Save assembled reads  = yes
 Seed Input            = /home/b_thapamagar/BioInformatics/Seed_mito.fasta
 Extend seed directly  = no
 Reference sequence    = 
