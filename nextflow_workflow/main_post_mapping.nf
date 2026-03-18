@@ -21,7 +21,10 @@ include {
     evenness_calculation_workflow as evenness_calculation_workflow_initial ;
     evenness_calculation_workflow as evenness_calculation_workflow_final
 } from './sub_workflows/evenness_calculation_workflow.nf'
-include { plot_size_diff } from './modules/plot_size_diff.nf'
+include {
+    plot_size_diff ;
+    plot_size_diff as plot_genome_comparison
+} from './modules/plot_size_diff.nf'
 include { mapping_workflow } from './sub_workflows/mapping_workflow.nf'
 include { mapping_bbmap } from './modules/mapping_bbmap.nf'
 include { mitoz_assembler } from './modules/mitoz_assembler.nf'
@@ -233,6 +236,12 @@ workflow {
         "rotated_genome_reporting_info.csv",
         parent_output_dir,
     )
+
+    plot_genome_comparison_input_ch = write_rotate_genome_csv.out.csv_output
+        .combine(channel.fromPath(parent_output_dir))
+        .combine(channel.fromPath(params.genome_comparison_plot_script))
+
+    plot_genome_comparison(plot_genome_comparison_input_ch)
 
     workflow.onComplete {
         println('✅ Finished all processes!')
