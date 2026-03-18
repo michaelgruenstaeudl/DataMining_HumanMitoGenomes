@@ -6,11 +6,11 @@ From: python:3.13-slim
         build-essential \
         && rm -rf /var/lib/apt/lists/*
 
-    pip install --no-cache-dir numpy pandas matplotlib
+    pip install --no-cache-dir numpy pandas matplotlib biopython
 
 %labels
     Author "Buddha Thapa Magar"
-    Description "Python environment with numpy, pandas, matplotlib"
+    Description "Python environment with numpy, pandas, matplotlib, biopython installed"
 
 # %runscript
 #     exec python "$@"
