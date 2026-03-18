@@ -169,26 +169,26 @@ workflow {
         parent_output_dir,
     )
 
-    normalize_fasta_input_ch = mapping_process_output
-        .join(
-            cutoffs_ch.map { length_cutoffs_ch ->
-                def (sample_id, _lower_cutoff, upper_cutoff) = length_cutoffs_ch
-                def read_length = upper_cutoff.toInteger() + 1
-                def insert_size = upper_cutoff.toInteger() * 2
-                tuple(sample_id, read_length, insert_size)
-            }
-        )
-        .join(mitoz_assembler.out.mitoz_assembler_output)
-        .combine(config_file_ch)
-        .combine(trim_mitogenome_duplicate_script_ch)
-    normalize_complete_genome_length(
-        normalize_fasta_input_ch,
-        trim_mitogenome_duplicate_script_ch,
-        parent_output_dir,
-    )
+    // normalize_fasta_input_ch = mapping_process_output
+    //     .join(
+    //         cutoffs_ch.map { length_cutoffs_ch ->
+    //             def (sample_id, _lower_cutoff, upper_cutoff) = length_cutoffs_ch
+    //             def read_length = upper_cutoff.toInteger() + 1
+    //             def insert_size = upper_cutoff.toInteger() * 2
+    //             tuple(sample_id, read_length, insert_size)
+    //         }
+    //     )
+    //     .join(mitoz_assembler.out.mitoz_assembler_output)
+    //     .combine(config_file_ch)
+    //     .combine(trim_mitogenome_duplicate_script_ch)
+    // normalize_complete_genome_length(
+    //     normalize_fasta_input_ch,
+    //     trim_mitogenome_duplicate_script_ch,
+    //     parent_output_dir,
+    // )
 
     //Circular genome rotation process
-    rotate_genome_input_ch = normalize_complete_genome_length.out.normalized_fasta_ch
+    rotate_genome_input_ch = mitoz_assembler.out.mitoz_assembler_output
         .join(fasta_channel)
         .combine(rotation_seed_fasta_ch)
         .combine(channel.value(params.rotation_mismatch_threshold))
@@ -197,13 +197,12 @@ workflow {
 
     rotated_assembled_ch = rotate_circular_genome_workflow.out.rotated_assembled_ch
     rotated_official_ch = rotate_circular_genome_workflow.out.rotated_official_ch
+    rotated_genome_ch = rotate_circular_genome_workflow.out.rotated_genome_ch
 
 
-    rotated_fasta_ch = rotated_assembled_ch
-        .join(rotated_official_ch)
-        .map { tuple ->
-            tuple.join(",")
-        }
+    rotated_fasta_ch = rotated_genome_ch.map { tuple ->
+        tuple.join(",")
+    }
     rotated_fasta_tmp_csv = rotated_fasta_ch.collectFile(name: "rotated_genome_info.tmp", newLine: true)
 
     write_rotate_genome_csv(
