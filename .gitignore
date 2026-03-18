@@ -19,5 +19,10 @@ genome_data/
 nextflow_workflow/nextflow_figures/combined_coverage_visualization
 collected_fastqc_report
 nextflow_workflow/nextflow_figures/bwa_mem2
-nextflow_workflow/nextflow_figures
-apptainer
+# nextflow_workflow/nextflow_figures
+*.sif
+nextflow_workflow/myetetoolkit
+analysis_data
+
+data_check.sh
+data_move.sh
