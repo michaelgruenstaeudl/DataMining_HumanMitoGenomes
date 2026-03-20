@@ -174,20 +174,12 @@ def main(csv_filepath, file_directory):
         # Stats on right
         ax.text(
             1.01,
-            0.6,
-            f"Assembled: {len(assembled_seq):,} bp  "
-            f"Official: {len(official_seq):,} bp  "
-            f"Diff: {abs(len(assembled_seq) - len(official_seq)):,} bp",
-            transform=ax.transAxes,
-            fontsize=7,
-            va="center",
-            color="gray",
-        )
-        ax.text(
-            1.01,
-            0.4,
-            f"Identity: {result['identity_pct']:.2f}%  "
-            f"Mismatches: {len(result['mismatch_pos']):,}  "
+            0.5,
+            f"Original: {len(official_seq):,} bp  \n"
+            f"New: {len(assembled_seq):,} bp  \n"
+            f"Diff: {abs(len(assembled_seq) - len(official_seq)):,} bp  "
+            f"Identity: {result['identity_pct']:.2f}%  \n"
+            f"Mismatches: {len(result['mismatch_pos']):,}  \n"
             f"Insertions: {len(result['insertion_pos']):,}  "
             f"Deletions: {len(result['deletion_pos']):,}",
             transform=ax.transAxes,
@@ -195,6 +187,18 @@ def main(csv_filepath, file_directory):
             va="center",
             color="gray",
         )
+        # ax.text(
+        #     1.01,
+        #     0.4,
+        #     f"Identity: {result['identity_pct']:.2f}%  \n"
+        #     f"Mismatches: {len(result['mismatch_pos']):,}  \n"
+        #     f"Insertions: {len(result['insertion_pos']):,}  \n"
+        #     f"Deletions: {len(result['deletion_pos']):,}",
+        #     transform=ax.transAxes,
+        #     fontsize=7,
+        #     va="center",
+        #     color="gray",
+        # )
 
         # x label only on last row
         if idx == n_samples - 1:
