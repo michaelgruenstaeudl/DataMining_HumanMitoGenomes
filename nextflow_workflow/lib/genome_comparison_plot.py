@@ -115,7 +115,7 @@ def main(csv_filepath, file_directory):
 
         # Plot
         ax.vlines(
-            result["match_pos"], -0.4, 0.4, colors="steelblue", linewidth=0.2, alpha=0.4
+            result["match_pos"], -0.4, 0.4, colors="white", linewidth=0.2, alpha=0.4
         )
         ax.vlines(
             result["mismatch_pos"],
@@ -137,6 +137,8 @@ def main(csv_filepath, file_directory):
                 linewidth=0.8,
                 edgecolor="black",
                 facecolor="none",  # transparent fill
+                clip_on=False,
+                zorder=5,
             )
         )
         ax.set_xlim(0, result["align_len"])
