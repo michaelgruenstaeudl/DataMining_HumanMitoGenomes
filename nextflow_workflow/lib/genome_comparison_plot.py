@@ -10,7 +10,9 @@ import pandas as pd
 # -------------------------------------------------------------------
 # Config
 # -------------------------------------------------------------------
-RECORDS_PER_FIG = 2  # number of samples to plot per figure (adjust for readability)
+RECORDS_PER_FIG = 40  # number of samples to plot per figure (adjust for readability)
+PAGE_W = 7  # inches
+PAGE_H = 9  # inches
 
 
 # -------------------------------------------------------------------
@@ -111,7 +113,13 @@ def main(csv_filepath, file_directory):
         batch = rotated_genome_info_csv[start:end]
         n_rows = len(batch)
 
-        fig, axes = plt.subplots(n_rows, 1, figsize=(20, n_rows * 1.8), squeeze=False)
+        row_h = (
+            PAGE_H / RECORDS_PER_FIG
+        )  # keeps row density consistent across all pages
+
+        fig, axes = plt.subplots(
+            n_rows, 1, figsize=(PAGE_W, n_rows * row_h), squeeze=False
+        )
 
         fig.suptitle(
             "Mitogenome comparison — assembled vs official (all samples)",
