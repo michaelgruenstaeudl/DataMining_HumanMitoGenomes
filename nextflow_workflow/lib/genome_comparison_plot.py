@@ -36,13 +36,23 @@ def align_and_classify(assembled_seq, official_seq):
     aligned_official = alignment[1]
     align_len = len(aligned_assembled)
 
-    match_pos, mismatch_pos, gap_pos = [], [], []
+    match_pos = []
+    mismatch_pos = []
+    insertion_pos = []  # gap in official   → assembled has EXTRA nucleotide
+    deletion_pos = []  # gap in assembled  → assembled is MISSING nucleotide
 
     for i in range(align_len):
         a = aligned_assembled[i]
         o = aligned_official[i]
-        if a == "-" or o == "-":
-            gap_pos.append(i)
+        if a == "-" and o != "-":
+            deletion_pos.append(
+                i
+            )  # assembled missing — nucleotide in official but not assembled
+        elif o == "-" and a != "-":
+            insertion_pos.append(
+                i
+            )  # assembled extra   — nucleotide in assembled but not official
+
         elif a == o:
             match_pos.append(i)
         else:
@@ -54,7 +64,8 @@ def align_and_classify(assembled_seq, official_seq):
         "align_len": align_len,
         "match_pos": match_pos,
         "mismatch_pos": mismatch_pos,
-        "gap_pos": gap_pos,
+        "insertion_pos": insertion_pos,
+        "deletion_pos": deletion_pos,
         "identity_pct": identity_pct,
     }
 
@@ -73,7 +84,8 @@ def main(csv_filepath, file_directory):
             "Length_Diff",
             "Identity_Pct",
             "Num_Mismatches",
-            "Num_Gaps",
+            "Num_Insertions",
+            "Num_Deletions",
         ]
     )
     fig, axes = plt.subplots(n_samples, 1, figsize=(18, 1.8 * n_samples), squeeze=False)
@@ -91,7 +103,8 @@ def main(csv_filepath, file_directory):
             "Length_Diff": None,
             "Identity_Pct": None,
             "Num_Mismatches": None,
-            "Num_Gaps": None,
+            "Num_Insertions": None,
+            "Num_Deletions": None,
         }
 
         idx = record.Index
@@ -110,7 +123,8 @@ def main(csv_filepath, file_directory):
         stat_record["Length_Diff"] = abs(len(assembled_seq) - len(official_seq))
         stat_record["Identity_Pct"] = f"{result['identity_pct']:.2f}%"
         stat_record["Num_Mismatches"] = len(result["mismatch_pos"])
-        stat_record["Num_Gaps"] = len(result["gap_pos"])
+        stat_record["Num_Insertions"] = len(result["insertion_pos"])
+        stat_record["Num_Deletions"] = len(result["deletion_pos"])
         rotated_genome_info_df.loc[len(rotated_genome_info_df)] = stat_record
 
         # Plot
@@ -126,7 +140,15 @@ def main(csv_filepath, file_directory):
             alpha=0.9,
         )
         ax.vlines(
-            result["gap_pos"], -0.4, 0.4, colors="orange", linewidth=0.4, alpha=0.9
+            result["insertion_pos"],
+            -0.4,
+            0.4,
+            colors="yellow",
+            linewidth=0.4,
+            alpha=0.9,
+        )
+        ax.vlines(
+            result["deletion_pos"], -0.4, 0.4, colors="blue", linewidth=0.4, alpha=0.9
         )
 
         ax.add_patch(
@@ -166,7 +188,8 @@ def main(csv_filepath, file_directory):
             0.4,
             f"Identity: {result['identity_pct']:.2f}%  "
             f"Mismatches: {len(result['mismatch_pos']):,}  "
-            f"Gaps: {len(result['gap_pos']):,}",
+            f"Insertions: {len(result['insertion_pos']):,}  "
+            f"Deletions: {len(result['deletion_pos']):,}",
             transform=ax.transAxes,
             fontsize=7,
             va="center",
@@ -179,16 +202,23 @@ def main(csv_filepath, file_directory):
 
     # Legend once at bottom
     legend = [
-        mpatches.Patch(color="steelblue", label="Match"),
-        mpatches.Patch(color="firebrick", label="Mismatch"),
-        mpatches.Patch(color="orange", label="Gap / indel"),
+        mpatches.Patch(facecolor="white", label="Match", edgecolor="black"),
+        mpatches.Patch(facecolor="firebrick", label="Mismatch", edgecolor="black"),
+        mpatches.Patch(facecolor="yellow", label="Insertion", edgecolor="black"),
+        mpatches.Patch(facecolor="blue", label="Deletion", edgecolor="black"),
     ]
     fig.legend(
         handles=legend,
         loc="lower center",
-        ncol=3,
+        ncol=1,
         fontsize=9,
         bbox_to_anchor=(0.9, 0.95),
+        frameon=True,
+        edgecolor="black",
+        fancybox=False,
+        framealpha=1.0,
+        title="Alignment Variants",  # ← legend title
+        title_fontsize=10,
     )
 
     plt.tight_layout()
