@@ -80,8 +80,7 @@ def main(csv_filepath, file_directory):
 
     fig.suptitle(
         "Mitogenome comparison — assembled vs official (all samples)",
-        fontsize=12,
-        y=1.01,
+        fontsize=15,
     )
 
     for record in rotated_genome_info_csv.itertuples():
@@ -130,6 +129,16 @@ def main(csv_filepath, file_directory):
             result["gap_pos"], -0.4, 0.4, colors="orange", linewidth=0.4, alpha=0.9
         )
 
+        ax.add_patch(
+            plt.Rectangle(
+                (0, -0.4),  # bottom left corner (x, y)
+                result["align_len"],  # width
+                0.8,  # height (-0.4 to 0.4)
+                linewidth=0.8,
+                edgecolor="black",
+                facecolor="none",  # transparent fill
+            )
+        )
         ax.set_xlim(0, result["align_len"])
         ax.set_ylim(-1, 1)
         ax.set_yticks([])
