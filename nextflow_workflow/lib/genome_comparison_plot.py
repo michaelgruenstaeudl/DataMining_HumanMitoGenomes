@@ -169,7 +169,7 @@ def main(csv_filepath, file_directory):
         ax.spines[["top", "right", "left"]].set_visible(False)
 
         # Label on left
-        ax.set_ylabel(sample_id, fontsize=8, rotation=0, labelpad=90, va="center")
+        ax.set_ylabel(sample_id, fontsize=10, rotation=0, labelpad=40, va="center")
 
         # Stats on right
         ax.text(
@@ -187,18 +187,6 @@ def main(csv_filepath, file_directory):
             va="center",
             color="gray",
         )
-        # ax.text(
-        #     1.01,
-        #     0.4,
-        #     f"Identity: {result['identity_pct']:.2f}%  \n"
-        #     f"Mismatches: {len(result['mismatch_pos']):,}  \n"
-        #     f"Insertions: {len(result['insertion_pos']):,}  \n"
-        #     f"Deletions: {len(result['deletion_pos']):,}",
-        #     transform=ax.transAxes,
-        #     fontsize=7,
-        #     va="center",
-        #     color="gray",
-        # )
 
         # x label only on last row
         if idx == n_samples - 1:
@@ -216,7 +204,7 @@ def main(csv_filepath, file_directory):
         loc="lower center",
         ncol=1,
         fontsize=9,
-        bbox_to_anchor=(0.9, 0.95),
+        bbox_to_anchor=(0.95, 0.95),
         frameon=True,
         edgecolor="black",
         fancybox=False,
