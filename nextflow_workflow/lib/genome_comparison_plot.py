@@ -1,4 +1,5 @@
 import argparse
+import os
 import sys
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
@@ -103,10 +104,6 @@ def main(csv_filepath, file_directory):
         assembled_seq, assembled_id = read_fasta(record.rotated_assembled_genome)
         official_seq, official_id = read_fasta(record.rotated_official_genome)
 
-        print(f"  Assembled : {len(assembled_seq):,} bp")
-        print(f"  Official  : {len(official_seq):,} bp")
-        print(f"  Diff      : {abs(len(assembled_seq) - len(official_seq)):,} bp")
-
         result = align_and_classify(assembled_seq, official_seq)
 
         stat_record["Assembled_Length"] = len(assembled_seq)
@@ -180,11 +177,14 @@ def main(csv_filepath, file_directory):
         loc="lower center",
         ncol=3,
         fontsize=9,
-        bbox_to_anchor=(0.8, 0.8),
+        bbox_to_anchor=(0.9, 0.95),
     )
 
     plt.tight_layout()
     plt.savefig(f"{file_directory}/{PLOT_OUTPUT}", dpi=150, bbox_inches="tight")
+
+    output_dir = f"{file_directory}/reports"
+    os.makedirs(output_dir, exist_ok=True)
 
     rotated_genome_info_df.to_csv(
         f"{file_directory}/reports/genome_comparison_stats.csv", index=False
