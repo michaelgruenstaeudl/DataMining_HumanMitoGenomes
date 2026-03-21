@@ -10,7 +10,7 @@ import pandas as pd
 # -------------------------------------------------------------------
 # Config
 # -------------------------------------------------------------------
-RECORDS_PER_FIG = 40  # number of samples to plot per figure (adjust for readability)
+RECORDS_PER_FIG = 30  # number of samples to plot per figure (adjust for readability)
 PAGE_W = 7  # inches
 PAGE_H = 9  # inches
 
