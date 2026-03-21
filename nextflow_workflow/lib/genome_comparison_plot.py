@@ -10,9 +10,23 @@ import pandas as pd
 # -------------------------------------------------------------------
 # Config
 # -------------------------------------------------------------------
-RECORDS_PER_FIG = 10  # number of samples to plot per figure (adjust for readability)
-PAGE_W = 7  # inches
-PAGE_H = 9  # inches
+SCALE = 2.0  # adjust for larger/smaller fonts and spacing
+RECORDS_PER_FIG = 17  # number of samples to plot per figure (adjust for readability)
+PAGE_W = 7 * SCALE  # inches
+PAGE_H = 9 * SCALE  # inches
+
+SUPTITLE_H = 0.30  # inches
+LEGEND_H = 0.25  # inches
+XLABEL_H = 0.20  # inches
+GAP_H = 0.4  # inches  ← buffer between legend and first row
+
+TOP_H = (
+    SUPTITLE_H + LEGEND_H + GAP_H
+)  # inches  ← total space taken by title + legend + gap at top
+PLOT_AREA = (
+    PAGE_H - TOP_H - XLABEL_H
+)  # inches  ← space left for plotting after reserving space for title, legend and x label
+ROW_H = PLOT_AREA / RECORDS_PER_FIG
 
 
 # -------------------------------------------------------------------
@@ -113,17 +127,33 @@ def main(csv_filepath, file_directory):
         batch = rotated_genome_info_csv[start:end]
         n_rows = len(batch)
 
-        row_h = (
-            PAGE_H / RECORDS_PER_FIG
-        )  # keeps row density consistent across all pages
+        top_margin = 1 - (TOP_H / PAGE_H)
+        bottom_margin = XLABEL_H / PAGE_H
+        left_margin = 0.18  # for ylabel sample IDs
+        right_margin = 0.15  # for ax.text stats block
 
         fig, axes = plt.subplots(
-            n_rows, 1, figsize=(PAGE_W, n_rows * row_h), squeeze=False
+            n_rows,
+            1,
+            figsize=(
+                PAGE_W,
+                ROW_H * n_rows + TOP_H + XLABEL_H,
+            ),  # exact 7×9 for full pages
+            squeeze=False,
+        )
+
+        fig.subplots_adjust(
+            top=top_margin,
+            bottom=bottom_margin,
+            left=left_margin,
+            right=1 - right_margin,
+            hspace=0.5,
         )
 
         fig.suptitle(
             "Mitogenome comparison — assembled vs official (all samples)",
             fontsize=15,
+            y=1 - (SUPTITLE_H / PAGE_H / 2),
         )
 
         # Process each sample in the batch
@@ -202,7 +232,7 @@ def main(csv_filepath, file_directory):
                 )
             )
             ax.set_xlim(0, result["align_len"])
-            ax.set_ylim(-1, 1)
+            ax.set_ylim(-0.5, 0.5)
             ax.set_yticks([])
             ax.spines[["top", "right", "left"]].set_visible(False)
 
@@ -221,16 +251,16 @@ def main(csv_filepath, file_directory):
                 f"Insertions: {len(result['insertion_pos']):,}  "
                 f"Deletions: {len(result['deletion_pos']):,}",
                 transform=ax.transAxes,
-                fontsize=7,
+                fontsize=10,
                 va="center",
                 color="gray",
             )
 
             # x label only on last row
-            if idx == n_samples - 1:
-                ax.set_xlabel("Aligned genome position (bp)", fontsize=9)
+            if idx == n_rows - 1:
+                ax.set_xlabel("Aligned genome position (bp)", fontsize=15)
 
-        # Legend once at bottom
+        # Legend once per figure (instead of per subplot)
         legend = [
             mpatches.Patch(facecolor="white", label="Match", edgecolor="black"),
             mpatches.Patch(facecolor="firebrick", label="Mismatch", edgecolor="black"),
@@ -239,19 +269,19 @@ def main(csv_filepath, file_directory):
         ]
         fig.legend(
             handles=legend,
-            loc="lower center",
+            loc="upper right",
             ncol=4,
-            fontsize=9,
-            bbox_to_anchor=(0.88, 0.92),
+            fontsize=8,
+            bbox_to_anchor=(0.99, 1 - (SUPTITLE_H + LEGEND_H / 2) / PAGE_H),
             frameon=True,
             edgecolor="black",
             fancybox=False,
             framealpha=1.0,
             title="Alignment Variants",  # ← legend title
-            title_fontsize=10,
+            title_fontsize=6,
         )
 
-        plt.tight_layout()
+        # plt.tight_layout()
         plt.savefig(
             f"{file_directory}/alignments_plots/assembly_vs_reference_alignment_part{fig_idx + 1}.png",
             dpi=150,
