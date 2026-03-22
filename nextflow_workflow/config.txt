@@ -20,8 +20,8 @@ Insert size           = 200
 Platform              = illumina
 Single/Paired         = PE
 Combined reads        = 
-Forward reads         = /home/b_thapamagar/BioInformatics/NCBIrecordMining/SRA_data/SRR6245224_1.fastq
-Reverse reads         = /home/b_thapamagar/BioInformatics/NCBIrecordMining/SRA_data/SRR6245224_2.fastq
+Forward reads         = 
+Reverse reads         = 
 Store Hash            =
 
 Heteroplasmy:
