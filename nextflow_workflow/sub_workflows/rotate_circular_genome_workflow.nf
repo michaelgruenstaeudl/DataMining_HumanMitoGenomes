@@ -7,22 +7,23 @@ include {
 workflow rotate_circular_genome_workflow {
     take:
     rotate_genome_input_ch
+    seed_fasta_ch
     parent_output_dir
 
     main:
-    asembled_fasta_ch = rotate_genome_input_ch.map { sample_id, assembled_fasta, _official_fasta, seed_fasta, n_mismatch ->
-        tuple(sample_id, assembled_fasta, seed_fasta, n_mismatch)
+    asembled_fasta_ch = rotate_genome_input_ch.map { sample_id, assembled_fasta, _official_fasta, n_mismatch ->
+        tuple(sample_id, assembled_fasta, n_mismatch)
     }
 
-    official_fasta_ch = rotate_genome_input_ch.map { sample_id, _assembled_fasta, official_fasta, seed_fasta, n_mismatch ->
-        tuple(sample_id, official_fasta, seed_fasta, n_mismatch)
+    official_fasta_ch = rotate_genome_input_ch.map { sample_id, _assembled_fasta, official_fasta, n_mismatch ->
+        tuple(sample_id, official_fasta, n_mismatch)
     }
 
-    rotate_assembled_genome(asembled_fasta_ch, "assembled_genome", parent_output_dir)
+    rotate_assembled_genome(asembled_fasta_ch, seed_fasta_ch, "assembled_genome", parent_output_dir)
     rotated_assembled_ch = rotate_assembled_genome.out.rotated_output_ch
     // rotated_assembled_ch.view { it -> "Rotated assembled genome: ${it}" }
 
-    rotate_official_genome(official_fasta_ch, "official_genome", parent_output_dir)
+    rotate_official_genome(official_fasta_ch, seed_fasta_ch, "official_genome", parent_output_dir)
     rotated_official_ch = rotate_official_genome.out.rotated_output_ch
 
     rotated_genome_ch = rotated_assembled_ch.join(rotated_official_ch)

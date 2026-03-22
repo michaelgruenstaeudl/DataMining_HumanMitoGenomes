@@ -7,7 +7,8 @@ process rotate_genome {
     publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
 
     input:
-    tuple val(sample_id), path(input_fasta), path(seed_fasta), val(n_mismatch)
+    tuple val(sample_id), path(input_fasta), val(n_mismatch)
+    file seed_fasta
     val genome_type
     val parent_output_dir
 
