@@ -27,7 +27,7 @@ process extract_assembled_genome_metadata_info {
             '
     )
 
-    sequence_length=\$(sed -n '2p' ${assembled_genome_fasta} | wc -m)
+    sequence_length=\$(grep -v '^>' ${assembled_genome_fasta} | tr -d '[:space:]' | wc -c)
 
     echo "\$topology \$sequence_length"
     """
