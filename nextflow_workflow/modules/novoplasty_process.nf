@@ -25,11 +25,11 @@ process novoplast_process {
     sed -i "s|Extend seed directly.*|Extend seed directly  = yes|" ${config_file_path}
     if [ "${is_single_end}" = "true" ]; then
         sed -i "s|^Single/Paired.*|Single/Paired         = SE|" ${config_file_path}
-        sed -i "s|^Combined reads.*|Combined reads        = ${input_file_list[1]}|" ${config_file_path}
+        sed -i "s|^Combined reads.*|Combined reads        = ${input_file_list[0]}|" ${config_file_path}
     else
         sed -i "s|^Single/Paired.*|Single/Paired         = PE|" ${config_file_path}
-        sed -i "s|^Forward reads.*|Forward reads            = ${input_file_list[0]}|" ${config_file_path}
-        sed -i "s|^Reverse reads.*|Reverse reads            = ${input_file_list[1]}|" ${config_file_path}
+        sed -i "s|^Forward reads.*|Forward reads         = ${input_file_list[0]}|" ${config_file_path}
+        sed -i "s|^Reverse reads.*|Reverse reads         = ${input_file_list[1]}|" ${config_file_path}
     fi
     
     sed -i "s|^Output path.*|Output path            = novoplasty_output/|" ${config_file_path}
