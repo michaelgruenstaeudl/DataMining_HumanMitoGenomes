@@ -10,6 +10,7 @@ include { addSizeTracking } from './lib/utils.nf'
 include {
     write_csv as write_file_sizes_csv ;
     write_csv as write_assembled_metadata_csv ;
+    write_csv as write_normalized_genome_metadata_csv ;
     write_csv as write_rotate_genome_csv ;
     write_csv as write_rotate_genome_csv_for_reporting
 } from './modules/write_csv.nf'
@@ -28,13 +29,16 @@ include {
 include { mapping_workflow } from './sub_workflows/mapping_workflow.nf'
 include { mapping_bbmap } from './modules/mapping_bbmap.nf'
 include { mitoz_assembler } from './modules/mitoz_assembler.nf'
-include { extract_assembled_genome_metadata_info } from './modules/extract_assembled_genome_metadata_info.nf'
+include {
+    extract_assembled_genome_metadata_info ;
+    extract_assembled_genome_metadata_info as extract_normalized_genome_metadata_info
+} from './modules/extract_assembled_genome_metadata_info.nf'
 include { rotate_circular_genome_workflow } from './sub_workflows/rotate_circular_genome_workflow.nf'
 include { normalize_complete_genome_length } from './sub_workflows/normalize_complete_genome_length.nf'
 workflow {
     parent_output_dir = params.outdir
     contamination_confidence_threshold = params.contamination_confidence_threshold
-    config_file_ch = channel.fromPath(params.config_file)
+    config_file_ch = file(params.config_file)
     // Call the read_csv_workflow with params
     read_csv_workflow(params)
     // evenness_calculation_workflow_initial_input_ch = read_csv_workflow.out.evenness_calculation_workflow_initial_input_ch
@@ -172,26 +176,47 @@ workflow {
         parent_output_dir,
     )
 
-    // normalize_fasta_input_ch = mapping_process_output
-    //     .join(
-    //         cutoffs_ch.map { length_cutoffs_ch ->
-    //             def (sample_id, _lower_cutoff, upper_cutoff) = length_cutoffs_ch
-    //             def read_length = upper_cutoff.toInteger() + 1
-    //             def insert_size = upper_cutoff.toInteger() * 2
-    //             tuple(sample_id, read_length, insert_size)
-    //         }
-    //     )
-    //     .join(mitoz_assembler.out.mitoz_assembler_output)
-    //     .combine(config_file_ch)
-    //     .combine(trim_mitogenome_duplicate_script_ch)
-    // normalize_complete_genome_length(
-    //     normalize_fasta_input_ch,
-    //     trim_mitogenome_duplicate_script_ch,
-    //     parent_output_dir,
-    // )
+    normalize_fasta_input_ch = mapping_process_output
+        .join(
+            cutoffs_ch.map { length_cutoffs_ch ->
+                def (sample_id, _lower_cutoff, upper_cutoff) = length_cutoffs_ch
+                def read_length = upper_cutoff.toInteger() + 1
+                def insert_size = upper_cutoff.toInteger() * 2
+                tuple(sample_id, read_length, insert_size)
+            }
+        )
+        .join(mitoz_assembler.out.mitoz_assembler_output)
+        .join(extract_assembled_genome_metadata_info.out.metadata_info_out_ch)
 
+    normalize_fasta_input_ch.view { it -> "Normalize fasta input: ${it}" }
+    normalize_complete_genome_length(
+        normalize_fasta_input_ch,
+        config_file_ch,
+        trim_mitogenome_duplicate_script_ch,
+        parent_output_dir,
+    )
+
+    extract_normalized_genome_metadata_info(
+        normalize_complete_genome_length.out.normalized_fasta_output_ch,
+        parent_output_dir,
+    )
+
+    // Write assembled genome metadata info into CSV
+    normalized_genome_csv_lines_ch = extract_normalized_genome_metadata_info.out.metadata_info_out_ch.map { tuple ->
+        tuple.join(",")
+    }
+    tmp_csv = normalized_genome_csv_lines_ch.collectFile(
+        name: "normalized_genome_metadata.tmp",
+        newLine: true,
+    )
+    write_normalized_genome_metadata_csv(
+        tmp_csv,
+        "normalized_genome_metadata",
+        "normalized_genome_metadata.csv",
+        parent_output_dir,
+    )
     //Circular genome rotation process
-    rotate_genome_input_ch = mitoz_assembler.out.mitoz_assembler_output
+    rotate_genome_input_ch = normalize_complete_genome_length.out.normalized_fasta_output_ch
         .join(fasta_channel)
         .combine(rotation_seed_fasta_ch)
         .combine(channel.value(params.rotation_mismatch_threshold))
