@@ -55,7 +55,7 @@ workflow {
     reference_ch = channel.value(file(params.reference_fasta))
 
     calculate_sequence_length_threshold_script_ch = channel.fromPath(params.calculate_sequence_length_threshold_script)
-    rotation_seed_fasta_ch = channel.fromPath(params.rotation_seed_fasta)
+    rotation_seed_fasta_ch = channel.value(file(params.rotation_seed_fasta))
     trim_mitogenome_duplicate_script_ch = channel.fromPath(params.trim_mitogenome_duplicate_script)
     //Quality control process
     quality_control_workflow(
@@ -218,10 +218,13 @@ workflow {
     //Circular genome rotation process
     rotate_genome_input_ch = normalize_complete_genome_length.out.normalized_fasta_output_ch
         .join(fasta_channel)
-        .combine(rotation_seed_fasta_ch)
         .combine(channel.value(params.rotation_mismatch_threshold))
 
-    rotate_circular_genome_workflow(rotate_genome_input_ch, parent_output_dir)
+    rotate_circular_genome_workflow(
+        rotate_genome_input_ch,
+        rotation_seed_fasta_ch,
+        parent_output_dir,
+    )
 
     rotated_assembled_ch = rotate_circular_genome_workflow.out.rotated_assembled_ch
     rotated_official_ch = rotate_circular_genome_workflow.out.rotated_official_ch
