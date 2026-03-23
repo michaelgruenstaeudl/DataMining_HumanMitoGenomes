@@ -206,7 +206,7 @@ def main(csv_filepath, file_directory):
                 result["insertion_pos"],
                 -0.4,
                 0.4,
-                colors="yellow",
+                colors="#FC8D62",
                 linewidth=0.4,
                 alpha=0.9,
             )
@@ -264,7 +264,7 @@ def main(csv_filepath, file_directory):
         legend = [
             mpatches.Patch(facecolor="white", label="Match", edgecolor="black"),
             mpatches.Patch(facecolor="firebrick", label="Mismatch", edgecolor="black"),
-            mpatches.Patch(facecolor="yellow", label="Insertion", edgecolor="black"),
+            mpatches.Patch(facecolor="#FC8D62", label="Insertion", edgecolor="black"),
             mpatches.Patch(facecolor="blue", label="Deletion", edgecolor="black"),
         ]
         fig.legend(
