@@ -286,6 +286,7 @@ def main(csv_filepath, file_directory):
             f"{file_directory}/alignments_plots/assembly_vs_reference_alignment_part{fig_idx + 1}.png",
             dpi=150,
             bbox_inches="tight",
+            transparent=True,
         )
 
     # Save stats to CSV

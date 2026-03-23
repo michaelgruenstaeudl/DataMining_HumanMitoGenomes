@@ -140,6 +140,7 @@ def plot_stacked_bar_chart(pivot_df, file_directory):
     plt.savefig(
         f"{file_directory}/file_size_percentage_difference_stacked_bar_plot.png",
         dpi=300,
+        transparent=True,
     )
 
 
@@ -195,6 +196,7 @@ def plot_aggregate_stacked_bar_chart(pivot_df, file_directory):
     plt.savefig(
         f"{file_directory}/aggregate_file_size_percentage_difference_stacked_bar_plot.png",
         dpi=300,
+        transparent=True,
     )
 
 
@@ -424,6 +426,7 @@ def plot_file_size_changes(csv_filepath, file_directory):
         f"{file_directory}/aggregate_file_size_reduction_viz.png",
         bbox_inches="tight",
         dpi=50,
+        transparent=True,
     )
 
 
