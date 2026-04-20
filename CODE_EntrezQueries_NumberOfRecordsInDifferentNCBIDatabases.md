@@ -328,7 +328,7 @@ With different search condition: \
 
 **Script**:
 
-```
+```bash
 esearch -db nucleotide -query "(human[organism] OR \"homo sapiens\"[organism]) \
     AND (\"mitochondrial\"[title] or mitochondrion[TITLE]) \
     AND complete genome[TITLE]" |
@@ -355,7 +355,7 @@ esearch -db nucleotide -query "(human[organism] OR \"homo sapiens\"[organism]) \
 
 **Script**:
 
-```
+```bash
 esearch \
     -db nucleotide \
     -query "\"Homo sapiens\"[ORGN] AND \"complete genome\"[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] \
@@ -382,7 +382,7 @@ With another query
 
 **Script**:
 
-```
+```bash
 esearch \
     -db nucleotide \
     -query "(human[organism] OR \"homo sapiens\"[organism]) \
@@ -395,7 +395,7 @@ esearch \
 
 **Result**:
 
-```
+```bash
 <ENTREZ_DIRECT>
   <Db>SRA</Db>
   <WebEnv>MCID_67a2e36ed12ee4095d0e634b</WebEnv>
@@ -412,7 +412,7 @@ esearch \
 
 **Script**:
 
-```
+```bash
 esearch -db nucleotide -query "\"Homo sapiens\"[ORGN] \
     AND \"complete genome\"[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] \
     NOT (unverified OR \"Homo sp. Altai\" OR \"Denisova hominin\" OR neanderthalensis OR heidelbergensis OR consensus)" |
@@ -447,7 +447,6 @@ Please refer to the file **mitochondrial_genome_analysis.ipynb**
 
 - Total count of accssions ids that present in both **genbank_ids.txt** file and in **homosapian_nucleotide_accession_list.txt** file: 60676
 - Total count present in **genbank_ids.txt** but not in **homosapian_nucleotide_accession_list.txt**: 1168
-
   - unique records:
     Please refer to the file **mitochondrial_genome_analysis.ipynb**
 
