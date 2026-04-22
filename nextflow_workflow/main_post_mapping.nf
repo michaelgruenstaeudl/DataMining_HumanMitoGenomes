@@ -35,6 +35,9 @@ include {
 } from './modules/extract_assembled_genome_metadata_info.nf'
 include { rotate_circular_genome_workflow } from './sub_workflows/rotate_circular_genome_workflow.nf'
 include { normalize_complete_genome_length } from './sub_workflows/normalize_complete_genome_length.nf'
+include { haplotype_identification_workflow } from './sub_workflows/haplotype_detection_workflow.nf'
+
+
 workflow {
     parent_output_dir = params.outdir
     contamination_confidence_threshold = params.contamination_confidence_threshold
@@ -270,6 +273,15 @@ workflow {
         .combine(channel.fromPath(params.genome_comparison_plot_script))
 
     plot_genome_comparison(plot_genome_comparison_input_ch)
+
+
+
+    //Haplotype Identification process would go here, after the genome rotation and comparison steps, since it relies on having the final rotated genomes for accurate identification.
+    // haplotype_identification_input_ch = rotated_genome_ch
+    haplotype_identification_workflow(
+        rotated_genome_ch,
+        parent_output_dir,
+    )
 
     workflow.onComplete {
         println('✅ Finished all processes!')
