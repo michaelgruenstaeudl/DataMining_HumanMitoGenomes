@@ -30,9 +30,9 @@ workflow haplotype_identification_workflow {
     }
 
     assembled_genome_haplotype_detection(asembled_fasta_ch, "assembled_genome", parent_output_dir)
-    assambled_haplotype_output_csv_ch = assembled_genome_haplotype_detection.out.haplotype_output_channel
-    extract_assembled_haplotype_info(assambled_haplotype_output_csv_ch, parent_output_dir)
-    assambled_haplotype_output_ch = extract_assembled_haplotype_info.out.haplotype_info_out_ch
+    assembled_haplotype_output_csv_ch = assembled_genome_haplotype_detection.out.haplotype_output_channel
+    extract_assembled_haplotype_info(assembled_haplotype_output_csv_ch, parent_output_dir)
+    assembled_haplotype_output_ch = extract_assembled_haplotype_info.out.haplotype_info_out_ch
 
     official_genome_haplotype_detection(official_fasta_ch, "official_genome", parent_output_dir)
     official_haplotype_output_csv_ch = official_genome_haplotype_detection.out.haplotype_output_channel
@@ -40,6 +40,6 @@ workflow haplotype_identification_workflow {
     official_haplotype_output_ch = extract_official_haplotype_info.out.haplotype_info_out_ch
 
     emit:
-    assambled_haplotype_output_ch
+    assembled_haplotype_output_ch
     official_haplotype_output_ch
 }

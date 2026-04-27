@@ -95,9 +95,6 @@ workflow {
     size_ch = addSizeTracking(size_ch, contamination_removal_out_ch, "Contamination Output")
 
     // Mapping process
-    // index_files_ch = channel.fromPath("${params.index_directory}/*").collect()
-    // mapping_input_ch = contamination_removal_out_ch
-    //.combine(index_files_ch)
     mapping_workflow(contamination_removal_out_ch, reference_ch, parent_output_dir)
     mapping_process_output = mapping_workflow.out.mapping_process_output.map { sample_id, reads, is_single_end ->
         def reads_list = is_single_end
@@ -193,7 +190,7 @@ workflow {
         .join(mitoz_assembler.out.mitoz_assembler_output)
         .join(extract_assembled_genome_metadata_info.out.metadata_info_out_ch)
 
-    normalize_fasta_input_ch.view { it -> "Normalize fasta input: ${it}" }
+    // normalize_fasta_input_ch.view { it -> "Normalize fasta input: ${it}" }
     normalize_complete_genome_length(
         normalize_fasta_input_ch,
         config_file_ch,
@@ -308,7 +305,6 @@ workflow {
         "official_haplotype_info.csv",
         parent_output_dir,
     )
-
 
     workflow.onComplete {
         println('✅ Finished all processes!')
