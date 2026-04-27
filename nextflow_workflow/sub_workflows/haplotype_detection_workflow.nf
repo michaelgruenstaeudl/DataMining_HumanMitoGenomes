@@ -10,6 +10,11 @@ include {
     haplotype_identification as official_genome_haplotype_detection
 } from '../modules/haplotype_identification.nf'
 
+include {
+    extract_haplotype_info as extract_assembled_haplotype_info ;
+    extract_haplotype_info as extract_official_haplotype_info
+} from '../modules/extract_haplotype_info.nf'
+
 workflow haplotype_identification_workflow {
     take:
     haplotype_identification_input_ch
@@ -25,11 +30,14 @@ workflow haplotype_identification_workflow {
     }
 
     assembled_genome_haplotype_detection(asembled_fasta_ch, "assembled_genome", parent_output_dir)
-    assambled_haplotype_output_ch = assembled_genome_haplotype_detection.out.haplotype_output_channel
-    // rotated_assembled_ch.view { it -> "Rotated assembled genome: ${it}" }
+    assambled_haplotype_output_csv_ch = assembled_genome_haplotype_detection.out.haplotype_output_channel
+    extract_assembled_haplotype_info(assambled_haplotype_output_csv_ch, parent_output_dir)
+    assambled_haplotype_output_ch = extract_assembled_haplotype_info.out.haplotype_info_out_ch
 
     official_genome_haplotype_detection(official_fasta_ch, "official_genome", parent_output_dir)
-    official_haplotype_output_ch = official_genome_haplotype_detection.out.haplotype_output_channel
+    official_haplotype_output_csv_ch = official_genome_haplotype_detection.out.haplotype_output_channel
+    extract_official_haplotype_info(official_haplotype_output_csv_ch, parent_output_dir)
+    official_haplotype_output_ch = extract_official_haplotype_info.out.haplotype_info_out_ch
 
     emit:
     assambled_haplotype_output_ch
