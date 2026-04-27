@@ -22,6 +22,9 @@ process write_csv {
     else if (csv_type == "rotated_genome_info") {
         csv_header = "SRA_Number,rotated_assembled_genome,rotated_official_genome"
     }
+    else if (csv_type == "haplotype_info") {
+        csv_header = "SRA_Number,Haplotype,Quality"
+    }
 
     // def file_name = is_file_sizes_csv ? "file_sizes.csv" : "assembled_genome_metadata.csv"
     """
