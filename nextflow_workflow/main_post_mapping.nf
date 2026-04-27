@@ -12,7 +12,9 @@ include {
     write_csv as write_assembled_metadata_csv ;
     write_csv as write_normalized_genome_metadata_csv ;
     write_csv as write_rotate_genome_csv ;
-    write_csv as write_rotate_genome_csv_for_reporting
+    write_csv as write_rotate_genome_csv_for_reporting ;
+    write_csv as write_assembled_haplotype_info_csv ;
+    write_csv as write_official_haplotype_info_csv
 } from './modules/write_csv.nf'
 include { quality_control_workflow } from './sub_workflows/quality_control_workflow.nf'
 include { extract_seed } from './modules/extract_seed.nf'
@@ -282,6 +284,31 @@ workflow {
         rotated_genome_ch,
         parent_output_dir,
     )
+
+    assembled_haplotype_output_ch = haplotype_identification_workflow.out.assembled_haplotype_output_ch.map { tuple ->
+        tuple.join(",")
+    }
+    assembled_haplotype_output_tmp_csv = assembled_haplotype_output_ch.collectFile(name: "assembled_haplotype_info.tmp", newLine: true)
+
+    write_assembled_haplotype_info_csv(
+        assembled_haplotype_output_tmp_csv,
+        "haplotype_info",
+        "assembled_haplotype_info.csv",
+        parent_output_dir,
+    )
+
+    official_haplotype_output_ch = haplotype_identification_workflow.out.official_haplotype_output_ch.map { tuple ->
+        tuple.join(",")
+    }
+    official_haplotype_output_tmp_csv = official_haplotype_output_ch.collectFile(name: "official_haplotype_info.tmp", newLine: true)
+
+    write_official_haplotype_info_csv(
+        official_haplotype_output_tmp_csv,
+        "haplotype_info",
+        "official_haplotype_info.csv",
+        parent_output_dir,
+    )
+
 
     workflow.onComplete {
         println('✅ Finished all processes!')
