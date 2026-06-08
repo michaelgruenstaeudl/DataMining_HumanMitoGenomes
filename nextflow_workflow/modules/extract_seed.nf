@@ -30,12 +30,3 @@ process extract_seed {
     echo "\$sequence" >> "${seed_file}"
     """
 }
-
-workflow {
-    input_ch = channel.fromFilePairs("/home/b_thapamagar/BioInformatics/DataMining_HumanMitoGenomes/temp_data2/temp" + '/*_{1,2}.fastq')
-        .map { sample_id, read -> tuple(sample_id, read[0]) }
-        .view { it -> "Input to repair reads: ${it}" }
-
-    extract_seed(input_ch)
-    extract_seed.out.seed_output_channel.view { it -> "Extracted seed file: ${it}" }
-}
