@@ -30,7 +30,6 @@ Pipeline for data mining on human mitochondrial genome data
   ```
 
   Command-line arguments containing:
-
   - mail (str): Email address for PubMed API.
   - verbose (bool): Verbosity flag for logging.
   - filepath (str): Path to the input CSV file containing article titles.
@@ -38,7 +37,6 @@ Pipeline for data mining on human mitochondrial genome data
   `-m "example@email.com" -f "DATA_publications_of_human_mitogenomes_on_NCBINulceotide.csv"`
 
   This script generates following documents:
-
   - Extract and save PubMed metadata for each title in the CSV file in `DATA_pubmed_metadata.csv`.
   - Extract full text from PubMed articles and store in `DATA_pubmed_records.json`.
   - Save the pubmed records which contains data source informations in `DATA_pubmed_records_with_data_source_info.json`.
@@ -53,7 +51,7 @@ Pipeline for data mining on human mitochondrial genome data
 
 - `DATA_GenBank_accessions_EntrezQuery_2025_01_31.txt`: A text file listing the GenBank accession numbers of all complete human mitochondrial genome sequences received when running an Entrez Direct query as of 31-Jan-2024. Section _Downloaded accession IDs from nucleotide database_ of file `entrez_scripts_and_results.md` specifies the Entrez Direct query used. The file contains a total of 62167 accession numbers.
 
-- `DATA_Nucleotide_Metadata.csv`: A comma-separated list of all nucleotide metadata records extracted using script `extract_nucleotide_metadata.ipynb`. Accession Id, BioProject Id, BioSample Id, Publication Title, Publication Reference.
+- `DATA_Nucleotide_Metadata.csv`: A comma-separated list of all nucleotide metadata records extracted using script `CODE_nucleotide_metadata_info_extraction.py`. Accession Id, BioProject Id, BioSample Id, Publication Title, Publication Reference.
 
 - `DATA_Nucleotide_Summary_records.csv`: A comma-separated list of all nucleotide summary records extracted using the following query: `"Homo sapiens[ORGN] AND complete genome[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] NOT (unverified OR Homo sp. Altai OR Denisova hominin OR neanderthalensis OR heidelbergensis OR consensus)"`
 
@@ -68,7 +66,6 @@ Pipeline for data mining on human mitochondrial genome data
 - `pubmed_records.json`: A JSON file containing pubmed article informations.
 - `DATA_pubmed_info_with_bioproj_and_sra.csv`: A CSV file containing pubmed article with corresponding BioProject Id or European Nucleotide Archive ID or SRA ID. This file is important for `CODE_mitochondrial_sra_info_extraction.py`.
 - `DATA_pubmed_info_with_bioproj_sra_sample.csv`: A CSV file containing following informations:
-
   - Title: Title of Pubmed Article
   - BioProject_uid: BioProject Unique Identifier associated to the pubmed article
   - BioProject: BioProject Accession Number associated to the pubmed article
