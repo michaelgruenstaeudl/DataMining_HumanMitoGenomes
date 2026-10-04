@@ -51,9 +51,9 @@ Pipeline for data mining on human mitochondrial genome data
 
 - `DATA_GenBank_accessions_EntrezQuery_2025_01_31.txt`: A text file listing the GenBank accession numbers of all complete human mitochondrial genome sequences received when running an Entrez Direct query as of 31-Jan-2024. Section _Downloaded accession IDs from nucleotide database_ of file `entrez_scripts_and_results.md` specifies the Entrez Direct query used. The file contains a total of 62167 accession numbers.
 
-- `DATA_Nucleotide_Metadata.csv`: A comma-separated list of all nucleotide metadata records extracted using script `CODE_nucleotide_metadata_info_extraction.py`. Accession Id, BioProject Id, BioSample Id, Publication Title, Publication Reference.
+- `DATA_Nucleotide_Metadata.csv`: A comma-separated list of all nucleotide metadata records extracted using script `CODE_nucleotide_metadata_info_extraction.py`. Accession Id, BioProject Id, BioSample Id, Publication Title, Publication Reference. Reference code: `CODE_nucleotide_sra_data_extraction.ipynb`
 
-- `DATA_Nucleotide_Summary_records.csv`: A comma-separated list of all nucleotide summary records extracted using the following query: `"Homo sapiens[ORGN] AND complete genome[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] NOT (unverified OR Homo sp. Altai OR Denisova hominin OR neanderthalensis OR heidelbergensis OR consensus)"`. Script: `CODE_nucleotide_metadata_info_extraction.py`
+- `DATA_Nucleotide_Summary_records.csv`: A comma-separated list of all nucleotide summary records extracted using the following query: `"Homo sapiens[ORGN] AND complete genome[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] NOT (unverified OR Homo sp. Altai OR Denisova hominin OR neanderthalensis OR heidelbergensis OR consensus)"`. Script: `CODE_nucleotide_metadata_info_extraction.py` Reference code: `CODE_nucleotide_sra_data_extraction.ipynb`
 
 - `DATA_SRA_Metadata_linked_through_BioSample.csv`: A comma-separated list of all SRA metadata records linked to human mitochondrial nucleotide records through BioSample database.
 
