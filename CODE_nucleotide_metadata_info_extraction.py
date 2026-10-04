@@ -19,6 +19,17 @@ def fetch_batch(start, end, nucleotide_esearch_output):
     return batch_records
 
 
+def fetch_nucleotide_summary_batch(start, end, nucleotide_esearch_output):
+    batch = nucleotide_esearch_output["IdList"][start:end]
+    batch_str = ",".join(batch)
+
+    # Fetch summary data for the batch
+    fetch_handle = Entrez.esummary(db="nucleotide", id=batch_str, retmode="xml")
+    summary_data = Entrez.read(fetch_handle)
+    fetch_handle.close()
+    return summary_data
+
+
 def main(args):
     API_KEY = (
         args.api_key
@@ -65,7 +76,7 @@ def main(args):
             )
 
             end = min(start + batch_size, len(nucleotide_esearch_output["IdList"]))
-            batch_records = fetch_batch(start, end)
+            batch_records = fetch_batch(start, end, nucleotide_esearch_output)
 
             print("Fetching completed and data extraction starts:")
             for record in batch_records:
@@ -105,6 +116,24 @@ def main(args):
             data_records.to_csv("Nucleotide_Metadata_on_Exception.csv", index=False)
             print("Records saved because of exception encountered")
             print(f"An error occurred: {e}")
+
+    # This code extract Nucleotide_Summary records.
+
+    batch_size = 1000
+    summary_data_list = []
+
+    for start in range(0, len(nucleotide_esearch_output["IdList"]), batch_size):
+        end = min(start + batch_size, len(nucleotide_esearch_output["IdList"]))
+        batch_records = fetch_nucleotide_summary_batch(
+            start, end, nucleotide_esearch_output
+        )
+        summary_data_list.extend(batch_records)  # Append batch_records to records
+        print(f"Fetched batch {start // batch_size + 1}: {len(batch_records)} records")
+
+    # Convert records to DataFrame
+    df = pd.DataFrame(summary_data_list)
+    df.to_csv("DATA_Nucleotide_Summary_records.csv", index=False)
+    print("Records saved successfully")
 
 
 if __name__ == "__main__":

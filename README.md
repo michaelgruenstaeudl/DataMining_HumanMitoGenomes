@@ -53,7 +53,7 @@ Pipeline for data mining on human mitochondrial genome data
 
 - `DATA_Nucleotide_Metadata.csv`: A comma-separated list of all nucleotide metadata records extracted using script `CODE_nucleotide_metadata_info_extraction.py`. Accession Id, BioProject Id, BioSample Id, Publication Title, Publication Reference.
 
-- `DATA_Nucleotide_Summary_records.csv`: A comma-separated list of all nucleotide summary records extracted using the following query: `"Homo sapiens[ORGN] AND complete genome[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] NOT (unverified OR Homo sp. Altai OR Denisova hominin OR neanderthalensis OR heidelbergensis OR consensus)"`
+- `DATA_Nucleotide_Summary_records.csv`: A comma-separated list of all nucleotide summary records extracted using the following query: `"Homo sapiens[ORGN] AND complete genome[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] NOT (unverified OR Homo sp. Altai OR Denisova hominin OR neanderthalensis OR heidelbergensis OR consensus)"`. Script: `CODE_nucleotide_metadata_info_extraction.py`
 
 - `DATA_SRA_Metadata_linked_through_BioSample.csv`: A comma-separated list of all SRA metadata records linked to human mitochondrial nucleotide records through BioSample database.
 
