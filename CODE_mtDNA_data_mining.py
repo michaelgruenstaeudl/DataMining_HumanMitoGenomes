@@ -3,7 +3,6 @@ __version__ = "b_thapamagar@mail.fhsu.edu|2026-05-10"
 import argparse
 import json
 import logging
-import os
 import re
 import time
 import urllib.parse
@@ -79,8 +78,7 @@ def _retry_request(func, max_retries, logger=None, operation=None):
 
 
 # Methods for fetching nucleotide summary records in batches
-def fetch_batch(start, end, nucleotide_esearch_output):
-    logger = logging.getLogger(__name__)
+def fetch_batch(start, end, nucleotide_esearch_output, logger):
     return _retry_request(
         lambda: _fetch_nucleotide_batch(start, end, nucleotide_esearch_output),
         max_retries=MAX_RETRIES,
@@ -101,7 +99,7 @@ def _fetch_nucleotide_batch(start, end, nucleotide_esearch_output):
     return batch_records
 
 
-def extract_nucleotide_detailed_metadata_information(output_directory):
+def extract_nucleotide_detailed_metadata_information(output_directory, logger):
     directory = Path(output_directory)
     nucleotide_metadata_output_file_path = (
         directory / "DATA_Nucleotide_detailed_metadata_records.csv"
@@ -119,6 +117,7 @@ def extract_nucleotide_detailed_metadata_information(output_directory):
             )
         ),
         max_retries=MAX_RETRIES,
+        logger=logger,
         operation=(
             "extract_nucleotide_detailed_metadata_information: "
             "Entrez.esearch nucleotide records"
@@ -149,7 +148,7 @@ def extract_nucleotide_detailed_metadata_information(output_directory):
             )
 
             end = min(start + batch_size, len(nucleotide_esearch_output["IdList"]))
-            batch_records = fetch_batch(start, end, nucleotide_esearch_output)
+            batch_records = fetch_batch(start, end, nucleotide_esearch_output, logger)
 
             print("Fetching completed and data extraction starts:")
             for record in batch_records:
@@ -204,7 +203,7 @@ def extract_nucleotide_detailed_metadata_information(output_directory):
     return data_records
 
 
-def fetch_nucleotide_summary_batch(start, end, nucleotide_esearch_output):
+def fetch_nucleotide_summary_batch(start, end, nucleotide_esearch_output, logger):
     batch = nucleotide_esearch_output["IdList"][start:end]
     batch_str = ",".join(batch)
 
@@ -214,13 +213,14 @@ def fetch_nucleotide_summary_batch(start, end, nucleotide_esearch_output):
             Entrez.esummary(db="nucleotide", id=batch_str, retmode="xml")
         ),
         max_retries=MAX_RETRIES,
+        logger=logger,
         operation=(
             "fetch_nucleotide_summary_batch: " "Entrez.esummary nucleotide records"
         ),
     )
 
 
-def extract_nucleotide_metadata_information(output_directory):
+def extract_nucleotide_metadata_information(output_directory, logger):
     directory = Path(output_directory)
     nucleotide_metadata_output_file_path = (
         directory / "DATA_Nucleotide_Summary_records.csv"
@@ -239,6 +239,7 @@ def extract_nucleotide_metadata_information(output_directory):
             )
         ),
         max_retries=MAX_RETRIES,
+        logger=logger,
         operation=(
             "extract_nucleotide_metadata_information: "
             "Entrez.esearch nucleotide records"
@@ -249,7 +250,7 @@ def extract_nucleotide_metadata_information(output_directory):
         for start in range(0, len(nucleotide_esearch_output["IdList"]), batch_size):
             end = min(start + batch_size, len(nucleotide_esearch_output["IdList"]))
             batch_records = fetch_nucleotide_summary_batch(
-                start, end, nucleotide_esearch_output
+                start, end, nucleotide_esearch_output, logger
             )
             summary_data_list.extend(batch_records)  # Append batch_records to records
             print(
@@ -269,7 +270,7 @@ def extract_nucleotide_metadata_information(output_directory):
 # Methods for fetching SRA records metadata in batches
 
 
-def fetch_sra_metadata_batch(start, end, sra_esearch_output):
+def fetch_sra_metadata_batch(start, end, sra_esearch_output, logger):
     batch = sra_esearch_output["IdList"][start:end]
     batch_str = ",".join(batch)
 
@@ -277,11 +278,12 @@ def fetch_sra_metadata_batch(start, end, sra_esearch_output):
     return _retry_request(
         lambda: Entrez.read(Entrez.esummary(db="sra", id=batch_str, retmode="xml")),
         max_retries=MAX_RETRIES,
+        logger=logger,
         operation="fetch_sra_metadata_batch: Entrez.esummary SRA records",
     )
 
 
-def extract_sra_metadata_batch(output_directory):
+def extract_sra_metadata_batch(output_directory, logger):
     directory = Path(output_directory)
     sra_metadata_output_file_path = directory / "DATA_SRA_Summary_records.csv"
     search_term = """(human[organism] OR \"homo sapiens\"[organism]) AND (\"mitochondrial\"[title] or mitochondrion[TITLE])"""
@@ -295,13 +297,16 @@ def extract_sra_metadata_batch(output_directory):
             )
         ),
         max_retries=MAX_RETRIES,
+        logger=logger,
         operation="extract_sra_metadata_batch: Entrez.esearch SRA records",
     )
     summary_data_list = []
     try:
         for start in range(0, len(sra_esearch_output["IdList"]), batch_size):
             end = min(start + batch_size, len(sra_esearch_output["IdList"]))
-            batch_records = fetch_sra_metadata_batch(start, end, sra_esearch_output)
+            batch_records = fetch_sra_metadata_batch(
+                start, end, sra_esearch_output, logger
+            )
             summary_data_list.extend(batch_records)  # Append batch_records to records
             print(
                 f"Fetched batch {start // batch_size + 1}: {len(batch_records)} records"
@@ -364,8 +369,15 @@ class PubmedInteract:
             logger (logging.Logger): A logger instance for logging messages.
         """
         self.email = email
-        Entrez.email = email
         self.logger = logger
+
+    def _retry_request(self, func, operation):
+        return _retry_request(
+            func,
+            max_retries=MAX_RETRIES,
+            logger=self.logger,
+            operation=f"{self.__class__.__name__}.{operation}",
+        )
 
     def search_pubmed_by_title(self, title):
         """
@@ -382,29 +394,25 @@ class PubmedInteract:
         """
 
         def search():
-            result = _retry_request(
+            result = self._retry_request(
                 lambda: Entrez.read(
                     Entrez.esearch(
                         db="pubmed", term=f"{title}[TITLE]", sort="relevance"
                     )
                 ),
-                max_retries=MAX_RETRIES,
-                logger=self.logger,
                 operation="search_pubmed_by_title: Entrez.esearch exact title search",
             )
 
             if int(result["Count"]) == 0:
-                result = _retry_request(
+                result = self._retry_request(
                     lambda: Entrez.read(
                         Entrez.esearch(db="pubmed", term=f"{title}", sort="relevance")
                     ),
-                    max_retries=MAX_RETRIES,
-                    logger=self.logger,
                     operation="search_pubmed_by_title: Entrez.esearch general title search",
                 )
 
             if int(result["Count"]) == 0:
-                result = _retry_request(
+                result = self._retry_request(
                     lambda: Entrez.read(
                         Entrez.esearch(
                             db="pubmed",
@@ -412,8 +420,6 @@ class PubmedInteract:
                             sort="relevance",
                         )
                     ),
-                    max_retries=MAX_RETRIES,
-                    logger=self.logger,
                     operation=(
                         "search_pubmed_by_title: "
                         "Entrez.esearch first-half title search"
@@ -437,10 +443,8 @@ class PubmedInteract:
         search_result = self.search_pubmed_by_title(title)
         if int(search_result["Count"]) > 0:
             for id in search_result["IdList"]:
-                pubmed_result = _retry_request(
+                pubmed_result = self._retry_request(
                     lambda id=id: Entrez.read(Entrez.esummary(db="pubmed", id=id)),
-                    max_retries=MAX_RETRIES,
-                    logger=self.logger,
                     operation="lookup_pubmed_id_by_title: Entrez.esummary title match",
                 )
                 if title.lower() in pubmed_result[0]["Title"].lower():
@@ -450,12 +454,10 @@ class PubmedInteract:
         if pubmed_id == "":
             encoded_string = urllib.parse.quote(title)
             url = f"https://pubmed.ncbi.nlm.nih.gov/?term={encoded_string}"
-            pubmed_response = _retry_request(
+            pubmed_response = self._retry_request(
                 lambda: urllib.request.urlopen(
                     urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
                 ).read(),
-                max_retries=MAX_RETRIES,
-                logger=self.logger,
                 operation=(
                     "lookup_pubmed_id_by_title: " "urllib.request.urlopen search page"
                 ),
@@ -491,12 +493,10 @@ class PubmedInteract:
                     found = False
 
                     for id in pubmed_id_list:
-                        pubmed_result = _retry_request(
+                        pubmed_result = self._retry_request(
                             lambda id=id: Entrez.read(
                                 Entrez.esummary(db="pubmed", id=id)
                             ),
-                            max_retries=MAX_RETRIES,
-                            logger=self.logger,
                             operation=(
                                 "lookup_pubmed_id_by_title: "
                                 "Entrez.esummary displayed UID title match"
@@ -512,24 +512,20 @@ class PubmedInteract:
         return pubmed_id
 
     def fetch_pubmed_by_id(self, pubmed_id):
-        return _retry_request(
+        return self._retry_request(
             lambda: Entrez.read(Entrez.efetch(db="pubmed", id=pubmed_id)),
-            max_retries=MAX_RETRIES,
-            logger=self.logger,
             operation="fetch_pubmed_by_id: Entrez.efetch PubMed record",
         )
 
     def extract_url_to_full_article_by_id(self, pubmed_id):
 
         pubmed_url = f"https://pubmed.ncbi.nlm.nih.gov/{pubmed_id}/"
-        pubmed_article = _retry_request(
+        pubmed_article = self._retry_request(
             lambda: urllib.request.urlopen(
                 urllib.request.Request(
                     pubmed_url, headers={"User-Agent": "Mozilla/5.0"}
                 )
             ).read(),
-            max_retries=MAX_RETRIES,
-            logger=self.logger,
             operation=(
                 "extract_url_to_full_article_by_id: "
                 "urllib.request.urlopen PubMed page"
@@ -548,7 +544,7 @@ class PubmedInteract:
 
     def get_pmc_id_by_pubmed_id(self, pubmed_id):
         """Look up PubMedCentral ID from a PubMed ID"""
-        result = _retry_request(
+        result = self._retry_request(
             lambda: Entrez.read(
                 Entrez.elink(
                     dbfrom="pubmed",
@@ -558,8 +554,6 @@ class PubmedInteract:
                     retmode="text",
                 )
             ),
-            max_retries=MAX_RETRIES,
-            logger=self.logger,
             operation="get_pmc_id_by_pubmed_id: Entrez.elink PubMed-to-PMC lookup",
         )
         try:
@@ -583,14 +577,12 @@ class PubmedInteract:
                 f"https://pmc.ncbi.nlm.nih.gov/articles/{pmc_id}/?report=reader"
             )
             try:
-                article_complete = _retry_request(
+                article_complete = self._retry_request(
                     lambda: urllib.request.urlopen(
                         urllib.request.Request(
                             article_url, headers={"User-Agent": "Mozilla/5.0"}
                         )
                     ).read(),
-                    max_retries=MAX_RETRIES,
-                    logger=self.logger,
                     operation=(
                         "get_complete_article_by_pmc_id: "
                         "urllib.request.urlopen PMC article"
@@ -759,11 +751,34 @@ class PubmedInteract:
 # Pubmed Article Information Extraction
 
 
+def configure_logging(verbose):
+    formatted_datetime = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
+    log_directory = Path("./log")
+    log_directory.mkdir(parents=True, exist_ok=True)
+    logger_filename = (
+        log_directory
+        / f"{formatted_datetime}_UTC_mitochondrial_pubmed_article_extraction.log"
+    )
+    logging.basicConfig(
+        filename=logger_filename,
+        level=logging.DEBUG,
+        format="%(asctime)s UTC - %(levelname)s - %(message)s",
+    )
+    logger = logging.getLogger(__name__)
+    coloredlogs.install(
+        fmt="%(asctime)s [%(levelname)s] %(message)s",
+        level=logging.DEBUG if verbose else logging.INFO,
+        logger=logger,
+    )
+    return logger
+
+
 def extract_pubmed_article_information_by_title(
     args,
     output_directory: Path,
     nucleotide_metadata_df,
     pubmed_interact: PubmedInteract,
+    logger,
 ):
     """
     Main function to extract PubMed article metadata and full text based on titles from a CSV file.
@@ -783,36 +798,6 @@ def extract_pubmed_article_information_by_title(
         None
     """
     # email = args.mail
-    verbose = args.verbose
-    # file_path = args.filepath
-
-    ### STEP 1. Set up logger
-    # Configure the logging
-    formatted_datetime = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
-    if not os.path.isdir("./log"):
-        os.mkdir("./log")
-    logger_filename = (
-        f"./log/{formatted_datetime}_UTC_mitochondrial_pubmed_article_extraction.log"
-    )
-    logging.basicConfig(
-        filename=logger_filename,
-        level=logging.DEBUG,
-        format="%(asctime)s UTC - %(levelname)s - %(message)s",
-    )
-    log = logging.getLogger(__name__)
-    if verbose:
-        coloredlogs.install(
-            fmt="%(asctime)s [%(levelname)s] %(message)s",
-            level=logging.DEBUG,
-            logger=log,
-        )
-    else:
-        coloredlogs.install(
-            fmt="%(asctime)s [%(levelname)s] %(message)s",
-            level=logging.INFO,
-            logger=log,
-        )
-
     # STEP 2. Check if the file exists
     # if Path(file_path).exists():
     #     log.info("File exists.")
@@ -842,16 +827,16 @@ def extract_pubmed_article_information_by_title(
         item = {"Title": title}
         try:
             pubmed_id: str = ""
-            log.info(f"querying PubMed for {title}")
+            logger.info(f"querying PubMed for {title}")
             pubmed_id = pubmed_interact.lookup_pubmed_id_by_title(title)
             if pubmed_id == "":
                 item["Error"] = "No pubmed id available."
                 item["is_PMC"] = False
                 pubmed_metadata.loc[len(pubmed_metadata)] = item
-                log.info("No pubmed id available.")
+                logger.info("No pubmed id available.")
                 continue
 
-            log.info(f"pubmed_id: {pubmed_id}")
+            logger.info(f"pubmed_id: {pubmed_id}")
             item["Pubmed_ID"] = pubmed_id
             additional_pubmed_info = (
                 pubmed_interact.get_pubmed_informations_by_pubmed_id(pubmed_id)
@@ -861,7 +846,7 @@ def extract_pubmed_article_information_by_title(
             if "Error" not in item:
                 item["Error"] = ""
             item["Error"] = f"\n {ex}"
-            log.info(f"Exception occured: {ex}")
+            logger.error(f"[extract_pubmed_article_information_by_title] {ex}")
             continue
 
         pubmed_metadata.loc[len(pubmed_metadata)] = item
@@ -869,7 +854,7 @@ def extract_pubmed_article_information_by_title(
     pubmed_metadata.to_csv(
         output_directory / "DATA_pubmed_metadata.csv", header=True, index=False
     )
-    log.info("Pubmed ID extraction completed")
+    logger.info("Pubmed ID extraction completed")
 
     ### STEP 4. Extracting full text and matching paragraphs
     if len(pubmed_metadata) == 0:
@@ -879,7 +864,7 @@ def extract_pubmed_article_information_by_title(
         )
     pubmed_metadata = pubmed_metadata.fillna("")
 
-    log.info("Pubmed article extraction begins")
+    logger.info("Pubmed article extraction begins")
     data: list = []
     for row in pubmed_metadata[pubmed_metadata["Pubmed_ID"] != ""].itertuples():
         article_complete = None
@@ -895,7 +880,7 @@ def extract_pubmed_article_information_by_title(
             }
             pmc_id = pubmed_interact.get_pmc_id_by_pubmed_id(row.Pubmed_ID)
             if pmc_id != None:
-                log.info(
+                logger.info(
                     f"pmd_id: {row.Pubmed_ID} and pmc_id: {pmc_id} \nretrieving complete article from PubMedCentral"
                 )
                 record["pmc_id"] = pmc_id
@@ -903,7 +888,7 @@ def extract_pubmed_article_information_by_title(
                     pmc_id
                 )
             else:
-                log.info(f"No PMC Id available for pubmed id {row.Pubmed_ID}")
+                logger.info(f"No PMC Id available for pubmed id {row.Pubmed_ID}")
                 article_complete = None
 
             if article_complete:
@@ -921,16 +906,16 @@ def extract_pubmed_article_information_by_title(
                         )
                     )
                     if matching_paragraph_list != []:
-                        log.info(f"matched paragraphs for {record["title"]}")
+                        logger.info(f"matched paragraphs for {record['title']}")
                     record["MatchedParagraphs"] = matching_paragraph_list
                 except Exception as ex:
                     record["Error"] = f"Error encountered for {pmc_id} \n {ex}"
-                    log.critical(f"Error encountered for {pmc_id} \n {ex}")
+                    logger.critical(f"Error encountered for {pmc_id} \n {ex}")
             else:
                 record["Error"] = "No content available"
             data.append(record)
         except Exception as e:
-            log.critical(f"Exception occured: {e}")
+            logger.critical(f"Exception occured: {e}")
 
     matched_output_dict = [
         json_obj
@@ -956,6 +941,7 @@ def extract_pubmed_article_information_by_title(
 
 def main(args):
 
+    logger = configure_logging(args.verbose)
     directory = Path(args.output_directory)
 
     if not directory.exists():
@@ -971,10 +957,10 @@ def main(args):
 
     # Step 1: Fetching nucleotide summary records for Homo sapiens complete mitochondrial genome sequences
     nucleotide_metadata_info = extract_nucleotide_metadata_information(
-        args.output_directory
+        args.output_directory, logger
     )
     nucleotide_detailed_metadata_info = (
-        extract_nucleotide_detailed_metadata_information(args.output_directory)
+        extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
     )
 
     # nucleotide_detailed_metadata_info = pd.read_csv(
@@ -988,10 +974,9 @@ def main(args):
     # extract_sra_metadata_batch(args.output_directory)
 
     # Step 3: Pubmed article mining Mining
-    log = logging.getLogger(__name__)
-    pubmed_interact = PubmedInteract(email=args.mail, logger=log)
+    pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
     extract_pubmed_article_information_by_title(
-        args, directory, nucleotide_detailed_metadata_info, pubmed_interact
+        args, directory, nucleotide_detailed_metadata_info, pubmed_interact, logger
     )
 
 
