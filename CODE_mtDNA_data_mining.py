@@ -47,17 +47,35 @@ data_availability_list: list = [
 # ===============================#
 
 
-def _retry_request(func, logger, max_retries=MAX_RETRIES):
-    for attempt in range(max_retries):
+def _retry_request(func, max_retries, logger=None, operation=None):
+    logger = logger or logging.getLogger(__name__)
+    operation = operation or "network request"
+    method, separator, operation_name = operation.partition(": ")
+    context = f"[{method}] [{operation_name}]" if separator else f"[{operation}]"
+
+    for attempt in range(1, max_retries + 1):
         try:
             return func()
-        except (IncompleteRead, HTTPError, URLError, OSError) as e:
+        except HTTPError as e:
             logger.error(
-                f"Network error on attempt {attempt + 1}/{max_retries}: {e}"
+                f"{context} Network error on attempt " f"{attempt}/{max_retries}: {e}"
             )
-            if attempt == max_retries - 1:
+            if attempt == max_retries:
                 raise
-            time.sleep(2**attempt)
+            retry_after = e.headers.get("Retry-After") if e.headers else None
+            delay = (
+                int(retry_after)
+                if retry_after and retry_after.isdigit()
+                else 2 ** (attempt - 1)
+            )
+            time.sleep(delay)
+        except (IncompleteRead, URLError, OSError) as e:
+            logger.error(
+                f"{context} Network error on attempt " f"{attempt}/{max_retries}: {e}"
+            )
+            if attempt == max_retries:
+                raise
+            time.sleep(2 ** (attempt - 1))
 
 
 # Methods for fetching nucleotide summary records in batches
@@ -65,7 +83,9 @@ def fetch_batch(start, end, nucleotide_esearch_output):
     logger = logging.getLogger(__name__)
     return _retry_request(
         lambda: _fetch_nucleotide_batch(start, end, nucleotide_esearch_output),
-        logger,
+        max_retries=MAX_RETRIES,
+        logger=logger,
+        operation="fetch_batch: Entrez.efetch nucleotide GenBank batch",
     )
 
 
@@ -89,14 +109,21 @@ def extract_nucleotide_detailed_metadata_information(output_directory):
     search_term = """Homo sapiens[ORGN] AND complete genome[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] 
                     NOT (unverified OR Homo sp. Altai OR Denisova hominin OR neanderthalensis OR heidelbergensis OR consensus)"""
 
-    handle = Entrez.esearch(
-        db="Nucleotide",
-        term=search_term,
-        usehistory="y",
-        retmax=100000,  # Total count was: 62173 so, to access all UIDs, set retmax to 100000
+    nucleotide_esearch_output = _retry_request(
+        lambda: Entrez.read(
+            Entrez.esearch(
+                db="Nucleotide",
+                term=search_term,
+                usehistory="y",
+                retmax=100000,
+            )
+        ),
+        max_retries=MAX_RETRIES,
+        operation=(
+            "extract_nucleotide_detailed_metadata_information: "
+            "Entrez.esearch nucleotide records"
+        ),
     )
-
-    nucleotide_esearch_output = Entrez.read(handle)
 
     for start in range(0, len(nucleotide_esearch_output["IdList"]), batch_size):
         data_records = pd.DataFrame(
@@ -182,10 +209,15 @@ def fetch_nucleotide_summary_batch(start, end, nucleotide_esearch_output):
     batch_str = ",".join(batch)
 
     # Fetch summary data for the batch
-    fetch_handle = Entrez.esummary(db="nucleotide", id=batch_str, retmode="xml")
-    summary_data = Entrez.read(fetch_handle)
-    fetch_handle.close()
-    return summary_data
+    return _retry_request(
+        lambda: Entrez.read(
+            Entrez.esummary(db="nucleotide", id=batch_str, retmode="xml")
+        ),
+        max_retries=MAX_RETRIES,
+        operation=(
+            "fetch_nucleotide_summary_batch: " "Entrez.esummary nucleotide records"
+        ),
+    )
 
 
 def extract_nucleotide_metadata_information(output_directory):
@@ -197,14 +229,21 @@ def extract_nucleotide_metadata_information(output_directory):
     search_term = """Homo sapiens[ORGN] AND complete genome[TITLE] AND mitochondrion[FILT] AND 015400:016700[SLEN] 
                 NOT (unverified OR Homo sp. Altai OR Denisova hominin OR neanderthalensis OR heidelbergensis OR consensus)"""
 
-    handle = Entrez.esearch(
-        db="Nucleotide",
-        term=search_term,
-        usehistory="y",
-        retmax=100000,  # Total count was: 62173 so, to access all UIDs, set retmax to 100000
+    nucleotide_esearch_output = _retry_request(
+        lambda: Entrez.read(
+            Entrez.esearch(
+                db="Nucleotide",
+                term=search_term,
+                usehistory="y",
+                retmax=100000,
+            )
+        ),
+        max_retries=MAX_RETRIES,
+        operation=(
+            "extract_nucleotide_metadata_information: "
+            "Entrez.esearch nucleotide records"
+        ),
     )
-
-    nucleotide_esearch_output = Entrez.read(handle)
     summary_data_list = []
     try:
         for start in range(0, len(nucleotide_esearch_output["IdList"]), batch_size):
@@ -235,23 +274,29 @@ def fetch_sra_metadata_batch(start, end, sra_esearch_output):
     batch_str = ",".join(batch)
 
     # Fetch summary data for the batch
-    fetch_handle = Entrez.esummary(db="sra", id=batch_str, retmode="xml")
-    summary_data = Entrez.read(fetch_handle)
-    fetch_handle.close()
-    return summary_data
+    return _retry_request(
+        lambda: Entrez.read(Entrez.esummary(db="sra", id=batch_str, retmode="xml")),
+        max_retries=MAX_RETRIES,
+        operation="fetch_sra_metadata_batch: Entrez.esummary SRA records",
+    )
 
 
 def extract_sra_metadata_batch(output_directory):
     directory = Path(output_directory)
     sra_metadata_output_file_path = directory / "DATA_SRA_Summary_records.csv"
     search_term = """(human[organism] OR \"homo sapiens\"[organism]) AND (\"mitochondrial\"[title] or mitochondrion[TITLE])"""
-    search_handle = Entrez.esearch(
-        db="sra",
-        term=search_term,
-        usehistory="y",
-        retmax=100000,  # Total count was: 62173 so, to access all UIDs, set retmax to 100000
+    sra_esearch_output = _retry_request(
+        lambda: Entrez.read(
+            Entrez.esearch(
+                db="sra",
+                term=search_term,
+                usehistory="y",
+                retmax=100000,
+            )
+        ),
+        max_retries=MAX_RETRIES,
+        operation="extract_sra_metadata_batch: Entrez.esearch SRA records",
     )
-    sra_esearch_output = Entrez.read(search_handle)
     summary_data_list = []
     try:
         for start in range(0, len(sra_esearch_output["IdList"]), batch_size):
@@ -310,8 +355,6 @@ class LXMLops:
 
 
 class PubmedInteract:
-    MAX_RETRIES = MAX_RETRIES
-
     def __init__(self, email, logger: logging.Logger):
         """
         Initializes the instance with the provided email and logger.
@@ -323,9 +366,6 @@ class PubmedInteract:
         self.email = email
         Entrez.email = email
         self.logger = logger
-
-    def _retry_request(self, func):
-        return _retry_request(func, self.logger, self.MAX_RETRIES)
 
     def search_pubmed_by_title(self, title):
         """
@@ -340,33 +380,44 @@ class PubmedInteract:
         Returns:
         dict: A dictionary containing the search results from PubMed.
         """
+
         def search():
-            result = self._retry_request(
+            result = _retry_request(
                 lambda: Entrez.read(
                     Entrez.esearch(
                         db="pubmed", term=f"{title}[TITLE]", sort="relevance"
                     )
-                )
+                ),
+                max_retries=MAX_RETRIES,
+                logger=self.logger,
+                operation="search_pubmed_by_title: Entrez.esearch exact title search",
             )
 
             if int(result["Count"]) == 0:
-                result = self._retry_request(
+                result = _retry_request(
                     lambda: Entrez.read(
-                        Entrez.esearch(
-                            db="pubmed", term=f"{title}", sort="relevance"
-                        )
-                    )
+                        Entrez.esearch(db="pubmed", term=f"{title}", sort="relevance")
+                    ),
+                    max_retries=MAX_RETRIES,
+                    logger=self.logger,
+                    operation="search_pubmed_by_title: Entrez.esearch general title search",
                 )
 
             if int(result["Count"]) == 0:
-                result = self._retry_request(
+                result = _retry_request(
                     lambda: Entrez.read(
                         Entrez.esearch(
                             db="pubmed",
                             term=f"{title[: int(len(title)/2)]}",
                             sort="relevance",
                         )
-                    )
+                    ),
+                    max_retries=MAX_RETRIES,
+                    logger=self.logger,
+                    operation=(
+                        "search_pubmed_by_title: "
+                        "Entrez.esearch first-half title search"
+                    ),
                 )
 
             return result
@@ -386,8 +437,11 @@ class PubmedInteract:
         search_result = self.search_pubmed_by_title(title)
         if int(search_result["Count"]) > 0:
             for id in search_result["IdList"]:
-                pubmed_result = self._retry_request(
-                    lambda id=id: Entrez.read(Entrez.esummary(db="pubmed", id=id))
+                pubmed_result = _retry_request(
+                    lambda id=id: Entrez.read(Entrez.esummary(db="pubmed", id=id)),
+                    max_retries=MAX_RETRIES,
+                    logger=self.logger,
+                    operation="lookup_pubmed_id_by_title: Entrez.esummary title match",
                 )
                 if title.lower() in pubmed_result[0]["Title"].lower():
                     pubmed_id = pubmed_result[0]["Id"]
@@ -396,12 +450,15 @@ class PubmedInteract:
         if pubmed_id == "":
             encoded_string = urllib.parse.quote(title)
             url = f"https://pubmed.ncbi.nlm.nih.gov/?term={encoded_string}"
-            pubmed_response = self._retry_request(
+            pubmed_response = _retry_request(
                 lambda: urllib.request.urlopen(
-                    urllib.request.Request(
-                        url, headers={"User-Agent": "Mozilla/5.0"}
-                    )
-                ).read()
+                    urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+                ).read(),
+                max_retries=MAX_RETRIES,
+                logger=self.logger,
+                operation=(
+                    "lookup_pubmed_id_by_title: " "urllib.request.urlopen search page"
+                ),
             )
             pubmed_soup = bs4.BeautifulSoup(pubmed_response, "html.parser")
 
@@ -434,10 +491,16 @@ class PubmedInteract:
                     found = False
 
                     for id in pubmed_id_list:
-                        pubmed_result = self._retry_request(
+                        pubmed_result = _retry_request(
                             lambda id=id: Entrez.read(
                                 Entrez.esummary(db="pubmed", id=id)
-                            )
+                            ),
+                            max_retries=MAX_RETRIES,
+                            logger=self.logger,
+                            operation=(
+                                "lookup_pubmed_id_by_title: "
+                                "Entrez.esummary displayed UID title match"
+                            ),
                         )
                         if title.lower() in pubmed_result[0]["Title"].lower():
                             found = True
@@ -449,19 +512,28 @@ class PubmedInteract:
         return pubmed_id
 
     def fetch_pubmed_by_id(self, pubmed_id):
-        return self._retry_request(
-            lambda: Entrez.read(Entrez.efetch(db="pubmed", id=pubmed_id))
+        return _retry_request(
+            lambda: Entrez.read(Entrez.efetch(db="pubmed", id=pubmed_id)),
+            max_retries=MAX_RETRIES,
+            logger=self.logger,
+            operation="fetch_pubmed_by_id: Entrez.efetch PubMed record",
         )
 
     def extract_url_to_full_article_by_id(self, pubmed_id):
 
         pubmed_url = f"https://pubmed.ncbi.nlm.nih.gov/{pubmed_id}/"
-        pubmed_article = self._retry_request(
+        pubmed_article = _retry_request(
             lambda: urllib.request.urlopen(
                 urllib.request.Request(
                     pubmed_url, headers={"User-Agent": "Mozilla/5.0"}
                 )
-            ).read()
+            ).read(),
+            max_retries=MAX_RETRIES,
+            logger=self.logger,
+            operation=(
+                "extract_url_to_full_article_by_id: "
+                "urllib.request.urlopen PubMed page"
+            ),
         )
         pubmed_soup = bs4.BeautifulSoup(pubmed_article, "html.parser")
 
@@ -476,7 +548,7 @@ class PubmedInteract:
 
     def get_pmc_id_by_pubmed_id(self, pubmed_id):
         """Look up PubMedCentral ID from a PubMed ID"""
-        result = self._retry_request(
+        result = _retry_request(
             lambda: Entrez.read(
                 Entrez.elink(
                     dbfrom="pubmed",
@@ -485,7 +557,10 @@ class PubmedInteract:
                     id=pubmed_id,
                     retmode="text",
                 )
-            )
+            ),
+            max_retries=MAX_RETRIES,
+            logger=self.logger,
+            operation="get_pmc_id_by_pubmed_id: Entrez.elink PubMed-to-PMC lookup",
         )
         try:
             pmcid = f"PMC{result[0]['LinkSetDb'][0]['Link'][0]['Id']}"
@@ -508,12 +583,18 @@ class PubmedInteract:
                 f"https://pmc.ncbi.nlm.nih.gov/articles/{pmc_id}/?report=reader"
             )
             try:
-                article_complete = self._retry_request(
+                article_complete = _retry_request(
                     lambda: urllib.request.urlopen(
                         urllib.request.Request(
                             article_url, headers={"User-Agent": "Mozilla/5.0"}
                         )
-                    ).read()
+                    ).read(),
+                    max_retries=MAX_RETRIES,
+                    logger=self.logger,
+                    operation=(
+                        "get_complete_article_by_pmc_id: "
+                        "urllib.request.urlopen PMC article"
+                    ),
                 )
             except (HTTPError, URLError, OSError):
                 self.logger.warning(f"\t {pmc_id}: Retrieval unsuccessful")
@@ -889,16 +970,16 @@ def main(args):
     Entrez.api_key = API_KEY
 
     # Step 1: Fetching nucleotide summary records for Homo sapiens complete mitochondrial genome sequences
-    # nucleotide_metadata_info = extract_nucleotide_metadata_information(
-    #     args.output_directory
-    # )
-    # nucleotide_detailed_metadata_info = (
-    #     extract_nucleotide_detailed_metadata_information(args.output_directory)
-    # )
-
-    nucleotide_detailed_metadata_info = pd.read_csv(
-        "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
+    nucleotide_metadata_info = extract_nucleotide_metadata_information(
+        args.output_directory
     )
+    nucleotide_detailed_metadata_info = (
+        extract_nucleotide_detailed_metadata_information(args.output_directory)
+    )
+
+    # nucleotide_detailed_metadata_info = pd.read_csv(
+    #     "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
+    # )
     # nucleotide_metadata_info = pd.read_csv(
     #     "test_output/DATA_Nucleotide_Summary_records.csv"
     # )
