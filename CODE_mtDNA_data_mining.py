@@ -5,9 +5,11 @@ import json
 import logging
 import re
 import time
+import unicodedata
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
+from difflib import SequenceMatcher
 from http.client import IncompleteRead
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -61,12 +63,17 @@ def _retry_request(func, max_retries, logger=None, operation=None):
             )
             if attempt == max_retries:
                 raise
-            retry_after = e.headers.get("Retry-After") if e.headers else None
-            delay = (
-                int(retry_after)
-                if retry_after and retry_after.isdigit()
-                else 2 ** (attempt - 1)
-            )
+            if e.code == 429:
+                retry_after = e.headers.get("Retry-After") if e.headers else None
+
+                if retry_after and retry_after.isdigit():
+                    delay = max(int(retry_after), 90)
+                else:
+                    delay = 90 * attempt
+            else:
+                delay = 2 ** (attempt - 1)
+
+            logger.info(f"{context} Waiting {delay} seconds before retrying")
             time.sleep(delay)
         except (IncompleteRead, URLError, OSError) as e:
             logger.error(
@@ -75,6 +82,28 @@ def _retry_request(func, max_retries, logger=None, operation=None):
             if attempt == max_retries:
                 raise
             time.sleep(2 ** (attempt - 1))
+
+
+def configure_logging(verbose):
+    formatted_datetime = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
+    log_directory = Path("./log")
+    log_directory.mkdir(parents=True, exist_ok=True)
+    logger_filename = (
+        log_directory
+        / f"{formatted_datetime}_UTC_mitochondrial_pubmed_article_extraction.log"
+    )
+    logging.basicConfig(
+        filename=logger_filename,
+        level=logging.DEBUG,
+        format="%(asctime)s UTC - %(levelname)s - %(message)s",
+    )
+    logger = logging.getLogger(__name__)
+    coloredlogs.install(
+        fmt="%(asctime)s [%(levelname)s] %(message)s",
+        level=logging.DEBUG if verbose else logging.INFO,
+        logger=logger,
+    )
+    return logger
 
 
 # Methods for fetching nucleotide summary records in batches
@@ -379,6 +408,59 @@ class PubmedInteract:
             operation=f"{self.__class__.__name__}.{operation}",
         )
 
+    def build_title_query(self, title):
+        # Extract words while ignoring punctuation
+        words = re.findall(r"\b[\w]+\b", title)
+
+        # PubMed stop words that don't help identify the article
+        stop_words = {
+            "a",
+            "an",
+            "and",
+            "are",
+            "as",
+            "at",
+            "be",
+            "by",
+            "for",
+            "from",
+            "in",
+            "is",
+            "of",
+            "on",
+            "or",
+            "the",
+            "to",
+            "with",
+        }
+
+        words = [word for word in words if word.lower() not in stop_words]
+
+        return " AND ".join(f'"{word}"[Title]' for word in words)
+
+    def _normalize_title(self, title):
+        title = unicodedata.normalize("NFKC", title)
+        title = title.lower()
+
+        # Treat different quotation marks as equivalent by removing punctuation.
+        title = re.sub(r"[^\w\s]", " ", title)
+
+        # Collapse multiple spaces.
+        title = re.sub(r"\s+", " ", title).strip()
+
+        return title
+
+    def _calculate_title_similarity(self, title1, title2):
+        """
+        Calculate normalized similarity between two article titles.
+
+        Returns a value between 0.0 and 1.0.
+        """
+        # normalized_title1 = self._normalize_title(title1)
+        # normalized_title2 = self._normalize_title(title2)
+
+        return SequenceMatcher(None, title1, title2).ratio()
+
     def search_pubmed_by_title(self, title):
         """
         Search PubMed for articles by title.
@@ -394,21 +476,21 @@ class PubmedInteract:
         """
 
         def search():
+            term = self.build_title_query(title)
             result = self._retry_request(
                 lambda: Entrez.read(
-                    Entrez.esearch(
-                        db="pubmed", term=f"{title}[TITLE]", sort="relevance"
-                    )
+                    Entrez.esearch(db="pubmed", term=term, sort="relevance")
                 ),
-                operation="search_pubmed_by_title: Entrez.esearch exact title search",
+                operation="search_pubmed_by_title: Entrez.esearch title-term search",
             )
 
             if int(result["Count"]) == 0:
+                term = self._normalize_title(title)
                 result = self._retry_request(
                     lambda: Entrez.read(
-                        Entrez.esearch(db="pubmed", term=f"{title}", sort="relevance")
+                        Entrez.esearch(db="pubmed", term=f"{term}", sort="relevance")
                     ),
-                    operation="search_pubmed_by_title: Entrez.esearch general title search",
+                    operation="search_pubmed_by_title: Entrez.esearch normalized title search",
                 )
 
             if int(result["Count"]) == 0:
@@ -442,14 +524,36 @@ class PubmedInteract:
         pubmed_id: str = ""
         search_result = self.search_pubmed_by_title(title)
         if int(search_result["Count"]) > 0:
+            exact_match_found = False
+            best_match_id = None
+            best_similarity = 0.0
             for id in search_result["IdList"]:
                 pubmed_result = self._retry_request(
                     lambda id=id: Entrez.read(Entrez.esummary(db="pubmed", id=id)),
                     operation="lookup_pubmed_id_by_title: Entrez.esummary title match",
                 )
-                if title.lower() in pubmed_result[0]["Title"].lower():
+
+                normalized_title = self._normalize_title(title)
+                normalized_pubmed_title = self._normalize_title(
+                    pubmed_result[0]["Title"]
+                )
+
+                if normalized_title == normalized_pubmed_title:
                     pubmed_id = pubmed_result[0]["Id"]
+                    exact_match_found = True
                     break
+
+                similarity = self._calculate_title_similarity(
+                    normalized_title, normalized_pubmed_title
+                )
+
+                if similarity > best_similarity:
+                    best_similarity = similarity
+                    best_match_id = pubmed_result[0]["Id"]
+
+            # 3. Use similarity only if no exact match was found
+            if not exact_match_found and best_similarity >= 0.90:
+                pubmed_id = best_match_id
 
         if pubmed_id == "":
             encoded_string = urllib.parse.quote(title)
@@ -752,28 +856,6 @@ class PubmedInteract:
 # Pubmed Article Information Extraction
 
 
-def configure_logging(verbose):
-    formatted_datetime = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
-    log_directory = Path("./log")
-    log_directory.mkdir(parents=True, exist_ok=True)
-    logger_filename = (
-        log_directory
-        / f"{formatted_datetime}_UTC_mitochondrial_pubmed_article_extraction.log"
-    )
-    logging.basicConfig(
-        filename=logger_filename,
-        level=logging.DEBUG,
-        format="%(asctime)s UTC - %(levelname)s - %(message)s",
-    )
-    logger = logging.getLogger(__name__)
-    coloredlogs.install(
-        fmt="%(asctime)s [%(levelname)s] %(message)s",
-        level=logging.DEBUG if verbose else logging.INFO,
-        logger=logger,
-    )
-    return logger
-
-
 def extract_pubmed_article_information_by_title(
     args,
     output_directory: Path,
@@ -808,7 +890,13 @@ def extract_pubmed_article_information_by_title(
 
     # data_frame = pd.read_csv(file_path)
     title_list = nucleotide_metadata_df["TITLE"].dropna().unique()
-
+    # title_list = [
+    #     title
+    #     for title in title_list
+    #     if title
+    #     == "The genetic landscape of Mediterranean North African populations through complete mtDNAs"
+    #     # == "Genomic evidence supports the 'long chronology' for the peopling of Sahul"
+    # ]
     pubmed_metadata = pd.DataFrame(
         columns=[
             "Pubmed_ID",
