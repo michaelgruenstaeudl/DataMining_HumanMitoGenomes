@@ -447,17 +447,38 @@ class PubmedInteract:
         return pubmed_id
 
     def fetch_pubmed_by_id(self, pubmed_id):
-        pubmed_efetch_handle = Entrez.efetch(db="pubmed", id=pubmed_id)
-        pubmed_result = Entrez.read(pubmed_efetch_handle)
-        return pubmed_result
+        for attempt in range(MAX_RETRIES):
+            try:
+                pubmed_efetch_handle = Entrez.efetch(db="pubmed", id=pubmed_id)
+                pubmed_result = Entrez.read(pubmed_efetch_handle)
+                return pubmed_result
+            except (IncompleteRead, HTTPError, URLError, OSError) as e:
+                self.logger.error(
+                    f"Network error on attempt {attempt + 1}/{MAX_RETRIES}: {e}"
+                )
+                if attempt == MAX_RETRIES - 1:
+                    raise
+                # Exponential backoff (wait 2s, 4s, 8s...)
+                time.sleep(2**attempt)
 
     def extract_url_to_full_article_by_id(self, pubmed_id):
 
         pubmed_url = f"https://pubmed.ncbi.nlm.nih.gov/{pubmed_id}/"
-        pubmed_handle = urllib.request.Request(
-            pubmed_url, headers={"User-Agent": "Mozilla/5.0"}
-        )
-        pubmed_article = urllib.request.urlopen(pubmed_handle).read()
+        for attempt in range(MAX_RETRIES):
+            try:
+                pubmed_handle = urllib.request.Request(
+                    pubmed_url, headers={"User-Agent": "Mozilla/5.0"}
+                )
+                pubmed_article = urllib.request.urlopen(pubmed_handle).read()
+                break
+            except (IncompleteRead, HTTPError, URLError, OSError) as e:
+                self.logger.error(
+                    f"Network error on attempt {attempt + 1}/{MAX_RETRIES}: {e}"
+                )
+                if attempt == MAX_RETRIES - 1:
+                    raise
+                # Exponential backoff (wait 2s, 4s, 8s...)
+                time.sleep(2**attempt)
         pubmed_soup = bs4.BeautifulSoup(pubmed_article, "html.parser")
 
         full_text_link_div = pubmed_soup.find("div", class_="full-text-links-list")
@@ -471,15 +492,27 @@ class PubmedInteract:
 
     def get_pmc_id_by_pubmed_id(self, pubmed_id):
         """Look up PubMedCentral ID from a PubMed ID"""
-        handle = Entrez.elink(
-            dbfrom="pubmed",
-            db="pmc",
-            linkname="pubmed_pmc",
-            id=pubmed_id,
-            retmode="text",
-        )
+        for attempt in range(MAX_RETRIES):
+            try:
+                handle = Entrez.elink(
+                    dbfrom="pubmed",
+                    db="pmc",
+                    linkname="pubmed_pmc",
+                    id=pubmed_id,
+                    retmode="text",
+                )
 
-        result = Entrez.read(handle)
+                result = Entrez.read(handle)
+                handle.close()
+                break
+            except (IncompleteRead, HTTPError, URLError, OSError) as e:
+                self.logger.error(
+                    f"Network error on attempt {attempt+1}/{MAX_RETRIES}: {e}"
+                )
+                if attempt == MAX_RETRIES - 1:
+                    raise
+                # Exponential backoff (wait 2s, 4s, 8s...)
+                time.sleep(2**attempt)
         try:
             pmcid = f"PMC{result[0]['LinkSetDb'][0]['Link'][0]['Id']}"
         except (IndexError, KeyError):
