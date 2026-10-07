@@ -297,6 +297,8 @@ class LXMLops:
 
 
 class PubmedInteract:
+    MAX_RETRIES = MAX_RETRIES
+
     def __init__(self, email, logger: logging.Logger):
         """
         Initializes the instance with the provided email and logger.
@@ -308,6 +310,18 @@ class PubmedInteract:
         self.email = email
         Entrez.email = email
         self.logger = logger
+
+    def _retry_request(self, func):
+        for attempt in range(self.MAX_RETRIES):
+            try:
+                return func()
+            except (IncompleteRead, HTTPError, URLError, OSError) as e:
+                self.logger.error(
+                    f"Network error on attempt {attempt + 1}/{self.MAX_RETRIES}: {e}"
+                )
+                if attempt == self.MAX_RETRIES - 1:
+                    raise
+                time.sleep(2**attempt)
 
     def search_pubmed_by_title(self, title):
         """
@@ -322,36 +336,38 @@ class PubmedInteract:
         Returns:
         dict: A dictionary containing the search results from PubMed.
         """
-        for attempt in range(MAX_RETRIES):
-            try:
-                search_query = Entrez.esearch(
-                    db="pubmed", term=f"{title}[TITLE]", sort="relevance"
-                )
-                result = Entrez.read(search_query)
-
-                if int(result["Count"]) == 0:
-                    search_query = Entrez.esearch(
-                        db="pubmed", term=f"{title}", sort="relevance"
+        def search():
+            result = self._retry_request(
+                lambda: Entrez.read(
+                    Entrez.esearch(
+                        db="pubmed", term=f"{title}[TITLE]", sort="relevance"
                     )
-                    result = Entrez.read(search_query)
-
-                if int(result["Count"]) == 0:
-                    search_query = Entrez.esearch(
-                        db="pubmed",
-                        term=f"{title[: int(len(title)/2)]}",
-                        sort="relevance",
-                    )
-                    result = Entrez.read(search_query)
-
-                return result
-            except (IncompleteRead, HTTPError, URLError, OSError) as e:
-                self.logger.error(
-                    f"Network error on attempt {attempt}/{MAX_RETRIES}: {e}"
                 )
-                if attempt == MAX_RETRIES - 1:
-                    raise
-                # Exponential backoff (wait 2s, 4s, 8s...)
-                time.sleep(2**attempt)
+            )
+
+            if int(result["Count"]) == 0:
+                result = self._retry_request(
+                    lambda: Entrez.read(
+                        Entrez.esearch(
+                            db="pubmed", term=f"{title}", sort="relevance"
+                        )
+                    )
+                )
+
+            if int(result["Count"]) == 0:
+                result = self._retry_request(
+                    lambda: Entrez.read(
+                        Entrez.esearch(
+                            db="pubmed",
+                            term=f"{title[: int(len(title)/2)]}",
+                            sort="relevance",
+                        )
+                    )
+                )
+
+            return result
+
+        return search()
 
     def lookup_pubmed_id_by_title(self, title):
         """
@@ -366,8 +382,9 @@ class PubmedInteract:
         search_result = self.search_pubmed_by_title(title)
         if int(search_result["Count"]) > 0:
             for id in search_result["IdList"]:
-                fetch_handle = Entrez.esummary(db="pubmed", id=id)
-                pubmed_result = Entrez.read(fetch_handle)
+                pubmed_result = self._retry_request(
+                    lambda id=id: Entrez.read(Entrez.esummary(db="pubmed", id=id))
+                )
                 if title.lower() in pubmed_result[0]["Title"].lower():
                     pubmed_id = pubmed_result[0]["Id"]
                     break
@@ -375,30 +392,18 @@ class PubmedInteract:
         if pubmed_id == "":
             encoded_string = urllib.parse.quote(title)
             url = f"https://pubmed.ncbi.nlm.nih.gov/?term={encoded_string}"
-            pubmed_citation_tag = None
-            # retrries when NCBI deny the request because of too many requests
-            for attempt in range(MAX_RETRIES):
-                try:
-                    bioc_handle = urllib.request.Request(
+            pubmed_response = self._retry_request(
+                lambda: urllib.request.urlopen(
+                    urllib.request.Request(
                         url, headers={"User-Agent": "Mozilla/5.0"}
                     )
-                    pubmed_response = urllib.request.urlopen(bioc_handle).read()
+                ).read()
+            )
+            pubmed_soup = bs4.BeautifulSoup(pubmed_response, "html.parser")
 
-                    pubmed_soup = bs4.BeautifulSoup(pubmed_response, "html.parser")
-
-                    pubmed_citation_tag = pubmed_soup.find(
-                        "meta", attrs={"name": "citation_pmid"}
-                    )
-                    break  # Exit the loop if successful
-                except (IncompleteRead, HTTPError, URLError, OSError) as e:
-                    self.logger.error(
-                        f"Network error on attempt {attempt}/{MAX_RETRIES}: {e}"
-                    )
-                    if attempt == MAX_RETRIES - 1:
-                        raise
-                    # Exponential backoff (wait 2s, 4s, 8s...)
-                    time.sleep(2**attempt)
-
+            pubmed_citation_tag = pubmed_soup.find(
+                "meta", attrs={"name": "citation_pmid"}
+            )
             if pubmed_citation_tag:
                 pubmed_id = pubmed_citation_tag["content"]
 
@@ -425,60 +430,35 @@ class PubmedInteract:
                     found = False
 
                     for id in pubmed_id_list:
-                        for attempt in range(MAX_RETRIES):
-                            try:
-                                fetch_handle = Entrez.esummary(db="pubmed", id=id)
-                                pubmed_result = Entrez.read(fetch_handle)
-                                if title.lower() in pubmed_result[0]["Title"].lower():
-                                    found = True
-                                    pubmed_id = pubmed_result[0]["Id"]
-                                    break
-                            except (IncompleteRead, HTTPError, URLError, OSError) as e:
-                                print(
-                                    f"Network error on attempt {attempt}/{MAX_RETRIES}: {e}"
-                                )
-                                if attempt == MAX_RETRIES - 1:
-                                    raise
-                                # Exponential backoff (wait 2s, 4s, 8s...)
-                                time.sleep(2**attempt)
+                        pubmed_result = self._retry_request(
+                            lambda id=id: Entrez.read(
+                                Entrez.esummary(db="pubmed", id=id)
+                            )
+                        )
+                        if title.lower() in pubmed_result[0]["Title"].lower():
+                            found = True
+                            pubmed_id = pubmed_result[0]["Id"]
+                            break
 
                         if found:
                             break
         return pubmed_id
 
     def fetch_pubmed_by_id(self, pubmed_id):
-        for attempt in range(MAX_RETRIES):
-            try:
-                pubmed_efetch_handle = Entrez.efetch(db="pubmed", id=pubmed_id)
-                pubmed_result = Entrez.read(pubmed_efetch_handle)
-                return pubmed_result
-            except (IncompleteRead, HTTPError, URLError, OSError) as e:
-                self.logger.error(
-                    f"Network error on attempt {attempt + 1}/{MAX_RETRIES}: {e}"
-                )
-                if attempt == MAX_RETRIES - 1:
-                    raise
-                # Exponential backoff (wait 2s, 4s, 8s...)
-                time.sleep(2**attempt)
+        return self._retry_request(
+            lambda: Entrez.read(Entrez.efetch(db="pubmed", id=pubmed_id))
+        )
 
     def extract_url_to_full_article_by_id(self, pubmed_id):
 
         pubmed_url = f"https://pubmed.ncbi.nlm.nih.gov/{pubmed_id}/"
-        for attempt in range(MAX_RETRIES):
-            try:
-                pubmed_handle = urllib.request.Request(
+        pubmed_article = self._retry_request(
+            lambda: urllib.request.urlopen(
+                urllib.request.Request(
                     pubmed_url, headers={"User-Agent": "Mozilla/5.0"}
                 )
-                pubmed_article = urllib.request.urlopen(pubmed_handle).read()
-                break
-            except (IncompleteRead, HTTPError, URLError, OSError) as e:
-                self.logger.error(
-                    f"Network error on attempt {attempt + 1}/{MAX_RETRIES}: {e}"
-                )
-                if attempt == MAX_RETRIES - 1:
-                    raise
-                # Exponential backoff (wait 2s, 4s, 8s...)
-                time.sleep(2**attempt)
+            ).read()
+        )
         pubmed_soup = bs4.BeautifulSoup(pubmed_article, "html.parser")
 
         full_text_link_div = pubmed_soup.find("div", class_="full-text-links-list")
@@ -492,27 +472,17 @@ class PubmedInteract:
 
     def get_pmc_id_by_pubmed_id(self, pubmed_id):
         """Look up PubMedCentral ID from a PubMed ID"""
-        for attempt in range(MAX_RETRIES):
-            try:
-                handle = Entrez.elink(
+        result = self._retry_request(
+            lambda: Entrez.read(
+                Entrez.elink(
                     dbfrom="pubmed",
                     db="pmc",
                     linkname="pubmed_pmc",
                     id=pubmed_id,
                     retmode="text",
                 )
-
-                result = Entrez.read(handle)
-                handle.close()
-                break
-            except (IncompleteRead, HTTPError, URLError, OSError) as e:
-                self.logger.error(
-                    f"Network error on attempt {attempt+1}/{MAX_RETRIES}: {e}"
-                )
-                if attempt == MAX_RETRIES - 1:
-                    raise
-                # Exponential backoff (wait 2s, 4s, 8s...)
-                time.sleep(2**attempt)
+            )
+        )
         try:
             pmcid = f"PMC{result[0]['LinkSetDb'][0]['Link'][0]['Id']}"
         except (IndexError, KeyError):
@@ -524,7 +494,6 @@ class PubmedInteract:
         """
         Extract complete article from pubmed central based on PMC ID passed
         """
-        article_complete = None
         if pmc_id != None:
             # article_url = f"https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/{pmc_id}/unicode"
             # url_handle = urllib.request.urlopen(article_url)
@@ -535,13 +504,16 @@ class PubmedInteract:
                 f"https://pmc.ncbi.nlm.nih.gov/articles/{pmc_id}/?report=reader"
             )
             try:
-                url_handle = urllib.request.Request(
-                    article_url, headers={"User-Agent": "Mozilla/5.0"}
+                article_complete = self._retry_request(
+                    lambda: urllib.request.urlopen(
+                        urllib.request.Request(
+                            article_url, headers={"User-Agent": "Mozilla/5.0"}
+                        )
+                    ).read()
                 )
-                article_complete = urllib.request.urlopen(url_handle).read()
             except (HTTPError, URLError, OSError):
                 self.logger.warning(f"\t {pmc_id}: Retrieval unsuccessful")
-                article_complete = None
+                return None
 
         else:
             self.logger.warning("No PMC Id available")
