@@ -1,7 +1,6 @@
 __version__ = "b_thapamagar@mail.fhsu.edu|2026-05-10"
 
 import argparse
-import datetime
 import json
 import logging
 import os
@@ -9,6 +8,7 @@ import re
 import time
 import urllib.parse
 import urllib.request
+from datetime import datetime, timezone
 from http.client import IncompleteRead
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -322,25 +322,36 @@ class PubmedInteract:
         Returns:
         dict: A dictionary containing the search results from PubMed.
         """
+        for attempt in range(MAX_RETRIES):
+            try:
+                search_query = Entrez.esearch(
+                    db="pubmed", term=f"{title}[TITLE]", sort="relevance"
+                )
+                result = Entrez.read(search_query)
 
-        search_query = Entrez.esearch(
-            db="pubmed", term=f"{title}[TITLE]", sort="relevance"
-        )
-        result = Entrez.read(search_query)
+                if int(result["Count"]) == 0:
+                    search_query = Entrez.esearch(
+                        db="pubmed", term=f"{title}", sort="relevance"
+                    )
+                    result = Entrez.read(search_query)
 
-        if int(result["Count"]) == 0:
-            search_query = Entrez.esearch(
-                db="pubmed", term=f"{title}", sort="relevance"
-            )
-            result = Entrez.read(search_query)
+                if int(result["Count"]) == 0:
+                    search_query = Entrez.esearch(
+                        db="pubmed",
+                        term=f"{title[: int(len(title)/2)]}",
+                        sort="relevance",
+                    )
+                    result = Entrez.read(search_query)
 
-        if int(result["Count"]) == 0:
-            search_query = Entrez.esearch(
-                db="pubmed", term=f"{title[: int(len(title)/2)]}", sort="relevance"
-            )
-            result = Entrez.read(search_query)
-
-        return result
+                return result
+            except (IncompleteRead, HTTPError, URLError, OSError) as e:
+                self.logger.error(
+                    f"Network error on attempt {attempt}/{MAX_RETRIES}: {e}"
+                )
+                if attempt == MAX_RETRIES - 1:
+                    raise
+                # Exponential backoff (wait 2s, 4s, 8s...)
+                time.sleep(2**attempt)
 
     def lookup_pubmed_id_by_title(self, title):
         """
@@ -364,16 +375,29 @@ class PubmedInteract:
         if pubmed_id == "":
             encoded_string = urllib.parse.quote(title)
             url = f"https://pubmed.ncbi.nlm.nih.gov/?term={encoded_string}"
-            bioc_handle = urllib.request.Request(
-                url, headers={"User-Agent": "Mozilla/5.0"}
-            )
-            pubmed_response = urllib.request.urlopen(bioc_handle).read()
+            pubmed_citation_tag = None
+            # retrries when NCBI deny the request because of too many requests
+            for attempt in range(MAX_RETRIES):
+                try:
+                    bioc_handle = urllib.request.Request(
+                        url, headers={"User-Agent": "Mozilla/5.0"}
+                    )
+                    pubmed_response = urllib.request.urlopen(bioc_handle).read()
 
-            pubmed_soup = bs4.BeautifulSoup(pubmed_response, "html.parser")
+                    pubmed_soup = bs4.BeautifulSoup(pubmed_response, "html.parser")
 
-            pubmed_citation_tag = pubmed_soup.find(
-                "meta", attrs={"name": "citation_pmid"}
-            )
+                    pubmed_citation_tag = pubmed_soup.find(
+                        "meta", attrs={"name": "citation_pmid"}
+                    )
+                    break  # Exit the loop if successful
+                except (IncompleteRead, HTTPError, URLError, OSError) as e:
+                    self.logger.error(
+                        f"Network error on attempt {attempt}/{MAX_RETRIES}: {e}"
+                    )
+                    if attempt == MAX_RETRIES - 1:
+                        raise
+                    # Exponential backoff (wait 2s, 4s, 8s...)
+                    time.sleep(2**attempt)
 
             if pubmed_citation_tag:
                 pubmed_id = pubmed_citation_tag["content"]
@@ -386,12 +410,10 @@ class PubmedInteract:
                 for docsum_tag in matching_citation_tag_list:
                     a_tag = docsum_tag.find(name="a", attrs={"class": "docsum-title"})
                     docsum_title = "".join(a_tag.stripped_strings)
-                    if title in docsum_title:
-                        try:
-                            pubmed_id = a_tag["data-ga-label"]
+                    if title in docsum_title and a_tag is not None:
+                        pubmed_id = a_tag.get("data-ga-label", "")
+                        if pubmed_id:
                             break
-                        except Exception as ex:
-                            pubmed_id = ""
 
             if pubmed_id == "":
                 displayed_uids_tag = pubmed_soup.find(
@@ -399,13 +421,29 @@ class PubmedInteract:
                 )
                 if displayed_uids_tag:
                     pubmed_id_list = displayed_uids_tag["content"].split(",")
-                    for id in pubmed_id_list:
-                        fetch_handle = Entrez.esummary(db="pubmed", id=id)
-                        pubmed_result = Entrez.read(fetch_handle)
-                        if title.lower() in pubmed_result[0]["Title"].lower():
-                            pubmed_id = pubmed_result[0]["Id"]
-                            break
+                    # Flag to indicate if a matching title was found
+                    found = False
 
+                    for id in pubmed_id_list:
+                        for attempt in range(MAX_RETRIES):
+                            try:
+                                fetch_handle = Entrez.esummary(db="pubmed", id=id)
+                                pubmed_result = Entrez.read(fetch_handle)
+                                if title.lower() in pubmed_result[0]["Title"].lower():
+                                    found = True
+                                    pubmed_id = pubmed_result[0]["Id"]
+                                    break
+                            except (IncompleteRead, HTTPError, URLError, OSError) as e:
+                                print(
+                                    f"Network error on attempt {attempt}/{MAX_RETRIES}: {e}"
+                                )
+                                if attempt == MAX_RETRIES - 1:
+                                    raise
+                                # Exponential backoff (wait 2s, 4s, 8s...)
+                                time.sleep(2**attempt)
+
+                        if found:
+                            break
         return pubmed_id
 
     def fetch_pubmed_by_id(self, pubmed_id):
@@ -468,7 +506,7 @@ class PubmedInteract:
                     article_url, headers={"User-Agent": "Mozilla/5.0"}
                 )
                 article_complete = urllib.request.urlopen(url_handle).read()
-            except Exception:
+            except (HTTPError, URLError, OSError):
                 self.logger.warning(f"\t {pmc_id}: Retrieval unsuccessful")
                 article_complete = None
 
@@ -628,6 +666,9 @@ class PubmedInteract:
         return pubmed_information
 
 
+# Pubmed Article Information Extraction
+
+
 def extract_pubmed_article_information_by_title(
     args,
     output_directory: Path,
@@ -657,16 +698,16 @@ def extract_pubmed_article_information_by_title(
 
     ### STEP 1. Set up logger
     # Configure the logging
-    formatted_datetime = datetime.datetime.now().strftime("%Y%m%d_%H%M")
+    formatted_datetime = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
     if not os.path.isdir("./log"):
         os.mkdir("./log")
     logger_filename = (
-        f"./log/{formatted_datetime}_mitochondrial_pubmed_article_extraction.log"
+        f"./log/{formatted_datetime}_UTC_mitochondrial_pubmed_article_extraction.log"
     )
     logging.basicConfig(
         filename=logger_filename,
         level=logging.DEBUG,
-        format="%(asctime)s - %(levelname)s - %(message)s",
+        format="%(asctime)s UTC - %(levelname)s - %(message)s",
     )
     log = logging.getLogger(__name__)
     if verbose:
@@ -819,6 +860,10 @@ def extract_pubmed_article_information_by_title(
         json.dump(data, file, indent=4)
 
 
+# Mapping of Nucleotide to SRA records:
+# def mapping():
+
+
 def main(args):
 
     directory = Path(args.output_directory)
@@ -838,10 +883,13 @@ def main(args):
     # nucleotide_metadata_info = extract_nucleotide_metadata_information(
     #     args.output_directory
     # )
-    nucleotide_detailed_metadata_info = (
-        extract_nucleotide_detailed_metadata_information(args.output_directory)
-    )
+    # nucleotide_detailed_metadata_info = (
+    #     extract_nucleotide_detailed_metadata_information(args.output_directory)
+    # )
 
+    nucleotide_detailed_metadata_info = pd.read_csv(
+        "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
+    )
     # nucleotide_metadata_info = pd.read_csv(
     #     "test_output/DATA_Nucleotide_Summary_records.csv"
     # )
@@ -850,11 +898,11 @@ def main(args):
     # extract_sra_metadata_batch(args.output_directory)
 
     # Step 3: Pubmed article mining Mining
-    # log = logging.getLogger(__name__)
-    # pubmed_interact = PubmedInteract(email=args.mail, logger=log)
-    # extract_pubmed_article_information_by_title(
-    #     args, directory, nucleotide_metadata_info, pubmed_interact
-    # )
+    log = logging.getLogger(__name__)
+    pubmed_interact = PubmedInteract(email=args.mail, logger=log)
+    extract_pubmed_article_information_by_title(
+        args, directory, nucleotide_detailed_metadata_info, pubmed_interact
+    )
 
 
 if __name__ == "__main__":
