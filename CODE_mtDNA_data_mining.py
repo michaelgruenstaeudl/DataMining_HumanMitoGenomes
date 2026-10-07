@@ -489,8 +489,6 @@ class PubmedInteract:
                 )
                 if displayed_uids_tag:
                     pubmed_id_list = displayed_uids_tag["content"].split(",")
-                    # Flag to indicate if a matching title was found
-                    found = False
 
                     for id in pubmed_id_list:
                         pubmed_result = self._retry_request(
@@ -503,11 +501,7 @@ class PubmedInteract:
                             ),
                         )
                         if title.lower() in pubmed_result[0]["Title"].lower():
-                            found = True
                             pubmed_id = pubmed_result[0]["Id"]
-                            break
-
-                        if found:
                             break
         return pubmed_id
 
@@ -736,15 +730,22 @@ class PubmedInteract:
                 ]
             )
 
-        complete_article_link_list = self.extract_url_to_full_article_by_id(pubmed_id)
+        # this code always lead to http 429 (Too Many Requests) error. So, no url is extracted from pubmed instead we use elink to check pmcID availability
+        # ==============================#
+        # complete_article_link_list = self.extract_url_to_full_article_by_id(pubmed_id)
 
-        pubmed_information["Full_Article_URL"] = ", ".join(complete_article_link_list)
+        # pubmed_information["Full_Article_URL"] = ", ".join(complete_article_link_list)
 
+        # pubmed_information["is_PMC"] = False
+        # for url_link in complete_article_link_list:
+        #     if "https://pmc.ncbi.nlm.nih.gov/articles/pmid" in url_link:
+        #         pubmed_information["is_PMC"] = True
+        #         break
+        # ==============================#
+        # For now full_article_url is set as empty string
+        pubmed_information["Full_Article_URL"] = ""
         pubmed_information["is_PMC"] = False
-        for url_link in complete_article_link_list:
-            if "https://pmc.ncbi.nlm.nih.gov/articles/pmid" in url_link:
-                pubmed_information["is_PMC"] = True
-                break
+
         return pubmed_information
 
 
@@ -846,7 +847,10 @@ def extract_pubmed_article_information_by_title(
             if "Error" not in item:
                 item["Error"] = ""
             item["Error"] = f"\n {ex}"
-            logger.error(f"[extract_pubmed_article_information_by_title] {ex}")
+            logger.exception(
+                "[extract_pubmed_article_information_by_title] "
+                "Unexpected error while processing article"
+            )
             continue
 
         pubmed_metadata.loc[len(pubmed_metadata)] = item
@@ -910,12 +914,19 @@ def extract_pubmed_article_information_by_title(
                     record["MatchedParagraphs"] = matching_paragraph_list
                 except Exception as ex:
                     record["Error"] = f"Error encountered for {pmc_id} \n {ex}"
-                    logger.critical(f"Error encountered for {pmc_id} \n {ex}")
+                    # logger.critical(f"Error encountered for {pmc_id} \n {ex}")
+                    logger.exception(
+                        f"[extract_pubmed_full_text_by_pmc_id] for {pmc_id}"
+                        "Unexpected error while processing article"
+                    )
             else:
                 record["Error"] = "No content available"
             data.append(record)
-        except Exception as e:
-            logger.critical(f"Exception occured: {e}")
+        except Exception:
+            logger.exception(
+                f"[pubmed_article_mining] for {pmc_id}"
+                "Unexpected error while processing article"
+            )
 
     matched_output_dict = [
         json_obj
@@ -956,16 +967,16 @@ def main(args):
     Entrez.api_key = API_KEY
 
     # Step 1: Fetching nucleotide summary records for Homo sapiens complete mitochondrial genome sequences
-    nucleotide_metadata_info = extract_nucleotide_metadata_information(
-        args.output_directory, logger
-    )
-    nucleotide_detailed_metadata_info = (
-        extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
-    )
-
-    # nucleotide_detailed_metadata_info = pd.read_csv(
-    #     "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
+    # nucleotide_metadata_info = extract_nucleotide_metadata_information(
+    #     args.output_directory, logger
     # )
+    # nucleotide_detailed_metadata_info = (
+    #     extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
+    # )
+
+    nucleotide_detailed_metadata_info = pd.read_csv(
+        "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
+    )
     # nucleotide_metadata_info = pd.read_csv(
     #     "test_output/DATA_Nucleotide_Summary_records.csv"
     # )
