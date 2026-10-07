@@ -47,25 +47,38 @@ data_availability_list: list = [
 # ===============================#
 
 
+def _retry_request(func, logger, max_retries=MAX_RETRIES):
+    for attempt in range(max_retries):
+        try:
+            return func()
+        except (IncompleteRead, HTTPError, URLError, OSError) as e:
+            logger.error(
+                f"Network error on attempt {attempt + 1}/{max_retries}: {e}"
+            )
+            if attempt == max_retries - 1:
+                raise
+            time.sleep(2**attempt)
+
+
 # Methods for fetching nucleotide summary records in batches
 def fetch_batch(start, end, nucleotide_esearch_output):
-    for attempt in range(MAX_RETRIES):
-        try:
-            handle = Entrez.efetch(
-                db="nucleotide",
-                rettype="gb",
-                retmode="text",
-                id=",".join(nucleotide_esearch_output["IdList"][start:end]),
-            )
-            batch_records = list(SeqIO.parse(handle, "genbank"))
-            handle.close()
-            return batch_records
-        except (IncompleteRead, HTTPError, URLError, OSError) as e:
-            print(f"Network error on attempt {attempt}/{MAX_RETRIES}: {e}")
-            if attempt == MAX_RETRIES:
-                raise
-            # Exponential backoff (wait 2s, 4s, 8s...)
-            time.sleep(2**attempt)
+    logger = logging.getLogger(__name__)
+    return _retry_request(
+        lambda: _fetch_nucleotide_batch(start, end, nucleotide_esearch_output),
+        logger,
+    )
+
+
+def _fetch_nucleotide_batch(start, end, nucleotide_esearch_output):
+    handle = Entrez.efetch(
+        db="nucleotide",
+        rettype="gb",
+        retmode="text",
+        id=",".join(nucleotide_esearch_output["IdList"][start:end]),
+    )
+    batch_records = list(SeqIO.parse(handle, "genbank"))
+    handle.close()
+    return batch_records
 
 
 def extract_nucleotide_detailed_metadata_information(output_directory):
@@ -312,16 +325,7 @@ class PubmedInteract:
         self.logger = logger
 
     def _retry_request(self, func):
-        for attempt in range(self.MAX_RETRIES):
-            try:
-                return func()
-            except (IncompleteRead, HTTPError, URLError, OSError) as e:
-                self.logger.error(
-                    f"Network error on attempt {attempt + 1}/{self.MAX_RETRIES}: {e}"
-                )
-                if attempt == self.MAX_RETRIES - 1:
-                    raise
-                time.sleep(2**attempt)
+        return _retry_request(func, self.logger, self.MAX_RETRIES)
 
     def search_pubmed_by_title(self, title):
         """
