@@ -23,6 +23,8 @@ from Bio import Entrez, SeqIO
 # Constant================================#
 batch_size = 100  # Number of records to fetch in each batch
 MAX_RETRIES = 5  # Maximum number of retries for fetching records
+PUBMED_REQUEST_INTERVAL = 1.0  # Minimum seconds between paced PubMed requests
+_last_request_time = None
 substrings: list = [
     "NCBI SRA",
     "Sequence Read Archive",
@@ -48,7 +50,11 @@ data_availability_list: list = [
 # ===============================#
 
 
-def _retry_request(func, max_retries, logger=None, operation=None):
+def _retry_request(
+    func, max_retries, logger=None, operation=None, request_interval=None
+):
+    global _last_request_time
+
     logger = logger or logging.getLogger(__name__)
     operation = operation or "network request"
     method, separator, operation_name = operation.partition(": ")
@@ -56,6 +62,18 @@ def _retry_request(func, max_retries, logger=None, operation=None):
 
     for attempt in range(1, max_retries + 1):
         try:
+            if request_interval is not None and _last_request_time is not None:
+                elapsed = time.monotonic() - _last_request_time
+                pacing_delay = request_interval - elapsed
+                if pacing_delay > 0:
+                    logger.info(
+                        f"{context} Waiting {pacing_delay:.2f} seconds "
+                        "before PubMed request"
+                    )
+                    time.sleep(pacing_delay)
+
+            if request_interval is not None and request_interval > 0:
+                _last_request_time = time.monotonic()
             return func()
         except HTTPError as e:
             logger.error(
@@ -389,7 +407,12 @@ class LXMLops:
 
 
 class PubmedInteract:
-    def __init__(self, email, logger: logging.Logger):
+    def __init__(
+        self,
+        email,
+        logger: logging.Logger,
+        request_interval=PUBMED_REQUEST_INTERVAL,
+    ):
         """
         Initializes the instance with the provided email and logger.
 
@@ -399,13 +422,15 @@ class PubmedInteract:
         """
         self.email = email
         self.logger = logger
+        self._request_interval = request_interval
 
-    def _retry_request(self, func, operation):
+    def _retry_request(self, func, operation, request_interval=None):
         return _retry_request(
             func,
             max_retries=MAX_RETRIES,
             logger=self.logger,
             operation=f"{self.__class__.__name__}.{operation}",
+            request_interval=request_interval,
         )
 
     def build_title_query(self, title):
@@ -565,6 +590,7 @@ class PubmedInteract:
                 operation=(
                     "lookup_pubmed_id_by_title: " "urllib.request.urlopen search page"
                 ),
+                request_interval=self._request_interval,
             )
             pubmed_soup = bs4.BeautifulSoup(pubmed_response, "html.parser")
 
@@ -628,6 +654,7 @@ class PubmedInteract:
                 "extract_url_to_full_article_by_id: "
                 "urllib.request.urlopen PubMed page"
             ),
+            request_interval=self._request_interval,
         )
         pubmed_soup = bs4.BeautifulSoup(pubmed_article, "html.parser")
 
@@ -685,6 +712,7 @@ class PubmedInteract:
                         "get_complete_article_by_pmc_id: "
                         "urllib.request.urlopen PMC article"
                     ),
+                    request_interval=self._request_interval,
                 )
             except (HTTPError, URLError, OSError):
                 self.logger.warning(f"\t {pmc_id}: Retrieval unsuccessful")
