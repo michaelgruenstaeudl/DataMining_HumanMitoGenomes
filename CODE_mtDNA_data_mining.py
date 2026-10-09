@@ -20,7 +20,7 @@ import lxml
 import pandas as pd
 from Bio import Entrez, SeqIO
 
-# Constant================================#
+# region Constant================================#
 batch_size = 100  # Number of records to fetch in each batch
 MAX_RETRIES = 5  # Maximum number of retries for fetching records
 PUBMED_REQUEST_INTERVAL = 1.0  # Minimum seconds between paced PubMed requests
@@ -47,9 +47,25 @@ data_availability_list: list = [
     "data availability statement",
     "availability of data and material",
 ]
-# ===============================#
+
+repository_map = {
+    "NCBI SRA": "NCBI Sequence Read Archive",
+    "Sequence Read Archive": "NCBI Sequence Read Archive",
+    "www.ncbi.nlm.gov/sra": "NCBI Sequence Read Archive",
+    "NCBI Sequence Read Archive": "NCBI Sequence Read Archive",
+    "European Nucleotide Archive": "European Nucleotide Archive",
+    "ENA": "European Nucleotide Archive",
+}
+
+accession_patterns = {
+    "NCBI Sequence Read Archive": r"\b(?:SRA|SRP|SRX|SRR|SRS|ERP|ERX|ERR|ERS)\d+",
+    "European Nucleotide Archive": r"\b(?:PRJNA|PRJEA|PRJEB|ERP|ERX|ERR|ERS)\d+",
+    "NCBI BioSample": r"\b(?:SAMN|SAMEA)\d+(?:[-\u2013](?:SAMN|SAMEA)\d+)?\b",
+}
+# endregion
 
 
+# region Helper methods
 def _retry_request(
     func, max_retries, logger=None, operation=None, request_interval=None
 ):
@@ -122,6 +138,9 @@ def configure_logging(verbose):
         logger=logger,
     )
     return logger
+
+
+# endregion
 
 
 # Methods for fetching nucleotide summary records in batches
@@ -887,7 +906,7 @@ class PubmedInteract:
 def extract_pubmed_article_information_by_title(
     args,
     output_directory: Path,
-    nucleotide_metadata_df,
+    title_list: list,
     pubmed_interact: PubmedInteract,
     logger,
 ):
@@ -915,16 +934,10 @@ def extract_pubmed_article_information_by_title(
     # else:
     #     log.info("File does not exist.")
     #     return
+    # ------------------------------#
 
     # data_frame = pd.read_csv(file_path)
-    title_list = nucleotide_metadata_df["TITLE"].dropna().unique()
-    # title_list = [
-    #     title
-    #     for title in title_list
-    #     if title
-    #     == "The genetic landscape of Mediterranean North African populations through complete mtDNAs"
-    #     # == "Genomic evidence supports the 'long chronology' for the peopling of Sahul"
-    # ]
+
     pubmed_metadata = pd.DataFrame(
         columns=[
             "Pubmed_ID",
@@ -1061,12 +1074,152 @@ def extract_pubmed_article_information_by_title(
     with open(output_file_path, "w") as file:
         json.dump(data, file, indent=4)
 
+    return matched_output_dict
+
+
+# Extract BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
+
+
+def extract_data_source_info_from_pubmed_article_data_content(
+    output_directory: Path,
+    matched_pubmed_record,
+    logger,
+):
+    logger.info("Extracting data source information from pubmed article data content")
+
+    results = []
+    # for item in [d for d in matched_records if d.get("title") == "DNA analysis of an early modern human from Tianyuan Cave, China"]:
+    for item in matched_pubmed_record:
+        logger.info(f"Processing item: {item.get('title')}")
+
+        logger.info("Processing data content")
+        for data_content in item.get("DataContent", []):
+            key, value = next(iter(data_content.items()))
+            for repository, pattern in accession_patterns.items():
+                accessions = re.findall(
+                    pattern,
+                    value,
+                    flags=re.IGNORECASE,
+                )
+
+                results.append(
+                    {
+                        "title": item.get("title"),
+                        "repository": repository,
+                        "accessions": ", ".join(dict.fromkeys(accessions)),
+                        "substring": key,
+                    }
+                )
+
+        logger.info("Processing matched paragraphs")
+        for matched_paragraph_item in item["MatchedParagraphs"]:
+            substring = matched_paragraph_item.get("substring", "")
+            content = matched_paragraph_item.get("content", "")
+            repository = repository_map.get(substring)
+
+            if repository is None:
+                continue
+
+            accessions = re.findall(
+                accession_patterns[repository],
+                content,
+                flags=re.IGNORECASE,
+            )
+
+            results.append(
+                {
+                    "title": item.get("title"),
+                    "repository": repository,
+                    "accessions": ", ".join(dict.fromkeys(accessions)),
+                    "substring": substring,
+                }
+            )
+
+    results_df = pd.DataFrame(results)
+
+    logger.info(
+        "Filtering and prioritizing data source information based on accessions and repository"
+    )
+    # Step 1: Create a copy of the original DataFrame
+    df = results_df.copy()
+
+    # Step 2: Identify rows with non-empty accessions
+
+    priority = {
+        "Data Availability Statement": 1,
+        "Data availability": 1,
+        "Associated Data": 2,
+        "ENA": 3,
+    }
+
+    # Step 3: Create a new column "_priority" based on the "substring" column
+    df["_priority"] = df["substring"].map(priority).fillna(99)
+
+    df["_has_accessions"] = df["accessions"].fillna("").str.strip().ne("")
+
+    # Step 4: Identify rows from the European Nucleotide Archive
+    df["_is_ena"] = df["repository"].eq("European Nucleotide Archive")
+
+    # Step 5: Sort by title and selection priority
+    df = df.sort_values(
+        by=["title", "_has_accessions", "_priority", "_is_ena"],
+        ascending=[True, False, True, False],
+        kind="stable",
+    )
+
+    # Step 6: Keep the first row for each title
+    df = df.drop_duplicates(
+        subset=["title"],
+        keep="first",
+    )
+
+    # Step 7: Remove temporary columns
+    df = df.drop(columns=["_has_accessions", "_is_ena", "_priority"]).reset_index(
+        drop=True
+    )
+
+    logger.info("Saving filtered data to CSV")
+    df.to_csv(
+        f"{output_directory}/DATA_pubmed_records_with_data_source_info_filtered.csv",
+        index=False,
+    )
+
+    return df
+
 
 # Mapping of Nucleotide to SRA records:
 # def mapping():
 
 
 def main(args):
+
+    # region Portal for the entire data mining pipeline testing
+
+    # Replaces step 1: Testing the data mining pipeline with pre-extracted nucleotide metadata and detailed metadata information
+    # ------------------------------#
+    # nucleotide_detailed_metadata_info = pd.read_csv(
+    #     "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
+    # )
+    # nucleotide_metadata_info = pd.read_csv(
+    #     "test_output/DATA_Nucleotide_Summary_records.csv"
+    # )
+    # ------------------------------#
+
+    # Replaces step 3: Testing the data mining pipeline with pre-extracted pubmed article information
+    # ------------------------------#
+
+    # matched_records = []
+    # with open(
+    #     "test_output/DATA_pubmed_records_with_data_source_info.json", "r"
+    # ) as file:
+    #     matched_records = json.load(file)
+    # ------------------------------#
+
+    # endregion
+
+    ##############################################################
+    ######## Data mining pipeline execution starts here ##########
+    ##############################################################
 
     logger = configure_logging(args.verbose)
     directory = Path(args.output_directory)
@@ -1083,27 +1236,31 @@ def main(args):
     Entrez.api_key = API_KEY
 
     # Step 1: Fetching nucleotide summary records for Homo sapiens complete mitochondrial genome sequences
-    # nucleotide_metadata_info = extract_nucleotide_metadata_information(
-    #     args.output_directory, logger
-    # )
-    # nucleotide_detailed_metadata_info = (
-    #     extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
-    # )
-
-    nucleotide_detailed_metadata_info = pd.read_csv(
-        "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
+    nucleotide_metadata_info = extract_nucleotide_metadata_information(
+        args.output_directory, logger
     )
-    # nucleotide_metadata_info = pd.read_csv(
-    #     "test_output/DATA_Nucleotide_Summary_records.csv"
-    # )
+    nucleotide_detailed_metadata_info = (
+        extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
+    )
 
     # Step 2: SRA records metadata extraction
-    # extract_sra_metadata_batch(args.output_directory)
+    extract_sra_metadata_batch(args.output_directory)
 
     # Step 3: Pubmed article mining Mining
+
+    title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
+
     pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
-    extract_pubmed_article_information_by_title(
-        args, directory, nucleotide_detailed_metadata_info, pubmed_interact, logger
+    matched_output_dict = extract_pubmed_article_information_by_title(
+        args, directory, title_list, pubmed_interact, logger
+    )
+
+    # Step 4: Extracting BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
+    # This step would involve processing the matched_output_dict to extract the required IDs.
+    extracted_data_source_info_df = (
+        extract_data_source_info_from_pubmed_article_data_content(
+            directory, matched_output_dict, logger
+        )
     )
 
 
