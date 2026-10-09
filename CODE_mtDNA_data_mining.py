@@ -20,7 +20,8 @@ import lxml
 import pandas as pd
 from Bio import Entrez, SeqIO
 
-# region Constant================================#
+# region Constant variables
+
 batch_size = 100  # Number of records to fetch in each batch
 MAX_RETRIES = 5  # Maximum number of retries for fetching records
 PUBMED_REQUEST_INTERVAL = 1.0  # Minimum seconds between paced PubMed requests
@@ -1178,13 +1179,44 @@ def extract_data_source_info_from_pubmed_article_data_content(
         drop=True
     )
 
-    logger.info("Saving filtered data to CSV")
-    df.to_csv(
-        f"{output_directory}/DATA_pubmed_records_with_data_source_info_filtered.csv",
+    # logger.info("Saving filtered data to CSV")
+    # df.to_csv(
+    #     f"{output_directory}/DATA_pubmed_records_with_data_source_info_filtered.csv",
+    #     index=False,
+    # )
+
+    # Creating a new DataFrame with the desired columns (this will be used for next execution step)
+    final_df = pd.DataFrame(
+        columns=["TITLE", "European Nucleotide Archive", "SRA Code"]
+    )
+    for row in df.itertuples():
+        item = {
+            "TITLE": row.title,
+            "European Nucleotide Archive": (
+                row.accessions
+                if row.repository == "European Nucleotide Archive"
+                else ""
+            ),
+            "SRA Code": (
+                row.accessions
+                if (
+                    row.repository == "NCBI Sequence Read Archive"
+                    or row.repository == "NCBI BioSample"
+                )
+                else ""
+            ),
+        }
+        final_df.loc[len(final_df)] = item
+
+    # replacing any unicode en dash with a regular dash in the final DataFrame
+    columns = ["European Nucleotide Archive", "SRA Code"]
+    final_df[columns] = final_df[columns].replace("\u2013", "-", regex=True)
+
+    final_df.to_csv(
+        f"{output_directory}/DATA_pubmed_info_with_bioproj_and_sra.csv",
         index=False,
     )
-
-    return df
+    return final_df
 
 
 # Mapping of Nucleotide to SRA records:
@@ -1192,6 +1224,12 @@ def extract_data_source_info_from_pubmed_article_data_content(
 
 
 def main(args):
+
+    # region Script Execution parameter
+    # ------------------------------#
+    # python CODE_mtDNA_data_mining.py --mail b_thapamagar@mail.fhsu.edu --output_directory test_output --api_key 75fd44a60f41290f3abe4efbfdd3a4e41409
+
+    # endregion
 
     # region Portal for the entire data mining pipeline testing
 
@@ -1205,14 +1243,15 @@ def main(args):
     # )
     # ------------------------------#
 
-    # Replaces step 3: Testing the data mining pipeline with pre-extracted pubmed article information
+    # Replaces upto step 3: Testing the data mining pipeline with pre-extracted pubmed article information
     # ------------------------------#
 
-    # matched_records = []
-    # with open(
-    #     "test_output/DATA_pubmed_records_with_data_source_info.json", "r"
-    # ) as file:
-    #     matched_records = json.load(file)
+    matched_output_dict = []
+    with open(
+        "test_output/pubmed_good_attempt/DATA_pubmed_records_with_data_source_info.json",
+        "r",
+    ) as file:
+        matched_output_dict = json.load(file)
     # ------------------------------#
 
     # endregion
@@ -1235,25 +1274,25 @@ def main(args):
     )  # Mention the email address same as which is used to sign in NCBI.
     Entrez.api_key = API_KEY
 
-    # Step 1: Fetching nucleotide summary records for Homo sapiens complete mitochondrial genome sequences
-    nucleotide_metadata_info = extract_nucleotide_metadata_information(
-        args.output_directory, logger
-    )
-    nucleotide_detailed_metadata_info = (
-        extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
-    )
+    # # Step 1: Fetching nucleotide summary records for Homo sapiens complete mitochondrial genome sequences
+    # nucleotide_metadata_info = extract_nucleotide_metadata_information(
+    #     args.output_directory, logger
+    # )
+    # nucleotide_detailed_metadata_info = (
+    #     extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
+    # )
 
-    # Step 2: SRA records metadata extraction
-    extract_sra_metadata_batch(args.output_directory)
+    # # Step 2: SRA records metadata extraction
+    # extract_sra_metadata_batch(args.output_directory)
 
-    # Step 3: Pubmed article mining Mining
+    # # Step 3: Pubmed article mining Mining
 
-    title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
+    # title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
 
-    pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
-    matched_output_dict = extract_pubmed_article_information_by_title(
-        args, directory, title_list, pubmed_interact, logger
-    )
+    # pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
+    # matched_output_dict = extract_pubmed_article_information_by_title(
+    #     args, directory, title_list, pubmed_interact, logger
+    # )
 
     # Step 4: Extracting BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
     # This step would involve processing the matched_output_dict to extract the required IDs.
