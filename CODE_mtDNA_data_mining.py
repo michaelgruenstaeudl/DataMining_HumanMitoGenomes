@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 __version__ = "b_thapamagar@mail.fhsu.edu|2026-05-10"
 
 import argparse
@@ -18,6 +19,7 @@ import bs4
 import coloredlogs
 import lxml
 import pandas as pd
+import requests
 from Bio import Entrez, SeqIO
 
 # region Constant variables
@@ -123,10 +125,7 @@ def configure_logging(verbose):
     formatted_datetime = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
     log_directory = Path("./log")
     log_directory.mkdir(parents=True, exist_ok=True)
-    logger_filename = (
-        log_directory
-        / f"{formatted_datetime}_UTC_mitochondrial_pubmed_article_extraction.log"
-    )
+    logger_filename = log_directory / f"{formatted_datetime}_UTC_mtDNA_data_mining.log"
     logging.basicConfig(
         filename=logger_filename,
         level=logging.DEBUG,
@@ -144,7 +143,7 @@ def configure_logging(verbose):
 # endregion
 
 
-# Methods for fetching nucleotide summary records in batches
+# region Methods for fetching nucleotide summary records in batches
 def fetch_batch(start, end, nucleotide_esearch_output, logger):
     return _retry_request(
         lambda: _fetch_nucleotide_batch(start, end, nucleotide_esearch_output),
@@ -334,7 +333,9 @@ def extract_nucleotide_metadata_information(output_directory, logger):
     return df
 
 
-# Methods for fetching SRA records metadata in batches
+# endregion
+
+# region Methods for fetching SRA records metadata in batches
 
 
 def fetch_sra_metadata_batch(start, end, sra_esearch_output, logger):
@@ -387,7 +388,9 @@ def extract_sra_metadata_batch(output_directory, logger):
         print(f"An error occurred in SRA metadata extraction: {e}")
 
 
-# Classes for pubmed data mining
+#  endregion
+
+# region Classes for pubmed data mining
 
 
 class LXMLops:
@@ -1106,6 +1109,8 @@ def extract_data_source_info_from_pubmed_article_data_content(
                 results.append(
                     {
                         "title": item.get("title"),
+                        "pubmed_id": item.get("Pubmed_ID"),
+                        "pmc_id": item.get("pmc_id"),
                         "repository": repository,
                         "accessions": ", ".join(dict.fromkeys(accessions)),
                         "substring": key,
@@ -1130,6 +1135,8 @@ def extract_data_source_info_from_pubmed_article_data_content(
             results.append(
                 {
                     "title": item.get("title"),
+                    "pubmed_id": item.get("Pubmed_ID"),
+                    "pmc_id": item.get("pmc_id"),
                     "repository": repository,
                     "accessions": ", ".join(dict.fromkeys(accessions)),
                     "substring": substring,
@@ -1187,11 +1194,19 @@ def extract_data_source_info_from_pubmed_article_data_content(
 
     # Creating a new DataFrame with the desired columns (this will be used for next execution step)
     final_df = pd.DataFrame(
-        columns=["TITLE", "European Nucleotide Archive", "SRA Code"]
+        columns=[
+            "TITLE",
+            "Pubmed_ID",
+            "PMC_ID",
+            "European Nucleotide Archive",
+            "SRA Code",
+        ]
     )
     for row in df.itertuples():
         item = {
             "TITLE": row.title,
+            "Pubmed_ID": row.pubmed_id,
+            "PMC_ID": row.pmc_id,
             "European Nucleotide Archive": (
                 row.accessions
                 if row.repository == "European Nucleotide Archive"
@@ -1219,8 +1234,383 @@ def extract_data_source_info_from_pubmed_article_data_content(
     return final_df
 
 
-# Mapping of Nucleotide to SRA records:
+# endregion
+
+# region Mapping of Nucleotide to SRA records:
 # def mapping():
+# endregion
+
+# region SRA records metadata extraction related to BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
+
+
+def extract_library_info_from_sra_content(fulltext_etree: lxml.etree._Element):
+    library_item = {}
+    library_descriptor_list = fulltext_etree.xpath("//LIBRARY_DESCRIPTOR")
+
+    if len(library_descriptor_list) > 0:
+        # Iterate through all child elements and print their tags and text
+        for element in library_descriptor_list[0].iterchildren():
+            key = element.tag
+            value = ""
+            if element.tag == "LIBRARY_LAYOUT":
+                for layout_element in element.iterchildren():
+                    value += layout_element.tag
+            else:
+                value = element.text
+            library_item[key] = value
+
+    platform_list = fulltext_etree.xpath("//PLATFORM")
+    if len(platform_list) > 0:
+        platform = platform_list[0]
+        instrument_model_list = platform.xpath("//INSTRUMENT_MODEL")
+        if len(instrument_model_list) > 0:
+            instrument_model = instrument_model_list[0]
+            library_item[instrument_model.tag] = instrument_model.text
+
+    return library_item
+
+
+def extract_SRA_info_from_ENA(ena_accession_id):
+    # URL for POST request for European Nucleotide Archive
+    post_url = "https://www.ebi.ac.uk/ena/browser/api/xml"
+
+    # Headers
+    headers = {"accept": "application/xml", "Content-Type": "application/json"}
+
+    # Data to be sent in the POST request
+    request_body = {
+        "accessions": [ena_accession_id],
+        "expanded": True,
+        "annotationOnly": True,
+        "lineLimit": 0,
+        "download": False,
+        "gzip": True,
+        "set": True,
+        "includeLinks": True,
+        "range": "string",
+        "complement": True,
+    }
+    # Send the POST request
+    response = requests.post(post_url, json=request_body, headers=headers)
+    return response
+
+
+def extract_sra_info(
+    output_directory: Path,
+    pubmed_info_with_bioproject: pd.DataFrame,
+    logger: logging.Logger,
+):
+
+    pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
+
+    # DATA_pubmed_info_with_bioproj_and_sra.csv file contains the information of the articles from PubMed with BioProject and SRA Code
+    # (Extracted by CODE_mitochondrial_pubmed_article_extraction.py and manually by Bryce)
+
+    pubmed_info_with_bioproject = pubmed_info_with_bioproject.rename(
+        columns={"European Nucleotide Archive": "ENA", "SRA Code": "SRA_Code"}
+    )
+    # [
+    #     pubmed_info_with_bioproject["TITLE"]
+    #     == "Ancient mitogenomes of Phoenicians from Sardinia and Lebanon: A story of settlement, integration, and female mobility"
+    # ]
+    # print(pubmed_info_with_bioproject.info())
+
+    pubmed_info_with_bioproject = pubmed_info_with_bioproject.fillna("")
+
+    pubmed_dataframe = pd.DataFrame(
+        columns=[
+            "Title",
+            "BioProject_uid",
+            "BioProject",
+            "SRA_Code",
+            "Pubmed_ID",
+            "PMC_ID",
+            "SRA_Count",
+            "SRA_Id_list",
+            "Is_in_Genbank",
+        ]
+    )
+
+    for row in pubmed_info_with_bioproject.itertuples():
+        logger.info(row)
+        pubmed_item = {
+            "Title": row.TITLE,
+            "BioProject": row.ENA,
+            "SRA_Code": row.SRA_Code,
+            "Pubmed_ID": row.Pubmed_ID,
+            "PMC_ID": row.PMC_ID,
+            "BioProject_uid": "",
+            "Is_in_Genbank": False,
+        }
+
+        if row.ENA != "":
+            bio_proj_esearch_handle = Entrez.esearch(db="bioproject", term=row.ENA)
+            bio_proj_esearch_result = Entrez.read(bio_proj_esearch_handle)
+            if len(bio_proj_esearch_result["IdList"]) > 0:
+                pubmed_item["BioProject_uid"] = bio_proj_esearch_result["IdList"][0]
+        elif row.ENA == "" and row.SRA_Code != "":
+            sra_code = ""
+            if "-" in row.SRA_Code:
+                sra_records = row.SRA_Code.split("-")
+                if len(sra_records) > 0:
+                    sra_code = sra_records[0]
+            else:
+                sra_code = row.SRA_Code
+
+            if "SAMN" in sra_code:
+                bio_sample_esearch_handle = Entrez.esearch(
+                    db="biosample", term=sra_code
+                )
+                bio_sample_result = Entrez.read(bio_sample_esearch_handle)
+                bio_proj_elink_handle = Entrez.elink(
+                    dbfrom="biosample",
+                    db="bioproject",
+                    id=bio_sample_result["IdList"][0],
+                )
+                bio_proj_elink_record = Entrez.read(bio_proj_elink_handle)
+                pubmed_item["BioProject_uid"] = bio_proj_elink_record[0]["LinkSetDb"][
+                    0
+                ]["Link"][0]["Id"]
+
+            else:
+                if "," in sra_code:
+                    sra_code = sra_code.split(",")[0]
+                sra_esearch_handle = Entrez.esearch(db="sra", term=sra_code)
+                sra_search_result = Entrez.read(sra_esearch_handle)
+                bio_proj_elink_handle = Entrez.elink(
+                    dbfrom="sra", db="bioproject", id=sra_search_result["IdList"][0]
+                )
+                bio_proj_elink_record = Entrez.read(bio_proj_elink_handle)
+                pubmed_item["BioProject_uid"] = bio_proj_elink_record[0]["LinkSetDb"][
+                    0
+                ]["Link"][0]["Id"]
+
+            if pubmed_item["BioProject_uid"] != "":
+                bio_proj_efetch_handle = Entrez.efetch(
+                    db="bioproject", id=pubmed_item["BioProject_uid"], retmode="xml"
+                )
+                bioproj_etree = lxml.etree.fromstring(bio_proj_efetch_handle.read())
+                archive_tag_list = bioproj_etree.xpath("//ArchiveID")
+                if len(archive_tag_list) > 0:
+                    pubmed_item["BioProject"] = archive_tag_list[0].get("accession")
+        if pubmed_item["BioProject_uid"] != "":
+            try:
+                bio_proj_elink_handle = Entrez.elink(
+                    dbfrom="bioproject", db="sra", id=pubmed_item["BioProject_uid"]
+                )
+                bio_proj_elink_record = Entrez.read(bio_proj_elink_handle)
+                sra_id_list = []
+                for link_set in bio_proj_elink_record:
+                    for link in link_set["LinkSetDb"]:
+                        for obj in link["Link"]:
+                            sra_id_list.append(obj["Id"])
+                sra_id_list = list(set(sra_id_list))
+                sra_len = len(sra_id_list)
+                sra_ids = ",".join(sra_id_list)
+                pubmed_item["SRA_Id_list"] = sra_ids
+                logger.info(f"SRA ID count: {sra_len}")
+                pubmed_item["SRA_Count"] = sra_len
+                pubmed_item["Is_in_Genbank"] = True
+                # print("Count: ", len(bio_proj_elink_record))
+                pubmed_dataframe.loc[len(pubmed_dataframe)] = pubmed_item
+            except Exception:
+                logger.exception(
+                    f"Exception ecnountered while processing BioProject {pubmed_item['BioProject']} for extracting Pubmed item information"
+                )
+                continue
+        else:
+            if row.ENA != "":
+                url = f"https://www.ebi.ac.uk/ena/portal/api/search?result=read_experiment&includeAccessions={row.ENA}&format=json"
+                # Send the GET request
+                response = requests.get(url)
+
+                # Check the status code of the response
+                if response.status_code == 200:
+                    response_json = response.json()
+                    pubmed_item["SRA_Count"] = len(response_json)
+                    sra_id_list = []
+                    for record in response_json:
+                        sra_id_list.append(record["experiment_accession"])
+                    sra_ids = ",".join(sra_id_list)
+                    pubmed_item["SRA_Id_list"] = sra_ids
+                    logger.info("Bioproject found in European Nucleotide Archive.")
+                else:
+                    logger.error("BioProject accession number not found.")
+
+            pubmed_dataframe.loc[len(pubmed_dataframe)] = pubmed_item
+    pubmed_dataframe.to_csv(
+        f"{output_directory}/DATA_pubmed_info_with_bioproj_sra_ids.csv", index=False
+    )
+    logger.info("SRA Id Extraction Process completed.")
+
+    pubmed_dataframe = pubmed_dataframe.fillna("")
+    if len(pubmed_dataframe) <= 0:
+        pubmed_dataframe = pd.read_csv(
+            "DATA_pubmed_info_with_bioproj_sra_ids.csv",
+            dtype={
+                "BioProject_uid": "string",
+                "BioProject": "string",
+                "SRA_Id_list": "string",
+                "Is_in_Genbank": "bool",
+            },
+        ).fillna("")
+
+    data = []
+    for record in pubmed_dataframe.itertuples():
+        sra_id_list = []
+        sra_id_list = record.SRA_Id_list.split(",")
+        fulltext_soup = bs4.BeautifulSoup("", "html.parser")
+
+        if record.PMC_ID != "" and len(sra_id_list) > 0:
+            article_content = pubmed_interact.get_complete_article_by_pmc_id(
+                record.PMC_ID
+            )
+            fulltext_soup = bs4.BeautifulSoup(article_content, "html.parser")
+
+        for sra_id in sra_id_list:
+            logger.info(f"Processing {record.BioProject}: {sra_id}")
+            sra_item = {
+                "BioProject": record.BioProject,
+                "BioProject_uid": record.BioProject_uid,
+                "SRA_Id": sra_id,
+                "Sample_Title": "",
+            }
+
+            if record.Is_in_Genbank:
+                sra_fetch_handle = Entrez.efetch(db="sra", id=sra_id)
+                sra_content = sra_fetch_handle.read()
+                fulltext_etree = lxml.etree.fromstring(sra_content)
+                title_tag_list = fulltext_etree.xpath("//TITLE")
+                if len(title_tag_list) > 0:
+                    sra_item["Title"] = title_tag_list[0].text
+                library_item = extract_library_info_from_sra_content(fulltext_etree)
+                sra_item["Library"] = library_item
+
+                # Extracting sample alias from SRA
+                sample_tag_list = fulltext_etree.xpath("//SAMPLE")
+                if len(sample_tag_list) > 0:
+                    sra_item["Sample_Alias"] = sample_tag_list[0].get("alias")
+
+                # Extracting Sample Submitter Id
+                sample_attribute_list = fulltext_etree.xpath("//SAMPLE_ATTRIBUTES")
+
+                submitter_id_value = ""
+                if len(sample_attribute_list) > 0:
+                    for sample_attribute in sample_attribute_list[0].iterchildren():
+                        tag = sample_attribute.find("TAG").text
+                        if tag == "Submitter Id":
+                            submitter_id_value = sample_attribute.find("VALUE").text
+                            break
+
+                if submitter_id_value != "" and submitter_id_value != None:
+                    sra_item["submitter_id"] = submitter_id_value
+
+                # Extracting Sample Title from Pool Tag
+                pool_tag_list = fulltext_etree.xpath("//Pool")
+                if len(pool_tag_list) > 0:
+                    member_tag = pool_tag_list[0].find("Member")
+                    sample_title = member_tag.get("sample_title")
+                    sra_item["Original_Sample_Title"] = sample_title
+                    if sample_title:
+                        if "_" in sample_title:
+                            sample_title_splitted = sample_title.split("_")
+                            if len(sample_title_splitted) > 0:
+                                sra_item["Sample_Title"] = sample_title_splitted[0]
+                        else:
+                            sra_item["Sample_Title"] = sample_title
+                if sra_item["Sample_Title"] != "" and fulltext_soup.contents:
+                    logger.info(f"Sample Title: {sra_item['Sample_Title']}")
+                    target_content = None
+                    sample_title = sra_item["Sample_Title"].lower()
+                    target_content_list = fulltext_soup.find_all(
+                        string=lambda text, sample_title=sample_title: text
+                        and sample_title in text.lower()
+                    )
+                    if len(target_content_list) > 0:
+                        for target_content_item in target_content_list:
+                            target_contentitem_tag = target_content_item.find_parent()
+                            if (target_contentitem_tag.name == "td") or (
+                                target_contentitem_tag.name == "p"
+                            ):
+                                target_content = target_content_item
+                                break
+                    if target_content:
+                        target_tag = target_content.find_parent()
+                        if target_tag.name == "td":
+                            header_tag = (
+                                target_tag.find_parent()
+                                .find_parent()
+                                .find_parent()
+                                .find("thead")
+                            )
+                            table_column_name_list = []
+                            for table_header_tag in header_tag.find_all("th"):
+                                table_column_name_list.append(table_header_tag.text)
+
+                            if len(table_column_name_list) == 0:
+                                for table_header_tag in header_tag.find_all("td"):
+                                    table_column_name_list.append(table_header_tag.text)
+
+                            data_row_tag = target_tag.find_parent()
+                            data_row_list = []
+                            for data_tag in data_row_tag.find_all("td"):
+                                data_row_list.append(data_tag.text)
+
+                            table_obj = {}
+                            for i in range(len(table_column_name_list)):
+                                table_obj[table_column_name_list[i]] = data_row_list[i]
+
+                            sra_item["Matched_Information"] = table_obj
+
+                            logger.info(
+                                f"Matched Information: for {sra_item['BioProject']} - {sra_item['SRA_Id']} in tablular format."
+                            )
+                        elif target_tag.name == "p":
+                            sra_item["Matched_Information"] = target_tag.text
+
+                            logger.info(
+                                f"Matched Information: for {sra_item['BioProject']} - {sra_item['SRA_Id']} in paragraph."
+                            )
+                        else:
+                            logger.info(
+                                f"{target_tag.name} Case yet to handled but Matched Information: for {sra_item['BioProject']} - {sra_item['SRA_Id']}."
+                            )
+                    else:
+                        logger.info("Sample Title not found in full text.")
+                else:
+                    if not fulltext_soup.contents:
+                        logger.info("Full text not found.")
+                    if sra_item["Sample_Title"] == "":
+                        logger.info("Sample Title not present.")
+            else:
+                response = extract_SRA_info_from_ENA(sra_id)
+                if response.status_code == 200:
+                    fulltext_etree = lxml.etree.fromstring(response.text)
+                    sample_descriptor_list = fulltext_etree.xpath("//SAMPLE_DESCRIPTOR")
+                    sample_ref_name = ""
+                    if len(sample_descriptor_list) > 0:
+                        sample_ref_name = sample_descriptor_list[0].get("refname")
+
+                    if sample_ref_name != "" and sample_ref_name != None:
+                        sra_item["Sample_Ref_Name"] = sample_ref_name
+
+                    library_item = extract_library_info_from_sra_content(fulltext_etree)
+                    sra_item["Library"] = library_item
+                    logger.info("Library information is extracted.")
+                logger.info(
+                    "BioProject not in Genbank and ENA does not contain Sample Name."
+                )
+            data.append(sra_item)
+        # else:
+        #     logger.info(f"PMC_ID: {record.PMC_ID} or SRA_ID: {record.SRA_Id_list} not found for {record.BioProject}")
+    output_file_name = f"{output_directory}/DATA_sra_info_in_pmc.json"
+    with open(output_file_name, "w") as file:
+        json.dump(data, file, indent=4)
+    logger.info(f"Data written to {output_file_name}")
+    logger.info("Finished.")
+
+
+# endregion
 
 
 def main(args):
@@ -1301,6 +1691,9 @@ def main(args):
             directory, matched_output_dict, logger
         )
     )
+
+    # Step 5: Extracting SRA information from the extracted data source information.
+    extract_sra_info(directory, extracted_data_source_info_df, logger)
 
 
 if __name__ == "__main__":
