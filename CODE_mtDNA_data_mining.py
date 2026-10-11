@@ -4,16 +4,14 @@ __version__ = "b_thapamagar@mail.fhsu.edu|2026-05-10"
 import argparse
 import json
 import logging
+import random
 import re
 import time
 import unicodedata
 import urllib.parse
-import urllib.request
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
-from http.client import IncompleteRead
 from pathlib import Path
-from urllib.error import HTTPError, URLError
 
 import bs4
 import coloredlogs
@@ -69,8 +67,60 @@ accession_patterns = {
 
 
 # region Helper methods
-def _retry_request(
-    func, max_retries, logger=None, operation=None, request_interval=None
+DEFAULT_REQUEST_TIMEOUT = 30
+
+
+def _parse_retry_after(retry_after_value):
+    if retry_after_value is None:
+        return None
+
+    try:
+        return max(float(retry_after_value), 0.0)
+    except (TypeError, ValueError):
+        return None
+
+
+def _should_retry_http_status(status_code):
+    return status_code is not None and status_code in {429, 500, 502, 503, 504}
+
+
+def _compute_retry_delay(attempt, status_code=None, retry_after_value=None):
+    retry_after = _parse_retry_after(retry_after_value)
+    if retry_after is not None:
+        return retry_after
+
+    if status_code == 429:
+        base_delay = 5.0
+    else:
+        base_delay = 2.0
+
+    jitter = random.uniform(0.0, 0.5)
+    return min(base_delay * (2 ** (attempt - 1)) + jitter, 60.0)
+
+
+def _apply_request_pacing(logger, context, request_interval):
+    global _last_request_time
+
+    if request_interval is None or request_interval <= 0:
+        return
+
+    if _last_request_time is not None:
+        elapsed = time.monotonic() - _last_request_time
+        pacing_delay = request_interval - elapsed
+        if pacing_delay > 0:
+            logger.info(f"{context} Waiting {pacing_delay:.2f} seconds before request")
+            time.sleep(pacing_delay)
+
+    _last_request_time = time.monotonic()
+
+
+def retry_request(
+    func,
+    max_retries=MAX_RETRIES,
+    logger=None,
+    operation=None,
+    request_interval=None,
+    timeout=DEFAULT_REQUEST_TIMEOUT,
 ):
     global _last_request_time
 
@@ -81,44 +131,63 @@ def _retry_request(
 
     for attempt in range(1, max_retries + 1):
         try:
-            if request_interval is not None and _last_request_time is not None:
-                elapsed = time.monotonic() - _last_request_time
-                pacing_delay = request_interval - elapsed
-                if pacing_delay > 0:
-                    logger.info(
-                        f"{context} Waiting {pacing_delay:.2f} seconds "
-                        "before PubMed request"
-                    )
-                    time.sleep(pacing_delay)
-
-            if request_interval is not None and request_interval > 0:
-                _last_request_time = time.monotonic()
-            return func()
-        except HTTPError as e:
-            logger.error(
-                f"{context} Network error on attempt " f"{attempt}/{max_retries}: {e}"
+            _apply_request_pacing(logger, context, request_interval)
+            response = func()
+            if hasattr(response, "raise_for_status"):
+                response.raise_for_status()
+            return response
+        except requests.exceptions.HTTPError as exc:
+            status_code = exc.response.status_code if exc.response is not None else None
+            logger.warning(
+                "%s failed on attempt %s/%s with status %s: %s",
+                context,
+                attempt,
+                max_retries,
+                status_code,
+                exc,
             )
-            if attempt == max_retries:
+            if attempt >= max_retries or not _should_retry_http_status(status_code):
                 raise
-            if e.code == 429:
-                retry_after = e.headers.get("Retry-After") if e.headers else None
-
-                if retry_after and retry_after.isdigit():
-                    delay = max(int(retry_after), 90)
-                else:
-                    delay = 90 * attempt
-            else:
-                delay = 2 ** (attempt - 1)
-
-            logger.info(f"{context} Waiting {delay} seconds before retrying")
+            retry_after_value = (
+                exc.response.headers.get("Retry-After")
+                if exc.response is not None and exc.response.headers is not None
+                else None
+            )
+            delay = _compute_retry_delay(
+                attempt, status_code=status_code, retry_after_value=retry_after_value
+            )
+            logger.info(
+                "%s retrying in %.2f seconds after HTTP %s",
+                context,
+                delay,
+                status_code,
+            )
             time.sleep(delay)
-        except (IncompleteRead, URLError, OSError) as e:
-            logger.error(
-                f"{context} Network error on attempt " f"{attempt}/{max_retries}: {e}"
+        except (
+            requests.exceptions.Timeout,
+            requests.exceptions.ConnectionError,
+            requests.exceptions.RequestException,
+            OSError,
+            ValueError,
+            TypeError,
+        ) as exc:
+            logger.warning(
+                "%s request failed on attempt %s/%s: %s",
+                context,
+                attempt,
+                max_retries,
+                exc,
             )
-            if attempt == max_retries:
+            if attempt >= max_retries:
                 raise
-            time.sleep(2 ** (attempt - 1))
+            delay = _compute_retry_delay(attempt, status_code=None)
+            logger.info("%s retrying in %.2f seconds", context, delay)
+            time.sleep(delay)
+
+    raise RuntimeError(f"{context} exceeded retry budget without returning a response")
+
+
+_retry_request = retry_request
 
 
 def configure_logging(verbose):
@@ -607,15 +676,15 @@ class PubmedInteract:
             encoded_string = urllib.parse.quote(title)
             url = f"https://pubmed.ncbi.nlm.nih.gov/?term={encoded_string}"
             pubmed_response = self._retry_request(
-                lambda: urllib.request.urlopen(
-                    urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-                ).read(),
-                operation=(
-                    "lookup_pubmed_id_by_title: " "urllib.request.urlopen search page"
+                lambda: requests.get(
+                    url,
+                    headers={"User-Agent": "Mozilla/5.0"},
+                    timeout=DEFAULT_REQUEST_TIMEOUT,
                 ),
+                operation=("lookup_pubmed_id_by_title: requests.get search page"),
                 request_interval=self._request_interval,
             )
-            pubmed_soup = bs4.BeautifulSoup(pubmed_response, "html.parser")
+            pubmed_soup = bs4.BeautifulSoup(pubmed_response.text, "html.parser")
 
             pubmed_citation_tag = pubmed_soup.find(
                 "meta", attrs={"name": "citation_pmid"}
@@ -668,18 +737,15 @@ class PubmedInteract:
 
         pubmed_url = f"https://pubmed.ncbi.nlm.nih.gov/{pubmed_id}/"
         pubmed_article = self._retry_request(
-            lambda: urllib.request.urlopen(
-                urllib.request.Request(
-                    pubmed_url, headers={"User-Agent": "Mozilla/5.0"}
-                )
-            ).read(),
-            operation=(
-                "extract_url_to_full_article_by_id: "
-                "urllib.request.urlopen PubMed page"
+            lambda: requests.get(
+                pubmed_url,
+                headers={"User-Agent": "Mozilla/5.0"},
+                timeout=DEFAULT_REQUEST_TIMEOUT,
             ),
+            operation=("extract_url_to_full_article_by_id: requests.get PubMed page"),
             request_interval=self._request_interval,
         )
-        pubmed_soup = bs4.BeautifulSoup(pubmed_article, "html.parser")
+        pubmed_soup = bs4.BeautifulSoup(pubmed_article.text, "html.parser")
 
         full_text_link_div = pubmed_soup.find("div", class_="full-text-links-list")
         complete_article_link_list = []
@@ -715,37 +781,29 @@ class PubmedInteract:
         """
         Extract complete article from pubmed central based on PMC ID passed
         """
-        if pmc_id != None:
-            # article_url = f"https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/{pmc_id}/unicode"
-            # url_handle = urllib.request.urlopen(article_url)
-            # article_complete = url_handle.read()
-
-            # if( "[Error] : No result can be found" in article_complete.decode('utf-8')):
+        if pmc_id is not None:
             article_url = (
                 f"https://pmc.ncbi.nlm.nih.gov/articles/{pmc_id}/?report=reader"
             )
             try:
                 article_complete = self._retry_request(
-                    lambda: urllib.request.urlopen(
-                        urllib.request.Request(
-                            article_url, headers={"User-Agent": "Mozilla/5.0"}
-                        )
-                    ).read(),
+                    lambda: requests.get(
+                        article_url,
+                        headers={"User-Agent": "Mozilla/5.0"},
+                        timeout=DEFAULT_REQUEST_TIMEOUT,
+                    ),
                     operation=(
-                        "get_complete_article_by_pmc_id: "
-                        "urllib.request.urlopen PMC article"
+                        "get_complete_article_by_pmc_id: requests.get PMC article"
                     ),
                     request_interval=self._request_interval,
                 )
-            except (HTTPError, URLError, OSError):
-                self.logger.warning(f"\t {pmc_id}: Retrieval unsuccessful")
+                return article_complete.text
+            except requests.exceptions.RequestException:
+                self.logger.warning("%s: Retrieval unsuccessful", pmc_id)
                 return None
 
-        else:
-            self.logger.warning("No PMC Id available")
-            article_complete = None
-
-        return article_complete
+        self.logger.warning("No PMC Id available")
+        return None
 
     def get_paragraph_list_from_pubmed_article(self, article_complete, article_title):
         """
@@ -1270,7 +1328,7 @@ def extract_library_info_from_sra_content(fulltext_etree: lxml.etree._Element):
     return library_item
 
 
-def extract_SRA_info_from_ENA(ena_accession_id):
+def extract_SRA_info_from_ENA(ena_accession_id, logger=None):
     # URL for POST request for European Nucleotide Archive
     post_url = "https://www.ebi.ac.uk/ena/browser/api/xml"
 
@@ -1290,18 +1348,35 @@ def extract_SRA_info_from_ENA(ena_accession_id):
         "range": "string",
         "complement": True,
     }
-    # Send the POST request
-    response = requests.post(post_url, json=request_body, headers=headers)
-    return response
+    logger = logger or logging.getLogger(__name__)
+    try:
+        response = retry_request(
+            lambda: requests.post(
+                post_url,
+                json=request_body,
+                headers=headers,
+                timeout=DEFAULT_REQUEST_TIMEOUT,
+            ),
+            max_retries=MAX_RETRIES,
+            logger=logger,
+            operation="extract_SRA_info_from_ENA: ENA XML lookup",
+            request_interval=PUBMED_REQUEST_INTERVAL,
+        )
+        response.raise_for_status()
+        return response
+    except requests.exceptions.RequestException:
+        logger.exception("ENA request failed for %s", ena_accession_id)
+        raise
 
 
 def extract_sra_info(
     output_directory: Path,
     pubmed_info_with_bioproject: pd.DataFrame,
     logger: logging.Logger,
+    email: str = "",
 ):
 
-    pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
+    pubmed_interact = PubmedInteract(email=email, logger=logger)
 
     # DATA_pubmed_info_with_bioproj_and_sra.csv file contains the information of the articles from PubMed with BioProject and SRA Code
     # (Extracted by CODE_mitochondrial_pubmed_article_extraction.py and manually by Bryce)
@@ -1421,10 +1496,18 @@ def extract_sra_info(
         else:
             if row.ENA != "":
                 url = f"https://www.ebi.ac.uk/ena/portal/api/search?result=read_experiment&includeAccessions={row.ENA}&format=json"
-                # Send the GET request
-                response = requests.get(url)
+                response = retry_request(
+                    lambda: requests.get(
+                        url,
+                        headers={"User-Agent": "Mozilla/5.0"},
+                        timeout=DEFAULT_REQUEST_TIMEOUT,
+                    ),
+                    max_retries=MAX_RETRIES,
+                    logger=logger,
+                    operation="extract_sra_info: ENA portal search",
+                    request_interval=PUBMED_REQUEST_INTERVAL,
+                )
 
-                # Check the status code of the response
                 if response.status_code == 200:
                     response_json = response.json()
                     pubmed_item["SRA_Count"] = len(response_json)
@@ -1583,7 +1666,7 @@ def extract_sra_info(
                     if sra_item["Sample_Title"] == "":
                         logger.info("Sample Title not present.")
             else:
-                response = extract_SRA_info_from_ENA(sra_id)
+                response = extract_SRA_info_from_ENA(sra_id, logger=logger)
                 if response.status_code == 200:
                     fulltext_etree = lxml.etree.fromstring(response.text)
                     sample_descriptor_list = fulltext_etree.xpath("//SAMPLE_DESCRIPTOR")
@@ -1625,9 +1708,9 @@ def main(args):
 
     # Replaces step 1: Testing the data mining pipeline with pre-extracted nucleotide metadata and detailed metadata information
     # ------------------------------#
-    # nucleotide_detailed_metadata_info = pd.read_csv(
-    #     "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
-    # )
+    nucleotide_detailed_metadata_info = pd.read_csv(
+        "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
+    )
     # nucleotide_metadata_info = pd.read_csv(
     #     "test_output/DATA_Nucleotide_Summary_records.csv"
     # )
@@ -1636,12 +1719,12 @@ def main(args):
     # Replaces upto step 3: Testing the data mining pipeline with pre-extracted pubmed article information
     # ------------------------------#
 
-    matched_output_dict = []
-    with open(
-        "test_output/pubmed_good_attempt/DATA_pubmed_records_with_data_source_info.json",
-        "r",
-    ) as file:
-        matched_output_dict = json.load(file)
+    # matched_output_dict = []
+    # with open(
+    #     "test_output/pubmed_good_attempt/DATA_pubmed_records_with_data_source_info.json",
+    #     "r",
+    # ) as file:
+    #     matched_output_dict = json.load(file)
     # ------------------------------#
 
     # endregion
@@ -1675,14 +1758,14 @@ def main(args):
     # # Step 2: SRA records metadata extraction
     # extract_sra_metadata_batch(args.output_directory)
 
-    # # Step 3: Pubmed article mining Mining
+    # Step 3: Pubmed article mining Mining
 
-    # title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
+    title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
 
-    # pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
-    # matched_output_dict = extract_pubmed_article_information_by_title(
-    #     args, directory, title_list, pubmed_interact, logger
-    # )
+    pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
+    matched_output_dict = extract_pubmed_article_information_by_title(
+        args, directory, title_list, pubmed_interact, logger
+    )
 
     # Step 4: Extracting BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
     # This step would involve processing the matched_output_dict to extract the required IDs.
@@ -1693,7 +1776,7 @@ def main(args):
     )
 
     # Step 5: Extracting SRA information from the extracted data source information.
-    extract_sra_info(directory, extracted_data_source_info_df, logger)
+    extract_sra_info(directory, extracted_data_source_info_df, logger, email=args.mail)
 
 
 if __name__ == "__main__":
