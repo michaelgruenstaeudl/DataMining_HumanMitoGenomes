@@ -1296,82 +1296,11 @@ def extract_data_source_info_from_pubmed_article_data_content(
 # region SRA records metadata extraction related to BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
 
 
-def extract_library_info_from_sra_content(fulltext_etree: lxml.etree._Element):
-    library_item = {}
-    library_descriptor_list = fulltext_etree.xpath("//LIBRARY_DESCRIPTOR")
-
-    if len(library_descriptor_list) > 0:
-        # Iterate through all child elements and print their tags and text
-        for element in library_descriptor_list[0].iterchildren():
-            key = element.tag
-            value = ""
-            if element.tag == "LIBRARY_LAYOUT":
-                for layout_element in element.iterchildren():
-                    value += layout_element.tag
-            else:
-                value = element.text
-            library_item[key] = value
-
-    platform_list = fulltext_etree.xpath("//PLATFORM")
-    if len(platform_list) > 0:
-        platform = platform_list[0]
-        instrument_model_list = platform.xpath("//INSTRUMENT_MODEL")
-        if len(instrument_model_list) > 0:
-            instrument_model = instrument_model_list[0]
-            library_item[instrument_model.tag] = instrument_model.text
-
-    return library_item
-
-
-def extract_SRA_info_from_ENA(ena_accession_id, logger=None):
-    # URL for POST request for European Nucleotide Archive
-    post_url = "https://www.ebi.ac.uk/ena/browser/api/xml"
-
-    # Headers
-    headers = {"accept": "application/xml", "Content-Type": "application/json"}
-
-    # Data to be sent in the POST request
-    request_body = {
-        "accessions": [ena_accession_id],
-        "expanded": True,
-        "annotationOnly": True,
-        "lineLimit": 0,
-        "download": False,
-        "gzip": True,
-        "set": True,
-        "includeLinks": True,
-        "range": "string",
-        "complement": True,
-    }
-    logger = logger or logging.getLogger(__name__)
-    try:
-        response = _retry_request(
-            lambda: requests.post(
-                post_url,
-                json=request_body,
-                headers=headers,
-                timeout=DEFAULT_REQUEST_TIMEOUT,
-            ),
-            max_retries=MAX_RETRIES,
-            logger=logger,
-            operation="extract_SRA_info_from_ENA: ENA XML lookup",
-            request_interval=PUBMED_REQUEST_INTERVAL,
-        )
-        response.raise_for_status()
-        return response
-    except requests.exceptions.RequestException:
-        logger.exception("ENA request failed for %s", ena_accession_id)
-        raise
-
-
-def extract_sra_info(
+def extract_pubmed_info_with_bioproject_and_sra(
     output_directory: Path,
     pubmed_info_with_bioproject: pd.DataFrame,
     logger: logging.Logger,
-    email: str = "",
 ):
-
-    pubmed_interact = PubmedInteract(email=email, logger=logger)
 
     # DATA_pubmed_info_with_bioproj_and_sra.csv file contains the information of the articles from PubMed with BioProject and SRA Code
     # (Extracted by CODE_mitochondrial_pubmed_article_extraction.py and manually by Bryce)
@@ -1381,7 +1310,7 @@ def extract_sra_info(
     )
     # [
     #     pubmed_info_with_bioproject["TITLE"]
-    #     == "Ancient mitogenomes of Phoenicians from Sardinia and Lebanon: A story of settlement, integration, and female mobility"
+    #     == "Ancient DNA of Phoenician remains indicates discontinuity in the settlement history of Ibiza"
     # ]
     # print(pubmed_info_with_bioproject.info())
 
@@ -1414,8 +1343,15 @@ def extract_sra_info(
         }
 
         if row.ENA != "":
-            bio_proj_esearch_handle = Entrez.esearch(db="bioproject", term=row.ENA)
-            bio_proj_esearch_result = Entrez.read(bio_proj_esearch_handle)
+            bio_proj_esearch_result = _retry_request(
+                lambda ena=row.ENA: Entrez.read(
+                    Entrez.esearch(db="bioproject", term=ena)
+                ),
+                max_retries=MAX_RETRIES,
+                logger=logger,
+                operation="extract_pubmed_info_with_bioproject_and_sra: Entrez.esearch bioproject",
+            )
+
             if len(bio_proj_esearch_result["IdList"]) > 0:
                 pubmed_item["BioProject_uid"] = bio_proj_esearch_result["IdList"][0]
         elif row.ENA == "" and row.SRA_Code != "":
@@ -1430,45 +1366,91 @@ def extract_sra_info(
                 sra_code = sra_code.split(",")[0]
 
             if "SAMN" in sra_code:
-                bio_sample_esearch_handle = Entrez.esearch(
-                    db="biosample", term=sra_code
+
+                bio_sample_result = _retry_request(
+                    lambda sra_code=sra_code: Entrez.read(
+                        Entrez.esearch(db="biosample", term=sra_code)
+                    ),
+                    max_retries=MAX_RETRIES,
+                    logger=logger,
+                    operation="extract_pubmed_info_with_bioproject_and_sra: Entrez.esearch biosample",
                 )
-                bio_sample_result = Entrez.read(bio_sample_esearch_handle)
-                bio_proj_elink_handle = Entrez.elink(
-                    dbfrom="biosample",
-                    db="bioproject",
-                    id=bio_sample_result["IdList"][0],
+                bio_proj_elink_record = _retry_request(
+                    lambda bio_sample_result=bio_sample_result: Entrez.read(
+                        Entrez.elink(
+                            dbfrom="biosample",
+                            db="bioproject",
+                            id=bio_sample_result["IdList"][0],
+                        )
+                    ),
+                    max_retries=MAX_RETRIES,
+                    logger=logger,
+                    operation="extract_pubmed_info_with_bioproject_and_sra: Entrez.elink bioproject",
                 )
-                bio_proj_elink_record = Entrez.read(bio_proj_elink_handle)
                 pubmed_item["BioProject_uid"] = bio_proj_elink_record[0]["LinkSetDb"][
                     0
                 ]["Link"][0]["Id"]
 
             else:
-                sra_esearch_handle = Entrez.esearch(db="sra", term=sra_code)
-                sra_search_result = Entrez.read(sra_esearch_handle)
-                bio_proj_elink_handle = Entrez.elink(
-                    dbfrom="sra", db="bioproject", id=sra_search_result["IdList"][0]
+                sra_search_result = _retry_request(
+                    lambda sra_code=sra_code: Entrez.read(
+                        Entrez.esearch(db="sra", term=sra_code)
+                    ),
+                    max_retries=MAX_RETRIES,
+                    logger=logger,
+                    operation="extract_pubmed_info_with_bioproject_and_sra: Entrez.esearch sra",
                 )
-                bio_proj_elink_record = Entrez.read(bio_proj_elink_handle)
+
+                bio_proj_elink_record = _retry_request(
+                    lambda sra_search_result=sra_search_result: Entrez.read(
+                        Entrez.elink(
+                            dbfrom="sra",
+                            db="bioproject",
+                            id=sra_search_result["IdList"][0],
+                        )
+                    ),
+                    max_retries=MAX_RETRIES,
+                    logger=logger,
+                    operation="extract_pubmed_info_with_bioproject_and_sra: Entrez.elink bioproject",
+                )
                 pubmed_item["BioProject_uid"] = bio_proj_elink_record[0]["LinkSetDb"][
                     0
                 ]["Link"][0]["Id"]
 
             if pubmed_item["BioProject_uid"] != "":
-                bio_proj_efetch_handle = Entrez.efetch(
-                    db="bioproject", id=pubmed_item["BioProject_uid"], retmode="xml"
+                bio_proj_efetch_handle = _retry_request(
+                    lambda pubmed_item=pubmed_item: Entrez.efetch(
+                        db="bioproject", id=pubmed_item["BioProject_uid"], retmode="xml"
+                    ),
+                    max_retries=MAX_RETRIES,
+                    logger=logger,
+                    operation="extract_pubmed_info_with_bioproject_and_sra: Entrez.efetch bioproject",
                 )
                 bioproj_etree = lxml.etree.fromstring(bio_proj_efetch_handle.read())
                 archive_tag_list = bioproj_etree.xpath("//ArchiveID")
                 if len(archive_tag_list) > 0:
                     pubmed_item["BioProject"] = archive_tag_list[0].get("accession")
+        else:
+            logger.info(
+                f"No BioProject or SRA Code available for {pubmed_item['Title']}"
+            )
+            continue
+
         if pubmed_item["BioProject_uid"] != "":
             try:
-                bio_proj_elink_handle = Entrez.elink(
-                    dbfrom="bioproject", db="sra", id=pubmed_item["BioProject_uid"]
+                bio_proj_elink_record = _retry_request(
+                    lambda pubmed_item=pubmed_item: Entrez.read(
+                        Entrez.elink(
+                            dbfrom="bioproject",
+                            db="sra",
+                            id=pubmed_item["BioProject_uid"],
+                        )
+                    ),
+                    max_retries=MAX_RETRIES,
+                    logger=logger,
+                    operation="extract_pubmed_info_with_bioproject_and_sra: Entrez.elink sra",
                 )
-                bio_proj_elink_record = Entrez.read(bio_proj_elink_handle)
+                # bio_proj_elink_record = Entrez.read(bio_proj_elink_handle)
                 sra_id_list = []
                 for link_set in bio_proj_elink_record:
                     for link in link_set["LinkSetDb"]:
@@ -1521,17 +1503,84 @@ def extract_sra_info(
     )
     logger.info("SRA Id Extraction Process completed.")
 
+    return pubmed_dataframe
+
+
+def extract_library_info_from_sra_content(fulltext_etree: lxml.etree._Element):
+    library_item = {}
+    library_descriptor_list = fulltext_etree.xpath("//LIBRARY_DESCRIPTOR")
+
+    if len(library_descriptor_list) > 0:
+        # Iterate through all child elements and print their tags and text
+        for element in library_descriptor_list[0].iterchildren():
+            key = element.tag
+            value = ""
+            if element.tag == "LIBRARY_LAYOUT":
+                for layout_element in element.iterchildren():
+                    value += layout_element.tag
+            else:
+                value = element.text
+            library_item[key] = value
+
+    platform_list = fulltext_etree.xpath("//PLATFORM")
+    if len(platform_list) > 0:
+        platform = platform_list[0]
+        instrument_model_list = platform.xpath("//INSTRUMENT_MODEL")
+        if len(instrument_model_list) > 0:
+            instrument_model = instrument_model_list[0]
+            library_item[instrument_model.tag] = instrument_model.text
+
+    return library_item
+
+
+def extract_SRA_info_from_ENA(ena_accession_id, logger=None):
+    # URL for POST request for European Nucleotide Archive
+    post_url = "https://www.ebi.ac.uk/ena/browser/api/xml"
+
+    # Headers
+    headers = {"accept": "application/xml", "Content-Type": "application/json"}
+
+    # Data to be sent in the POST request
+    request_body = {
+        "accessions": [ena_accession_id],
+        "expanded": True,
+        "annotationOnly": True,
+        "lineLimit": 0,
+        "download": False,
+        "gzip": True,
+        "set": True,
+        "includeLinks": True,
+        "range": "string",
+        "complement": True,
+    }
+    logger = logger or logging.getLogger(__name__)
+    try:
+        response = _retry_request(
+            lambda: requests.post(post_url, json=request_body, headers=headers),
+            max_retries=MAX_RETRIES,
+            logger=logger,
+            operation="extract_SRA_info_from_ENA: ENA XML lookup",
+            request_interval=PUBMED_REQUEST_INTERVAL,
+            timeout=DEFAULT_REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        return response
+    except requests.exceptions.RequestException:
+        logger.exception("ENA request failed for %s", ena_accession_id)
+        raise
+
+
+def extract_sra_info(
+    output_directory: Path,
+    pubmed_info_with_bioproject: pd.DataFrame,
+    logger: logging.Logger,
+    email: str = "",
+):
+    pubmed_interact = PubmedInteract(email=email, logger=logger)
+    pubmed_dataframe = extract_pubmed_info_with_bioproject_and_sra(
+        output_directory, pubmed_info_with_bioproject, logger
+    )
     pubmed_dataframe = pubmed_dataframe.fillna("")
-    if len(pubmed_dataframe) <= 0:
-        pubmed_dataframe = pd.read_csv(
-            "DATA_pubmed_info_with_bioproj_sra_ids.csv",
-            dtype={
-                "BioProject_uid": "string",
-                "BioProject": "string",
-                "SRA_Id_list": "string",
-                "Is_in_Genbank": "bool",
-            },
-        ).fillna("")
 
     data = []
     for record in pubmed_dataframe.itertuples():
@@ -1703,9 +1752,9 @@ def main(args):
 
     # Replaces step 1: Testing the data mining pipeline with pre-extracted nucleotide metadata and detailed metadata information
     # ------------------------------#
-    nucleotide_detailed_metadata_info = pd.read_csv(
-        "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
-    )
+    # nucleotide_detailed_metadata_info = pd.read_csv(
+    #     "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
+    # )
     # nucleotide_metadata_info = pd.read_csv(
     #     "test_output/DATA_Nucleotide_Summary_records.csv"
     # )
@@ -1720,6 +1769,13 @@ def main(args):
     #     "r",
     # ) as file:
     #     matched_output_dict = json.load(file)
+    # ------------------------------#
+
+    # Replaces upto step 4: Testing the SRA metadata information extraction with pre-extracted data source information from pubmed article data content
+    # ------------------------------#
+    extracted_data_source_info_df = pd.read_csv(
+        "test_output/DATA_pubmed_info_with_bioproj_and_sra.csv"
+    )
     # ------------------------------#
 
     # endregion
@@ -1753,25 +1809,26 @@ def main(args):
     # # Step 2: SRA records metadata extraction
     # extract_sra_metadata_batch(args.output_directory)
 
-    # Step 3: Pubmed article mining Mining
+    # # Step 3: Pubmed article mining Mining
 
-    title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
+    # title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
 
-    pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
-    matched_output_dict = extract_pubmed_article_information_by_title(
-        args, directory, title_list, pubmed_interact, logger
-    )
+    # pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
+    # matched_output_dict = extract_pubmed_article_information_by_title(
+    #     args, directory, title_list, pubmed_interact, logger
+    # )
 
-    # Step 4: Extracting BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
-    # This step would involve processing the matched_output_dict to extract the required IDs.
-    extracted_data_source_info_df = (
-        extract_data_source_info_from_pubmed_article_data_content(
-            directory, matched_output_dict, logger
-        )
-    )
+    # # Step 4: Extracting BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
+    # # This step would involve processing the matched_output_dict to extract the required IDs.
+    # extracted_data_source_info_df = (
+    #     extract_data_source_info_from_pubmed_article_data_content(
+    #         directory, matched_output_dict, logger
+    #     )
+    # )
 
     # Step 5: Extracting SRA information from the extracted data source information.
-    # extract_sra_info(directory, extracted_data_source_info_df, logger, email=args.mail)
+
+    extract_sra_info(directory, extracted_data_source_info_df, logger, email=args.mail)
 
 
 if __name__ == "__main__":
