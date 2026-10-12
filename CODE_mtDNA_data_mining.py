@@ -114,7 +114,7 @@ def _apply_request_pacing(logger, context, request_interval):
     _last_request_time = time.monotonic()
 
 
-def retry_request(
+def _retry_request(
     func,
     max_retries=MAX_RETRIES,
     logger=None,
@@ -122,8 +122,6 @@ def retry_request(
     request_interval=None,
     timeout=DEFAULT_REQUEST_TIMEOUT,
 ):
-    global _last_request_time
-
     logger = logger or logging.getLogger(__name__)
     operation = operation or "network request"
     method, separator, operation_name = operation.partition(": ")
@@ -185,9 +183,6 @@ def retry_request(
             time.sleep(delay)
 
     raise RuntimeError(f"{context} exceeded retry budget without returning a response")
-
-
-_retry_request = retry_request
 
 
 def configure_logging(verbose):
@@ -1350,7 +1345,7 @@ def extract_SRA_info_from_ENA(ena_accession_id, logger=None):
     }
     logger = logger or logging.getLogger(__name__)
     try:
-        response = retry_request(
+        response = _retry_request(
             lambda: requests.post(
                 post_url,
                 json=request_body,
@@ -1431,6 +1426,8 @@ def extract_sra_info(
                     sra_code = sra_records[0]
             else:
                 sra_code = row.SRA_Code
+            if "," in sra_code:
+                sra_code = sra_code.split(",")[0]
 
             if "SAMN" in sra_code:
                 bio_sample_esearch_handle = Entrez.esearch(
@@ -1448,8 +1445,6 @@ def extract_sra_info(
                 ]["Link"][0]["Id"]
 
             else:
-                if "," in sra_code:
-                    sra_code = sra_code.split(",")[0]
                 sra_esearch_handle = Entrez.esearch(db="sra", term=sra_code)
                 sra_search_result = Entrez.read(sra_esearch_handle)
                 bio_proj_elink_handle = Entrez.elink(
@@ -1496,8 +1491,8 @@ def extract_sra_info(
         else:
             if row.ENA != "":
                 url = f"https://www.ebi.ac.uk/ena/portal/api/search?result=read_experiment&includeAccessions={row.ENA}&format=json"
-                response = retry_request(
-                    lambda: requests.get(
+                response = _retry_request(
+                    lambda url=url: requests.get(
                         url,
                         headers={"User-Agent": "Mozilla/5.0"},
                         timeout=DEFAULT_REQUEST_TIMEOUT,
@@ -1776,7 +1771,7 @@ def main(args):
     )
 
     # Step 5: Extracting SRA information from the extracted data source information.
-    extract_sra_info(directory, extracted_data_source_info_df, logger, email=args.mail)
+    # extract_sra_info(directory, extracted_data_source_info_df, logger, email=args.mail)
 
 
 if __name__ == "__main__":
