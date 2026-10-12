@@ -24,7 +24,7 @@ from Bio import Entrez, SeqIO
 
 batch_size = 100  # Number of records to fetch in each batch
 MAX_RETRIES = 5  # Maximum number of retries for fetching records
-PUBMED_REQUEST_INTERVAL = 1.0  # Minimum seconds between paced PubMed requests
+REQUEST_INTERVAL = 1.0  # Minimum seconds between paced PubMed requests
 _last_request_time = None
 substrings: list = [
     "NCBI SRA",
@@ -350,7 +350,7 @@ def fetch_nucleotide_summary_batch(start, end, nucleotide_esearch_output, logger
     )
 
 
-def extract_nucleotide_metadata_information(output_directory, logger):
+def extract_nucleotide_summary_information(output_directory, logger):
     directory = Path(output_directory)
     nucleotide_metadata_output_file_path = (
         directory / "DATA_Nucleotide_Summary_records.csv"
@@ -371,7 +371,7 @@ def extract_nucleotide_metadata_information(output_directory, logger):
         max_retries=MAX_RETRIES,
         logger=logger,
         operation=(
-            "extract_nucleotide_metadata_information: "
+            "extract_nucleotide_summary_information: "
             "Entrez.esearch nucleotide records"
         ),
     )
@@ -395,6 +395,89 @@ def extract_nucleotide_metadata_information(output_directory, logger):
         print(f"An error occurred in nucleotide metadata extraction: {e}")
 
     return df
+
+
+class NucleotideInteract:
+    def __init__(
+        self,
+        email,
+        logger: logging.Logger,
+        request_interval=REQUEST_INTERVAL,
+    ):
+        self.email = email
+        Entrez.email = self.email
+        self.logger = logger
+
+    def _retry_request(self, func, operation, request_interval=None):
+        return _retry_request(
+            func,
+            max_retries=MAX_RETRIES,
+            logger=self.logger,
+            operation=f"{self.__class__.__name__}.{operation}",
+            request_interval=request_interval,
+        )
+
+    def fetch_nucleotide_info(self, genbank_accession_id):
+        self.logger.info(f"Fetching nucleotide information for {genbank_accession_id}")
+        handle = Entrez.efetch(
+            db="nucleotide", id=genbank_accession_id, rettype="gb", retmode="xml"
+        )
+        record = Entrez.read(handle)
+        handle.close()
+        return record
+
+    def extract_source_info_from_nucleotide_info(self, nucleotide_info):
+        source_info = {}
+        source_obj = next(
+            filter(
+                lambda x: x["GBFeature_key"] == "source",
+                nucleotide_info[0]["GBSeq_feature-table"],
+            ),
+            None,
+        )
+        if source_obj:
+            for qualifier in source_obj["GBFeature_quals"]:
+                source_info[qualifier["GBQualifier_name"]] = qualifier[
+                    "GBQualifier_value"
+                ]
+        return source_info
+
+
+def extract_nucleotide_metadata_info(
+    output_directory: Path,
+    nucleotide_data_with_bioproj: pd.DataFrame,
+    logger: logging.Logger,
+    email: str = "",
+):
+
+    nucleotide_interact = NucleotideInteract(email=email, logger=logger)
+    # nucleotide_pubmed_data = pd.read_csv("DATA_Nucleotide_Pubmed_data_combined.csv")
+    nucleotide_data_with_bioproj = nucleotide_data_with_bioproj.rename(
+        columns={"European Nucleotide Archive": "ENA", "SRA Code": "SRA_Code"}
+    )
+    nucleotide_data_list = []
+    for row in nucleotide_data_with_bioproj.itertuples():
+        nucleotide_item = {"AccessionID": row.AccessionID, "BioProject": row.BioProject}
+        nucleotide_info = nucleotide_interact.fetch_nucleotide_info(row.AccessionID)
+        if len(nucleotide_info) > 0:
+            if "GBSeq_definition" in nucleotide_info[0]:
+                nucleotide_item["Title"] = nucleotide_info[0]["GBSeq_definition"]
+            if "GBSeq_comment" in nucleotide_info[0]:
+                nucleotide_item["Assembly_Info"] = nucleotide_info[0]["GBSeq_comment"]
+
+        source_info = nucleotide_interact.extract_source_info_from_nucleotide_info(
+            nucleotide_info
+        )
+        nucleotide_item["Source"] = source_info
+        nucleotide_data_list.append(nucleotide_item)
+
+    output_file_name = f"{output_directory}/DATA_nucleotide_metadata_list.json"
+    with open(output_file_name, "w") as file:
+        json.dump(nucleotide_data_list, file, indent=4)
+    logger.info(f"Data written to {output_file_name}")
+    logger.info("Finished.")
+
+    return nucleotide_data_list
 
 
 # endregion
@@ -498,7 +581,7 @@ class PubmedInteract:
         self,
         email,
         logger: logging.Logger,
-        request_interval=PUBMED_REQUEST_INTERVAL,
+        request_interval=REQUEST_INTERVAL,
     ):
         """
         Initializes the instance with the provided email and logger.
@@ -1482,7 +1565,7 @@ def extract_pubmed_info_with_bioproject_and_sra(
                     max_retries=MAX_RETRIES,
                     logger=logger,
                     operation="extract_sra_info: ENA portal search",
-                    request_interval=PUBMED_REQUEST_INTERVAL,
+                    request_interval=REQUEST_INTERVAL,
                 )
 
                 if response.status_code == 200:
@@ -1560,7 +1643,7 @@ def extract_SRA_info_from_ENA(ena_accession_id, logger=None):
             max_retries=MAX_RETRIES,
             logger=logger,
             operation="extract_SRA_info_from_ENA: ENA XML lookup",
-            request_interval=PUBMED_REQUEST_INTERVAL,
+            request_interval=REQUEST_INTERVAL,
             timeout=DEFAULT_REQUEST_TIMEOUT,
         )
         response.raise_for_status()
@@ -1572,14 +1655,12 @@ def extract_SRA_info_from_ENA(ena_accession_id, logger=None):
 
 def extract_sra_info(
     output_directory: Path,
-    pubmed_info_with_bioproject: pd.DataFrame,
+    pubmed_dataframe: pd.DataFrame,
     logger: logging.Logger,
     email: str = "",
 ):
     pubmed_interact = PubmedInteract(email=email, logger=logger)
-    pubmed_dataframe = extract_pubmed_info_with_bioproject_and_sra(
-        output_directory, pubmed_info_with_bioproject, logger
-    )
+
     pubmed_dataframe = pubmed_dataframe.fillna("")
 
     data = []
@@ -1736,6 +1817,8 @@ def extract_sra_info(
     logger.info(f"Data written to {output_file_name}")
     logger.info("Finished.")
 
+    return data
+
 
 # endregion
 
@@ -1752,9 +1835,9 @@ def main(args):
 
     # Replaces step 1: Testing the data mining pipeline with pre-extracted nucleotide metadata and detailed metadata information
     # ------------------------------#
-    # nucleotide_detailed_metadata_info = pd.read_csv(
-    #     "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
-    # )
+    nucleotide_detailed_metadata_info = pd.read_csv(
+        "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
+    )
     # nucleotide_metadata_info = pd.read_csv(
     #     "test_output/DATA_Nucleotide_Summary_records.csv"
     # )
@@ -1775,6 +1858,10 @@ def main(args):
     # ------------------------------#
     extracted_data_source_info_df = pd.read_csv(
         "test_output/DATA_pubmed_info_with_bioproj_and_sra.csv"
+    )
+
+    pubmed_dataframe = pd.read_csv(
+        "test_output/DATA_pubmed_info_with_bioproj_sra_ids.csv"
     )
     # ------------------------------#
 
@@ -1799,7 +1886,7 @@ def main(args):
     Entrez.api_key = API_KEY
 
     # # Step 1: Fetching nucleotide summary records for Homo sapiens complete mitochondrial genome sequences
-    # nucleotide_metadata_info = extract_nucleotide_metadata_information(
+    # nucleotide_summary_info = extract_nucleotide_summary_information(
     #     args.output_directory, logger
     # )
     # nucleotide_detailed_metadata_info = (
@@ -1826,9 +1913,35 @@ def main(args):
     #     )
     # )
 
-    # Step 5: Extracting SRA information from the extracted data source information.
+    # # Step 5: Pubmed Data metadata extraction
+    # pubmed_dataframe = extract_pubmed_info_with_bioproject_and_sra(
+    #     directory, extracted_data_source_info_df, logger
+    # )
+    # # Step 6: Extracting SRA information from the extracted data source information.
 
-    extract_sra_info(directory, extracted_data_source_info_df, logger, email=args.mail)
+    # sra_metadata_info = extract_sra_info(directory, pubmed_dataframe, logger, email=args.mail)
+
+    # Step 7: Extracting Nucleotide Metadata information related to BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
+
+    # input df preparation for this step
+    # data_combined
+    nucleotide_detailed_metadata_info = nucleotide_detailed_metadata_info.drop(
+        columns=["BioProject"]
+    )
+    nucleotide_data_with_bioproj = pd.merge(
+        pubmed_dataframe,
+        nucleotide_detailed_metadata_info,
+        left_on="Title",
+        right_on="TITLE",
+        how="inner",
+    )
+    nucleotide_data_with_bioproj.to_csv(
+        f"{directory}/DATA_Nucleotide_Pubmed_data_combined.csv", index=False
+    )
+
+    extract_nucleotide_metadata_info(
+        directory, nucleotide_data_with_bioproj, logger, email=args.mail
+    )
 
 
 if __name__ == "__main__":
