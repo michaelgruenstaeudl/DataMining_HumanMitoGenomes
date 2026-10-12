@@ -1856,9 +1856,9 @@ def main(args):
 
     # Replaces upto step 4: Testing the SRA metadata information extraction with pre-extracted data source information from pubmed article data content
     # ------------------------------#
-    extracted_data_source_info_df = pd.read_csv(
-        "test_output/DATA_pubmed_info_with_bioproj_and_sra.csv"
-    )
+    # extracted_data_source_info_df = pd.read_csv(
+    #     "test_output/DATA_pubmed_info_with_bioproj_and_sra.csv"
+    # )
 
     pubmed_dataframe = pd.read_csv(
         "test_output/DATA_pubmed_info_with_bioproj_sra_ids.csv"
@@ -1885,41 +1885,43 @@ def main(args):
     )  # Mention the email address same as which is used to sign in NCBI.
     Entrez.api_key = API_KEY
 
-    # # Step 1: Fetching nucleotide summary records for Homo sapiens complete mitochondrial genome sequences
+    # Step 1: Fetching nucleotide summary records for Homo sapiens complete mitochondrial genome sequences
     # nucleotide_summary_info = extract_nucleotide_summary_information(
     #     args.output_directory, logger
     # )
-    # nucleotide_detailed_metadata_info = (
-    #     extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
-    # )
+    nucleotide_detailed_metadata_info = (
+        extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
+    )
 
-    # # Step 2: SRA records metadata extraction
-    # extract_sra_metadata_batch(args.output_directory)
+    # Step 2: SRA records metadata extraction
+    extract_sra_metadata_batch(args.output_directory)
 
-    # # Step 3: Pubmed article mining Mining
+    # Step 3: Pubmed article mining Mining
 
-    # title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
+    title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
 
-    # pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
-    # matched_output_dict = extract_pubmed_article_information_by_title(
-    #     args, directory, title_list, pubmed_interact, logger
-    # )
+    pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
+    matched_output_dict = extract_pubmed_article_information_by_title(
+        args, directory, title_list, pubmed_interact, logger
+    )
 
-    # # Step 4: Extracting BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
-    # # This step would involve processing the matched_output_dict to extract the required IDs.
-    # extracted_data_source_info_df = (
-    #     extract_data_source_info_from_pubmed_article_data_content(
-    #         directory, matched_output_dict, logger
-    #     )
-    # )
+    # Step 4: Extracting BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
+    # This step would involve processing the matched_output_dict to extract the required IDs.
+    extracted_data_source_info_df = (
+        extract_data_source_info_from_pubmed_article_data_content(
+            directory, matched_output_dict, logger
+        )
+    )
 
-    # # Step 5: Pubmed Data metadata extraction
-    # pubmed_dataframe = extract_pubmed_info_with_bioproject_and_sra(
-    #     directory, extracted_data_source_info_df, logger
-    # )
-    # # Step 6: Extracting SRA information from the extracted data source information.
+    # Step 5: Pubmed Data metadata extraction
+    pubmed_dataframe = extract_pubmed_info_with_bioproject_and_sra(
+        directory, extracted_data_source_info_df, logger
+    )
+    # Step 6: Extracting SRA information from the extracted data source information.
 
-    # sra_metadata_info = extract_sra_info(directory, pubmed_dataframe, logger, email=args.mail)
+    sra_metadata_info = extract_sra_info(
+        directory, pubmed_dataframe, logger, email=args.mail
+    )
 
     # Step 7: Extracting Nucleotide Metadata information related to BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
 
