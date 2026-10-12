@@ -9,6 +9,7 @@ import re
 import time
 import unicodedata
 import urllib.parse
+from collections import defaultdict
 from datetime import datetime, timezone
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -1372,10 +1373,6 @@ def extract_data_source_info_from_pubmed_article_data_content(
 
 # endregion
 
-# region Mapping of Nucleotide to SRA records:
-# def mapping():
-# endregion
-
 # region SRA records metadata extraction related to BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
 
 
@@ -1823,6 +1820,74 @@ def extract_sra_info(
 # endregion
 
 
+# region Mapping of Nucleotide to SRA records:
+def mapping_nucleotide_to_sra(nucleotide_metadata_list, sra_metadata_list, logger):
+    logger.info("Mapping Nucleotide to SRA records")
+
+    grouped_nucleotide_data = defaultdict(list)
+    for item in nucleotide_metadata_list:
+        grouped_nucleotide_data[item["BioProject"]].append(item)
+
+    grouped_sra_data = defaultdict(list)
+    for item in sra_metadata_list:
+        grouped_sra_data[item["BioProject"]].append(item)
+
+    for bioproject, nucleotide_items in grouped_nucleotide_data.items():
+        sra_items = grouped_sra_data.get(bioproject, [])
+        if not sra_items:
+            logger.info(f"No SRA records found for BioProject: {bioproject}")
+            continue
+
+        mapped_records = []
+        for nucleotide_item in nucleotide_items:
+            isolate_name = nucleotide_item["Source"]["isolate"]
+            isolate_chunks = isolate_name.split("_")
+            if len(isolate_chunks) > 1:
+                isolate_name = f"{isolate_chunks[0]} {isolate_chunks[1]}"
+                # print(isolate_name)
+            matched_sra_list = [
+                sra_item
+                for sra_item in sra_items
+                if sra_item["Sample_Alias"] == isolate_name
+            ]
+
+            if not matched_sra_list:
+                logger.info(
+                    f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} when compared with Sample_Alias in SRA records."
+                )
+                matched_sra_list = [
+                    sra_item
+                    for sra_item in sra_items
+                    if sra_item["Library"]["LIBRARY_NAME"] == isolate_name
+                ]
+
+            if not matched_sra_list:
+                logger.info(
+                    f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} when compared with Library Name in SRA records."
+                )
+                matched_sra_list = [
+                    sra_item
+                    for sra_item in sra_items
+                    if sra_item["Sample_Ref_Name"] == isolate_name
+                ]
+
+            mapped_object = {
+                "nucleotide_info": nucleotide_item,
+                "sra_info": matched_sra_list,
+                "sra_count": len(matched_sra_list),
+            }
+            mapped_records.append(mapped_object)
+
+        for nucleotide_item in nucleotide_items:
+            nucleotide_item["SRA_Records"] = sra_items
+            logger.info(
+                f"Mapped {len(sra_items)} SRA records to BioProject: {bioproject}"
+            )
+
+
+# endregion
+
+
 def main(args):
 
     # region Script Execution parameter
@@ -1941,7 +2006,7 @@ def main(args):
         f"{directory}/DATA_Nucleotide_Pubmed_data_combined.csv", index=False
     )
 
-    extract_nucleotide_metadata_info(
+    nucleotide_metadata_info = extract_nucleotide_metadata_info(
         directory, nucleotide_data_with_bioproj, logger, email=args.mail
     )
 
