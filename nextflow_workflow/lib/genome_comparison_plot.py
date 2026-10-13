@@ -1,11 +1,12 @@
 import argparse
+import math
 import os
 import sys
-import math
-import matplotlib.pyplot as plt
+
 import matplotlib.patches as mpatches
-from Bio import SeqIO, Align
+import matplotlib.pyplot as plt
 import pandas as pd
+from Bio import Align, SeqIO
 
 # -------------------------------------------------------------------
 # Config
