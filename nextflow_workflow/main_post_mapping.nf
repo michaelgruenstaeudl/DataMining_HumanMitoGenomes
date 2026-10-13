@@ -8,6 +8,7 @@ include { novoplast_process } from './modules/novoplasty_process.nf'
 include { contamination_removal } from './modules/contamination_control.nf'
 include { addSizeTracking } from './lib/utils.nf'
 include {
+    write_csv as write_cutoff_info_csv ;
     write_csv as write_file_sizes_csv ;
     write_csv as write_assembled_metadata_csv ;
     write_csv as write_normalized_genome_metadata_csv ;
@@ -69,9 +70,26 @@ workflow {
         parent_output_dir,
     )
     cutoffs_ch = quality_control_workflow.out.cutoffs_ch
+
+    // Write cutoff info into CSV
+    cutoff_lines_ch = cutoffs_ch.map { sample_id, lower_cutoff, upper_cutoff ->
+        [sample_id, lower_cutoff, upper_cutoff].join(",")
+    }
+    cutoff_tmp_csv = cutoff_lines_ch.collectFile(
+        name: "cutoff_info.tmp",
+        newLine: true,
+    )
+    write_cutoff_info_csv(
+        cutoff_tmp_csv,
+        "cutoff_info",
+        "cutoff_info.csv",
+        parent_output_dir,
+    )
+
     evenness_calculation_workflow_initial_input_ch = quality_control_workflow.out.repair_read_output_ch
         .join(gb_channel)
         .join(fasta_channel)
+
     // quality_control_workflow.out.quality_control_out_ch.view { it -> "QC output: ${it}" }
     size_ch = size_ch.mix(quality_control_workflow.out.repair_read_size_ch)
     size_ch = addSizeTracking(size_ch, quality_control_workflow.out.quality_control_out_ch, "Quality Control Output")
