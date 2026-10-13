@@ -26,3 +26,6 @@ analysis_data
 
 data_check.sh
 data_move.sh
+
+test_output
+log
