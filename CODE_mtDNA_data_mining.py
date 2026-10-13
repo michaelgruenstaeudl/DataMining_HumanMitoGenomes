@@ -1841,6 +1841,11 @@ def mapping_nucleotide_to_sra(nucleotide_metadata_list, sra_metadata_list, logge
         mapped_records = []
         for nucleotide_item in nucleotide_items:
             isolate_name = nucleotide_item["Source"]["isolate"]
+            if "AGENOME_" in isolate_name:
+                isolate_name = isolate_name.replace("AGENOME_", "")
+            elif "AGENOME-" in isolate_name:
+                isolate_name = isolate_name.replace("AGENOME-", "")
+
             isolate_chunks = isolate_name.split("_")
             if len(isolate_chunks) > 1:
                 isolate_name = f"{isolate_chunks[0]} {isolate_chunks[1]}"
@@ -1869,6 +1874,36 @@ def mapping_nucleotide_to_sra(nucleotide_metadata_list, sra_metadata_list, logge
                     sra_item
                     for sra_item in sra_items
                     if sra_item["Sample_Ref_Name"] == isolate_name
+                ]
+
+            if not matched_sra_list:
+                logger.info(
+                    f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} when compared with Sample Ref Name in SRA records."
+                )
+                matched_sra_list = [
+                    sra_item
+                    for sra_item in sra_items
+                    if sra_item["submitter_id"] == isolate_name
+                ]
+
+            if not matched_sra_list:
+                logger.info(
+                    f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} when compared with Submitter Id in SRA records."
+                )
+                matched_sra_list = [
+                    sra_item
+                    for sra_item in sra_items
+                    if sra_item["Sample_Title"] == isolate_name
+                ]
+
+            if not matched_sra_list:
+                logger.info(
+                    f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} when compared with Sample Title in SRA records."
+                )
+                matched_sra_list = [
+                    sra_item
+                    for sra_item in sra_items
+                    if sra_item["Title"].split(": ")[1] == isolate_name
                 ]
 
             mapped_object = {
@@ -1925,8 +1960,12 @@ def main(args):
     #     "test_output/DATA_pubmed_info_with_bioproj_and_sra.csv"
     # )
 
-    pubmed_dataframe = pd.read_csv(
-        "test_output/DATA_pubmed_info_with_bioproj_sra_ids.csv"
+    # pubmed_dataframe = pd.read_csv(
+    #     "test_output/DATA_pubmed_info_with_bioproj_sra_ids.csv"
+    # )
+
+    nucleotide_data_with_bioproj = pd.read_csv(
+        "test_output/DATA_Nucleotide_Pubmed_data_combined.csv"
     )
     # ------------------------------#
 
@@ -1954,57 +1993,57 @@ def main(args):
     # nucleotide_summary_info = extract_nucleotide_summary_information(
     #     args.output_directory, logger
     # )
-    nucleotide_detailed_metadata_info = (
-        extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
-    )
+    # nucleotide_detailed_metadata_info = (
+    #     extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
+    # )
 
-    # Step 2: SRA records metadata extraction
-    extract_sra_metadata_batch(args.output_directory)
+    # # Step 2: SRA records metadata extraction
+    # extract_sra_metadata_batch(args.output_directory)
 
-    # Step 3: Pubmed article mining Mining
+    # # Step 3: Pubmed article mining Mining
 
-    title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
+    # title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
 
-    pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
-    matched_output_dict = extract_pubmed_article_information_by_title(
-        args, directory, title_list, pubmed_interact, logger
-    )
+    # pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
+    # matched_output_dict = extract_pubmed_article_information_by_title(
+    #     args, directory, title_list, pubmed_interact, logger
+    # )
 
-    # Step 4: Extracting BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
-    # This step would involve processing the matched_output_dict to extract the required IDs.
-    extracted_data_source_info_df = (
-        extract_data_source_info_from_pubmed_article_data_content(
-            directory, matched_output_dict, logger
-        )
-    )
+    # # Step 4: Extracting BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
+    # # This step would involve processing the matched_output_dict to extract the required IDs.
+    # extracted_data_source_info_df = (
+    #     extract_data_source_info_from_pubmed_article_data_content(
+    #         directory, matched_output_dict, logger
+    #     )
+    # )
 
-    # Step 5: Pubmed Data metadata extraction
-    pubmed_dataframe = extract_pubmed_info_with_bioproject_and_sra(
-        directory, extracted_data_source_info_df, logger
-    )
-    # Step 6: Extracting SRA information from the extracted data source information.
+    # # Step 5: Pubmed Data metadata extraction
+    # pubmed_dataframe = extract_pubmed_info_with_bioproject_and_sra(
+    #     directory, extracted_data_source_info_df, logger
+    # )
+    # # Step 6: Extracting SRA information from the extracted data source information.
 
-    sra_metadata_info = extract_sra_info(
-        directory, pubmed_dataframe, logger, email=args.mail
-    )
+    # sra_metadata_info = extract_sra_info(
+    #     directory, pubmed_dataframe, logger, email=args.mail
+    # )
 
-    # Step 7: Extracting Nucleotide Metadata information related to BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
+    # # Step 7: Extracting Nucleotide Metadata information related to BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
 
-    # input df preparation for this step
-    # data_combined
-    nucleotide_detailed_metadata_info = nucleotide_detailed_metadata_info.drop(
-        columns=["BioProject"]
-    )
-    nucleotide_data_with_bioproj = pd.merge(
-        pubmed_dataframe,
-        nucleotide_detailed_metadata_info,
-        left_on="Title",
-        right_on="TITLE",
-        how="inner",
-    )
-    nucleotide_data_with_bioproj.to_csv(
-        f"{directory}/DATA_Nucleotide_Pubmed_data_combined.csv", index=False
-    )
+    # # input df preparation for this step
+    # # data_combined
+    # nucleotide_detailed_metadata_info = nucleotide_detailed_metadata_info.drop(
+    #     columns=["BioProject"]
+    # )
+    # nucleotide_data_with_bioproj = pd.merge(
+    #     pubmed_dataframe,
+    #     nucleotide_detailed_metadata_info,
+    #     left_on="Title",
+    #     right_on="TITLE",
+    #     how="inner",
+    # )
+    # nucleotide_data_with_bioproj.to_csv(
+    #     f"{directory}/DATA_Nucleotide_Pubmed_data_combined.csv", index=False
+    # )
 
     nucleotide_metadata_info = extract_nucleotide_metadata_info(
         directory, nucleotide_data_with_bioproj, logger, email=args.mail
