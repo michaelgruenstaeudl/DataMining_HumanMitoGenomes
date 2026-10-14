@@ -29,13 +29,13 @@ workflow quality_control_workflow {
     )
 
     repair_reads(repair_reads_input_ch)
-    repair_read_output_ch = repair_reads.out.repaired_reads_output_channel.map { sample_id, reads, is_single_end ->
+    repair_read_output_ch = repair_reads.out.repaired_reads_output_channel.map { meta, reads ->
         def reads_list = reads instanceof List
-            ? is_single_end
+            ? meta.single_end
                 ? reads.findAll { item -> item.name =~ /_singletons.fastq$/ }
                 : reads.findAll { item -> item.name =~ /_(1|2)\.fastq$/ }
             : [reads]
-        tuple(sample_id, reads_list, is_single_end)
+        tuple(meta, reads_list)
     }
     // repair_read_output_ch.view { it -> "Repair reads output: ${it}" }
 
@@ -43,8 +43,8 @@ workflow quality_control_workflow {
 
     // Calculate sequence length threshold for repaired reads
     input_to_calculate_sequence_length_threshold_repair = repair_read_output_ch
-        .map { sample_id, reads, _is_single_end ->
-            tuple(sample_id, reads[0])
+        .map { meta, reads ->
+            tuple(meta, reads[0])
         }
         .combine(
             calculate_sequence_length_threshold_script_ch
@@ -57,13 +57,13 @@ workflow quality_control_workflow {
         .set { repaired_quality_control_input_ch }
 
     quality_control(repaired_quality_control_input_ch, 'quality_control')
-    quality_control_repair_out_ch = quality_control.out.quality_control_output.map { sample_id, reads, is_single_end ->
+    quality_control_repair_out_ch = quality_control.out.quality_control_output.map { meta, reads ->
         def reads_list = reads instanceof List
             ? reads.findAll { item ->
                 item.name =~ /_(val_1|val_2)\.fq$/
             }
             : [reads]
-        tuple(sample_id, reads_list, is_single_end)
+        tuple(meta, reads_list)
     }
     // Merging quality control outputs and cutoff outputs from both initial(success) and repaired reads
     quality_control_out_ch = quality_control_repair_out_ch

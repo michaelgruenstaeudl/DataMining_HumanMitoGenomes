@@ -8,14 +8,14 @@ workflow normalize_complete_genome_length {
 
     main:
     input_channel
-        .branch { _sample_id, _sra_read_list, _is_single_end, _read_length, _insert_size, _assembled_fasta, _assembled_topology, assembled_seq_len ->
+        .branch { _meta, _sra_read_list, _read_length, _insert_size, _assembled_fasta, _assembled_topology, assembled_seq_len ->
             too_short: assembled_seq_len as Integer < 15000
             ready: true
         }
         .set { input_ch_branched }
 
-    novoplasty_extend_mito_input = input_ch_branched.too_short.map { sample_id, sra_read_list, is_single_end, read_length, insert_size, assembled_fasta, _assembled_topology, _assembled_seq_len ->
-        tuple(sample_id, sra_read_list, is_single_end, read_length, insert_size, assembled_fasta, config_file_ch)
+    novoplasty_extend_mito_input = input_ch_branched.too_short.map { meta, sra_read_list, read_length, insert_size, assembled_fasta, _assembled_topology, _assembled_seq_len ->
+        tuple(meta, sra_read_list, read_length, insert_size, assembled_fasta, config_file_ch)
     }
 
     mito_extend_process(
@@ -23,8 +23,8 @@ workflow normalize_complete_genome_length {
     )
     trim_mitogenome_duplicate_input_ch = mito_extend_process.out.novoplasty_output_ch
         .mix(
-            input_ch_branched.ready.map { _sample_id, _sra_read_list, _is_single_end, _read_length, _insert_size, assembled_fasta, _assembled_topology, _assembled_seq_len ->
-                tuple(_sample_id, assembled_fasta)
+            input_ch_branched.ready.map { meta, _sra_read_list, _read_length, _insert_size, assembled_fasta, _assembled_topology, _assembled_seq_len ->
+                tuple(meta, assembled_fasta)
             }
         )
         .combine(trim_mitogenome_duplicate_script_ch)

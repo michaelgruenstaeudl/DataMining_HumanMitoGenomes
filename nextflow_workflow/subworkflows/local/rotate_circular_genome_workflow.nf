@@ -10,12 +10,12 @@ workflow rotate_circular_genome_workflow {
     seed_fasta_ch
 
     main:
-    asembled_fasta_ch = rotate_genome_input_ch.map { sample_id, assembled_fasta, _official_fasta, n_mismatch ->
-        tuple(sample_id, assembled_fasta, n_mismatch)
+    asembled_fasta_ch = rotate_genome_input_ch.map { meta, assembled_fasta, _official_fasta, n_mismatch ->
+        tuple(meta, assembled_fasta, n_mismatch)
     }
 
-    official_fasta_ch = rotate_genome_input_ch.map { sample_id, _assembled_fasta, official_fasta, n_mismatch ->
-        tuple(sample_id, official_fasta, n_mismatch)
+    official_fasta_ch = rotate_genome_input_ch.map { meta, _assembled_fasta, official_fasta, n_mismatch ->
+        tuple(meta, official_fasta, n_mismatch)
     }
 
     rotate_assembled_genome(asembled_fasta_ch, seed_fasta_ch, "assembled_genome")

@@ -2,13 +2,13 @@
 
 process detectEncoding {
 
-    tag "${sample_id}"
+    tag "${meta.id}"
 
     input:
-    tuple val(sample_id), path(fastqc_report)
+    tuple val(meta), path(fastqc_report)
 
     output:
-    tuple val(sample_id), env("encoding_int"), emit: encoding_output_channel
+    tuple val(meta), env("encoding_int"), emit: encoding_output_channel
 
     script:
     """

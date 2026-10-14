@@ -2,17 +2,17 @@
 
 process mitoz_assembler {
 
-    tag "${sample_id}"
+    tag "${meta.id}"
 
     input:
-    tuple val(sample_id), path(input_file_list), val(is_single_end)
+    tuple val(meta), path(input_file_list)
 
     output:
-    tuple val(sample_id), path("megahit/mito_denovo.megahit.result/mito_denovo.megahit.mitogenome.fa"), emit: mitoz_assembler_output
-    tuple val(sample_id), path("megahit"), emit: mitoz_assembler_publish_dir
+    tuple val(meta), path("megahit/mito_denovo.megahit.result/mito_denovo.megahit.mitogenome.fa"), emit: mitoz_assembler_output
+    tuple val(meta), path("megahit"), emit: mitoz_assembler_publish_dir
 
     script:
-    def input_file_param = is_single_end ? "--fq1 ${input_file_list[0]}" : "--fq1 ${input_file_list[0]} --fq2 ${input_file_list[1]}"
+    def input_file_param = meta.single_end ? "--fq1 ${input_file_list[0]}" : "--fq1 ${input_file_list[0]} --fq2 ${input_file_list[1]}"
     """
     #Env variable for mitoz
     export PATH=/app/anaconda/envs/mitoz3.6/bin:\$PATH

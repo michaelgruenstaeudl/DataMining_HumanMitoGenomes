@@ -20,12 +20,12 @@ workflow haplotype_identification_workflow {
     haplotype_identification_input_ch
 
     main:
-    asembled_fasta_ch = haplotype_identification_input_ch.map { sample_id, assembled_fasta, _official_fasta ->
-        tuple(sample_id, assembled_fasta)
+    asembled_fasta_ch = haplotype_identification_input_ch.map { meta, assembled_fasta, _official_fasta ->
+        tuple(meta, assembled_fasta)
     }
 
-    official_fasta_ch = haplotype_identification_input_ch.map { sample_id, _assembled_fasta, official_fasta ->
-        tuple(sample_id, official_fasta)
+    official_fasta_ch = haplotype_identification_input_ch.map { meta, _assembled_fasta, official_fasta ->
+        tuple(meta, official_fasta)
     }
 
     assembled_genome_haplotype_detection(asembled_fasta_ch, "assembled_genome")

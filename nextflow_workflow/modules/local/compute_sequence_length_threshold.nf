@@ -4,13 +4,13 @@ process calculate_sequence_length_threshold {
 
     label 'python_env'
     // container 'community.wave.seqera.io/library/python:3.13.7--b46958bde3c7e023'
-    tag "${sample_id}"
+    tag "${meta.id}"
 
     input:
-    tuple val(sample_id), path(sra_file_path), path(calculate_sequence_length_threshold_script_ch)
+    tuple val(meta), path(sra_file_path), path(calculate_sequence_length_threshold_script_ch)
 
     output:
-    tuple val(sample_id), env("lower_cutoff"), env("upper_cutoff"), emit: length_cutoffs
+    tuple val(meta), env("lower_cutoff"), env("upper_cutoff"), emit: length_cutoffs
 
     script:
     """

@@ -118,15 +118,26 @@ workflow {
     config_file_ch = file(params.config_file)
     // Call the read_csv_workflow with params
     read_csv_workflow(params)
-    // evenness_calculation_workflow_initial_input_ch = read_csv_workflow.out.evenness_calculation_workflow_initial_input_ch
-    accession_ch = read_csv_workflow.out.accession_ch
-    input_ch = read_csv_workflow.out.input_ch
-    gb_channel = read_csv_workflow.out.gb_channel
-    fasta_channel = read_csv_workflow.out.fasta_channel
+    sample_input_ch = read_csv_workflow.out.sample_input_ch
+
+    // Compatibility views for process interfaces that still consume
+    // sample-specific tuples. The canonical input remains sample_input_ch.
+    sample_accession_ch = sample_input_ch.map { sample_metadata, _reads, _genbank, _fasta ->
+        tuple(sample_metadata, sample_metadata.accession)
+    }
+    sample_reads_ch = sample_input_ch.map { sample_metadata, reads, _genbank, _fasta ->
+        tuple(sample_metadata, reads)
+    }
+    sample_genbank_ch = sample_input_ch.map { sample_metadata, _reads, genbank, _fasta ->
+        tuple(sample_metadata, genbank)
+    }
+    sample_reference_fasta_ch = sample_input_ch.map { sample_metadata, _reads, _genbank, fasta ->
+        tuple(sample_metadata, fasta)
+    }
 
     size_ch = channel.empty()
 
-    size_ch = addSizeTracking(size_ch, input_ch, "Initial Input Files")
+    size_ch = addSizeTracking(size_ch, sample_reads_ch, "Initial Input Files")
     // Created once here and passed to mapping workflow, which will then pass it to the mapping processes.
     //This way we avoid creating multiple index files if the same reference is used for multiple samples.
     reference_ch = channel.value(file(params.reference_fasta))
@@ -136,14 +147,14 @@ workflow {
     trim_mitogenome_duplicate_script_ch = channel.fromPath(params.trim_mitogenome_duplicate_script)
     //Quality control process
     quality_control_workflow(
-        input_ch,
+        sample_reads_ch,
         calculate_sequence_length_threshold_script_ch,
     )
     cutoffs_ch = quality_control_workflow.out.cutoffs_ch
 
     // Write cutoff info into CSV
-    cutoff_lines_ch = cutoffs_ch.map { sample_id, lower_cutoff, upper_cutoff ->
-        [sample_id, lower_cutoff, upper_cutoff].join(",")
+    cutoff_lines_ch = cutoffs_ch.map { meta, lower_cutoff, upper_cutoff ->
+        [meta.id, lower_cutoff, upper_cutoff].join(",")
     }
     cutoff_tmp_csv = cutoff_lines_ch.collectFile(
         name: "cutoff_info.tmp",
@@ -156,8 +167,8 @@ workflow {
     )
 
     evenness_calculation_workflow_initial_input_ch = quality_control_workflow.out.repair_read_output_ch
-        .join(gb_channel)
-        .join(fasta_channel)
+        .join(sample_genbank_ch)
+        .join(sample_reference_fasta_ch)
 
     // quality_control_workflow.out.quality_control_out_ch.view { it -> "QC output: ${it}" }
     size_ch = size_ch.mix(quality_control_workflow.out.repair_read_size_ch)
@@ -171,22 +182,16 @@ workflow {
         contamination_confidence_threshold,
     )
     // contamination_removal_out_ch = contamination_removal.out.contamination_removal_fastq_output
-    contamination_removal_out_ch = contamination_removal.out.contamination_removal_fastq_output.map { sample_id, reads, is_single_end ->
-        def reads_list = is_single_end
-            ? [reads]
-            : reads
-        tuple(sample_id, reads_list, is_single_end)
+    contamination_removal_out_ch = contamination_removal.out.contamination_removal_fastq_output.map { meta, reads ->
+        tuple(meta, reads instanceof List ? reads : [reads])
     }
     // contamination_removal_out_ch.view { it -> "Contamination removal output: ${it}" }
     size_ch = addSizeTracking(size_ch, contamination_removal_out_ch, "Contamination Output")
 
     // Mapping process
     mapping_workflow(contamination_removal_out_ch, reference_ch)
-    mapping_process_output = mapping_workflow.out.mapping_process_output.map { sample_id, reads, is_single_end ->
-        def reads_list = is_single_end
-            ? [reads]
-            : reads
-        tuple(sample_id, reads_list, is_single_end)
+    mapping_process_output = mapping_workflow.out.mapping_process_output.map { meta, reads ->
+        tuple(meta, reads instanceof List ? reads : [reads])
     }
 
     size_ch = addSizeTracking(size_ch, mapping_process_output, "Mapping Output")
@@ -204,18 +209,21 @@ workflow {
 
         // evenness calculation for cleaned reads after mapping
         final_evenness_calculation_input_ch = mapping_process_output
-            .join(gb_channel)
-            .join(fasta_channel)
+            .join(sample_genbank_ch)
+            .join(sample_reference_fasta_ch)
         evenness_calculation_workflow_final(
             final_evenness_calculation_input_ch,
             "mapping_phase",
         )
         cleaned_reads_evenness_output_ch = evenness_calculation_workflow_final.out.evenness_output_ch
 
-        merge_evenness_figure_input_ch = accession_ch
+        merge_evenness_figure_input_ch = sample_accession_ch
             .join(initial_evenness_output_ch)
             .join(cleaned_reads_evenness_output_ch)
             .combine(merge_pacvr_evenness_fig_script_ch)
+            .map { meta, _accession, initial_figure, final_figure, merge_script ->
+                tuple(meta, initial_figure, final_figure, merge_script)
+            }
 
         merge_pacvr_evenness_figures(
             merge_evenness_figure_input_ch
@@ -246,8 +254,8 @@ workflow {
     )
 
     // Write assembled genome metadata info into CSV
-    assembled_genome_csv_lines_ch = extract_assembled_genome_metadata_info.out.metadata_info_out_ch.map { tuple ->
-        tuple.join(",")
+    assembled_genome_csv_lines_ch = extract_assembled_genome_metadata_info.out.metadata_info_out_ch.map { meta, topology, sequence_length ->
+        [meta.id, topology, sequence_length].join(",")
     }
     tmp_csv = assembled_genome_csv_lines_ch.collectFile(
         name: "assembled_genome_metadata.tmp",
@@ -262,10 +270,10 @@ workflow {
     normalize_fasta_input_ch = mapping_process_output
         .join(
             cutoffs_ch.map { length_cutoffs_ch ->
-                def (sample_id, _lower_cutoff, upper_cutoff) = length_cutoffs_ch
+                def (meta, _lower_cutoff, upper_cutoff) = length_cutoffs_ch
                 def read_length = upper_cutoff.toInteger() + 1
                 def insert_size = upper_cutoff.toInteger() * 2
-                tuple(sample_id, read_length, insert_size)
+                tuple(meta, read_length, insert_size)
             }
         )
         .join(mitoz_assembler.out.mitoz_assembler_output)
@@ -283,8 +291,8 @@ workflow {
     )
 
     // Write assembled genome metadata info into CSV
-    normalized_genome_csv_lines_ch = extract_normalized_genome_metadata_info.out.metadata_info_out_ch.map { tuple ->
-        tuple.join(",")
+    normalized_genome_csv_lines_ch = extract_normalized_genome_metadata_info.out.metadata_info_out_ch.map { meta, topology, sequence_length ->
+        [meta.id, topology, sequence_length].join(",")
     }
     tmp_csv = normalized_genome_csv_lines_ch.collectFile(
         name: "normalized_genome_metadata.tmp",
@@ -298,7 +306,7 @@ workflow {
 
     //Circular genome rotation process
     rotate_genome_input_ch = normalize_complete_genome_length.out.normalized_fasta_output_ch
-        .join(fasta_channel)
+        .join(sample_reference_fasta_ch)
         .combine(channel.value(params.rotation_mismatch_threshold))
 
     rotate_circular_genome_workflow(
@@ -311,8 +319,8 @@ workflow {
     rotated_genome_ch = rotate_circular_genome_workflow.out.rotated_genome_ch
 
 
-    rotated_fasta_ch = rotated_genome_ch.map { tuple ->
-        tuple.join(",")
+    rotated_fasta_ch = rotated_genome_ch.map { meta, assembled_fasta, official_fasta ->
+        [meta.id, assembled_fasta, official_fasta].join(",")
     }
     rotated_fasta_tmp_csv = rotated_fasta_ch.collectFile(name: "rotated_genome_info.tmp", newLine: true)
 
@@ -328,12 +336,12 @@ workflow {
     // and official genome files, and then write that to a separate CSV for reporting purposes.
     rotated_fasta_ch_for_reporting = rotated_assembled_ch
         .join(rotated_official_ch)
-        .map { sample_id, _assembled, _official ->
+        .map { meta, _assembled, _official ->
             // Construct results dir paths — NOT work dir paths
-            def assembled_result = "${workflow.outputDir}/${sample_id}/rotated_output/assembled_genome/rotated_${sample_id}.fasta"
-            def official_result = "${workflow.outputDir}/${sample_id}/rotated_output/official_genome/rotated_${sample_id}.fasta"
+            def assembled_result = "${workflow.outputDir}/${meta.id}/rotated_output/assembled_genome/rotated_${meta.id}.fasta"
+            def official_result = "${workflow.outputDir}/${meta.id}/rotated_output/official_genome/rotated_${meta.id}.fasta"
 
-            "${sample_id},${assembled_result},${official_result}"
+            "${meta.id},${assembled_result},${official_result}"
         }
 
     rotated_fasta_reporting_tmp_csv = rotated_fasta_ch_for_reporting.collectFile(name: "rotated_genome_reporting_info.tmp", newLine: true)
@@ -358,8 +366,8 @@ workflow {
         rotated_genome_ch
     )
 
-    assembled_haplotype_output_ch = haplotype_identification_workflow.out.assembled_haplotype_output_ch.map { tuple ->
-        tuple.join(",")
+    assembled_haplotype_output_ch = haplotype_identification_workflow.out.assembled_haplotype_output_ch.map { meta, haplotype, quality ->
+        [meta.id, haplotype, quality].join(",")
     }
     assembled_haplotype_output_tmp_csv = assembled_haplotype_output_ch.collectFile(name: "assembled_haplotype_info.tmp", newLine: true)
 
@@ -369,8 +377,8 @@ workflow {
         "assembled_haplotype_info.csv",
     )
 
-    official_haplotype_output_ch = haplotype_identification_workflow.out.official_haplotype_output_ch.map { tuple ->
-        tuple.join(",")
+    official_haplotype_output_ch = haplotype_identification_workflow.out.official_haplotype_output_ch.map { meta, haplotype, quality ->
+        [meta.id, haplotype, quality].join(",")
     }
     official_haplotype_output_tmp_csv = official_haplotype_output_ch.collectFile(name: "official_haplotype_info.tmp", newLine: true)
 
@@ -450,16 +458,16 @@ workflow {
 output {
     // Publish the output directories for Quality Control subworkflow
     initial_fastqc_publish_dir {
-        path { sample_id, _initial_fastqc_dir -> "${sample_id}" }
+        path { meta, _initial_fastqc_dir -> "${meta.id}" }
     }
     fastqc_after_quality_control_publish_dir {
-        path { sample_id, _fastqc_after_quality_control_dir -> "${sample_id}" }
+        path { meta, _fastqc_after_quality_control_dir -> "${meta.id}" }
     }
     repair_output_publish_dir {
-        path { sample_id, _repair_output_dir -> "${sample_id}" }
+        path { meta, _repair_output_dir -> "${meta.id}" }
     }
     qc_output_publish_dir {
-        path { sample_id, _qc_output_publish_dir -> "${sample_id}" }
+        path { meta, _qc_output_publish_dir -> "${meta.id}" }
     }
 
     //cutoff info CSV
@@ -469,7 +477,7 @@ output {
 
     //contamination removal output
     contamination_removal_publish_dir {
-        path { sample_id, _contamination_removal_dir -> "${sample_id}" }
+        path { meta, _contamination_removal_dir -> "${meta.id}" }
     }
 
     //mapping process output
@@ -477,30 +485,30 @@ output {
         path { _index_dir -> "." }
     }
     mapping_process_publish_dir {
-        path { sample_id, _mapping_process_publish_dir -> "${sample_id}" }
+        path { meta, _mapping_process_publish_dir -> "${meta.id}" }
     }
 
     //evenness calculation output
     initial_sam_output_publish_dir {
-        path { sample_id, _initial_sam_output_dir -> "${sample_id}" }
+        path { meta, _initial_sam_output_dir -> "${meta.id}" }
     }
     initial_bam_output_publish_dir {
-        path { sample_id, _initial_bam_output_dir -> "${sample_id}" }
+        path { meta, _initial_bam_output_dir -> "${meta.id}" }
     }
     initial_evenness_output_publish_dir {
-        path { sample_id, _initial_evenness_output_dir -> "${sample_id}" }
+        path { meta, _initial_evenness_output_dir -> "${meta.id}" }
     }
     final_sam_output_publish_dir {
-        path { sample_id, _final_sam_output_dir -> "${sample_id}" }
+        path { meta, _final_sam_output_dir -> "${meta.id}" }
     }
     final_bam_output_publish_dir {
-        path { sample_id, _final_bam_output_dir -> "${sample_id}" }
+        path { meta, _final_bam_output_dir -> "${meta.id}" }
     }
     final_evenness_output_publish_dir {
-        path { sample_id, _final_evenness_output_dir -> "${sample_id}" }
+        path { meta, _final_evenness_output_dir -> "${meta.id}" }
     }
     merged_pacvr_figures_output_publish_dir {
-        path { sample_id, _merged_pacvr_figures_output_dir -> "${sample_id}" }
+        path { meta, _merged_pacvr_figures_output_dir -> "${meta.id}" }
     }
 
     //collecting all merged evenness figures in ${outputDir}/combined_coverage_visualization
@@ -515,7 +523,7 @@ output {
 
     //Genome assembly (mitoZ) output
     mitoz_assembler_publish_dir {
-        path { sample_id, _mitoz_assembler_dir -> "${sample_id}" }
+        path { meta, _mitoz_assembler_dir -> "${meta.id}" }
     }
 
     //Assembled genome metadata info CSV
@@ -525,10 +533,10 @@ output {
 
     //normalized genome output
     mito_extend_process_publish_dir {
-        path { sample_id, _mito_extend_process_dir -> "${sample_id}" }
+        path { meta, _mito_extend_process_dir -> "${meta.id}" }
     }
     normalized_fasta_output_ch {
-        path { sample_id, _normalized_fasta -> "${sample_id}" }
+        path { meta, _normalized_fasta -> "${meta.id}" }
     }
 
     //normalized genome metadata info CSV
@@ -538,10 +546,10 @@ output {
 
     //rotated genome output
     rotated_assembled_publish_dir {
-        path { sample_id, _rotated_assembled_dir -> "${sample_id}" }
+        path { meta, _rotated_assembled_dir -> "${meta.id}" }
     }
     rotated_official_publish_dir {
-        path { sample_id, _rotated_official_dir -> "${sample_id}" }
+        path { meta, _rotated_official_dir -> "${meta.id}" }
     }
 
     //rotated genome metadata info CSV
@@ -556,10 +564,10 @@ output {
 
     //haplotype identification output
     assembled_haplotype_output_csv_ch {
-        path { sample_id, _assembled_haplotype_output_csv_ch -> "${sample_id}" }
+        path { meta, _assembled_haplotype_output_csv_ch -> "${meta.id}" }
     }
     official_haplotype_output_csv_ch {
-        path { sample_id, _official_haplotype_output_csv_ch -> "${sample_id}" }
+        path { meta, _official_haplotype_output_csv_ch -> "${meta.id}" }
     }
 
     //Haplotype identification metadata info CSV

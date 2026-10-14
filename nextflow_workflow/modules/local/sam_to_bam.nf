@@ -4,18 +4,18 @@
 process sam_to_bam {
 
     label "samtools_env"
-    tag "${sample_id}"
+    tag "${meta.id}"
 
     input:
-    tuple val(sample_id), path(fasta_file), path(sam_file)
+    tuple val(meta), path(fasta_file), path(sam_file)
     val phase
 
     output:
-    tuple val(sample_id), path("bam_output_${phase}/${sample_id}.bam"), emit: bam_output_ch
-    tuple val(sample_id), path("bam_output_${phase}"), emit: bam_output_publish_dir
+    tuple val(meta), path("bam_output_${phase}/${meta.id}.bam"), emit: bam_output_ch
+    tuple val(meta), path("bam_output_${phase}"), emit: bam_output_publish_dir
 
     script:
-    def output_bam_filename = "bam_output_${phase}/${sample_id}.bam"
+    def output_bam_filename = "bam_output_${phase}/${meta.id}.bam"
 
     """
     ## BAM FILE FOR ORIGINAL READS

@@ -3,20 +3,20 @@
 process rotate_genome {
 
     label "rotate_genome"
-    tag "${sample_id}"
+    tag "${meta.id}"
 
     input:
-    tuple val(sample_id), path(input_fasta), val(n_mismatch)
+    tuple val(meta), path(input_fasta), val(n_mismatch)
     file seed_fasta
     val genome_type
 
     output:
-    tuple val(sample_id), path(output_file_path), emit: rotated_output_ch
-    tuple val(sample_id), path("rotated_output/${genome_type}"), emit: rotated_output_publish_dir
+    tuple val(meta), path(output_file_path), emit: rotated_output_ch
+    tuple val(meta), path("rotated_output/${genome_type}"), emit: rotated_output_publish_dir
 
     script:
     output_directory = "rotated_output/${genome_type}"
-    output_file_path = "${output_directory}/rotated_${sample_id}.fasta"
+    output_file_path = "${output_directory}/rotated_${meta.id}.fasta"
     log_file_path = "${output_directory}/rotate.log"
     """
     mkdir -p ${output_directory}

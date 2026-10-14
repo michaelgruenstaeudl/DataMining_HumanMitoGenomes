@@ -2,14 +2,14 @@
 
 process novoplast_process {
 
-    tag "${sample_id}"
+    tag "${meta.id}"
 
     input:
-    tuple val(sample_id), path(input_file_list), val(is_single_end), val(read_length), val(insert_size), path(seed_mito_path), path(config_file_path)
+    tuple val(meta), path(input_file_list), val(read_length), val(insert_size), path(seed_mito_path), path(config_file_path)
 
     output:
-    tuple val(sample_id), path("novoplasty_output/*_mito_extend.fasta"), emit: novoplasty_output_ch
-    tuple val(sample_id), path("novoplasty_output"), emit: novoplasty_output_publish_dir
+    tuple val(meta), path("novoplasty_output/*_mito_extend.fasta"), emit: novoplasty_output_ch
+    tuple val(meta), path("novoplasty_output"), emit: novoplasty_output_publish_dir
 
     script:
     """
@@ -19,8 +19,8 @@ process novoplast_process {
     sed -i "s|^Insert size.*|Insert size            = ${insert_size}|" ${config_file_path}
     sed -i "s|^Seed Input.*|Seed Input            = ${seed_mito_path}|" ${config_file_path}
     sed -i "s|Extend seed directly.*|Extend seed directly  = yes|" ${config_file_path}
-    if [ "${is_single_end}" = "true" ]; then
-        sed -i "s|^Single/Paired.*|Single/Paired         = SE|" ${config_file_path}
+    if [ "${meta.single_end}" = "true" ]; then
+    sed -i "s|^Single/Paired.*|Single/Paired         = SE|" ${config_file_path}
         sed -i "s|^Combined reads.*|Combined reads        = ${input_file_list[0]}|" ${config_file_path}
     else
         sed -i "s|^Single/Paired.*|Single/Paired         = PE|" ${config_file_path}

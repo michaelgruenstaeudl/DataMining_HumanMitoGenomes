@@ -1,9 +1,9 @@
 process extract_assembled_genome_metadata_info {
     input:
-    tuple val(sample_id), path(assembled_genome_fasta)
+    tuple val(meta), path(assembled_genome_fasta)
 
     output:
-    tuple val(sample_id), env("topology"), env("sequence_length"), emit: metadata_info_out_ch
+    tuple val(meta), env("topology"), env("sequence_length"), emit: metadata_info_out_ch
 
     script:
     """

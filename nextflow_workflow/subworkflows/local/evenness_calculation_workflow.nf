@@ -11,20 +11,18 @@ workflow evenness_calculation_workflow {
     phase
 
     main:
-    fasta_file_ch = evenness_calculation_input_channel.map { sample_id, _fastq_list, _is_single_end, _gb_file, fasta_file ->
-        tuple(sample_id, fasta_file)
+    fasta_file_ch = evenness_calculation_input_channel.map { meta, _fastq_list, _gb_file, fasta_file ->
+        tuple(meta, fasta_file)
     }
 
 
-    gb_file_ch = evenness_calculation_input_channel.map { sample_id, _fastq_list, _is_single_end, gb_file, _fasta_file ->
-        tuple(sample_id, gb_file)
+    gb_file_ch = evenness_calculation_input_channel.map { meta, _fastq_list, gb_file, _fasta_file ->
+        tuple(meta, gb_file)
     }
-    generate_sam_input_ch = channel.empty()
     generate_sam_input_ch = evenness_calculation_input_channel
-        .map { sample_id, fastq_list, is_single_end, _gb_file, _fasta_file ->
-            tuple(sample_id, fastq_list, is_single_end)
+        .map { meta, fastq_list, _gb_file, fasta_file ->
+            tuple(meta, fastq_list, fasta_file)
         }
-        .join(fasta_file_ch)
     // }
 
     generate_sam(
