@@ -42,7 +42,9 @@ include { haplotype_identification_workflow } from './sub_workflows/haplotype_de
 
 
 workflow {
-    parent_output_dir = params.outdir
+
+    main:
+    parent_output_dir = workflow.outputDir
     contamination_confidence_threshold = params.contamination_confidence_threshold
     config_file_ch = file(params.config_file)
     // Call the read_csv_workflow with params
@@ -56,7 +58,7 @@ workflow {
     size_ch = channel.empty()
 
     size_ch = addSizeTracking(size_ch, input_ch, "Initial Input Files")
-    // Created once here and passed to mapping workflow, which will then pass it to the mapping processes. 
+    // Created once here and passed to mapping workflow, which will then pass it to the mapping processes.
     //This way we avoid creating multiple index files if the same reference is used for multiple samples.
     reference_ch = channel.value(file(params.reference_fasta))
 
@@ -235,6 +237,7 @@ workflow {
         "normalized_genome_metadata.csv",
         parent_output_dir,
     )
+
     //Circular genome rotation process
     rotate_genome_input_ch = normalize_complete_genome_length.out.normalized_fasta_output_ch
         .join(fasta_channel)
@@ -263,15 +266,16 @@ workflow {
         parent_output_dir,
     )
 
-    // For reporting, we want to include the paths to the rotated genome files instead of the actual sequences. 
-    // So we construct new lines for the CSV that have the sample ID and the paths to the rotated assembled 
+
+    // For reporting, we want to include the paths to the rotated genome files instead of the actual sequences.
+    // So we construct new lines for the CSV that have the sample ID and the paths to the rotated assembled
     // and official genome files, and then write that to a separate CSV for reporting purposes.
     rotated_fasta_ch_for_reporting = rotated_assembled_ch
         .join(rotated_official_ch)
         .map { sample_id, _assembled, _official ->
             // Construct results dir paths — NOT work dir paths
-            def assembled_result = "${params.outdir}/${sample_id}/rotated_output/assembled_genome/rotated_${sample_id}.fasta"
-            def official_result = "${params.outdir}/${sample_id}/rotated_output/official_genome/rotated_${sample_id}.fasta"
+            def assembled_result = "${workflow.outputDir}/${sample_id}/rotated_output/assembled_genome/rotated_${sample_id}.fasta"
+            def official_result = "${workflow.outputDir}/${sample_id}/rotated_output/official_genome/rotated_${sample_id}.fasta"
 
             "${sample_id},${assembled_result},${official_result}"
         }
@@ -326,5 +330,191 @@ workflow {
 
     workflow.onComplete {
         println('✅ Finished all processes!')
+    }
+
+    publish:
+
+    // output directories for Quality Control subworkflow
+    initial_fastqc_publish_dir = quality_control_workflow.out.initial_fastqc_publish_dir
+    fastqc_after_quality_control_publish_dir = quality_control_workflow.out.fastqc_after_quality_control_publish_dir
+    repair_output_publish_dir = quality_control_workflow.out.repair_output_publish_dir
+    qc_output_publish_dir = quality_control_workflow.out.qc_output_publish_dir
+
+    //Cutoff info CSV
+    cutoff_info_csv = write_cutoff_info_csv.out.csv_output
+
+    //contamination removal output
+    contamination_removal_publish_dir = contamination_removal.out.contamination_removal_publish_dir
+
+    //mapping process output
+    index_dir = mapping_workflow.out.index_dir
+    mapping_process_publish_dir = mapping_workflow.out.mapping_process_publish_dir
+
+    //evenness calculation output
+    initial_sam_output_publish_dir = params.is_calculate_evenness ? evenness_calculation_workflow_initial.out.sam_output_publish_dir : channel.empty()
+    initial_bam_output_publish_dir = params.is_calculate_evenness ? evenness_calculation_workflow_initial.out.bam_output_publish_dir : channel.empty()
+    initial_evenness_output_publish_dir = params.is_calculate_evenness ? evenness_calculation_workflow_initial.out.evenness_output_publish_dir : channel.empty()
+    final_sam_output_publish_dir = params.is_calculate_evenness ? evenness_calculation_workflow_final.out.sam_output_publish_dir : channel.empty()
+    final_bam_output_publish_dir = params.is_calculate_evenness ? evenness_calculation_workflow_final.out.bam_output_publish_dir : channel.empty()
+    final_evenness_output_publish_dir = params.is_calculate_evenness ? evenness_calculation_workflow_final.out.evenness_output_publish_dir : channel.empty()
+    merged_pacvr_figures_output_publish_dir = params.is_calculate_evenness ? merge_pacvr_evenness_figures.out.merged_pacvr_figures_output_ch : channel.empty()
+    merged_pacvr_figures_files = params.is_calculate_evenness ? merge_pacvr_evenness_figures.out.merged_pacvr_figures_files : channel.empty()
+
+    //File sizes info CSV
+    file_size_csv = write_file_sizes_csv.out.csv_output
+
+    //Genome assembly (mitoZ) output
+    mitoz_assembler_publish_dir = mitoz_assembler.out.mitoz_assembler_publish_dir
+
+    //Assembled genome metadata info CSV
+    assembled_genome_metadata_csv = write_assembled_metadata_csv.out.csv_output
+
+    //normalized genome output
+    mito_extend_process_publish_dir = normalize_complete_genome_length.out.mito_extend_process_publish_dir
+    normalized_fasta_output_ch = normalize_complete_genome_length.out.normalized_fasta_output_ch
+
+    //normalized genome metadata info CSV
+    normalized_genome_metadata_csv = write_normalized_genome_metadata_csv.out.csv_output
+
+    //rotated genome output
+    rotated_assembled_publish_dir = rotate_circular_genome_workflow.out.rotated_assembled_publish_dir
+    rotated_official_publish_dir = rotate_circular_genome_workflow.out.rotated_official_publish_dir
+
+    //rotated genome metadata info CSV
+    rotated_genome_metadata_csv = write_rotate_genome_csv.out.csv_output
+
+    //rotated genome CSV for reporting
+    rotated_genome_csv_for_reporting = write_rotate_genome_csv_for_reporting.out.csv_output
+
+    //haplotype identification output
+    assembled_haplotype_output_csv_ch = haplotype_identification_workflow.out.assembled_haplotype_output_csv_ch
+    official_haplotype_output_csv_ch = haplotype_identification_workflow.out.official_haplotype_output_csv_ch
+
+    //Haplotype identification metadata info CSV
+    assembled_haplotype_info_csv = write_assembled_haplotype_info_csv.out.csv_output
+    official_haplotype_info_csv = write_official_haplotype_info_csv.out.csv_output
+}
+
+output {
+    // Publish the output directories for Quality Control subworkflow
+    initial_fastqc_publish_dir {
+        path { sample_id, _initial_fastqc_dir -> "${sample_id}" }
+    }
+    fastqc_after_quality_control_publish_dir {
+        path { sample_id, _fastqc_after_quality_control_dir -> "${sample_id}" }
+    }
+    repair_output_publish_dir {
+        path { sample_id, _repair_output_dir -> "${sample_id}" }
+    }
+    qc_output_publish_dir {
+        path { sample_id, _qc_output_publish_dir -> "${sample_id}" }
+    }
+
+    //cutoff info CSV
+    cutoff_info_csv {
+        path { _cutoff_info_csv -> "reports" }
+    }
+
+    //contamination removal output
+    contamination_removal_publish_dir {
+        path { sample_id, _contamination_removal_dir -> "${sample_id}" }
+    }
+
+    //mapping process output
+    index_dir {
+        path { _index_dir -> "." }
+    }
+    mapping_process_publish_dir {
+        path { sample_id, _mapping_process_publish_dir -> "${sample_id}" }
+    }
+
+    //evenness calculation output
+    initial_sam_output_publish_dir {
+        path { sample_id, _initial_sam_output_dir -> "${sample_id}" }
+    }
+    initial_bam_output_publish_dir {
+        path { sample_id, _initial_bam_output_dir -> "${sample_id}" }
+    }
+    initial_evenness_output_publish_dir {
+        path { sample_id, _initial_evenness_output_dir -> "${sample_id}" }
+    }
+    final_sam_output_publish_dir {
+        path { sample_id, _final_sam_output_dir -> "${sample_id}" }
+    }
+    final_bam_output_publish_dir {
+        path { sample_id, _final_bam_output_dir -> "${sample_id}" }
+    }
+    final_evenness_output_publish_dir {
+        path { sample_id, _final_evenness_output_dir -> "${sample_id}" }
+    }
+    merged_pacvr_figures_output_publish_dir {
+        path { sample_id, _merged_pacvr_figures_output_dir -> "${sample_id}" }
+    }
+
+    //collecting all merged evenness figures in ${outputDir}/combined_coverage_visualization
+    merged_pacvr_figures_files {
+        path { "." }
+    }
+
+    //file sizes info CSV
+    file_size_csv {
+        path { _file_size_csv -> "reports" }
+    }
+
+    //Genome assembly (mitoZ) output
+    mitoz_assembler_publish_dir {
+        path { sample_id, _mitoz_assembler_dir -> "${sample_id}" }
+    }
+
+    //Assembled genome metadata info CSV
+    assembled_genome_metadata_csv {
+        path { _assembled_genome_metadata_csv -> "reports" }
+    }
+
+    //normalized genome output
+    mito_extend_process_publish_dir {
+        path { sample_id, _mito_extend_process_dir -> "${sample_id}" }
+    }
+    normalized_fasta_output_ch {
+        path { sample_id, _normalized_fasta -> "${sample_id}" }
+    }
+
+    //normalized genome metadata info CSV
+    normalized_genome_metadata_csv {
+        path { _normalized_genome_metadata_csv -> "reports" }
+    }
+
+    //rotated genome output
+    rotated_assembled_publish_dir {
+        path { sample_id, _rotated_assembled_dir -> "${sample_id}" }
+    }
+    rotated_official_publish_dir {
+        path { sample_id, _rotated_official_dir -> "${sample_id}" }
+    }
+
+    //rotated genome metadata info CSV
+    rotated_genome_metadata_csv {
+        path { _rotated_genome_metadata_csv -> "reports" }
+    }
+
+    //rotated genome CSV for reporting
+    rotated_genome_csv_for_reporting {
+        path { _rotated_genome_csv_for_reporting -> "reports" }
+    }
+
+    //haplotype identification output
+    assembled_haplotype_output_csv_ch {
+        path { sample_id, _assembled_haplotype_output_csv_ch -> "${sample_id}" }
+    }
+    official_haplotype_output_csv_ch {
+        path { sample_id, _official_haplotype_output_csv_ch -> "${sample_id}" }
+    }
+
+    //Haplotype identification metadata info CSV
+    assembled_haplotype_info_csv {
+        path { _assembled_haplotype_info_csv -> "reports" }
+    }
+    official_haplotype_info_csv {
+        path { _official_haplotype_info_csv -> "reports" }
     }
 }
