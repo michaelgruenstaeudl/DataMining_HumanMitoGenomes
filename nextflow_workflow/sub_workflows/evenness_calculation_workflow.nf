@@ -48,5 +48,9 @@ workflow evenness_calculation_workflow {
     evenness_output_ch = calculate_evenness.out.evenness_output_ch
 
     emit:
+    sam_output_publish_dir = generate_sam.out.sam_output_publish_dir
+    bam_output_publish_dir = sam_to_bam.out.bam_output_publish_dir
+    evenness_output_publish_dir = calculate_evenness.out.evenness_output_publish_dir
+
     evenness_output_ch
 }
