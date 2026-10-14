@@ -7,15 +7,15 @@ process mitoz_assembler {
 
     tag "${sample_id}"
 
-    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
-
     input:
+
+    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
     tuple val(sample_id), path(input_file_list), val(is_single_end)
     val parent_output_dir
 
     output:
     tuple val(sample_id), path("megahit/mito_denovo.megahit.result/mito_denovo.megahit.mitogenome.fa"), emit: mitoz_assembler_output
-    path "megahit/*"
+    tuple val(sample_id), path("megahit"), emit: mitoz_assembler_publish_dir
 
     script:
     def input_file_param = is_single_end ? "--fq1 ${input_file_list[0]}" : "--fq1 ${input_file_list[0]} --fq2 ${input_file_list[1]}"

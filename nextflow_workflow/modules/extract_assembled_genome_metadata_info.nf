@@ -1,8 +1,7 @@
 process extract_assembled_genome_metadata_info {
-
-    publishDir "${parent_output_dir}/reports", mode: 'copy'
-
     input:
+
+    // publishDir "${parent_output_dir}/reports", mode: 'copy'
     tuple val(sample_id), path(assembled_genome_fasta)
     val parent_output_dir
 
