@@ -1,17 +1,11 @@
 #!/usr/bin/env nextflow
 
-// output:
-//     path "novoplasty_outptut/*"
 process mitoz_assembler {
-    // container 'apptainer/MitoZ_v3.6.sif'
 
     tag "${sample_id}"
 
     input:
-
-    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
     tuple val(sample_id), path(input_file_list), val(is_single_end)
-    val parent_output_dir
 
     output:
     tuple val(sample_id), path("megahit/mito_denovo.megahit.result/mito_denovo.megahit.mitogenome.fa"), emit: mitoz_assembler_output

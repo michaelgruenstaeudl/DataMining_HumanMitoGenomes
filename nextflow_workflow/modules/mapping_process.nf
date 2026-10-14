@@ -4,11 +4,9 @@ process mapping_process {
 
     tag "${sample_id}"
 
-    // container 'fastq_sifter'
-
-    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
-
     input:
+    // need to change publishDir to dsl=2 implementation, since dsl=2 does not support publishDir in process input block
+    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
     tuple val(sample_id), path(input_file1), path(input_file2), path(reference_fasta)
     val parent_output_dir
 

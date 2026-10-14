@@ -1,9 +1,6 @@
 process extract_haplotype_info {
     input:
-
-    // publishDir "${parent_output_dir}/reports", mode: 'copy'
     tuple val(sample_id), path(haplotype_csv)
-    val parent_output_dir
 
     output:
     // tuple val(sample_id), env("topology"), env("sequence_length"), emit: metadata_info_out_ch

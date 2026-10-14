@@ -5,11 +5,7 @@ process novoplast_process {
     tag "${sample_id}"
 
     input:
-
-    // container 'community.wave.seqera.io/library/novoplasty:4.3.5--d66ab53450fa5022'
-    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
     tuple val(sample_id), path(input_file_list), val(is_single_end), val(read_length), val(insert_size), path(seed_mito_path), path(config_file_path)
-    val parent_output_dir
 
     output:
     tuple val(sample_id), path("novoplasty_output/*_mito_extend.fasta"), emit: novoplasty_output_ch

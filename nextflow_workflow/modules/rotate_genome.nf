@@ -6,11 +6,9 @@ process rotate_genome {
     tag "${sample_id}"
 
     input:
-    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
     tuple val(sample_id), path(input_fasta), val(n_mismatch)
     file seed_fasta
     val genome_type
-    val parent_output_dir
 
     output:
     tuple val(sample_id), path(output_file_path), emit: rotated_output_ch

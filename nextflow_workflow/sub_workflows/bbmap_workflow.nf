@@ -10,12 +10,11 @@ workflow bbmap_workflow {
     take:
     mapping_input_ch
     reference_channel
-    parent_output_dir
 
     main:
 
-    index_dir = bbmap_index(reference_channel, parent_output_dir)
-    mapping_bbmap(mapping_input_ch, index_dir, parent_output_dir)
+    index_dir = bbmap_index(reference_channel)
+    mapping_bbmap(mapping_input_ch, index_dir)
     mapping_process_output = mapping_bbmap.out.mapping_process_output
 
     emit:

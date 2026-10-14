@@ -18,7 +18,6 @@ include {
 workflow haplotype_identification_workflow {
     take:
     haplotype_identification_input_ch
-    parent_output_dir
 
     main:
     asembled_fasta_ch = haplotype_identification_input_ch.map { sample_id, assembled_fasta, _official_fasta ->
@@ -29,14 +28,14 @@ workflow haplotype_identification_workflow {
         tuple(sample_id, official_fasta)
     }
 
-    assembled_genome_haplotype_detection(asembled_fasta_ch, "assembled_genome", parent_output_dir)
+    assembled_genome_haplotype_detection(asembled_fasta_ch, "assembled_genome")
     assembled_haplotype_output_csv_ch = assembled_genome_haplotype_detection.out.haplotype_output_channel
-    extract_assembled_haplotype_info(assembled_haplotype_output_csv_ch, parent_output_dir)
+    extract_assembled_haplotype_info(assembled_haplotype_output_csv_ch)
     assembled_haplotype_output_ch = extract_assembled_haplotype_info.out.haplotype_info_out_ch
 
-    official_genome_haplotype_detection(official_fasta_ch, "official_genome", parent_output_dir)
+    official_genome_haplotype_detection(official_fasta_ch, "official_genome")
     official_haplotype_output_csv_ch = official_genome_haplotype_detection.out.haplotype_output_channel
-    extract_official_haplotype_info(official_haplotype_output_csv_ch, parent_output_dir)
+    extract_official_haplotype_info(official_haplotype_output_csv_ch)
     official_haplotype_output_ch = extract_official_haplotype_info.out.haplotype_info_out_ch
 
     emit:

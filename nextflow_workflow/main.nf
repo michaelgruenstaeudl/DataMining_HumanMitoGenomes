@@ -44,7 +44,6 @@ include { haplotype_identification_workflow } from './sub_workflows/haplotype_de
 workflow {
 
     main:
-    parent_output_dir = workflow.outputDir
     contamination_confidence_threshold = params.contamination_confidence_threshold
     config_file_ch = file(params.config_file)
     // Call the read_csv_workflow with params
@@ -69,7 +68,6 @@ workflow {
     quality_control_workflow(
         input_ch,
         calculate_sequence_length_threshold_script_ch,
-        parent_output_dir,
     )
     cutoffs_ch = quality_control_workflow.out.cutoffs_ch
 
@@ -85,7 +83,6 @@ workflow {
         cutoff_tmp_csv,
         "cutoff_info",
         "cutoff_info.csv",
-        parent_output_dir,
     )
 
     evenness_calculation_workflow_initial_input_ch = quality_control_workflow.out.repair_read_output_ch
@@ -102,7 +99,6 @@ workflow {
     contamination_removal(
         contamination_control_input_ch,
         contamination_confidence_threshold,
-        parent_output_dir,
     )
     // contamination_removal_out_ch = contamination_removal.out.contamination_removal_fastq_output
     contamination_removal_out_ch = contamination_removal.out.contamination_removal_fastq_output.map { sample_id, reads, is_single_end ->
@@ -115,7 +111,7 @@ workflow {
     size_ch = addSizeTracking(size_ch, contamination_removal_out_ch, "Contamination Output")
 
     // Mapping process
-    mapping_workflow(contamination_removal_out_ch, reference_ch, parent_output_dir)
+    mapping_workflow(contamination_removal_out_ch, reference_ch)
     mapping_process_output = mapping_workflow.out.mapping_process_output.map { sample_id, reads, is_single_end ->
         def reads_list = is_single_end
             ? [reads]
@@ -133,7 +129,6 @@ workflow {
         evenness_calculation_workflow_initial(
             evenness_calculation_workflow_initial_input_ch,
             'initial_phase',
-            parent_output_dir,
         )
         initial_evenness_output_ch = evenness_calculation_workflow_initial.out.evenness_output_ch
 
@@ -144,7 +139,6 @@ workflow {
         evenness_calculation_workflow_final(
             final_evenness_calculation_input_ch,
             "mapping_phase",
-            parent_output_dir,
         )
         cleaned_reads_evenness_output_ch = evenness_calculation_workflow_final.out.evenness_output_ch
 
@@ -154,8 +148,7 @@ workflow {
             .combine(merge_pacvr_evenness_fig_script_ch)
 
         merge_pacvr_evenness_figures(
-            merge_evenness_figure_input_ch,
-            parent_output_dir,
+            merge_evenness_figure_input_ch
         )
     }
 
@@ -165,22 +158,21 @@ workflow {
     }
     file_size_tmp_csv = file_size_csv_lines_ch.collectFile(name: "file_sizes.tmp", newLine: true)
 
-    write_file_sizes_csv(file_size_tmp_csv, "file_sizes", "file_sizes.csv", parent_output_dir)
+    write_file_sizes_csv(file_size_tmp_csv, "file_sizes", "file_sizes.csv")
     size_ch.count().view { it -> "Total tuples in channel: ${it}" }
 
 
     plot_size_diff_input_ch = write_file_sizes_csv.out.csv_output
-        .combine(channel.fromPath(parent_output_dir))
+        .combine(channel.fromPath(workflow.outputDir))
         .combine(channel.fromPath(params.visualize_file_size_changes_script))
     plot_size_diff(plot_size_diff_input_ch)
 
 
     // MitoZ assembly process
-    mitoz_assembler(mapping_process_output, parent_output_dir)
+    mitoz_assembler(mapping_process_output)
 
     extract_assembled_genome_metadata_info(
-        mitoz_assembler.out.mitoz_assembler_output,
-        parent_output_dir,
+        mitoz_assembler.out.mitoz_assembler_output
     )
 
     // Write assembled genome metadata info into CSV
@@ -195,7 +187,6 @@ workflow {
         tmp_csv,
         "assembled_genome_metadata",
         "assembled_genome_metadata.csv",
-        parent_output_dir,
     )
 
     normalize_fasta_input_ch = mapping_process_output
@@ -215,12 +206,10 @@ workflow {
         normalize_fasta_input_ch,
         config_file_ch,
         trim_mitogenome_duplicate_script_ch,
-        parent_output_dir,
     )
 
     extract_normalized_genome_metadata_info(
-        normalize_complete_genome_length.out.normalized_fasta_output_ch,
-        parent_output_dir,
+        normalize_complete_genome_length.out.normalized_fasta_output_ch
     )
 
     // Write assembled genome metadata info into CSV
@@ -235,7 +224,6 @@ workflow {
         tmp_csv,
         "normalized_genome_metadata",
         "normalized_genome_metadata.csv",
-        parent_output_dir,
     )
 
     //Circular genome rotation process
@@ -246,7 +234,6 @@ workflow {
     rotate_circular_genome_workflow(
         rotate_genome_input_ch,
         rotation_seed_fasta_ch,
-        parent_output_dir,
     )
 
     rotated_assembled_ch = rotate_circular_genome_workflow.out.rotated_assembled_ch
@@ -263,7 +250,6 @@ workflow {
         rotated_fasta_tmp_csv,
         "rotated_genome_info",
         "rotated_genome_info.csv",
-        parent_output_dir,
     )
 
 
@@ -286,11 +272,10 @@ workflow {
         rotated_fasta_reporting_tmp_csv,
         "rotated_genome_info",
         "rotated_genome_reporting_info.csv",
-        parent_output_dir,
     )
 
     plot_genome_comparison_input_ch = write_rotate_genome_csv.out.csv_output
-        .combine(channel.fromPath(parent_output_dir))
+        .combine(channel.fromPath(workflow.outputDir))
         .combine(channel.fromPath(params.genome_comparison_plot_script))
 
     plot_genome_comparison(plot_genome_comparison_input_ch)
@@ -300,8 +285,7 @@ workflow {
     //Haplotype Identification process would go here, after the genome rotation and comparison steps, since it relies on having the final rotated genomes for accurate identification.
     // haplotype_identification_input_ch = rotated_genome_ch
     haplotype_identification_workflow(
-        rotated_genome_ch,
-        parent_output_dir,
+        rotated_genome_ch
     )
 
     assembled_haplotype_output_ch = haplotype_identification_workflow.out.assembled_haplotype_output_ch.map { tuple ->
@@ -313,7 +297,6 @@ workflow {
         assembled_haplotype_output_tmp_csv,
         "haplotype_info",
         "assembled_haplotype_info.csv",
-        parent_output_dir,
     )
 
     official_haplotype_output_ch = haplotype_identification_workflow.out.official_haplotype_output_ch.map { tuple ->
@@ -325,7 +308,6 @@ workflow {
         official_haplotype_output_tmp_csv,
         "haplotype_info",
         "official_haplotype_info.csv",
-        parent_output_dir,
     )
 
     workflow.onComplete {

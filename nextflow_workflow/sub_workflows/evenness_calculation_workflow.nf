@@ -9,7 +9,6 @@ workflow evenness_calculation_workflow {
     take:
     evenness_calculation_input_channel
     phase
-    parent_output_dir
 
     main:
     fasta_file_ch = evenness_calculation_input_channel.map { sample_id, _fastq_list, _is_single_end, _gb_file, fasta_file ->
@@ -31,19 +30,16 @@ workflow evenness_calculation_workflow {
     generate_sam(
         generate_sam_input_ch,
         phase,
-        parent_output_dir,
     )
     sam_to_bam_input_ch = fasta_file_ch.join(generate_sam.out.sam_output_ch)
     sam_to_bam(
         sam_to_bam_input_ch,
         phase,
-        parent_output_dir,
     )
     calculate_evenness_input_ch = gb_file_ch.join(sam_to_bam.out.bam_output_ch)
     calculate_evenness(
         calculate_evenness_input_ch,
         phase,
-        parent_output_dir,
     )
     evenness_output_ch = calculate_evenness.out.evenness_output_ch
 

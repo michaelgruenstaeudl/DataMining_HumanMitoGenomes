@@ -6,13 +6,8 @@ process mapping_bbmap {
     tag "${sample_id}"
 
     input:
-
-    // container 'fastq_sifter'
-
-    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
     tuple val(sample_id), path(input_file_list), val(is_single_end)
     path index_dir
-    val parent_output_dir
 
     output:
     tuple val(sample_id), path("bbmap_mapped_output/${sample_id}_mapped*.fq"), val(is_single_end), emit: mapping_process_output

@@ -8,10 +8,8 @@ process quality_control {
     errorStrategy 'ignore'
 
     input:
-    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
     tuple val(sample_id), path(input_file_list), val(is_single_end), val(lower_cutoff), val(upper_cutoff)
     val quality_control_stage
-    val parent_output_dir
 
     output:
     // val sample_id, emit: sample_id

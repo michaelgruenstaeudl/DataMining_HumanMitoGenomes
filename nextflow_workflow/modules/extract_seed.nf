@@ -4,9 +4,9 @@ process extract_seed {
 
     tag "${sample_id}"
 
-    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
-
     input:
+    //need to change publishDir to dsl=2 implementation, since dsl=2 does not support publishDir in process input block
+    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
     tuple val(sample_id), path(input_file)
     val parent_output_dir
 

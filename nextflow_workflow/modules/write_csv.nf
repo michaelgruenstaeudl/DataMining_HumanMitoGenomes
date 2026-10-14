@@ -1,11 +1,9 @@
 process write_csv {
     input:
 
-    // publishDir "${parent_output_dir}/reports", mode: 'copy'
     path csv_tmp
     val csv_type
     val output_file_name
-    val parent_output_dir
 
     output:
     path (output_file_name), emit: csv_output

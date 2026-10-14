@@ -6,9 +6,7 @@ process fastqc_process {
 
     input:
 
-    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
     tuple val(sample_id), path(input_file_list), val(single_end)
-    val parent_output_dir
     val phase
 
     output:

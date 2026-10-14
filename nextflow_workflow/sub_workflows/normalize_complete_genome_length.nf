@@ -5,7 +5,6 @@ workflow normalize_complete_genome_length {
     input_channel
     config_file_ch
     trim_mitogenome_duplicate_script_ch
-    parent_output_dir
 
     main:
     input_channel
@@ -20,8 +19,7 @@ workflow normalize_complete_genome_length {
     }
 
     mito_extend_process(
-        novoplasty_extend_mito_input,
-        parent_output_dir,
+        novoplasty_extend_mito_input
     )
     trim_mitogenome_duplicate_input_ch = mito_extend_process.out.novoplasty_output_ch
         .mix(
@@ -39,8 +37,7 @@ workflow normalize_complete_genome_length {
     // trim_mitogenome_duplicate_input_ch.view { it -> "Trim mitogenome duplicate input: ${it}" }
 
     trim_mitogenome_duplicate(
-        trim_mitogenome_duplicate_input_ch,
-        parent_output_dir,
+        trim_mitogenome_duplicate_input_ch
     )
 
     normalized_fasta_output_ch = trim_mitogenome_duplicate.out.trimmed_fasta_ch

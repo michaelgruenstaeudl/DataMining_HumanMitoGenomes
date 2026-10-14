@@ -6,9 +6,7 @@ process trim_mitogenome_duplicate {
     tag "${sample_id}"
 
     input:
-    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
     tuple val(sample_id), path(genome_fasta), path(script_to_trim_mitogenome_duplicate)
-    val parent_output_dir
 
     output:
     tuple val(sample_id), path("${trimmed_output_fasta}"), emit: trimmed_fasta_ch

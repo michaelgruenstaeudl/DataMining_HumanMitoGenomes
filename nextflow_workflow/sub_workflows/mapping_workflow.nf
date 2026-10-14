@@ -9,7 +9,6 @@ workflow mapping_workflow {
     take:
     mapping_input_ch
     reference_channel
-    parent_output_dir
 
     main:
     // mapping_input_ch.view { it -> "Mapping input: ${it}" }
@@ -25,7 +24,7 @@ workflow mapping_workflow {
 
 
     //####BBMAP mapping process####
-    bbmap_workflow(mapping_input_ch, reference_channel, parent_output_dir)
+    bbmap_workflow(mapping_input_ch, reference_channel)
     mapping_process_output = bbmap_workflow.out.mapping_process_output
 
     emit:

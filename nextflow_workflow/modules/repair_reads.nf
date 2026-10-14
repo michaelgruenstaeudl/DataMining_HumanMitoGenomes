@@ -6,12 +6,7 @@ process repair_reads {
 
     input:
 
-    // container 'community.wave.seqera.io/library/bbmap:39.33--60639c9e1473b7a8'
-    // container 'oras://community.wave.seqera.io/library/bbmap:39.37--9bf150ff9855d6f6'
-
-    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
     tuple val(sample_id), path(input_file_list), val(is_single_end), val(encoding_int)
-    val parent_output_dir
 
     output:
     // val sample_id, emit: sample_id

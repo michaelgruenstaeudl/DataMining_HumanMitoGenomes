@@ -3,9 +3,9 @@ process extract_mapped_fastq {
     label "samtools_env"
     tag "${sample_id}"
 
-    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
-
     input:
+    // dsl=1 implementation need to change publishDir to dsl=2 implementation, since dsl=2 does not support publishDir in process input block
+    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
     tuple val(sample_id), path(sam_file)
     val parent_output_dir
 

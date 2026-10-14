@@ -13,14 +13,13 @@ workflow quality_control_workflow {
     take:
     quality_control_input_channel
     calculate_sequence_length_threshold_script_ch
-    parent_output_dir
 
     main:
     repair_read_size_ch = channel.empty()
 
     // quality_control_input_channel.view { it -> "Quality control input: ${it}" }
     //initial fastqc report
-    fastqc_process(quality_control_input_channel, parent_output_dir, "initial_fastqc")
+    fastqc_process(quality_control_input_channel, "initial_fastqc")
     initial_fastqc_output_ch = fastqc_process.out.fastqc_output_channel
     detectEncoding(initial_fastqc_output_ch)
 
@@ -29,7 +28,7 @@ workflow quality_control_workflow {
         detectEncoding.out.encoding_output_channel
     )
 
-    repair_reads(repair_reads_input_ch, parent_output_dir)
+    repair_reads(repair_reads_input_ch)
     repair_read_output_ch = repair_reads.out.repaired_reads_output_channel.map { sample_id, reads, is_single_end ->
         def reads_list = reads instanceof List
             ? is_single_end
@@ -57,7 +56,7 @@ workflow quality_control_workflow {
         .join(calculate_sequence_length_threshold.out.length_cutoffs)
         .set { repaired_quality_control_input_ch }
 
-    quality_control(repaired_quality_control_input_ch, 'quality_control', parent_output_dir)
+    quality_control(repaired_quality_control_input_ch, 'quality_control')
     quality_control_repair_out_ch = quality_control.out.quality_control_output.map { sample_id, reads, is_single_end ->
         def reads_list = reads instanceof List
             ? reads.findAll { item ->
@@ -70,7 +69,7 @@ workflow quality_control_workflow {
     quality_control_out_ch = quality_control_repair_out_ch
     // .mix(quality_control_repair_out_ch)
 
-    fastqc_process_after_qc(quality_control_repair_out_ch, parent_output_dir, "fastqc_after_quality_control")
+    fastqc_process_after_qc(quality_control_repair_out_ch, "fastqc_after_quality_control")
 
     emit:
     initial_fastqc_publish_dir = fastqc_process.out.fastqc_publish_dir
