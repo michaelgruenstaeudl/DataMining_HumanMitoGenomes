@@ -1,14 +1,15 @@
 import argparse
+import math
 import random
 import sys
-import math
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+from matplotlib import gridspec
 from matplotlib.colors import ListedColormap
-import matplotlib.gridspec as gridspec
-from matplotlib.patches import Rectangle, Patch
 from matplotlib.lines import Line2D
+from matplotlib.patches import Patch, Rectangle
 
 
 def calculate_file_size_reduced_after_each_process(file_size_df):
