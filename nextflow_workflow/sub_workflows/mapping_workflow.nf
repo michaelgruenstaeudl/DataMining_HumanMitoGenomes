@@ -29,5 +29,8 @@ workflow mapping_workflow {
     mapping_process_output = bbmap_workflow.out.mapping_process_output
 
     emit:
+    index_dir = bbmap_workflow.out.index_dir
+    mapping_process_publish_dir = bbmap_workflow.out.mapping_process_publish_dir
+
     mapping_process_output
 }

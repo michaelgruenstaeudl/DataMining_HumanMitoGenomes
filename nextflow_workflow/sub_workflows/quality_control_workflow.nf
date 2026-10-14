@@ -19,7 +19,7 @@ workflow quality_control_workflow {
     repair_read_size_ch = channel.empty()
 
     // quality_control_input_channel.view { it -> "Quality control input: ${it}" }
-    //initial fastqc report 
+    //initial fastqc report
     fastqc_process(quality_control_input_channel, parent_output_dir, "initial_fastqc")
     initial_fastqc_output_ch = fastqc_process.out.fastqc_output_channel
     detectEncoding(initial_fastqc_output_ch)
@@ -73,6 +73,11 @@ workflow quality_control_workflow {
     fastqc_process_after_qc(quality_control_repair_out_ch, parent_output_dir, "fastqc_after_quality_control")
 
     emit:
+    initial_fastqc_publish_dir = fastqc_process.out.fastqc_publish_dir
+    fastqc_after_quality_control_publish_dir = fastqc_process_after_qc.out.fastqc_publish_dir
+    repair_output_publish_dir = repair_reads.out.repair_output_publish_dir
+    qc_output_publish_dir = quality_control.out.quality_control_publish_dir
+
     quality_control_out_ch
     repair_read_output_ch
     repair_read_size_ch

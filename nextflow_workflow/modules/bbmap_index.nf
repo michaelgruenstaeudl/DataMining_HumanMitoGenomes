@@ -3,9 +3,9 @@
 process bbmap_index {
 
     label "bbmap_env"
-    publishDir "${parent_output_dir}", mode: 'copy', overwrite: true
 
     input:
+    // publishDir "${parent_output_dir}", mode: 'copy', overwrite: true
     path reference_fasta
     val parent_output_dir
 

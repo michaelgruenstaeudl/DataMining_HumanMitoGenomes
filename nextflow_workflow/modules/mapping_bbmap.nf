@@ -5,18 +5,18 @@ process mapping_bbmap {
     label "bbmap_env"
     tag "${sample_id}"
 
+    input:
+
     // container 'fastq_sifter'
 
-    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
-
-    input:
+    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
     tuple val(sample_id), path(input_file_list), val(is_single_end)
     path index_dir
     val parent_output_dir
 
     output:
     tuple val(sample_id), path("bbmap_mapped_output/${sample_id}_mapped*.fq"), val(is_single_end), emit: mapping_process_output
-    path "bbmap_mapped_output/${sample_id}_unmapped*.fq", optional: true
+    tuple val(sample_id), path("bbmap_mapped_output"), optional: true, emit: mapping_process_publish_dir
 
     script:
     def avail_mem = (task.memory.toGiga() * 0.85).intValue()
