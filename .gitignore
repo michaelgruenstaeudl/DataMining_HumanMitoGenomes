@@ -29,3 +29,7 @@ data_move.sh
 
 test_output
 log
+
+collected_rotated_genomes
+coverage_data
+nextflow_workflow/nextflow_figures

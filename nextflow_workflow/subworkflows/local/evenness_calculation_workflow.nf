@@ -1,9 +1,9 @@
 #!/usr/bin/env nextflow
 
-include { generate_sam } from '../modules/generate_sam.nf'
-include { sam_to_bam } from '../modules/sam_to_bam.nf'
-include { calculate_evenness } from '../modules/calculate_evenness.nf'
-include { repair_reads } from '../modules/repair_reads.nf'
+include { generate_sam } from '../../modules/local/generate_sam.nf'
+include { sam_to_bam } from '../../modules/local/sam_to_bam.nf'
+include { calculate_evenness } from '../../modules/local/calculate_evenness.nf'
+include { repair_reads } from '../../modules/local/repair_reads.nf'
 
 workflow evenness_calculation_workflow {
     take:

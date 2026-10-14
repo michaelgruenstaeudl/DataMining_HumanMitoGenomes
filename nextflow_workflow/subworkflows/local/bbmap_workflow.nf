@@ -1,10 +1,10 @@
 #!/usr/bin/env nextflow
 
-include { mapping_process } from '../modules/mapping_process.nf'
-include { mapping_bbmap } from '../modules/mapping_bbmap.nf'
-include { mapping_bwa } from '../modules/mapping_bwa.nf'
-include { extract_mapped_fastq } from '../modules/extract_mapped_fastq.nf'
-include { bbmap_index } from '../modules/bbmap_index.nf'
+include { mapping_process } from '../../modules/mapping_process.nf'
+include { mapping_bbmap } from '../../modules/local/mapping_bbmap.nf'
+include { mapping_bwa } from '../../modules/mapping_bwa.nf'
+include { extract_mapped_fastq } from '../../modules/extract_mapped_fastq.nf'
+include { bbmap_index } from '../../modules/local/bbmap_index.nf'
 
 workflow bbmap_workflow {
     take:

@@ -3,17 +3,17 @@ nextflow.enable.dsl = 2
 include {
     rotate_genome as rotate_assembled_genome ;
     rotate_genome as rotate_official_genome
-} from '../modules/rotate_genome.nf'
+} from '../../modules/local/rotate_genome.nf'
 
 include {
     haplotype_identification as assembled_genome_haplotype_detection ;
     haplotype_identification as official_genome_haplotype_detection
-} from '../modules/haplotype_identification.nf'
+} from '../../modules/local/haplotype_identification.nf'
 
 include {
     extract_haplotype_info as extract_assembled_haplotype_info ;
     extract_haplotype_info as extract_official_haplotype_info
-} from '../modules/extract_haplotype_info.nf'
+} from '../../modules/local/extract_haplotype_info.nf'
 
 workflow haplotype_identification_workflow {
     take:

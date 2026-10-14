@@ -2,11 +2,11 @@
 
 nextflow.enable.dsl = 2
 
-include { calculate_sequence_length_threshold } from './modules/compute_sequence_length_threshold.nf'
+include { calculate_sequence_length_threshold } from './modules/local/compute_sequence_length_threshold.nf'
 include { mapping_process } from './modules/mapping_process.nf'
-include { novoplast_process } from './modules/novoplasty_process.nf'
-include { contamination_removal } from './modules/contamination_control.nf'
-include { addSizeTracking } from './lib/utils.nf'
+include { novoplast_process } from './modules/local/novoplasty_process.nf'
+include { contamination_removal } from './modules/local/contamination_control.nf'
+include { addSizeTracking } from './modules/local/utils.nf'
 include {
     write_csv as write_cutoff_info_csv ;
     write_csv as write_file_sizes_csv ;
@@ -16,29 +16,29 @@ include {
     write_csv as write_rotate_genome_csv_for_reporting ;
     write_csv as write_assembled_haplotype_info_csv ;
     write_csv as write_official_haplotype_info_csv
-} from './modules/write_csv.nf'
-include { quality_control_workflow } from './sub_workflows/quality_control_workflow.nf'
+} from './modules/local/write_csv.nf'
+include { quality_control_workflow } from './subworkflows/local/quality_control_workflow.nf'
 include { extract_seed } from './modules/extract_seed.nf'
-include { merge_pacvr_evenness_figures } from './modules/merge_pacvr_evenness_figures.nf'
-include { read_csv_workflow } from './sub_workflows/read_csv_workflow.nf'
+include { merge_pacvr_evenness_figures } from './modules/local/merge_pacvr_evenness_figures.nf'
+include { read_csv_workflow } from './subworkflows/local/read_csv_workflow.nf'
 include {
     evenness_calculation_workflow as evenness_calculation_workflow_initial ;
     evenness_calculation_workflow as evenness_calculation_workflow_final
-} from './sub_workflows/evenness_calculation_workflow.nf'
+} from './subworkflows/local/evenness_calculation_workflow.nf'
 include {
     plot_size_diff ;
     plot_size_diff as plot_genome_comparison
-} from './modules/plot_size_diff.nf'
-include { mapping_workflow } from './sub_workflows/mapping_workflow.nf'
-include { mapping_bbmap } from './modules/mapping_bbmap.nf'
-include { mitoz_assembler } from './modules/mitoz_assembler.nf'
+} from './modules/local/plot_size_diff.nf'
+include { mapping_workflow } from './subworkflows/local/mapping_workflow.nf'
+include { mapping_bbmap } from './modules/local/mapping_bbmap.nf'
+include { mitoz_assembler } from './modules/local/mitoz_assembler.nf'
 include {
     extract_assembled_genome_metadata_info ;
     extract_assembled_genome_metadata_info as extract_normalized_genome_metadata_info
-} from './modules/extract_assembled_genome_metadata_info.nf'
-include { rotate_circular_genome_workflow } from './sub_workflows/rotate_circular_genome_workflow.nf'
-include { normalize_complete_genome_length } from './sub_workflows/normalize_complete_genome_length.nf'
-include { haplotype_identification_workflow } from './sub_workflows/haplotype_detection_workflow.nf'
+} from './modules/local/extract_assembled_genome_metadata_info.nf'
+include { rotate_circular_genome_workflow } from './subworkflows/local/rotate_circular_genome_workflow.nf'
+include { normalize_complete_genome_length } from './subworkflows/local/normalize_complete_genome_length.nf'
+include { haplotype_identification_workflow } from './subworkflows/local/haplotype_detection_workflow.nf'
 
 def validate_input_file(String parameter_name, value) {
     if (value == null || value.toString().trim().isEmpty()) {

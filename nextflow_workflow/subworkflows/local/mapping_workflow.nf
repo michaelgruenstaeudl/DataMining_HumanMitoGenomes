@@ -1,9 +1,9 @@
 #!/usr/bin/env nextflow
 
-include { mapping_process } from '../modules/mapping_process.nf'
+include { mapping_process } from '../../modules/mapping_process.nf'
 include { bbmap_workflow } from './bbmap_workflow.nf'
-include { mapping_bwa } from '../modules/mapping_bwa.nf'
-include { extract_mapped_fastq } from '../modules/extract_mapped_fastq.nf'
+include { mapping_bwa } from '../../modules/mapping_bwa.nf'
+include { extract_mapped_fastq } from '../../modules/extract_mapped_fastq.nf'
 
 workflow mapping_workflow {
     take:

@@ -1,5 +1,5 @@
-include { novoplast_process as mito_extend_process } from '../modules/novoplasty_process.nf'
-include { trim_mitogenome_duplicate } from '../modules/trim_mitogenome_duplicate.nf'
+include { novoplast_process as mito_extend_process } from '../../modules/local/novoplasty_process.nf'
+include { trim_mitogenome_duplicate } from '../../modules/local/trim_mitogenome_duplicate.nf'
 workflow normalize_complete_genome_length {
     take:
     input_channel

@@ -3,7 +3,7 @@ nextflow.enable.dsl = 2
 include {
     rotate_genome as rotate_assembled_genome ;
     rotate_genome as rotate_official_genome
-} from '../modules/rotate_genome.nf'
+} from '../../modules/local/rotate_genome.nf'
 workflow rotate_circular_genome_workflow {
     take:
     rotate_genome_input_ch

@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Human mitochondrial genome pipeline parameters",
+  "description": "Parameter contract for the existing human mitochondrial genome Nextflow pipeline.",
+  "type": "object",
+  "properties": {
+    "outdir": {
+      "type": "string",
+      "description": "Directory receiving workflow outputs.",
+      "default": "results_test"
+    },
+    "validate_inputs": {
+      "type": "boolean",
+      "description": "Validate required files, directories, and CSV columns before starting tasks.",
+      "default": true
+    },
+    "csv_file": {
+      "type": "string",
+      "description": "CSV containing SRA_Run, Nucleotide_AccessionID, and LibraryLayout columns."
+    },
+    "fastq_directory": { "type": "string" },
+    "gb_directory": { "type": "string" },
+    "fasta_directory": { "type": "string" },
+    "reference_fasta": { "type": "string" },
+    "contamination_db": { "type": "string" },
+    "config_file": { "type": "string" },
+    "rotation_seed_fasta": { "type": "string" },
+    "seed_mito": { "type": "string" },
+    "calculate_sequence_length_threshold_script": { "type": "string" },
+    "visualize_file_size_changes_script": { "type": "string" },
+    "genome_comparison_plot_script": { "type": "string" },
+    "merge_pacvr_evenness_figure_script": { "type": "string" },
+    "trim_mitogenome_duplicate_script": { "type": "string" },
+    "contamination_confidence_threshold": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0.8
+    },
+    "is_calculate_evenness": {
+      "type": "boolean",
+      "default": true
+    },
+    "rotation_mismatch_threshold": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 5
+    }
+  },
+  "required": [
+    "csv_file",
+    "fastq_directory",
+    "gb_directory",
+    "fasta_directory",
+    "reference_fasta",
+    "contamination_db",
+    "config_file",
+    "rotation_seed_fasta"
+  ],
+  "additionalProperties": true
+}
