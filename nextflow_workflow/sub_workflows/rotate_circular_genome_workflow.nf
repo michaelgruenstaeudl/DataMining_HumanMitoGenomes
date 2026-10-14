@@ -29,6 +29,9 @@ workflow rotate_circular_genome_workflow {
     rotated_genome_ch = rotated_assembled_ch.join(rotated_official_ch)
 
     emit:
+    rotated_assembled_publish_dir = rotate_assembled_genome.out.rotated_output_publish_dir
+    rotated_official_publish_dir = rotate_official_genome.out.rotated_output_publish_dir
+
     rotated_assembled_ch
     rotated_official_ch
     rotated_genome_ch
