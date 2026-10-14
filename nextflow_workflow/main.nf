@@ -2,43 +2,18 @@
 
 nextflow.enable.dsl = 2
 
-include { calculate_sequence_length_threshold } from './modules/local/compute_sequence_length_threshold.nf'
-include { mapping_process } from './modules/mapping_process.nf'
-include { novoplast_process } from './modules/local/novoplasty_process.nf'
-include { contamination_removal } from './modules/local/contamination_control.nf'
 include { addSizeTracking } from './modules/local/utils.nf'
-include {
-    write_csv as write_cutoff_info_csv ;
-    write_csv as write_file_sizes_csv ;
-    write_csv as write_assembled_metadata_csv ;
-    write_csv as write_normalized_genome_metadata_csv ;
-    write_csv as write_rotate_genome_csv ;
-    write_csv as write_rotate_genome_csv_for_reporting ;
-    write_csv as write_assembled_haplotype_info_csv ;
-    write_csv as write_official_haplotype_info_csv
-} from './modules/local/write_csv.nf'
 include { quality_control_workflow } from './subworkflows/local/quality_control_workflow.nf'
-include { extract_seed } from './modules/extract_seed.nf'
-include { merge_pacvr_evenness_figures } from './modules/local/merge_pacvr_evenness_figures.nf'
 include { read_csv_workflow } from './subworkflows/local/read_csv_workflow.nf'
 include {
     evenness_calculation_workflow as evenness_calculation_workflow_initial ;
     evenness_calculation_workflow as evenness_calculation_workflow_final
 } from './subworkflows/local/evenness_calculation_workflow.nf'
-include {
-    plot_size_diff ;
-    plot_size_diff as plot_genome_comparison
-} from './modules/local/plot_size_diff.nf'
-include { mapping_workflow } from './subworkflows/local/mapping_workflow.nf'
-include { mapping_bbmap } from './modules/local/mapping_bbmap.nf'
-include { mitoz_assembler } from './modules/local/mitoz_assembler.nf'
-include {
-    extract_assembled_genome_metadata_info ;
-    extract_assembled_genome_metadata_info as extract_normalized_genome_metadata_info
-} from './modules/local/extract_assembled_genome_metadata_info.nf'
+include { contamination_mapping_workflow } from './subworkflows/local/contamination_mapping_workflow.nf'
+include { assembly_normalization_workflow } from './subworkflows/local/assembly_normalization_workflow.nf'
 include { rotate_circular_genome_workflow } from './subworkflows/local/rotate_circular_genome_workflow.nf'
-include { normalize_complete_genome_length } from './subworkflows/local/normalize_complete_genome_length.nf'
 include { haplotype_identification_workflow } from './subworkflows/local/haplotype_detection_workflow.nf'
+include { report_generation_workflow } from './subworkflows/local/report_generation_workflow.nf'
 
 def validate_input_file(String parameter_name, value) {
     if (value == null || value.toString().trim().isEmpty()) {
@@ -122,9 +97,6 @@ workflow {
 
     // Compatibility views for process interfaces that still consume
     // sample-specific tuples. The canonical input remains sample_input_ch.
-    sample_accession_ch = sample_input_ch.map { sample_metadata, _reads, _genbank, _fasta ->
-        tuple(sample_metadata, sample_metadata.accession)
-    }
     sample_reads_ch = sample_input_ch.map { sample_metadata, reads, _genbank, _fasta ->
         tuple(sample_metadata, reads)
     }
@@ -152,20 +124,6 @@ workflow {
     )
     cutoffs_ch = quality_control_workflow.out.cutoffs_ch
 
-    // Write cutoff info into CSV
-    cutoff_lines_ch = cutoffs_ch.map { meta, lower_cutoff, upper_cutoff ->
-        [meta.id, lower_cutoff, upper_cutoff].join(",")
-    }
-    cutoff_tmp_csv = cutoff_lines_ch.collectFile(
-        name: "cutoff_info.tmp",
-        newLine: true,
-    )
-    write_cutoff_info_csv(
-        cutoff_tmp_csv,
-        "cutoff_info",
-        "cutoff_info.csv",
-    )
-
     evenness_calculation_workflow_initial_input_ch = quality_control_workflow.out.repair_read_output_ch
         .join(sample_genbank_ch)
         .join(sample_reference_fasta_ch)
@@ -174,32 +132,23 @@ workflow {
     size_ch = size_ch.mix(quality_control_workflow.out.repair_read_size_ch)
     size_ch = addSizeTracking(size_ch, quality_control_workflow.out.quality_control_out_ch, "Quality Control Output")
 
-    //contamination control process
+    // Contamination removal and mapping
     contamination_db_channel = channel.fromPath(params.contamination_db)
-    contamination_control_input_ch = quality_control_workflow.out.quality_control_out_ch.combine(contamination_db_channel)
-    contamination_removal(
-        contamination_control_input_ch,
+    contamination_mapping_workflow(
+        quality_control_workflow.out.quality_control_out_ch,
+        contamination_db_channel,
         contamination_confidence_threshold,
+        reference_ch,
     )
-    // contamination_removal_out_ch = contamination_removal.out.contamination_removal_fastq_output
-    contamination_removal_out_ch = contamination_removal.out.contamination_removal_fastq_output.map { meta, reads ->
-        tuple(meta, reads instanceof List ? reads : [reads])
-    }
-    // contamination_removal_out_ch.view { it -> "Contamination removal output: ${it}" }
+    contamination_removal_out_ch = contamination_mapping_workflow.out.contamination_reads_ch
     size_ch = addSizeTracking(size_ch, contamination_removal_out_ch, "Contamination Output")
 
-    // Mapping process
-    mapping_workflow(contamination_removal_out_ch, reference_ch)
-    mapping_process_output = mapping_workflow.out.mapping_process_output.map { meta, reads ->
-        tuple(meta, reads instanceof List ? reads : [reads])
-    }
+    mapping_process_output = contamination_mapping_workflow.out.mapping_reads_ch
 
     size_ch = addSizeTracking(size_ch, mapping_process_output, "Mapping Output")
 
     if (params.is_calculate_evenness) {
-        //Evenness calculation workflow
-        merge_pacvr_evenness_fig_script_ch = channel.fromPath(params.merge_pacvr_evenness_figure_script)
-
+        // Evenness calculation workflow
         //evenness calculation for original reads before cleaning
         evenness_calculation_workflow_initial(
             evenness_calculation_workflow_initial_input_ch,
@@ -217,95 +166,16 @@ workflow {
         )
         cleaned_reads_evenness_output_ch = evenness_calculation_workflow_final.out.evenness_output_ch
 
-        merge_evenness_figure_input_ch = sample_accession_ch
-            .join(initial_evenness_output_ch)
-            .join(cleaned_reads_evenness_output_ch)
-            .combine(merge_pacvr_evenness_fig_script_ch)
-            .map { meta, _accession, initial_figure, final_figure, merge_script ->
-                tuple(meta, initial_figure, final_figure, merge_script)
-            }
-
-        merge_pacvr_evenness_figures(
-            merge_evenness_figure_input_ch
-        )
     }
 
-    // Write file sizes to CSV
-    file_size_csv_lines_ch = size_ch.map { tuple ->
-        tuple.join(",")
-    }
-    file_size_tmp_csv = file_size_csv_lines_ch.collectFile(name: "file_sizes.tmp", newLine: true)
-
-    write_file_sizes_csv(file_size_tmp_csv, "file_sizes", "file_sizes.csv")
-    size_ch.count().view { it -> "Total tuples in channel: ${it}" }
-
-
-    plot_size_diff_input_ch = write_file_sizes_csv.out.csv_output
-        .combine(channel.fromPath(workflow.outputDir))
-        .combine(channel.fromPath(params.visualize_file_size_changes_script))
-    plot_size_diff(plot_size_diff_input_ch)
-
-
-    // MitoZ assembly process
-    mitoz_assembler(mapping_process_output)
-
-    extract_assembled_genome_metadata_info(
-        mitoz_assembler.out.mitoz_assembler_output
-    )
-
-    // Write assembled genome metadata info into CSV
-    assembled_genome_csv_lines_ch = extract_assembled_genome_metadata_info.out.metadata_info_out_ch.map { meta, topology, sequence_length ->
-        [meta.id, topology, sequence_length].join(",")
-    }
-    tmp_csv = assembled_genome_csv_lines_ch.collectFile(
-        name: "assembled_genome_metadata.tmp",
-        newLine: true,
-    )
-    write_assembled_metadata_csv(
-        tmp_csv,
-        "assembled_genome_metadata",
-        "assembled_genome_metadata.csv",
-    )
-
-    normalize_fasta_input_ch = mapping_process_output
-        .join(
-            cutoffs_ch.map { length_cutoffs_ch ->
-                def (meta, _lower_cutoff, upper_cutoff) = length_cutoffs_ch
-                def read_length = upper_cutoff.toInteger() + 1
-                def insert_size = upper_cutoff.toInteger() * 2
-                tuple(meta, read_length, insert_size)
-            }
-        )
-        .join(mitoz_assembler.out.mitoz_assembler_output)
-        .join(extract_assembled_genome_metadata_info.out.metadata_info_out_ch)
-
-    // normalize_fasta_input_ch.view { it -> "Normalize fasta input: ${it}" }
-    normalize_complete_genome_length(
-        normalize_fasta_input_ch,
+    assembly_normalization_workflow(
+        mapping_process_output,
+        cutoffs_ch,
         config_file_ch,
         trim_mitogenome_duplicate_script_ch,
     )
-
-    extract_normalized_genome_metadata_info(
-        normalize_complete_genome_length.out.normalized_fasta_output_ch
-    )
-
-    // Write assembled genome metadata info into CSV
-    normalized_genome_csv_lines_ch = extract_normalized_genome_metadata_info.out.metadata_info_out_ch.map { meta, topology, sequence_length ->
-        [meta.id, topology, sequence_length].join(",")
-    }
-    tmp_csv = normalized_genome_csv_lines_ch.collectFile(
-        name: "normalized_genome_metadata.tmp",
-        newLine: true,
-    )
-    write_normalized_genome_metadata_csv(
-        tmp_csv,
-        "normalized_genome_metadata",
-        "normalized_genome_metadata.csv",
-    )
-
     //Circular genome rotation process
-    rotate_genome_input_ch = normalize_complete_genome_length.out.normalized_fasta_output_ch
+    rotate_genome_input_ch = assembly_normalization_workflow.out.normalized_fasta_output_ch
         .join(sample_reference_fasta_ch)
         .combine(channel.value(params.rotation_mismatch_threshold))
 
@@ -319,73 +189,28 @@ workflow {
     rotated_genome_ch = rotate_circular_genome_workflow.out.rotated_genome_ch
 
 
-    rotated_fasta_ch = rotated_genome_ch.map { meta, assembled_fasta, official_fasta ->
-        [meta.id, assembled_fasta, official_fasta].join(",")
-    }
-    rotated_fasta_tmp_csv = rotated_fasta_ch.collectFile(name: "rotated_genome_info.tmp", newLine: true)
-
-    write_rotate_genome_csv(
-        rotated_fasta_tmp_csv,
-        "rotated_genome_info",
-        "rotated_genome_info.csv",
-    )
-
-
-    // For reporting, we want to include the paths to the rotated genome files instead of the actual sequences.
-    // So we construct new lines for the CSV that have the sample ID and the paths to the rotated assembled
-    // and official genome files, and then write that to a separate CSV for reporting purposes.
-    rotated_fasta_ch_for_reporting = rotated_assembled_ch
-        .join(rotated_official_ch)
-        .map { meta, _assembled, _official ->
-            // Construct results dir paths — NOT work dir paths
-            def assembled_result = "${workflow.outputDir}/${meta.id}/rotated_output/assembled_genome/rotated_${meta.id}.fasta"
-            def official_result = "${workflow.outputDir}/${meta.id}/rotated_output/official_genome/rotated_${meta.id}.fasta"
-
-            "${meta.id},${assembled_result},${official_result}"
-        }
-
-    rotated_fasta_reporting_tmp_csv = rotated_fasta_ch_for_reporting.collectFile(name: "rotated_genome_reporting_info.tmp", newLine: true)
-
-    write_rotate_genome_csv_for_reporting(
-        rotated_fasta_reporting_tmp_csv,
-        "rotated_genome_info",
-        "rotated_genome_reporting_info.csv",
-    )
-
-    plot_genome_comparison_input_ch = write_rotate_genome_csv.out.csv_output
-        .combine(channel.fromPath(workflow.outputDir))
-        .combine(channel.fromPath(params.genome_comparison_plot_script))
-
-    plot_genome_comparison(plot_genome_comparison_input_ch)
-
-
-
     //Haplotype Identification process would go here, after the genome rotation and comparison steps, since it relies on having the final rotated genomes for accurate identification.
     // haplotype_identification_input_ch = rotated_genome_ch
     haplotype_identification_workflow(
         rotated_genome_ch
     )
 
-    assembled_haplotype_output_ch = haplotype_identification_workflow.out.assembled_haplotype_output_ch.map { meta, haplotype, quality ->
-        [meta.id, haplotype, quality].join(",")
-    }
-    assembled_haplotype_output_tmp_csv = assembled_haplotype_output_ch.collectFile(name: "assembled_haplotype_info.tmp", newLine: true)
-
-    write_assembled_haplotype_info_csv(
-        assembled_haplotype_output_tmp_csv,
-        "haplotype_info",
-        "assembled_haplotype_info.csv",
-    )
-
-    official_haplotype_output_ch = haplotype_identification_workflow.out.official_haplotype_output_ch.map { meta, haplotype, quality ->
-        [meta.id, haplotype, quality].join(",")
-    }
-    official_haplotype_output_tmp_csv = official_haplotype_output_ch.collectFile(name: "official_haplotype_info.tmp", newLine: true)
-
-    write_official_haplotype_info_csv(
-        official_haplotype_output_tmp_csv,
-        "haplotype_info",
-        "official_haplotype_info.csv",
+    report_generation_workflow(
+        cutoffs_ch,
+        size_ch,
+        assembly_normalization_workflow.out.assembled_metadata_info_ch,
+        assembly_normalization_workflow.out.normalized_metadata_info_ch,
+        rotated_genome_ch,
+        rotated_assembled_ch,
+        rotated_official_ch,
+        haplotype_identification_workflow.out.assembled_haplotype_output_ch,
+        haplotype_identification_workflow.out.official_haplotype_output_ch,
+        params.is_calculate_evenness,
+        params.is_calculate_evenness ? evenness_calculation_workflow_initial.out.evenness_output_ch : channel.empty(),
+        params.is_calculate_evenness ? evenness_calculation_workflow_final.out.evenness_output_ch : channel.empty(),
+        params.is_calculate_evenness ? channel.fromPath(params.merge_pacvr_evenness_figure_script) : channel.empty(),
+        channel.fromPath(params.visualize_file_size_changes_script),
+        channel.fromPath(params.genome_comparison_plot_script),
     )
 
     workflow.onComplete {
@@ -401,14 +226,14 @@ workflow {
     qc_output_publish_dir = quality_control_workflow.out.qc_output_publish_dir
 
     //Cutoff info CSV
-    cutoff_info_csv = write_cutoff_info_csv.out.csv_output
+    cutoff_info_csv = report_generation_workflow.out.cutoff_info_csv
 
     //contamination removal output
-    contamination_removal_publish_dir = contamination_removal.out.contamination_removal_publish_dir
+    contamination_removal_publish_dir = contamination_mapping_workflow.out.contamination_removal_publish_dir
 
     //mapping process output
-    index_dir = mapping_workflow.out.index_dir
-    mapping_process_publish_dir = mapping_workflow.out.mapping_process_publish_dir
+    index_dir = contamination_mapping_workflow.out.index_dir
+    mapping_process_publish_dir = contamination_mapping_workflow.out.mapping_process_publish_dir
 
     //evenness calculation output
     initial_sam_output_publish_dir = params.is_calculate_evenness ? evenness_calculation_workflow_initial.out.sam_output_publish_dir : channel.empty()
@@ -417,42 +242,42 @@ workflow {
     final_sam_output_publish_dir = params.is_calculate_evenness ? evenness_calculation_workflow_final.out.sam_output_publish_dir : channel.empty()
     final_bam_output_publish_dir = params.is_calculate_evenness ? evenness_calculation_workflow_final.out.bam_output_publish_dir : channel.empty()
     final_evenness_output_publish_dir = params.is_calculate_evenness ? evenness_calculation_workflow_final.out.evenness_output_publish_dir : channel.empty()
-    merged_pacvr_figures_output_publish_dir = params.is_calculate_evenness ? merge_pacvr_evenness_figures.out.merged_pacvr_figures_output_ch : channel.empty()
-    merged_pacvr_figures_files = params.is_calculate_evenness ? merge_pacvr_evenness_figures.out.merged_pacvr_figures_files : channel.empty()
+    merged_pacvr_figures_output_publish_dir = report_generation_workflow.out.merged_pacvr_figures_output_publish_dir
+    merged_pacvr_figures_files = report_generation_workflow.out.merged_pacvr_figures_files
 
     //File sizes info CSV
-    file_size_csv = write_file_sizes_csv.out.csv_output
+    file_size_csv = report_generation_workflow.out.file_size_csv
 
     //Genome assembly (mitoZ) output
-    mitoz_assembler_publish_dir = mitoz_assembler.out.mitoz_assembler_publish_dir
+    mitoz_assembler_publish_dir = assembly_normalization_workflow.out.mitoz_assembler_publish_dir
 
     //Assembled genome metadata info CSV
-    assembled_genome_metadata_csv = write_assembled_metadata_csv.out.csv_output
+    assembled_genome_metadata_csv = report_generation_workflow.out.assembled_genome_metadata_csv
 
     //normalized genome output
-    mito_extend_process_publish_dir = normalize_complete_genome_length.out.mito_extend_process_publish_dir
-    normalized_fasta_output_ch = normalize_complete_genome_length.out.normalized_fasta_output_ch
+    mito_extend_process_publish_dir = assembly_normalization_workflow.out.mito_extend_process_publish_dir
+    normalized_fasta_output_ch = assembly_normalization_workflow.out.normalized_fasta_output_ch
 
     //normalized genome metadata info CSV
-    normalized_genome_metadata_csv = write_normalized_genome_metadata_csv.out.csv_output
+    normalized_genome_metadata_csv = report_generation_workflow.out.normalized_genome_metadata_csv
 
     //rotated genome output
     rotated_assembled_publish_dir = rotate_circular_genome_workflow.out.rotated_assembled_publish_dir
     rotated_official_publish_dir = rotate_circular_genome_workflow.out.rotated_official_publish_dir
 
     //rotated genome metadata info CSV
-    rotated_genome_metadata_csv = write_rotate_genome_csv.out.csv_output
+    rotated_genome_metadata_csv = report_generation_workflow.out.rotated_genome_metadata_csv
 
     //rotated genome CSV for reporting
-    rotated_genome_csv_for_reporting = write_rotate_genome_csv_for_reporting.out.csv_output
+    rotated_genome_csv_for_reporting = report_generation_workflow.out.rotated_genome_csv_for_reporting
 
     //haplotype identification output
     assembled_haplotype_output_csv_ch = haplotype_identification_workflow.out.assembled_haplotype_output_csv_ch
     official_haplotype_output_csv_ch = haplotype_identification_workflow.out.official_haplotype_output_csv_ch
 
     //Haplotype identification metadata info CSV
-    assembled_haplotype_info_csv = write_assembled_haplotype_info_csv.out.csv_output
-    official_haplotype_info_csv = write_official_haplotype_info_csv.out.csv_output
+    assembled_haplotype_info_csv = report_generation_workflow.out.assembled_haplotype_info_csv
+    official_haplotype_info_csv = report_generation_workflow.out.official_haplotype_info_csv
 }
 
 output {
