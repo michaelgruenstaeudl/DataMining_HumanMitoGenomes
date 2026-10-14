@@ -48,5 +48,7 @@ workflow normalize_complete_genome_length {
     normalized_fasta_output_ch.view { it -> "Normalized fasta output: ${it}" }
 
     emit:
+    mito_extend_process_publish_dir = mito_extend_process.out.novoplasty_output_publish_dir
+
     normalized_fasta_output_ch
 }

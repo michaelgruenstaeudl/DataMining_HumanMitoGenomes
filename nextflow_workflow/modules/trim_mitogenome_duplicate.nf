@@ -4,9 +4,9 @@
 process trim_mitogenome_duplicate {
     label 'python_env'
     tag "${sample_id}"
-    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
 
     input:
+    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
     tuple val(sample_id), path(genome_fasta), path(script_to_trim_mitogenome_duplicate)
     val parent_output_dir
 
