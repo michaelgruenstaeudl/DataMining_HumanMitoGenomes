@@ -4,16 +4,16 @@ process fastqc_process {
 
     tag "${sample_id}"
 
-    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
-
     input:
+
+    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy'
     tuple val(sample_id), path(input_file_list), val(single_end)
     val parent_output_dir
     val phase
 
     output:
     tuple val(sample_id), path("${phase}/${input_file_list[0].simpleName}_fastqc.zip"), emit: fastqc_output_channel
-    path "${phase}/*"
+    tuple val(sample_id), path("${phase}"), emit: fastqc_publish_dir
 
     script:
     def input_file1 = input_file_list[0]

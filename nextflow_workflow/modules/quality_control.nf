@@ -6,9 +6,9 @@ process quality_control {
 
     // container 'community.wave.seqera.io/library/trim-galore:0.6.10--1bf8ca4e1967cd18'
     errorStrategy 'ignore'
-    publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
 
     input:
+    // publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
     tuple val(sample_id), path(input_file_list), val(is_single_end), val(lower_cutoff), val(upper_cutoff)
     val quality_control_stage
     val parent_output_dir
@@ -17,7 +17,7 @@ process quality_control {
     // val sample_id, emit: sample_id
     tuple val(sample_id), env("exit_code"), path("${quality_control_stage}/${sample_id}*.fastq_trimming_report.txt", optional: true), emit: qc_status_report
     tuple val(sample_id), path("${quality_control_stage}/${sample_id}_*.fq", optional: true), val(is_single_end), emit: quality_control_output
-    path "${quality_control_stage}/*"
+    tuple val(sample_id), path("${quality_control_stage}"), emit: quality_control_publish_dir
 
     script:
     // clip_length = upper_cutoff.toInteger() - 3
