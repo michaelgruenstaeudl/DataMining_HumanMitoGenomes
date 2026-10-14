@@ -40,6 +40,9 @@ workflow haplotype_identification_workflow {
     official_haplotype_output_ch = extract_official_haplotype_info.out.haplotype_info_out_ch
 
     emit:
+    assembled_haplotype_output_csv_ch
+    official_haplotype_output_csv_ch
+
     assembled_haplotype_output_ch
     official_haplotype_output_ch
 }

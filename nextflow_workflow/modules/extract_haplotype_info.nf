@@ -1,8 +1,7 @@
 process extract_haplotype_info {
-
-    publishDir "${parent_output_dir}/reports", mode: 'copy'
-
     input:
+
+    // publishDir "${parent_output_dir}/reports", mode: 'copy'
     tuple val(sample_id), path(haplotype_csv)
     val parent_output_dir
 
