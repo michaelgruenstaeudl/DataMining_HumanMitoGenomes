@@ -7,7 +7,7 @@
     "outdir": {
       "type": "string",
       "description": "Directory receiving workflow outputs.",
-      "default": "results_test"
+      "default": "results"
     },
     "validate_inputs": {
       "type": "boolean",
