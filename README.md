@@ -103,32 +103,49 @@ Up-to-date list of **all GenBank accession numbers** of all **complete mitochond
 
 ```mermaid
 flowchart TB
-    subgraph " "
-    subgraph params
-    v8["contamination_db"]
-    v0["input_files_directory"]
-    v14["seed_mito"]
-    v2["reference_fasta"]
-    v16["config_file"]
-    end
-    v5([calculate_sequence_length_threshold])
-    v7([qualityControl])
-    v11([contamination_removal])
-    v13([mapping_process])
-    v19([novoplast_process])
-    v0 --> v5
-    v0 --> v7
-    v5 --> v7
-    v7 --> v11
-    v8 --> v11
-    v2 --> v13
-    v11 --> v13
-    v16 --> v19
-    v5 --> v19
-    v13 --> v19
-    v14 --> v19
-    end
+    input["CSV, FASTQ, GenBank, and FASTA inputs"] --> prep["read_csv_workflow"]
+    prep --> qc["quality_control_workflow"]
+    qc --> contamination["contamination_mapping_workflow"]
+    contamination --> initial_evenness["evenness_calculation_workflow\n(initial)"]
+    contamination --> assembly["assembly_normalization_workflow"]
+    assembly --> final_evenness["evenness_calculation_workflow\n(final)"]
+    assembly --> rotation["rotate_circular_genome_workflow"]
+    rotation --> haplotype["haplotype_identification_workflow"]
+    initial_evenness --> reports["report_generation_workflow"]
+    final_evenness --> reports
+    haplotype --> reports
+    reports --> outputs["results/<sample>/...\nresults/reports/\nresults/logs/"]
 ```
+
+### Output publication layout
+
+The pipeline publishes results under `results/` by default. Existing filenames
+and sample identifiers are retained, with process outputs grouped by stage:
+
+```text
+results/
+├── <sample>/
+│   ├── qc/
+│   ├── contamination/
+│   ├── mapping/
+│   ├── assembly/
+│   ├── normalization/
+│   ├── rotation/
+│   ├── haplotype/
+│   └── reports/
+├── reports/
+└── logs/
+```
+
+Stage-level CSV summaries are written to `results/reports/`, and the Nextflow
+execution trace is written to `results/logs/execution_trace.txt`. The rotated
+genome collection scripts now read rotated FASTA files from
+`<sample>/rotation/rotated_output/`; this replaces the former
+`<sample>/rotated_output/` path.
+
+Further pipeline documentation is available in [usage.md](docs/usage.md),
+[output.md](docs/output.md), [migration.md](docs/migration.md), and
+[testing.md](docs/testing.md).
 
 ## Funding & Citation
 
