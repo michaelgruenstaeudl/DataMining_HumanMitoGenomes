@@ -28,6 +28,7 @@ process write_csv {
 
     // def file_name = is_file_sizes_csv ? "file_sizes.csv" : "assembled_genome_metadata.csv"
     """
+    set -euo pipefail
     echo ${csv_header} > ${output_file_name}
     cat ${csv_tmp} >> ${output_file_name}
     """

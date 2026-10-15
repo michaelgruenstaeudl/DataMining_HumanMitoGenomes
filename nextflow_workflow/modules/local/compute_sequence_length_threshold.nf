@@ -14,9 +14,15 @@ process calculate_sequence_length_threshold {
 
     script:
     """
+    set -euo pipefail
     cutoffs=\$(python ${calculate_sequence_length_threshold_script_ch} --fastq_file ${sra_file_path})
     lower_cutoff=\$(echo \$cutoffs | cut -d ',' -f 1)
     upper_cutoff=\$(echo \$cutoffs | cut -d ',' -f 2)
+    if [[ -z "\$lower_cutoff" || -z "\$upper_cutoff" ]]; then
+        echo "No valid sequence-length cutoffs were produced for ${meta.id}." >&2
+        exit 1
+    fi
+    export lower_cutoff upper_cutoff
     echo "\$lower_cutoff \$upper_cutoff"
     """
 }

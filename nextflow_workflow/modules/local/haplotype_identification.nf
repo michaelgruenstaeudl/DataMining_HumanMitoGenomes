@@ -16,6 +16,7 @@ process haplotype_identification {
     output_directory = "haplotype_identification/${phase}"
 
     """
+    set -euo pipefail
     mkdir -p ${output_directory}
     haplogrep3 classify --input ${fasta_file} --out ${output_directory}/haplotype_output.csv  --tree phylotree-rcrs@17.2
     """

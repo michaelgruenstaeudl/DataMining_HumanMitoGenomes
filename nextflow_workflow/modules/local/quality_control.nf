@@ -5,7 +5,6 @@ process quality_control {
     tag "${meta.id}"
 
     // container 'community.wave.seqera.io/library/trim-galore:0.6.10--1bf8ca4e1967cd18'
-    errorStrategy 'ignore'
 
     input:
     tuple val(meta), path(input_file_list), val(lower_cutoff), val(upper_cutoff)
@@ -14,7 +13,7 @@ process quality_control {
     output:
     // val sample_id, emit: sample_id
     tuple val(meta), env("exit_code"), path("${quality_control_stage}/${meta.id}*.fastq_trimming_report.txt", optional: true), emit: qc_status_report
-    tuple val(meta), path("${quality_control_stage}/${meta.id}_*.fq", optional: true), emit: quality_control_output
+    tuple val(meta), path("${quality_control_stage}/${meta.id}_*.fq"), emit: quality_control_output
     tuple val(meta), path("${quality_control_stage}"), emit: quality_control_publish_dir
 
     script:
@@ -25,14 +24,19 @@ process quality_control {
         : "${input_file_list[0]} ${input_file_list[1]}"
     def paired_end_option = meta.single_end ? "" : "--paired"
     """
-    set +e
+    set -euo pipefail
+    trap 'echo "Quality control failed for ${meta.id}." >&2' ERR
     trim_galore ${paired_end_option} --max_length ${upper_cutoff} --quality 20 \
     --fastqc \
     --output_dir ${quality_control_stage} \
     ${input_file}
     
-    exit_code=\$(echo \$? )
+    export exit_code=0
     echo \$exit_code > .exitcode
     echo \$exit_code
+    if ! compgen -G "${quality_control_stage}/${meta.id}_*.fq" > /dev/null; then
+        echo "Quality control produced no valid reads for ${meta.id}." >&2
+        exit 1
+    fi
     """
 }

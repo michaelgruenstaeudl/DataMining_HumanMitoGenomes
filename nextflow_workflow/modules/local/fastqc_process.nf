@@ -17,6 +17,7 @@ process fastqc_process {
     def input_file1 = input_file_list[0]
     def input_file2 = meta.single_end ? null : input_file_list[1]
     """
+    set -euo pipefail
     mkdir ${phase}
     fastqc -o ${phase} ${input_file1} ${input_file2}
     """

@@ -8,6 +8,7 @@ process extract_haplotype_info {
 
     script:
     """
+    set -euo pipefail
     echo "Starting haplotype information extraction for sample: ${meta.id}"
     # cat ${haplotype_csv}
     # Extracting haplotype information from the CSV file

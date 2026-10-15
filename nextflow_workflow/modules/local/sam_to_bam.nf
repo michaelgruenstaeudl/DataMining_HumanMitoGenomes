@@ -18,6 +18,7 @@ process sam_to_bam {
     def output_bam_filename = "bam_output_${phase}/${meta.id}.bam"
 
     """
+    set -euo pipefail
     ## BAM FILE FOR ORIGINAL READS
     mkdir -p bam_output_${phase}
     samtools view -@ 8 -Sb -T ${fasta_file} ${sam_file} >${output_bam_filename}

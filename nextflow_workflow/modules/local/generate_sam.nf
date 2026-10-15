@@ -23,15 +23,20 @@ process generate_sam {
 
     """
     ## MAPPING ORIGINAL READS
-    set +e
+    set -euo pipefail
+    trap 'echo "SAM generation failed for ${meta.id}." >&2' ERR
     mkdir -p sam_output_${phase}
     
     mkdir -p temp_data2/temp/db
     bowtie2-build ${fasta_file} temp_data2/temp/db/${meta.id}
     bowtie2 -x temp_data2/temp/db/${meta.id} ${input_param} -S ${output_sam_filename} -p 8
 
-    exit_code=\$(echo \$? )
+    export exit_code=0
     echo \$exit_code > .exitcode
     echo \$exit_code
+    if [[ ! -s "${output_sam_filename}" ]]; then
+        echo "SAM generation produced no valid alignment for ${meta.id}." >&2
+        exit 1
+    fi
     """
 }

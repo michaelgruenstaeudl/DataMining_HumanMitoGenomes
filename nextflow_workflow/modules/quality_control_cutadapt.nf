@@ -4,7 +4,6 @@ process quality_control_cutadapt {
 
     tag "${sample_id}"
 
-    errorStrategy 'ignore'
     publishDir "${parent_output_dir}/${sample_id}", mode: 'copy', overwrite: true
 
     input:
@@ -26,7 +25,7 @@ process quality_control_cutadapt {
     script:
     clip_length = upper_cutoff.toInteger() - 3
     """
-    set +e
+    set -euo pipefail
     mkdir -p ${quality_control_stage}
     # trim_galore --paired_end --three_prime_clip_R1 3 --three_prime_clip_R2 3 --length ${clip_length} --max_length ${upper_cutoff} --quality 10 \
     # --fastqc \
@@ -40,7 +39,7 @@ process quality_control_cutadapt {
         ${input_file1} ${input_file2} \
         > ${quality_control_stage}/${sample_id}_1.fastq_trimming_report.txt 2>&1
     
-    exit_code=\$(echo \$? )
+    export exit_code=0
     echo \$exit_code > .exitcode
     echo \$exit_code
     """

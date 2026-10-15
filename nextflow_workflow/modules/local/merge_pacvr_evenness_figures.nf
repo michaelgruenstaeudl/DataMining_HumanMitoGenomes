@@ -15,6 +15,7 @@ process merge_pacvr_evenness_figures {
     script:
 
     """
+    set -euo pipefail
     mkdir -p combined_coverage_visualization
     bash ${merge_pacvr_evenness_fig_script} ${meta.id} ${meta.accession} ${pacvr_evenness_initial_figure} ${pacvr_evenness_figure_after_contamination_removal}
     """

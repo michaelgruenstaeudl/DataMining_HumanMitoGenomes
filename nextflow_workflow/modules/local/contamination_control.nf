@@ -20,6 +20,7 @@ process contamination_removal {
     fastq_input_param = meta.single_end ? fastq_input_list[0] : "${fastq_input_list[0]} ${fastq_input_list[1]}"
     def unclassified_output = meta.single_end ? "${meta.id}.unclassified.fastq" : "${meta.id}.unclassified#.fastq"
     """
+    set -euo pipefail
     mkdir kraken2_output
     kraken2 \\
         --db ${db_path} \\

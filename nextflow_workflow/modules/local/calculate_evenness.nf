@@ -16,6 +16,7 @@ process calculate_evenness {
     def output = "pacvr_${phase}/${meta.id}_${phase}_CoverageViz.pdf"
 
     """
+    set -euo pipefail
     ## MAPPING ORIGINAL READS
     mkdir -p pacvr_${phase}
     PACVR_LOC=\$(Rscript -e 'cat(find.package("PACVr"))')

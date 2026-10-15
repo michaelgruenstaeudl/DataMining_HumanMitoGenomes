@@ -15,6 +15,7 @@ process trim_mitogenome_duplicate {
     directory_path = "trimmed_assembled_genomes"
     trimmed_output_fasta = "${directory_path}/${meta.id}_trimmed.fa"
     """
+    set -euo pipefail
     mkdir -p ${directory_path}
     python ${script_to_trim_mitogenome_duplicate} ${genome_fasta}  > ${trimmed_output_fasta}
     """

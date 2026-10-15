@@ -15,6 +15,7 @@ process bbmap_index {
     def avail_mem = (task.memory.toGiga() * 0.85).intValue()
 
     """
+    set -euo pipefail
     mkdir ref_index
     bbmap.sh \
         -Xmx${avail_mem}g \

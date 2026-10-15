@@ -14,6 +14,8 @@ process mitoz_assembler {
     script:
     def input_file_param = meta.single_end ? "--fq1 ${input_file_list[0]}" : "--fq1 ${input_file_list[0]} --fq2 ${input_file_list[1]}"
     """
+    set -euo pipefail
+    trap 'echo "MitoZ assembly failed for ${meta.id}." >&2' ERR
     #Env variable for mitoz
     export PATH=/app/anaconda/envs/mitoz3.6/bin:\$PATH
 
@@ -27,5 +29,9 @@ process mitoz_assembler {
         --assembler megahit   \
         --kmers_megahit 21 29 39 59 79 99 119 141 \
         --requiring_taxa 9606
+    if [[ ! -s "megahit/mito_denovo.megahit.result/mito_denovo.megahit.mitogenome.fa" ]]; then
+        echo "MitoZ produced no valid mitochondrial assembly for ${meta.id}." >&2
+        exit 1
+    fi
     """
 }

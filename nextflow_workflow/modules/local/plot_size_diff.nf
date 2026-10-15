@@ -8,6 +8,7 @@ process plot_size_diff {
 
     script:
     """
+    set -euo pipefail
     python ${visualize_file_size_changes_script_ch} --csv_file ${csv_file_path} --directory_name ${directory_name}
     """
 }

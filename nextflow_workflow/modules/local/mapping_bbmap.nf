@@ -11,7 +11,7 @@ process mapping_bbmap {
 
     output:
     tuple val(meta), path("bbmap_mapped_output/${meta.id}_mapped*.fq"), emit: mapping_process_output
-    tuple val(meta), path("bbmap_mapped_output"), optional: true, emit: mapping_process_publish_dir
+    tuple val(meta), path("bbmap_mapped_output"), emit: mapping_process_publish_dir
 
     script:
     def avail_mem = (task.memory.toGiga() * 0.85).intValue()
@@ -25,6 +25,7 @@ process mapping_bbmap {
         ? "outu=bbmap_mapped_output/${meta.id}_unmapped.fq"
         : "outu1=bbmap_mapped_output/${meta.id}_unmapped_R1.fq outu2=bbmap_mapped_output/${meta.id}_unmapped_R2.fq"
     """
+    set -euo pipefail
     mkdir bbmap_mapped_output
     bbmap.sh \
         -Xmx${avail_mem}g \

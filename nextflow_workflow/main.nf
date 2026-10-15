@@ -15,36 +15,36 @@ include { rotate_circular_genome_workflow } from './subworkflows/local/rotate_ci
 include { haplotype_identification_workflow } from './subworkflows/local/haplotype_detection_workflow.nf'
 include { report_generation_workflow } from './subworkflows/local/report_generation_workflow.nf'
 
-def validate_input_file(String parameter_name, value) {
+def validate_input_file(parameter_name: String, value) {
     if (value == null || value.toString().trim().isEmpty()) {
-        error "Parameter '${parameter_name}' must be set to a file."
+        error("Parameter '${parameter_name}' must be set to a file.")
     }
 
     def path = file(value)
     if (!path.toFile().isFile()) {
-        error "Parameter '${parameter_name}' points to a missing file: ${path}"
+        error("Parameter '${parameter_name}' points to a missing file: ${path}")
     }
     return path
 }
 
-def validate_input_directory(String parameter_name, value) {
+def validate_input_directory(parameter_name: String, value) {
     if (value == null || value.toString().trim().isEmpty()) {
-        error "Parameter '${parameter_name}' must be set to a directory."
+        error("Parameter '${parameter_name}' must be set to a directory.")
     }
 
     def path = file(value)
     if (!path.toFile().isDirectory()) {
-        error "Parameter '${parameter_name}' points to a missing directory: ${path}"
+        error("Parameter '${parameter_name}' points to a missing directory: ${path}")
     }
     return path
 }
 
 def validate_parameters() {
     if (params.contamination_confidence_threshold < 0 || params.contamination_confidence_threshold > 1) {
-        error "Parameter 'contamination_confidence_threshold' must be between 0 and 1."
+        error("Parameter 'contamination_confidence_threshold' must be between 0 and 1.")
     }
     if (params.rotation_mismatch_threshold < 0) {
-        error "Parameter 'rotation_mismatch_threshold' must be zero or greater."
+        error("Parameter 'rotation_mismatch_threshold' must be zero or greater.")
     }
 
     def csv_file = validate_input_file('csv_file', params.csv_file)
@@ -54,31 +54,18 @@ def validate_parameters() {
         !(csv_header ?: '').split(',')*.trim().contains(column)
     }
     if (missing_columns) {
-        error "Parameter 'csv_file' is missing required columns: ${missing_columns.join(', ')}"
+        error("Parameter 'csv_file' is missing required columns: ${missing_columns.join(', ')}")
     }
 
-    [
-        reference_fasta: params.reference_fasta,
-        config_file: params.config_file,
-        rotation_seed_fasta: params.rotation_seed_fasta,
-        calculate_sequence_length_threshold_script: params.calculate_sequence_length_threshold_script,
-        visualize_file_size_changes_script: params.visualize_file_size_changes_script,
-        genome_comparison_plot_script: params.genome_comparison_plot_script,
-        trim_mitogenome_duplicate_script: params.trim_mitogenome_duplicate_script
-    ].each { parameter_name, value -> validate_input_file(parameter_name, value) }
+    [reference_fasta: params.reference_fasta, config_file: params.config_file, rotation_seed_fasta: params.rotation_seed_fasta, calculate_sequence_length_threshold_script: params.calculate_sequence_length_threshold_script, visualize_file_size_changes_script: params.visualize_file_size_changes_script, genome_comparison_plot_script: params.genome_comparison_plot_script, trim_mitogenome_duplicate_script: params.trim_mitogenome_duplicate_script].each { parameter_name, value -> validate_input_file(parameter_name, value) }
 
-    [
-        fastq_directory: params.fastq_directory,
-        gb_directory: params.gb_directory,
-        fasta_directory: params.fasta_directory,
-        contamination_db: params.contamination_db
-    ].each { parameter_name, value -> validate_input_directory(parameter_name, value) }
+    [fastq_directory: params.fastq_directory, gb_directory: params.gb_directory, fasta_directory: params.fasta_directory, contamination_db: params.contamination_db].each { parameter_name, value -> validate_input_directory(parameter_name, value) }
 
     if (params.is_calculate_evenness) {
         validate_input_file('merge_pacvr_evenness_figure_script', params.merge_pacvr_evenness_figure_script)
     }
 
-    log.info "Input validation passed for ${csv_file}"
+    log.info("Input validation passed for ${csv_file}")
 }
 
 
@@ -154,7 +141,6 @@ workflow {
             evenness_calculation_workflow_initial_input_ch,
             'initial_phase',
         )
-        initial_evenness_output_ch = evenness_calculation_workflow_initial.out.evenness_output_ch
 
         // evenness calculation for cleaned reads after mapping
         final_evenness_calculation_input_ch = mapping_process_output
@@ -164,8 +150,6 @@ workflow {
             final_evenness_calculation_input_ch,
             "mapping_phase",
         )
-        cleaned_reads_evenness_output_ch = evenness_calculation_workflow_final.out.evenness_output_ch
-
     }
 
     assembly_normalization_workflow(

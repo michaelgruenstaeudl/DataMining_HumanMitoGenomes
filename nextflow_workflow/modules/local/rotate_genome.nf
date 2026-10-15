@@ -19,12 +19,13 @@ process rotate_genome {
     output_file_path = "${output_directory}/rotated_${meta.id}.fasta"
     log_file_path = "${output_directory}/rotate.log"
     """
+    set -euo pipefail
     mkdir -p ${output_directory}
     SEED=\$(grep -v ">" ${seed_fasta})
     rotate -s \$SEED -m ${n_mismatch} ${input_fasta} > ${output_file_path}  2> ${log_file_path}
     
     # Count forward + reverse matches
-    MATCH_COUNT=\$(grep -c -E "forward|reverse" ${log_file_path})
+    MATCH_COUNT=\$(grep -c -E "forward|reverse" ${log_file_path} || true)
     
     if [ "\$MATCH_COUNT" -gt 1 ]; then
         echo "[WARNING] Multiple matches (\$MATCH_COUNT). Re-rotating using highest position." >> ${log_file_path}

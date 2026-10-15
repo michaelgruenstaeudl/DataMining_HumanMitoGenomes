@@ -13,6 +13,7 @@ process novoplast_process {
 
     script:
     """
+    set -euo pipefail
     mkdir novoplasty_output
 
     sed -i "s|^Read Length.*|Read Length            = ${read_length}|" ${config_file_path}

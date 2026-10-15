@@ -7,6 +7,7 @@ process extract_assembled_genome_metadata_info {
 
     script:
     """
+    set -euo pipefail
     header=\$(sed -n '1p' ${assembled_genome_fasta})
     
     topology=\$(
@@ -23,7 +24,12 @@ process extract_assembled_genome_metadata_info {
             '
     )
 
-    sequence_length=\$(grep -v '^>' ${assembled_genome_fasta} | tr -d '[:space:]' | wc -c)
+    sequence_length=\$(awk '!/^>/ {gsub(/[[:space:]]/, ""); total += length} END {print total + 0}' ${assembled_genome_fasta})
+
+    if [[ "\$sequence_length" -le 0 ]]; then
+        echo "No valid mitochondrial sequence was produced for ${meta.id}." >&2
+        exit 1
+    fi
 
     echo "\$topology \$sequence_length"
     """
