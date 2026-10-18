@@ -10,7 +10,7 @@ import time
 import unicodedata
 import urllib.parse
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from difflib import SequenceMatcher
 from pathlib import Path
 
@@ -187,7 +187,7 @@ def _retry_request(
 
 
 def configure_logging(verbose):
-    formatted_datetime = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
+    formatted_datetime = datetime.now(UTC).strftime("%Y%m%d_%H%M")
     log_directory = Path("./log")
     log_directory.mkdir(parents=True, exist_ok=True)
     logger_filename = log_directory / f"{formatted_datetime}_UTC_mtDNA_data_mining.log"
@@ -1821,8 +1821,17 @@ def extract_sra_info(
 
 
 # region Mapping of Nucleotide to SRA records:
-def mapping_nucleotide_to_sra(nucleotide_metadata_list, sra_metadata_list, logger):
+def mapping_nucleotide_to_sra(
+    nucleotide_metadata_list: list,
+    sra_metadata_list: list,
+    output_directory: Path,
+    logger: logging.Logger,
+):
     logger.info("Mapping Nucleotide to SRA records")
+
+    output_directory = output_directory / "Nucleotide_SRA_Mapped_data"
+    if not output_directory.exists():
+        output_directory.mkdir(parents=True, exist_ok=True)
 
     grouped_nucleotide_data = defaultdict(list)
     for item in nucleotide_metadata_list:
@@ -1832,7 +1841,13 @@ def mapping_nucleotide_to_sra(nucleotide_metadata_list, sra_metadata_list, logge
     for item in sra_metadata_list:
         grouped_sra_data[item["BioProject"]].append(item)
 
+    complete_nucleotide_SRA_mapped_data = []
     for bioproject, nucleotide_items in grouped_nucleotide_data.items():
+        # if bioproject != target_bioproject:
+        #     continue
+        logger.info(
+            f"Mapping Nucleotide records to SRA records for BioProject: {bioproject}"
+        )
         sra_items = grouped_sra_data.get(bioproject, [])
         if not sra_items:
             logger.info(f"No SRA records found for BioProject: {bioproject}")
@@ -1840,25 +1855,38 @@ def mapping_nucleotide_to_sra(nucleotide_metadata_list, sra_metadata_list, logge
 
         mapped_records = []
         for nucleotide_item in nucleotide_items:
-            isolate_name = nucleotide_item["Source"]["isolate"]
+            logger.info(
+                f"Mapping Nucleotide record: {nucleotide_item['AccessionID']} to SRA records"
+            )
+            isolate_name = nucleotide_item.get("Source", {}).get("isolate", "")
             if "AGENOME_" in isolate_name:
                 isolate_name = isolate_name.replace("AGENOME_", "")
             elif "AGENOME-" in isolate_name:
                 isolate_name = isolate_name.replace("AGENOME-", "")
 
+            # Normalization for PRJNA608699
+            if isolate_name.upper().endswith("MT"):
+                isolate_name = isolate_name[:-2]
+
             isolate_chunks = isolate_name.split("_")
             if len(isolate_chunks) > 1:
                 isolate_name = f"{isolate_chunks[0]} {isolate_chunks[1]}"
                 # print(isolate_name)
+
+            logger.info(
+                f"Isolate name for mapping: {isolate_name} using Sample_Alias in SRA records."
+            )
             matched_sra_list = [
                 sra_item
                 for sra_item in sra_items
-                if sra_item["Sample_Alias"] == isolate_name
+                if sra_item.get("Sample_Alias")
+                and sra_item["Sample_Alias"] == isolate_name
             ]
 
             if not matched_sra_list:
                 logger.info(
                     f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} when compared with Sample_Alias in SRA records."
+                    f" Trying to match with LIBRARY_NAME in SRA records."
                 )
                 matched_sra_list = [
                     sra_item
@@ -1868,27 +1896,32 @@ def mapping_nucleotide_to_sra(nucleotide_metadata_list, sra_metadata_list, logge
 
             if not matched_sra_list:
                 logger.info(
-                    f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} when compared with Library Name in SRA records."
+                    f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} when compared with LIBRARY_NAME in SRA records."
+                    f" Trying to match with Sample_Ref_Name in SRA records."
                 )
                 matched_sra_list = [
                     sra_item
                     for sra_item in sra_items
-                    if sra_item["Sample_Ref_Name"] == isolate_name
+                    if sra_item.get("Sample_Ref_Name")
+                    and sra_item["Sample_Ref_Name"] == isolate_name
                 ]
 
             if not matched_sra_list:
                 logger.info(
                     f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} when compared with Sample Ref Name in SRA records."
+                    f" Trying to match with Submitter Id in SRA records."
                 )
                 matched_sra_list = [
                     sra_item
                     for sra_item in sra_items
-                    if sra_item["submitter_id"] == isolate_name
+                    if sra_item.get("submitter_id")
+                    and sra_item["submitter_id"] == isolate_name
                 ]
 
             if not matched_sra_list:
                 logger.info(
                     f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} when compared with Submitter Id in SRA records."
+                    f" Trying to match with Sample_Title in SRA records."
                 )
                 matched_sra_list = [
                     sra_item
@@ -1899,25 +1932,62 @@ def mapping_nucleotide_to_sra(nucleotide_metadata_list, sra_metadata_list, logge
             if not matched_sra_list:
                 logger.info(
                     f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} when compared with Sample Title in SRA records."
+                    f" Trying to match with Title in SRA records."
                 )
                 matched_sra_list = [
                     sra_item
                     for sra_item in sra_items
-                    if sra_item["Title"].split(": ")[1] == isolate_name
+                    if sra_item.get("Title")
+                    and sra_item["Title"].partition(": ")[2].strip() == isolate_name
                 ]
 
-            mapped_object = {
-                "nucleotide_info": nucleotide_item,
-                "sra_info": matched_sra_list,
-                "sra_count": len(matched_sra_list),
-            }
-            mapped_records.append(mapped_object)
+            # case specific to PRJNA608699
+            if not matched_sra_list:
+                logger.info(
+                    f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} when compared with Title in SRA records."
+                    f" Normalising library name (removing 'ch' prefix) and trying to match with LIBRARY_NAME in SRA records."
+                )
+                matched_sra_list = [
+                    sra_item
+                    for sra_item in sra_items
+                    if sra_item.get("Library", {}).get("LIBRARY_NAME")
+                    and re.sub(
+                        r"ch(?=\d)",
+                        "",
+                        sra_item["Library"]["LIBRARY_NAME"],
+                        flags=re.IGNORECASE,
+                    )
+                    == isolate_name
+                ]
 
-        for nucleotide_item in nucleotide_items:
-            nucleotide_item["SRA_Records"] = sra_items
-            logger.info(
-                f"Mapped {len(sra_items)} SRA records to BioProject: {bioproject}"
-            )
+            if matched_sra_list:
+                logger.info(
+                    f"Found {len(matched_sra_list)} matching SRA records for BioProject: {bioproject} and Isolate: {isolate_name}"
+                )
+                mapped_object = {
+                    "nucleotide_info": nucleotide_item,
+                    "sra_info": matched_sra_list,
+                    "sra_count": len(matched_sra_list),
+                }
+
+                mapped_records.append(mapped_object)
+            else:
+                logger.info(
+                    f"No matching SRA records found for BioProject: {bioproject} and Isolate: {isolate_name} after all matching attempts."
+                )
+
+        file_name = output_directory / f"{bioproject}_nucleotide_sra_mapping.json"
+        # Create directory if it doesn't exist
+        file_name.parent.mkdir(parents=True, exist_ok=True)
+
+        with open(file_name, "w") as file:
+            json.dump(mapped_records, file, indent=4)
+
+        complete_nucleotide_SRA_mapped_data.extend(mapped_records)
+
+    file_name = output_directory / "complete_nucleotide_sra_mapping.json"
+    with open(file_name, "w") as file:
+        json.dump(complete_nucleotide_SRA_mapped_data, file, indent=4)
 
 
 # endregion
@@ -1935,9 +2005,9 @@ def main(args):
 
     # Replaces step 1: Testing the data mining pipeline with pre-extracted nucleotide metadata and detailed metadata information
     # ------------------------------#
-    nucleotide_detailed_metadata_info = pd.read_csv(
-        "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
-    )
+    # nucleotide_detailed_metadata_info = pd.read_csv(
+    #     "test_output/DATA_Nucleotide_detailed_metadata_records.csv"
+    # )
     # nucleotide_metadata_info = pd.read_csv(
     #     "test_output/DATA_Nucleotide_Summary_records.csv"
     # )
@@ -1964,9 +2034,21 @@ def main(args):
     #     "test_output/DATA_pubmed_info_with_bioproj_sra_ids.csv"
     # )
 
-    nucleotide_data_with_bioproj = pd.read_csv(
-        "test_output/DATA_Nucleotide_Pubmed_data_combined.csv"
-    )
+    # nucleotide_data_with_bioproj = pd.read_csv(
+    #     "test_output/DATA_Nucleotide_Pubmed_data_combined.csv"
+    # )
+    # ------------------------------#
+
+    # Input to Step 8: Testing the mapping of Nucleotide to SRA records with pre-extracted nucleotide metadata and SRA metadata information
+    # ------------------------------#
+    # nucleotide_metadata_list = []
+    # with open("test_output/DATA_nucleotide_metadata_list.json", "r") as file:
+    #     nucleotide_metadata_list = json.load(file)
+
+    # sra_metadata_list = []
+    # with open("test_output/DATA_sra_info_in_pmc.json", "r") as file:
+    #     sra_metadata_list = json.load(file)
+
     # ------------------------------#
 
     # endregion
@@ -1993,60 +2075,65 @@ def main(args):
     # nucleotide_summary_info = extract_nucleotide_summary_information(
     #     args.output_directory, logger
     # )
-    # nucleotide_detailed_metadata_info = (
-    #     extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
-    # )
+    nucleotide_detailed_metadata_info = (
+        extract_nucleotide_detailed_metadata_information(args.output_directory, logger)
+    )
 
-    # # Step 2: SRA records metadata extraction
-    # extract_sra_metadata_batch(args.output_directory)
+    # Step 2: SRA records metadata extraction
+    extract_sra_metadata_batch(args.output_directory)
 
-    # # Step 3: Pubmed article mining Mining
+    # Step 3: Pubmed article mining Mining
 
-    # title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
+    title_list = nucleotide_detailed_metadata_info["TITLE"].dropna().unique()
 
-    # pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
-    # matched_output_dict = extract_pubmed_article_information_by_title(
-    #     args, directory, title_list, pubmed_interact, logger
-    # )
+    pubmed_interact = PubmedInteract(email=args.mail, logger=logger)
+    matched_output_dict = extract_pubmed_article_information_by_title(
+        args, directory, title_list, pubmed_interact, logger
+    )
 
-    # # Step 4: Extracting BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
-    # # This step would involve processing the matched_output_dict to extract the required IDs.
-    # extracted_data_source_info_df = (
-    #     extract_data_source_info_from_pubmed_article_data_content(
-    #         directory, matched_output_dict, logger
-    #     )
-    # )
+    # Step 4: Extracting BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
+    # This step would involve processing the matched_output_dict to extract the required IDs.
+    extracted_data_source_info_df = (
+        extract_data_source_info_from_pubmed_article_data_content(
+            directory, matched_output_dict, logger
+        )
+    )
 
-    # # Step 5: Pubmed Data metadata extraction
-    # pubmed_dataframe = extract_pubmed_info_with_bioproject_and_sra(
-    #     directory, extracted_data_source_info_df, logger
-    # )
-    # # Step 6: Extracting SRA information from the extracted data source information.
+    # Step 5: Pubmed Data metadata extraction
+    pubmed_dataframe = extract_pubmed_info_with_bioproject_and_sra(
+        directory, extracted_data_source_info_df, logger
+    )
+    # Step 6: Extracting SRA information from the extracted data source information.
 
-    # sra_metadata_info = extract_sra_info(
-    #     directory, pubmed_dataframe, logger, email=args.mail
-    # )
+    sra_metadata_list = extract_sra_info(
+        directory, pubmed_dataframe, logger, email=args.mail
+    )
 
-    # # Step 7: Extracting Nucleotide Metadata information related to BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
+    # Step 7: Extracting Nucleotide Metadata information related to BioProject ID, BioSample ID, SRA ID, and ENA ID from the extracted pubmed article data content.
 
-    # # input df preparation for this step
-    # # data_combined
-    # nucleotide_detailed_metadata_info = nucleotide_detailed_metadata_info.drop(
-    #     columns=["BioProject"]
-    # )
-    # nucleotide_data_with_bioproj = pd.merge(
-    #     pubmed_dataframe,
-    #     nucleotide_detailed_metadata_info,
-    #     left_on="Title",
-    #     right_on="TITLE",
-    #     how="inner",
-    # )
-    # nucleotide_data_with_bioproj.to_csv(
-    #     f"{directory}/DATA_Nucleotide_Pubmed_data_combined.csv", index=False
-    # )
+    # input df preparation for this step
+    # data_combined
+    nucleotide_detailed_metadata_info = nucleotide_detailed_metadata_info.drop(
+        columns=["BioProject"]
+    )
+    nucleotide_data_with_bioproj = pd.merge(
+        pubmed_dataframe,
+        nucleotide_detailed_metadata_info,
+        left_on="Title",
+        right_on="TITLE",
+        how="inner",
+    )
+    nucleotide_data_with_bioproj.to_csv(
+        f"{directory}/DATA_Nucleotide_Pubmed_data_combined.csv", index=False
+    )
 
-    nucleotide_metadata_info = extract_nucleotide_metadata_info(
+    nucleotide_metadata_list = extract_nucleotide_metadata_info(
         directory, nucleotide_data_with_bioproj, logger, email=args.mail
+    )
+
+    # Step 8: Mapping of Nucleotide to SRA records
+    mapping_nucleotide_to_sra(
+        nucleotide_metadata_list, sra_metadata_list, directory, logger
     )
 
 
