@@ -1,18 +1,19 @@
 #!/usr/bin/env nextflow
 
 include {
-    write_csv as write_cutoff_info_csv;
-    write_csv as write_file_sizes_csv;
-    write_csv as write_assembled_metadata_csv;
-    write_csv as write_normalized_genome_metadata_csv;
-    write_csv as write_rotate_genome_csv;
-    write_csv as write_rotate_genome_csv_for_reporting;
-    write_csv as write_assembled_haplotype_info_csv;
+    write_csv as write_cutoff_info_csv ;
+    write_csv as write_mean_phred_quality_score_csv ;
+    write_csv as write_file_sizes_csv ;
+    write_csv as write_assembled_metadata_csv ;
+    write_csv as write_normalized_genome_metadata_csv ;
+    write_csv as write_rotate_genome_csv ;
+    write_csv as write_rotate_genome_csv_for_reporting ;
+    write_csv as write_assembled_haplotype_info_csv ;
     write_csv as write_official_haplotype_info_csv
 } from '../../modules/local/write_csv.nf'
 include { merge_pacvr_evenness_figures } from '../../modules/local/merge_pacvr_evenness_figures.nf'
 include {
-    plot_size_diff;
+    plot_size_diff ;
     plot_size_diff as plot_genome_comparison
 } from '../../modules/local/plot_size_diff.nf'
 
@@ -21,6 +22,7 @@ include {
 workflow report_generation_workflow {
     take:
     cutoffs_ch
+    mean_phred_quality_score_ch
     size_ch
     assembled_metadata_info_ch
     normalized_metadata_info_ch
@@ -42,6 +44,12 @@ workflow report_generation_workflow {
     }
     cutoff_tmp_csv = cutoff_lines_ch.collectFile(name: 'cutoff_info.tmp', newLine: true)
     write_cutoff_info_csv(cutoff_tmp_csv, 'cutoff_info', 'cutoff_info.csv')
+
+    mean_phred_quality_score_lines_ch = mean_phred_quality_score_ch.map { meta, initial_phred_score, initial_reads_count, final_phred_score, final_reads_count ->
+        [meta.id, initial_phred_score, initial_reads_count, final_phred_score, final_reads_count].join(',')
+    }
+    mean_phred_quality_score_tmp_csv = mean_phred_quality_score_lines_ch.collectFile(name: 'mean_phred_quality_score.tmp', newLine: true)
+    write_mean_phred_quality_score_csv(mean_phred_quality_score_tmp_csv, 'mean_phred_quality_score', 'mean_phred_quality_score.csv')
 
     file_size_csv_lines_ch = size_ch.map { tuple -> tuple.join(',') }
     file_size_tmp_csv = file_size_csv_lines_ch.collectFile(name: 'file_sizes.tmp', newLine: true)
@@ -103,7 +111,7 @@ workflow report_generation_workflow {
             .combine(merge_pacvr_evenness_fig_script_ch)
             .map { meta, initial_figure, final_figure, merge_script ->
                 tuple(meta, initial_figure, final_figure, merge_script)
-        }
+            }
         merge_pacvr_evenness_figures(merge_evenness_figure_input_ch)
         merged_pacvr_figures_output_publish_dir = merge_pacvr_evenness_figures.out.merged_pacvr_figures_output_ch
         merged_pacvr_figures_files = merge_pacvr_evenness_figures.out.merged_pacvr_figures_files
@@ -114,6 +122,7 @@ workflow report_generation_workflow {
     }
 
     emit:
+    mean_phred_quality_score_csv = write_mean_phred_quality_score_csv.out.csv_output
     cutoff_info_csv = write_cutoff_info_csv.out.csv_output
     file_size_csv = write_file_sizes_csv.out.csv_output
     assembled_genome_metadata_csv = write_assembled_metadata_csv.out.csv_output

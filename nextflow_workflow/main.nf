@@ -57,7 +57,7 @@ def validate_parameters() {
         error("Parameter 'csv_file' is missing required columns: ${missing_columns.join(', ')}")
     }
 
-    [reference_fasta: params.reference_fasta, config_file: params.config_file, rotation_seed_fasta: params.rotation_seed_fasta, calculate_sequence_length_threshold_script: params.calculate_sequence_length_threshold_script, visualize_file_size_changes_script: params.visualize_file_size_changes_script, genome_comparison_plot_script: params.genome_comparison_plot_script, trim_mitogenome_duplicate_script: params.trim_mitogenome_duplicate_script].each { parameter_name, value -> validate_input_file(parameter_name, value) }
+    [reference_fasta: params.reference_fasta, config_file: params.config_file, rotation_seed_fasta: params.rotation_seed_fasta, calculate_mean_phred_quality_script: params.calculate_mean_phred_quality_script, calculate_sequence_length_threshold_script: params.calculate_sequence_length_threshold_script, visualize_file_size_changes_script: params.visualize_file_size_changes_script, genome_comparison_plot_script: params.genome_comparison_plot_script, trim_mitogenome_duplicate_script: params.trim_mitogenome_duplicate_script].each { parameter_name, value -> validate_input_file(parameter_name, value) }
 
     [fastq_directory: params.fastq_directory, gb_directory: params.gb_directory, fasta_directory: params.fasta_directory, contamination_db: params.contamination_db].each { parameter_name, value -> validate_input_directory(parameter_name, value) }
 
@@ -101,6 +101,7 @@ workflow {
     //This way we avoid creating multiple index files if the same reference is used for multiple samples.
     reference_ch = channel.value(file(params.reference_fasta))
 
+    calculate_mean_phred_quality_script_ch = channel.fromPath(params.calculate_mean_phred_quality_script)
     calculate_sequence_length_threshold_script_ch = channel.fromPath(params.calculate_sequence_length_threshold_script)
     rotation_seed_fasta_ch = channel.value(file(params.rotation_seed_fasta))
     trim_mitogenome_duplicate_script_ch = channel.fromPath(params.trim_mitogenome_duplicate_script)
@@ -108,7 +109,9 @@ workflow {
     quality_control_workflow(
         sample_reads_ch,
         calculate_sequence_length_threshold_script_ch,
+        calculate_mean_phred_quality_script_ch,
     )
+    mean_phred_quality_score_ch = quality_control_workflow.out.mean_phred_quality_score_ch
     cutoffs_ch = quality_control_workflow.out.cutoffs_ch
 
     evenness_calculation_workflow_initial_input_ch = quality_control_workflow.out.repair_read_output_ch
@@ -181,6 +184,7 @@ workflow {
 
     report_generation_workflow(
         cutoffs_ch,
+        mean_phred_quality_score_ch,
         size_ch,
         assembly_normalization_workflow.out.assembled_metadata_info_ch,
         assembly_normalization_workflow.out.normalized_metadata_info_ch,
@@ -205,9 +209,13 @@ workflow {
 
     // output directories for Quality Control subworkflow
     initial_fastqc_publish_dir = quality_control_workflow.out.initial_fastqc_publish_dir
+    fastqc_after_repair_publish_dir = quality_control_workflow.out.fastqc_process_after_repair_publish_dir
     fastqc_after_quality_control_publish_dir = quality_control_workflow.out.fastqc_after_quality_control_publish_dir
     repair_output_publish_dir = quality_control_workflow.out.repair_output_publish_dir
     qc_output_publish_dir = quality_control_workflow.out.qc_output_publish_dir
+
+    //mean phred quality score CSV
+    mean_phred_quality_score_csv = report_generation_workflow.out.mean_phred_quality_score_csv
 
     //Cutoff info CSV
     cutoff_info_csv = report_generation_workflow.out.cutoff_info_csv
@@ -269,6 +277,9 @@ output {
     initial_fastqc_publish_dir {
         path { meta, _initial_fastqc_dir -> "${meta.id}" }
     }
+    fastqc_after_repair_publish_dir {
+        path { meta, _fastqc_after_repair_dir -> "${meta.id}" }
+    }
     fastqc_after_quality_control_publish_dir {
         path { meta, _fastqc_after_quality_control_dir -> "${meta.id}" }
     }
@@ -277,6 +288,11 @@ output {
     }
     qc_output_publish_dir {
         path { meta, _qc_output_publish_dir -> "${meta.id}" }
+    }
+
+    //mean phred quality score CSV
+    mean_phred_quality_score_csv {
+        path { _mean_phred_quality_score_csv -> "reports" }
     }
 
     //cutoff info CSV
