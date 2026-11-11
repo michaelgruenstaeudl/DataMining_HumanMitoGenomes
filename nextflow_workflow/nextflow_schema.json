@@ -26,6 +26,7 @@
     "config_file": { "type": "string" },
     "rotation_seed_fasta": { "type": "string" },
     "seed_mito": { "type": "string" },
+    "calculate_mean_phred_quality_script": { "type": "string" },
     "calculate_sequence_length_threshold_script": { "type": "string" },
     "visualize_file_size_changes_script": { "type": "string" },
     "genome_comparison_plot_script": { "type": "string" },
