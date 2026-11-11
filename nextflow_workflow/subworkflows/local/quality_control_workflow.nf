@@ -5,14 +5,23 @@ include { quality_control } from '../../modules/local/quality_control.nf'
 include { detectEncoding } from '../../modules/local/detect_encoding.nf'
 include { repair_reads } from '../../modules/local/repair_reads.nf'
 include { addSizeTracking } from '../../modules/local/utils.nf'
+include {
+    calculate_mean_phred_quality as calculate_mean_phred_quality_after_repair ;
+    calculate_mean_phred_quality as calculate_mean_phred_quality_after_quality_filtering
+} from '../../modules/local/calculate_mean_phred_quality.nf'
 include { calculate_sequence_length_threshold } from '../../modules/local/compute_sequence_length_threshold.nf'
 // include { calculate_sequence_length_threshold as calculate_sequence_length_threshold_repair } from '../../modules/local/compute_sequence_length_threshold.nf'
-include { fastqc_process ; fastqc_process as fastqc_process_after_qc } from '../../modules/local/fastqc_process.nf'
+include {
+    fastqc_process ;
+    fastqc_process as fastqc_process_after_repair ;
+    fastqc_process as fastqc_process_after_qc
+} from '../../modules/local/fastqc_process.nf'
 // include { quality_control_cutadapt as quality_control ; quality_control_cutadapt as quality_control_repair } from '../modules/quality_control_cutadapt.nf'
 workflow quality_control_workflow {
     take:
     quality_control_input_channel
     calculate_sequence_length_threshold_script_ch
+    calculate_mean_phred_quality_script_ch
 
     main:
     repair_read_size_ch = channel.empty()
@@ -40,6 +49,15 @@ workflow quality_control_workflow {
     // repair_read_output_ch.view { it -> "Repair reads output: ${it}" }
 
     repair_read_size_ch = addSizeTracking(repair_read_size_ch, repair_read_output_ch, "Repair Read Output")
+
+    //fastqc report after read repair
+    fastqc_process_after_repair(repair_read_output_ch, "fastqc_after_repair")
+
+    // mean phred quality read after read repair
+    input_to_calculate_mean_phred_quality_after_repair = fastqc_process_after_repair.out.fastqc_output_channel.combine(
+        calculate_mean_phred_quality_script_ch
+    )
+    calculate_mean_phred_quality_after_repair(input_to_calculate_mean_phred_quality_after_repair)
 
     // Calculate sequence length threshold for repaired reads
     input_to_calculate_sequence_length_threshold_repair = repair_read_output_ch
@@ -71,8 +89,19 @@ workflow quality_control_workflow {
 
     fastqc_process_after_qc(quality_control_repair_out_ch, "fastqc_after_quality_control")
 
+    // mean phred quality read after quality filtering
+    input_to_calculate_mean_phred_quality_after_quality_filtering = fastqc_process_after_qc.out.fastqc_output_channel.combine(
+        calculate_mean_phred_quality_script_ch
+    )
+    calculate_mean_phred_quality_after_quality_filtering(input_to_calculate_mean_phred_quality_after_quality_filtering)
+
+    mean_phred_quality_score_ch = calculate_mean_phred_quality_after_repair.out.phred_quality.join(
+        calculate_mean_phred_quality_after_quality_filtering.out.phred_quality
+    )
+
     emit:
     initial_fastqc_publish_dir = fastqc_process.out.fastqc_publish_dir
+    fastqc_process_after_repair_publish_dir = fastqc_process_after_repair.out.fastqc_publish_dir
     fastqc_after_quality_control_publish_dir = fastqc_process_after_qc.out.fastqc_publish_dir
     repair_output_publish_dir = repair_reads.out.repair_output_publish_dir
     qc_output_publish_dir = quality_control.out.quality_control_publish_dir
@@ -81,4 +110,5 @@ workflow quality_control_workflow {
     repair_read_output_ch
     repair_read_size_ch
     cutoffs_ch
+    mean_phred_quality_score_ch
 }
