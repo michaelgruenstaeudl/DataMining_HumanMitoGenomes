@@ -16,6 +16,9 @@ process write_csv {
     else if (csv_type == "cutoff_info") {
         csv_header = "SRA_Number,Lower_Cutoff,Upper_Cutoff"
     }
+    else if (csv_type == "mean_phred_quality_score") {
+        csv_header = "SRA_Number,Initial_Mean_Phred_Quality,Initial_Reads_Count,Final_Mean_Phred_Quality,Final_Reads_Count"
+    }
     else if ((csv_type == "assembled_genome_metadata") || (csv_type == "normalized_genome_metadata")) {
         csv_header = "SRA_Number,Topology,Sequence_Length"
     }
